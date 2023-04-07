@@ -1,2 +1,2 @@
-# Cassidy Castle Cleaners
- Unity project for CMPM/ARTG 172 Capstone Course
+# Capstone-Project
+ Capstone Project for CMPM 171
