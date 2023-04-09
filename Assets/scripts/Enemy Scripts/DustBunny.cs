@@ -28,7 +28,7 @@ public class DustBunny : Enemy, IFrameCheckHandler
     public BunnyState state = BunnyState.Idle;
 
     void FixedUpdate() {
-        Debug.Log("Longest attack range: " + longestAttackRange);
+        //Debug.Log("Longest attack range: " + longestAttackRange);
         if (isAttacking)
         {
             //Won't move, should only be affected by gravity
@@ -36,15 +36,15 @@ public class DustBunny : Enemy, IFrameCheckHandler
         else
         {
             enemyMovement();
+            //Action cooldown timer is 0 by default, so it will attack as soon as possible
+            //One problem seems to be the playerInRange function...
+            if (playerInRange(longestAttackRange) && actionCooldownTimer <= 0) //If off cooldown and player in range, perform action
+            {
+                enemyAction();
+            }
         }
 
         actionCooldownTimer -= Time.fixedDeltaTime;
-        //Action cooldown timer is 0 by default, so it will attack as soon as possible
-        //One problem seems to be the playerInRange function...
-        if (playerInRange(longestAttackRange) && actionCooldownTimer <= 0) //If off cooldown and player in range, perform action
-        {
-            enemyAction();
-        }
     }
 
     void Update()
@@ -55,11 +55,13 @@ public class DustBunny : Enemy, IFrameCheckHandler
             //updateMe(Time.deltaTime);
             //Basically wait for attack animation to finish playing
             stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-            if(stateInfo.normalizedTime >= 0)
+            //Have to check the state name otherwise it may be checking the wrong animation
+            if(stateInfo.normalizedTime >= 1 && stateInfo.IsName("Pounce"))
             {
                 animator.SetBool("Pounce", false);
                 isAttacking = false;
                 actionCooldownTimer = postActionCooldown;
+                Debug.LogError("Finished attack animation");
             }
         }
     }
