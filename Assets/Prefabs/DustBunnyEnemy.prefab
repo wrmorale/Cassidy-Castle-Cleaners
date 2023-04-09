@@ -458,7 +458,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 1
 --- !u!65 &8327740662560138383
 BoxCollider:
@@ -492,7 +492,7 @@ MonoBehaviour:
   basicAttackSpeed: 0.4
   attackRange: 3
   movementSpeed: 0.4
-  movementRange: 5
+  movementRange: 1
   idleMovementRange: 2
   staggerLimit: 0
   abilities:
@@ -500,7 +500,7 @@ MonoBehaviour:
     abilityType: Movement
     abilityDamage: 2
     abilityRange: 4
-    abilityCooldown: 4
+    abilityCooldown: 2
     abilityChance: 30
     castTime: 0
     damageMultiplier: 0

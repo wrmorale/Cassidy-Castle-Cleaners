@@ -9,8 +9,14 @@ public class Enemy : MonoBehaviour
 {
     [Header("Stats")]
     [SerializeField]public string enemyName;
-    [SerializeField]public float maxHealth;
+    [SerializeField]public float maxHealth; //Shouldn't these be integers?
     [SerializeField]public float health;
+    /*For different attacks, I think they should choose one based on how close the player is
+     Example:
+     - Far away = might perform a lunge attack
+     - very close = might perform either lunge attack or a different attack
+    Also should we make attacks track the player so that dodging is more required?
+     */
     [SerializeField]public float basicAttackDamage;
     [SerializeField]public float basicAttackSpeed;
     [SerializeField]public float attackRange;
@@ -66,7 +72,7 @@ public class Enemy : MonoBehaviour
         enemyBody = GetComponent<Rigidbody>();
         playerBody = player.GetComponent<Rigidbody>();
         animator = gameObject.GetComponentInChildren<Animator>();
-        enemyHealthBar  = GetComponentInChildren<EnemyHealthBar>();
+        enemyHealthBar = GetComponentInChildren<EnemyHealthBar>();
         enemyHealthBar.setMaxHealth(HealthPercent);
         health = maxHealth;
         //damageFlashObject = Instantiate(damageFlashPrefab, transform.position, Quaternion.identity);

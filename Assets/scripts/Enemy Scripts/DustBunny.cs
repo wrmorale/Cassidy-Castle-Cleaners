@@ -15,10 +15,12 @@ public class DustBunny : Enemy, IFrameCheckHandler
     private FrameChecker activeChecker;
 
     private string currentAttack;
+    float postActionCooldown = 0.0f;
 
     enum ActionState {Inactionable, AttackCancelable}
     private ActionState actionState;
 
+    bool isAggro = false;
     public enum BunnyState{
         Idle,
         Attacking
@@ -26,27 +28,54 @@ public class DustBunny : Enemy, IFrameCheckHandler
     public BunnyState state = BunnyState.Idle;
 
     void FixedUpdate() {
-        enemyMovement();
+        Debug.Log("Longest attack range: " + longestAttackRange);
+        if (isAttacking)
+        {
+            //Won't move, should only be affected by gravity
+        }
+        else
+        {
+            enemyMovement();
+        }
+
+        actionCooldownTimer -= Time.fixedDeltaTime;
+        //Action cooldown timer is 0 by default, so it will attack as soon as possible
+        //One problem seems to be the playerInRange function...
+        if (playerInRange(longestAttackRange) && actionCooldownTimer <= 0) //If off cooldown and player in range, perform action
+        {
+            enemyAction();
+        }
     }
 
-    void Update() {
-        if (state == BunnyState.Idle){
-            enemyAttack();
-        }
-        if (state == BunnyState.Attacking){
-            updateMe(Time.deltaTime);
+    void Update()
+    {
+        //Do we have to call Super()?
+        if (isAttacking)
+        {
+            //updateMe(Time.deltaTime);
+            //Basically wait for attack animation to finish playing
+            stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+            if(stateInfo.normalizedTime >= 0)
+            {
+                animator.SetBool("Pounce", false);
+                isAttacking = false;
+                actionCooldownTimer = postActionCooldown;
+            }
         }
     }
 
+    //Problem with enemy animation: The bunny jumps forward to a spot but then resets to its original position.
+    //The bunny should really just be jumping in place and then let the actual movement speed move them around
     private void enemyMovement() {
         stateInfo = animator.GetCurrentAnimatorStateInfo(0);
         // if player is in range
-        if(Vector3.Distance(enemyBody.position, playerBody.position) < movementRange) {
+        if(playerInRange(movementRange)){
             // move enemy towards player
-            if (stateInfo.normalizedTime >= 1f){
+            // Only move if the current animation is complete? Is that just a misunderstanding of how looping works?
+            if (stateInfo.normalizedTime >= 1f){ //This means enemies will stop persuit if player gets far enough. Do we want that?
                 animator.SetBool("Moving", true);
                 movement = (playerBody.position - enemyBody.position) * movementSpeed;
-                enemyBody.MovePosition(enemyBody.position + (movement * Time.fixedDeltaTime));
+                enemyBody.MovePosition(enemyBody.position + (movement * Time.fixedDeltaTime)); //How does gravity affect this? What will happen if the bunny walks off of an edge?
             }
         }
         else {
@@ -72,40 +101,17 @@ public class DustBunny : Enemy, IFrameCheckHandler
         }
     }
 
-    public void enemyAttack(){
-        //if able to attack, the enemy does so
-        //first checks to see if enemy is in range for an attack
-        if(Vector2.Distance(enemyBody.position, playerBody.position) < longestAttackRange && actionCooldownTimer <= 0) {
-            enemyAction();
-        }
-        actionCooldownTimer -= Time.deltaTime;
-        abilityCooldownTimer -= Time.deltaTime;
-        if(abilityCooldownTimer < 0) {
-            abilityCooldownTimer = 0;
-        }
-    }
-
     public void enemyAction(){
         //if off ability cooldown can use ability depending on chance to use that ability
-        if(abilityCooldownTimer == 0){
-            abilityCounter = 0;
-            foreach (Ability ability in abilities) {
-                //before checking if an ability can be cast check if the player is in ability range
-                if(Vector2.Distance(enemyBody.position, playerBody.position) < ability.abilityRange){
-                    float randomNumber = Random.Range(0, 100);
-                    if (randomNumber < ability.abilityChance) {
-                        useAbility(abilityCounter);
-                        actionCooldownTimer = (1 / basicAttackSpeed);
-                        break;
-                    }
-                    abilityCounter++;
-                }
-            }
-        }
+        isAttacking = true;
+        //useAbility(0);
+        //Since the frame handler doesn't seem to be working, we'll play the animnation a different way, with no hitbox.
+        animator.SetBool("Pounce", true);
+        animator.SetBool("Moving", false);
+        postActionCooldown = abilities[0].abilityCooldown;
     }
 
     private void useAbility(int abilityNum){
-        abilityCooldownTimer = abilities[abilityNum].abilityCooldown;
         handleAttacks(abilities[abilityNum]);
         /*
         //first check what type of ability it is and will do stuff depending on type of ability
@@ -141,9 +147,11 @@ public class DustBunny : Enemy, IFrameCheckHandler
     public void onAllCancelFrameStart(){}
     public void onAllCancelFrameEnd(){}
     public void onLastFrameStart(){}
-    public void onLastFrameEnd(){
+    public void onLastFrameEnd(){ //I think called when the animation ends.
         state = BunnyState.Idle;
         activeClip.animator.SetBool("Pounce", false);
+        isAttacking = false;
+        //actionCooldownTimer = postActionCooldown; //Cooldown starts AFTER the action finishes
     }
 
     void Awake()
