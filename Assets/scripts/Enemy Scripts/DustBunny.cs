@@ -32,6 +32,7 @@ public class DustBunny : Enemy, IFrameCheckHandler
         if (isAttacking)
         {
             //Won't move, should only be affected by gravity
+            updateMe(Time.deltaTime);
         }
         else
         {
@@ -52,17 +53,17 @@ public class DustBunny : Enemy, IFrameCheckHandler
         //Do we have to call Super()?
         if (isAttacking)
         {
-            //updateMe(Time.deltaTime);
             //Basically wait for attack animation to finish playing
             stateInfo = animator.GetCurrentAnimatorStateInfo(0);
             //Have to check the state name otherwise it may be checking the wrong animation
+            /*
             if(stateInfo.normalizedTime >= 1 && stateInfo.IsName("Pounce"))
             {
                 animator.SetBool("Pounce", false);
                 isAttacking = false;
                 actionCooldownTimer = postActionCooldown;
                 Debug.LogError("Finished attack animation");
-            }
+            }*/
         }
     }
 
@@ -106,10 +107,10 @@ public class DustBunny : Enemy, IFrameCheckHandler
     public void enemyAction(){
         //if off ability cooldown can use ability depending on chance to use that ability
         isAttacking = true;
-        //useAbility(0);
+        useAbility(0);
         //Since the frame handler doesn't seem to be working, we'll play the animnation a different way, with no hitbox.
-        animator.SetBool("Pounce", true);
-        animator.SetBool("Moving", false);
+        //animator.SetBool("Pounce", true);
+        //animator.SetBool("Moving", false);
         postActionCooldown = abilities[0].abilityCooldown;
         Debug.Log("Attack cooldown: " + postActionCooldown);
     }
@@ -154,7 +155,7 @@ public class DustBunny : Enemy, IFrameCheckHandler
         state = BunnyState.Idle;
         activeClip.animator.SetBool("Pounce", false);
         isAttacking = false;
-        //actionCooldownTimer = postActionCooldown; //Cooldown starts AFTER the action finishes
+        actionCooldownTimer = postActionCooldown; //Cooldown starts AFTER the action finishes
     }
 
     void Awake()
