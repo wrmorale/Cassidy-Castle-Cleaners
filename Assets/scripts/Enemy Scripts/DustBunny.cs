@@ -109,6 +109,7 @@ public class DustBunny : Enemy, IFrameCheckHandler
         animator.SetBool("Pounce", true);
         animator.SetBool("Moving", false);
         postActionCooldown = abilities[0].abilityCooldown;
+        Debug.Log("Attack cooldown: " + postActionCooldown);
     }
 
     private void useAbility(int abilityNum){
