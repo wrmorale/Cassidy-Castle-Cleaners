@@ -27,20 +27,17 @@ public class DustBunny : Enemy, IFrameCheckHandler
     }
     public BunnyState state = BunnyState.Idle;
 
-    void FixedUpdate() {
+    void FixedUpdate(){
         
     }
 
-    void Update()
-    {
+    void Update(){
         //Debug.Log("Longest attack range: " + longestAttackRange);
-        if (isAttacking)
-        {
+        if (isAttacking){
             //Won't move, should only be affected by gravity
             updateMe(Time.deltaTime);
         }
-        else
-        {
+        else{
             enemyMovement();
             //Action cooldown timer is 0 by default, so it will attack as soon as possible
             //One problem seems to be the playerInRange function...
@@ -54,13 +51,11 @@ public class DustBunny : Enemy, IFrameCheckHandler
 
         /*
         //Do we have to call Super()?
-        if (isAttacking)
-        {
+        if (isAttacking){
             //Basically wait for attack animation to finish playing
             stateInfo = animator.GetCurrentAnimatorStateInfo(0);
             //Have to check the state name otherwise it may be checking the wrong animation
-            if(stateInfo.normalizedTime >= 1 && stateInfo.IsName("Pounce"))
-            {
+            if(stateInfo.normalizedTime >= 1 && stateInfo.IsName("Pounce")){
                 animator.SetBool("Pounce", false);
                 isAttacking = false;
                 actionCooldownTimer = postActionCooldown;
@@ -161,8 +156,7 @@ public class DustBunny : Enemy, IFrameCheckHandler
         actionCooldownTimer = postActionCooldown; //Cooldown starts AFTER the action finishes
     }
 
-    void Awake()
-    {
+    void Awake(){
         pounceClip.initialize();
         pounceChecker.initialize(this, pounceClip);
 
@@ -170,8 +164,7 @@ public class DustBunny : Enemy, IFrameCheckHandler
         activeClip = pounceClip;
     }
 
-    public void updateMe(float time) // yes we need this
-    {
+    public void updateMe(float time){ // yes we need this
         activeChecker.checkFrames();
 
         if (actionState == ActionState.Inactionable){}
@@ -180,8 +173,8 @@ public class DustBunny : Enemy, IFrameCheckHandler
             actionState = ActionState.Inactionable;
         }
     }
-    public void handleAttacks(Ability ability)
-    {
+
+    public void handleAttacks(Ability ability){
         int frames = 0; // amount of frames in anim 
         actionState = ActionState.Inactionable;
         state = BunnyState.Attacking;
