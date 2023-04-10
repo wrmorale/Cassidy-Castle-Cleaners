@@ -56,14 +56,13 @@ public class DustBunny : Enemy, IFrameCheckHandler
             //Basically wait for attack animation to finish playing
             stateInfo = animator.GetCurrentAnimatorStateInfo(0);
             //Have to check the state name otherwise it may be checking the wrong animation
-            /*
             if(stateInfo.normalizedTime >= 1 && stateInfo.IsName("Pounce"))
             {
                 animator.SetBool("Pounce", false);
                 isAttacking = false;
                 actionCooldownTimer = postActionCooldown;
                 Debug.LogError("Finished attack animation");
-            }*/
+            }
         }
     }
 
@@ -107,12 +106,13 @@ public class DustBunny : Enemy, IFrameCheckHandler
     public void enemyAction(){
         //if off ability cooldown can use ability depending on chance to use that ability
         isAttacking = true;
-        useAbility(0);
+        Debug.Log("Pouncing!");
+        //useAbility(0);
         //Since the frame handler doesn't seem to be working, we'll play the animnation a different way, with no hitbox.
-        //animator.SetBool("Pounce", true);
-        //animator.SetBool("Moving", false);
+        animator.SetBool("Pounce", true);
+        animator.SetBool("Moving", false);
         postActionCooldown = abilities[0].abilityCooldown;
-        Debug.Log("Attack cooldown: " + postActionCooldown);
+        
     }
 
     private void useAbility(int abilityNum){
@@ -137,7 +137,7 @@ public class DustBunny : Enemy, IFrameCheckHandler
         state = BunnyState.Idle;
         if(currentAttack == "Pounce"){
             pounceCollider.SetActive(false);
-            activeClip.animator.SetBool("Pounce", false);
+            //activeClip.animator.SetBool("Pounce", false); //I feel like having this here is wrong...
         }
     }
     public void onAttackCancelFrameStart() {
@@ -187,14 +187,13 @@ public class DustBunny : Enemy, IFrameCheckHandler
 
         if (currentAttack == "Pounce")
         {
-            activeChecker = pounceChecker;
-            activeClip = pounceClip;
+            activeChecker = pounceChecker; //I believe this checks each frame to see if the hitbox should be active
+            activeClip = pounceClip; //I believe this is the animation clip, though the variable is private and unassigned
         }
         frames = activeClip.getTotalFrames();
-        activeClip.animator.SetBool(ability.abilityName, true);
-        activeClip.animator.Play(activeClip.animatorStateName, 0);
+        activeClip.animator.SetBool(ability.abilityName, true); //<- These two statements might be the cause? Would have to read over frame checker doc
+        activeClip.animator.Play(activeClip.animatorStateName, 0); //<-
         activeChecker.initCheck();
-        activeChecker.checkFrames();
+        //activeChecker.checkFrames();
     }
-
 }
