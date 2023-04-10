@@ -28,6 +28,11 @@ public class DustBunny : Enemy, IFrameCheckHandler
     public BunnyState state = BunnyState.Idle;
 
     void FixedUpdate() {
+        
+    }
+
+    void Update()
+    {
         //Debug.Log("Longest attack range: " + longestAttackRange);
         if (isAttacking)
         {
@@ -45,11 +50,9 @@ public class DustBunny : Enemy, IFrameCheckHandler
             }
         }
 
-        actionCooldownTimer -= Time.fixedDeltaTime;
-    }
+        actionCooldownTimer -= Time.deltaTime;
 
-    void Update()
-    {
+        /*
         //Do we have to call Super()?
         if (isAttacking)
         {
@@ -63,7 +66,7 @@ public class DustBunny : Enemy, IFrameCheckHandler
                 actionCooldownTimer = postActionCooldown;
                 Debug.LogError("Finished attack animation");
             }
-        }
+        }*/
     }
 
     //Problem with enemy animation: The bunny jumps forward to a spot but then resets to its original position.
@@ -107,10 +110,10 @@ public class DustBunny : Enemy, IFrameCheckHandler
         //if off ability cooldown can use ability depending on chance to use that ability
         isAttacking = true;
         Debug.Log("Pouncing!");
-        //useAbility(0);
+        useAbility(0);
         //Since the frame handler doesn't seem to be working, we'll play the animnation a different way, with no hitbox.
-        animator.SetBool("Pounce", true);
-        animator.SetBool("Moving", false);
+        //animator.SetBool("Pounce", true);
+        //animator.SetBool("Moving", false);
         postActionCooldown = abilities[0].abilityCooldown;
         
     }
@@ -194,6 +197,7 @@ public class DustBunny : Enemy, IFrameCheckHandler
         activeClip.animator.SetBool(ability.abilityName, true); //<- These two statements might be the cause? Would have to read over frame checker doc
         activeClip.animator.Play(activeClip.animatorStateName, 0); //<-
         activeChecker.initCheck();
-        //activeChecker.checkFrames();
+        activeChecker.checkFrames();
+        //All of these seem to match what is in the Golem code
     }
 }
