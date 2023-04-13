@@ -6,6 +6,8 @@ using Extensions;
 
 public class Golem : Enemy
 {
+    //Has some kind of dash attack that actually moves it, and otherwise does not move while attacking.
+
     private GolemAttackManager attackManager;
     private Vector3 directionToPlayer;
     private float distanceToPlayer;
@@ -24,12 +26,18 @@ public class Golem : Enemy
         attackManager = gameObject.GetComponent<GolemAttackManager>();
     }
 
+    //Has problem similar to Bunny: The animation moves the model when it really shouldn't
+    //
+
     void Update() {
-        if (movement != Vector3.zero) {
-            enemyBody.rotation = Quaternion.LookRotation(movement);
-            Quaternion newRotation = Quaternion.LookRotation(movement, enemyBody.transform.up);
-            newRotation = Quaternion.Euler(0f, newRotation.eulerAngles.y, 0f);
+        if (movement != Vector3.zero) { //If moving
+            enemyBody.rotation = Quaternion.LookRotation(movement); //Rotates entire prefab to face this direction
+            Quaternion newRotation = Quaternion.LookRotation(movement, enemyBody.transform.up); //Same thing, but includes the up transform?
+            newRotation = Quaternion.Euler(0f, newRotation.eulerAngles.y, 0f); //Takes previous rotation and boils it down to specifically the y rotation
             enemyBody.transform.rotation = Quaternion.Slerp(enemyBody.transform.rotation, newRotation, Time.deltaTime * rotationSpeed);
+            //Slowly rotates the golem towards the direction of its new movement
+            //Does this mean that the golem does not follow its movement perfectly? I assume likely no, as it probably just gets a new direction the frame after rotating.
+            //It also seems to be able to reach the player pretty well.
         }
         if (state == GolemState.Idle){
             enemyAction();
@@ -54,6 +62,7 @@ public class Golem : Enemy
             // Set x and z rotation to zero
             newRotation = Quaternion.Euler(0f, newRotation.eulerAngles.y, 0f);
             enemyBody.transform.rotation = Quaternion.Slerp(enemyBody.transform.rotation, newRotation, Time.deltaTime * rotationSpeed);
+            /*Why are there 3 different rotations here? Is it rotating more quickly than it should?*/
         }
         if (isDashing) {
             // move enemy towards player during dash animation
@@ -77,6 +86,7 @@ public class Golem : Enemy
         }
     }
 
+    /*Called every frame if not attacking*/
     public void enemyAction(){
         directionToPlayer = playerBody.position - enemyBody.position;
         distanceToPlayer = directionToPlayer.magnitude;

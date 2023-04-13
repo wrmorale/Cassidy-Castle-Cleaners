@@ -41,7 +41,7 @@ public class DustBunny : Enemy, IFrameCheckHandler
             enemyMovement();
             //Action cooldown timer is 0 by default, so it will attack as soon as possible
             //One problem seems to be the playerInRange function...
-            if (playerInRange(longestAttackRange) && actionCooldownTimer <= 0) //If off cooldown and player in range, perform action
+            if (playerInRange(longestAttackRange) && actionCooldownTimer <= 0 && playerInRange(movementRange)) //If off cooldown and player in range, perform action
             {
                 enemyAction();
             }
@@ -69,14 +69,14 @@ public class DustBunny : Enemy, IFrameCheckHandler
     private void enemyMovement() {
         stateInfo = animator.GetCurrentAnimatorStateInfo(0);
         // if player is in range
-        if(playerInRange(movementRange)){
+        if(playerInRange(movementRange)){ //This means enemies will stop persuit if player gets far enough. Do we want that?
             // move enemy towards player
             // Only move if the current animation is complete? Is that just a misunderstanding of how looping works?
-            if (stateInfo.normalizedTime >= 1f){ //This means enemies will stop persuit if player gets far enough. Do we want that?
-                animator.SetBool("Moving", true);
-                movement = (playerBody.position - enemyBody.position) * movementSpeed;
-                enemyBody.MovePosition(enemyBody.position + (movement * Time.fixedDeltaTime)); //How does gravity affect this? What will happen if the bunny walks off of an edge?
-            }
+            animator.SetBool("Moving", true);
+            Vector3 toPlayer = playerBody.position - enemyBody.position;
+            toPlayer.y = 0; //Ignore player's vertical position
+            movement = toPlayer.normalized * movementSpeed;
+            enemyBody.MovePosition(enemyBody.position + (movement * Time.fixedDeltaTime));
         }
         else {
             //enemy idle movement
@@ -85,8 +85,9 @@ public class DustBunny : Enemy, IFrameCheckHandler
                 elapsedTime = 0;
                 isIdle = !isIdle;
                 if (isIdle) {
-                    idleMovement = enemyBody.position + new Vector3(Random.Range(-idleMovementRange, idleMovementRange), 0, Random.Range(-idleMovementRange, idleMovementRange));
-                    movement = (idleMovement - enemyBody.position).normalized * movementSpeed;
+                    //If left idle for long enough, it could wander far from its original position
+                    idleMovement = new Vector3(Random.Range(-idleMovementRange, idleMovementRange), 0, Random.Range(-idleMovementRange, idleMovementRange));
+                    movement = idleMovement.normalized * movementSpeed;
                     animator.SetBool("Moving", true);
                 } 
                 else {
