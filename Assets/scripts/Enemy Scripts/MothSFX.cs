@@ -15,10 +15,10 @@ public class MothSFX : MonoBehaviour
     }
 
     private void playWindUpsfx(){
-        animationSoundPlayer.PlayOneShot(attackWindupsfx, 0.8F);
+        animationSoundPlayer.PlayOneShot(attackWindupsfx, 0.4F);
     }
 
     private void playAttacksfx(){
-        animationSoundPlayer.PlayOneShot(attacksfx, 0.8F);
+        animationSoundPlayer.PlayOneShot(attacksfx, 0.9F);
     }
 }

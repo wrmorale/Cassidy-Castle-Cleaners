@@ -16,14 +16,14 @@ public class DustBunnySFX : MonoBehaviour
     }
 
     private void playHopsfx(){
-        animationSoundPlayer.PlayOneShot(hopsfx, .5F);
+        animationSoundPlayer.PlayOneShot(hopsfx, .3F);
     }
 
     private void playChargesfx(){
-        animationSoundPlayer.PlayOneShot(chargesfx, 1.2F);
+        animationSoundPlayer.PlayOneShot(chargesfx, 1.0F);
     }
 
     private void playPouncesfx(){
-        animationSoundPlayer.PlayOneShot(pouncesfx, 1.5F);
+        animationSoundPlayer.PlayOneShot(pouncesfx, 0.8F);
     }
 }
