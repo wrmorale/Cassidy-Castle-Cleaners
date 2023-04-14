@@ -9,4 +9,14 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("SampleScene");
     }
+
+    public void ToCredits()
+    {
+        SceneManager.LoadScene("Credits_Scene");
+    }
+
+    public void ToControls()
+    {
+        SceneManager.LoadScene("Controls_Scene");
+    }
 }
