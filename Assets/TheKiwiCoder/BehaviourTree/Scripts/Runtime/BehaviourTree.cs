@@ -76,11 +76,5 @@ namespace TheKiwiCoder {
                 node.blackboard = blackboard;
             });
         }
-
-        /*Custom func*/
-        public void BindTreeRunner(BehaviourTreeRunner btr)
-        {
-            blackboard.behaviourTreeRunner = btr;
-        }
     }
 }

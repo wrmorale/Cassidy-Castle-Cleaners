@@ -17,7 +17,6 @@ namespace TheKiwiCoder {
 
         // The main behaviour tree asset
         public BehaviourTree tree;
-        public MonoBehaviour mainEnemyScript;
 
         // Storage container object to hold game object subsystems
         Context context;
@@ -27,13 +26,6 @@ namespace TheKiwiCoder {
             context = CreateBehaviourTreeContext();
             tree = tree.Clone();
             tree.Bind(context);
-            tree.BindTreeRunner(this); /*We're gonna make the behavior tree able to reference its assigned runner.*/
-        }
-
-        /*Custom*/
-        void CallFuncOnMainScript(string function)
-        {
-            
         }
 
         // Update is called once per frame
