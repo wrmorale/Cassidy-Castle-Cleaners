@@ -57,6 +57,12 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
         //Then for the mirror that just became active, we play an animation for the entity appearing.
     }
 
+    public void StopPosessingMirrors()
+    {
+        currPosessedMirror.SetPossessed(false);
+        currMirrorIndex = -1;
+    }
+
     //Randomly choose a mirror to posess besides the one that is already posessed
     public void PosessMirrorRandom()
     {

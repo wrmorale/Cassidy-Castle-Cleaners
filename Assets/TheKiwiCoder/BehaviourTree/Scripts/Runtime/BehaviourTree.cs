@@ -31,6 +31,7 @@ namespace TheKiwiCoder {
         }
 
         public Node.State Update() {
+            //Will always run as long as rootNode.state = Running, but will otherwise be stopped
             if (rootNode.state == Node.State.Running) {
                 treeState = rootNode.Update();
             }
