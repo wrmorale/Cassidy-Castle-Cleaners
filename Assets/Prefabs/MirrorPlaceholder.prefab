@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5928403739542624165}
   m_Layer: 0
   m_Name: MirrorPlaceholder
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,6 +110,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf85ba950cabdb6418ebd02255ca1b29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyName: Mirror
+  maxHealth: 1
+  health: 0
+  basicAttackDamage: 0
+  basicAttackSpeed: 0
+  attackRange: 0
+  movementSpeed: 0
+  movementRange: 0
+  idleMovementRange: 0
+  staggerLimit: 0
+  abilities: []
+  abilityCooldownTimer: 0
+  dashCooldownTimer: 0
+  actionCooldownTimer: 0
+  abilityCounter: 0
+  longestAttackRange: 0
+  isAttacking: 0
+  movement: {x: 0, y: 0, z: 0}
+  idleMovement: {x: 0, y: 0, z: 0}
+  rotationSpeed: 0
+  elapsedTime: 0
+  isIdle: 0
+  enemyInstance: {fileID: 3666671126868498160}
+  bodyCollider: {fileID: 3666671126868498160}
+  enemyBody: {fileID: 0}
+  playerBody: {fileID: 0}
+  player: {fileID: 0}
+  animator: {fileID: 0}
+  animationFinished: 1
+  detectionRange: 5
+  healingSpeed: 0.1
+  dustPilePrefab: {fileID: 0}
+  maxDustPiles: 5
   entityPossessing: 0
   matInactive: {fileID: 2100000, guid: 8b0c50355814bb64191ae6c59e49cc6a, type: 2}
   matPosessed: {fileID: 2100000, guid: a964d1fcb50248643a1290f32ccccd25, type: 2}

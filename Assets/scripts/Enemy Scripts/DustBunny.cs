@@ -27,6 +27,8 @@ public class DustBunny : Enemy, IFrameCheckHandler
     }
     public BunnyState state = BunnyState.Idle;
 
+    
+
     void FixedUpdate(){
         
     }

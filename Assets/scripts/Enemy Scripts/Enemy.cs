@@ -108,7 +108,8 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void isHit(float damage){
+    //Changed to virtual so that boss mirrors can override this
+    public virtual void isHit(float damage){
         //decrease health
         health -= damage;
         //damageFlash.FlashStart();
