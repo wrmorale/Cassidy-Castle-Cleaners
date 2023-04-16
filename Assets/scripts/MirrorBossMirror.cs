@@ -46,7 +46,7 @@ public class MirrorBossMirror : Enemy
         }
         else
         {
-            Debug.LogError("This mirror is not posessed!");
+            Debug.LogWarning("This mirror is not posessed!");
         }
     }
 

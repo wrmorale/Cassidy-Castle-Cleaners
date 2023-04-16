@@ -87,9 +87,10 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
             //enemyHealthBar.setHealth(healthPercent);
 
             //Proceed to phase 1.5 at 2/3 health
-            if(healthPercent <= 0.33 && phase == 1)
+            if(healthPercent <= 0.34 && phase == 1)
             {
                 Debug.Log("Proceeding to phase 2");
+                Debug.Log("Boss health: " + currentHealth);
                 btRunner.tree.rootNode.Abort();
                 canBeHarmed = false;
                 phase += 1;
@@ -97,6 +98,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
 
             if (currentHealth <= 0)
             {
+                Debug.Log("Boss defeated??");
                 // Destroy the cube when it has no health left
                 //this should work for death animation but not all enemies have one so it gets errors
                 //animator.SetBool("Death", true);
@@ -106,7 +108,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
         }
         else
         {
-            Debug.LogError("Boss cannot be hurt right now!");
+            Debug.LogWarning("Boss cannot be hurt right now!");
         }
     }
 }
