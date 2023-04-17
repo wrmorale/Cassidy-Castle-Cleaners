@@ -197,6 +197,8 @@ public class AttackData
     public FrameParser clip;
     public FrameChecker checker;
 
+    /*For clip.animator, couldn't we just have 1 variable for the animator of the enemy, 
+     * since all attacks are going to use the same one?*/
     public AttackData(string n, GameObject h, FrameParser cl, FrameChecker ch)
     {
         name = n;
