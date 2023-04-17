@@ -45,6 +45,7 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
 
     [HideInInspector]
     public PlayerAbility activeAbility;
+    private TargetLock targetLock;
     private GameObject model;
     private GameObject metarig;
     private GameObject hip;
@@ -113,6 +114,7 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
         metarig = transform.Find("maid68/metarig").gameObject;
         hip = transform.Find("maid68/metarig/hip").gameObject;
         attackManager = gameObject.GetComponent<BroomAttackManager>();
+        targetLock = gameObject.GetComponent<TargetLock>();
         cam = Camera.main.transform;
         lastRootY = hip.transform.localPosition.y;
         // add actions from playerControls here
@@ -152,6 +154,7 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
 
         // store ability pressed, if any
         channeledAbility = ParseAbilityInput();
+
 
         if (groundedPlayer)
         {
@@ -294,6 +297,7 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
     public void ActivateAbility()
     {
         SetState(States.PlayerStates.Ability);
+        targetLock.FaceTarget();
         activeAbility = playerAbilities[channeledAbility];
         activeAbility.Activate();
     }

@@ -19,11 +19,13 @@ public class weaponController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(pc.state == States.PlayerStates.Attacking){
+        if (pc.state == States.PlayerStates.Attacking)
+        {
             Debug.Log("showing weapon");
             weapon1.SetActive(true);
         }
-        else{
+        else
+        {
             weapon1.SetActive(false);
         }
     }
