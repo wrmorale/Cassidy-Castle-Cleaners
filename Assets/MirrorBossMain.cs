@@ -30,7 +30,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
     {
         currPosessedMirror = mirrors[0];
         currMirrorIndex = 0;
-        btRunner = GetComponent<BehaviourTreeRunner>();
+        btRunner = GetComponentInChildren<BehaviourTreeRunner>();
         phase = 1;
 
         //Remove later
@@ -54,6 +54,11 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
         currPosessedMirror = mirrors[mirrorIndex];
         currMirrorIndex = mirrorIndex;
         Debug.Log("Posessed mirror " + mirrorIndex);
+
+        //Change the context?
+        Context newContext = Context.CreateFromGameObject(currPosessedMirror.gameObject);
+        btRunner.tree.Bind(newContext);
+
         //Then for the mirror that just became active, we play an animation for the entity appearing.
     }
 
