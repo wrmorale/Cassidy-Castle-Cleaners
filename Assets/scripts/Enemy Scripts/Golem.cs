@@ -8,7 +8,7 @@ public class Golem : Enemy
 {
     //Has some kind of dash attack that actually moves it, and otherwise does not move while attacking.
 
-    private GolemAttackManager attackManager;
+    private AttackManager attackManager;
     private Vector3 directionToPlayer;
     private float distanceToPlayer;
     public bool isDashing;
@@ -23,7 +23,7 @@ public class Golem : Enemy
     private void Awake(){
         isDashing = false;
         light1Complete = false;
-        attackManager = gameObject.GetComponent<GolemAttackManager>();
+        attackManager = gameObject.GetComponent<AttackManager>();
     }
 
     //Has problem similar to Bunny: The animation moves the model when it really shouldn't
@@ -81,6 +81,7 @@ public class Golem : Enemy
         if(playerInRange(movementRange)) {
             animator.SetBool("Walk", true);
             // move enemy towards player
+            /*Fix this: Can potentially make the golem face in weird directions*/
             movement = directionToPlayer.normalized * movementSpeed * Time.fixedDeltaTime;
             enemyBody.MovePosition(enemyBody.position + movement);
         }
@@ -91,19 +92,13 @@ public class Golem : Enemy
         directionToPlayer = playerBody.position - enemyBody.position;
         distanceToPlayer = directionToPlayer.magnitude;
         float randomNumber = Random.Range(0, 100);
-        //first checks if it can dash to player
-        if (distanceToPlayer <= abilities[3].abilityRange && distanceToPlayer > abilities[0].abilityRange && dashCooldownTimer <= 0){
-            animator.SetBool("Walk", false);
-            state = GolemState.Attacking;
-            isDashing = true;
-            attackManager.handleAttacks(abilities[3]);
-            dashCooldownTimer = abilities[3].abilityCooldown;
-        } //this is for spin
-        else if (distanceToPlayer <= abilities[0].abilityRange && randomNumber < abilities[0].abilityChance && actionCooldownTimer <= 0){
-            animator.SetBool("Walk", false);
-            state = GolemState.Attacking;
-            attackManager.handleAttacks(abilities[0]);
-            actionCooldownTimer = abilities[0].abilityCooldown;
+        //Spin
+        if (distanceToPlayer <= abilities[0].abilityRange && randomNumber < abilities[0].abilityChance && actionCooldownTimer <= 0){
+            animator.SetBool("Walk", false); //Can move this into a state machine node, putting animator as member of Context
+            state = GolemState.Attacking; //This too
+            attackManager.handleAttacks(abilities[0]); //And this, adding attackManager to Context
+            actionCooldownTimer = abilities[0].abilityCooldown; //Same here, although probably want to make it a different node
+            //And should go after the attack finishes, not when it starts
         } //light 1
         else if (distanceToPlayer <= abilities[1].abilityRange && actionCooldownTimer <= 0){
             animator.SetBool("Walk", false);

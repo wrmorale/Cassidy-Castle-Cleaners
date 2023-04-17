@@ -7,19 +7,18 @@ using Extensions;
 public class AttackManager : MonoBehaviour, IFrameCheckHandler
 {
     [SerializeField]
-    private Enemy enemyInstance;
+    private Golem enemyInstance; //Getting rid of this later
 
     public List<AttackData> attacks;
-
-    private FrameParser activeClip;
-    private FrameChecker activeChecker;
     private AttackData currentAttack;
 
     enum ActionState {Inactionable, AttackCancelable}
     private ActionState actionState;
 
     public void onActiveFrameStart() {
-        //have if statements to see which ability to play here
+        if(enemyInstance)
+            enemyInstance.light1Complete = false;
+
         currentAttack.hitbox.SetActive(true);
     }
 
@@ -29,8 +28,21 @@ public class AttackManager : MonoBehaviour, IFrameCheckHandler
         //Will work as long as every attack name matches its corresponding animator bool
         currentAttack.clip.animator.SetBool(currentAttack.name, false);
 
+        if (enemyInstance)
+        {
+            enemyInstance.state = Golem.GolemState.Idle;
+            enemyInstance.isDashing = false;
+            if(currentAttack.name == "Light1")
+            {
+                enemyInstance.light1Complete = true;
+            }
+        }
+
         /*
+        enemyInstance.state = Golem.GolemState.Idle; //<- One of the biggest problems with this entire setup: Every enemy has their own defined states!
+        enemyInstance.isDashing = false;
         if(currentAttack == "Light1"){
+            enemyInstance.light1Complete = true;
             light1Collider.SetActive(false);
             activeClip.animator.SetBool("Light1", false);
         }
@@ -61,6 +73,13 @@ public class AttackManager : MonoBehaviour, IFrameCheckHandler
     public void onLastFrameEnd(){
         currentAttack.clip.animator.SetBool(currentAttack.name, false);
 
+        if (enemyInstance)
+        {
+            enemyInstance.state = Golem.GolemState.Idle;
+            enemyInstance.isDashing = false;
+        }
+        //enemyInstance.state = Golem.GolemState.Idle;
+        //enemyInstance.isDashing = false;
         //activeClip.animator.SetBool("Light1", false);
         //activeClip.animator.SetBool("Light2", false);
         //activeClip.animator.SetBool("SpinAttack", false);
@@ -104,9 +123,41 @@ public class AttackManager : MonoBehaviour, IFrameCheckHandler
     }
     public void handleAttacks(Ability ability)
     {
+        actionState = ActionState.Inactionable;
+        
+        //Search for the attack with matching name
+        //Or should we just remove the abilities list from the golem altogether?
+        bool matchingAttack = false;
+        foreach(AttackData attack in attacks)
+        {
+            if(attack.name == ability.abilityName)
+            {
+                currentAttack = attack;
+                matchingAttack = true;
+                break;
+            }
+        }
+
+        if (!matchingAttack)
+        {
+            Debug.LogError("Enemy does not have an ability called " + ability.abilityName);
+        }
+        else
+        {
+            if (enemyInstance)
+            {
+                enemyInstance.state = Golem.GolemState.Attacking;
+            }
+            currentAttack.clip.animator.SetBool(currentAttack.name, true);
+            currentAttack.clip.animator.Play(currentAttack.clip.animatorStateName, 0);
+            currentAttack.checker.initCheck();
+            currentAttack.checker.checkFrames();
+        }
+
         /*
         int frames = 0; // amount of frames in anim 
         actionState = ActionState.Inactionable;
+        enemyInstance.state = Golem.GolemState.Attacking;
 
         currentAttack = ability.abilityName;
 
