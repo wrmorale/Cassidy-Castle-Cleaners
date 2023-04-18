@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
     public GameObject enemyPrefab;
     public GameObject player;
     public GameObject doorPortal;
-    public GameObject spawnArea;
+    public List<GameObject> spawnAreas = new List<GameObject>();//changed to array to hold many spawn areas
     public GameObject dustPilePrefab;
     public GameObject pauseUI;
     public Player playerStats;
@@ -98,31 +98,36 @@ public class GameManager : MonoBehaviour
         gamePaused = false;
         currentGold = 0;
         numberOfDustPiles = maxDustPiles;
-        float spawnAreaY = spawnArea.transform.position.y;
+        int randomIndex = UnityEngine.Random.Range(0, spawnAreas.Count);
+        GameObject selectedSpawnArea;
+        
         //Dust Pile Spawn
-        if (!objectsInstantiated)
-        {
-            Bounds spawnBounds = spawnArea.GetComponent<MeshCollider>().bounds;
-            for (int i = 0; i < numberOfDustPiles; i++)
-            {
+        if(!objectsInstantiated){
+            // Spawn dust piles
+            for (int i = 0; i < maxDustPiles; i++) {
+                randomIndex = UnityEngine.Random.Range(0, spawnAreas.Count);
+                selectedSpawnArea = spawnAreas[randomIndex];
+                Bounds spawnBounds = selectedSpawnArea.GetComponent<MeshCollider>().bounds;
                 Vector3 position = new Vector3(
                     UnityEngine.Random.Range(spawnBounds.min.x, spawnBounds.max.x),
-                    spawnAreaY,
+                    selectedSpawnArea.transform.position.y,
                     UnityEngine.Random.Range(spawnBounds.min.z, spawnBounds.max.z)
                 );
                 Instantiate(dustPilePrefab, position, Quaternion.identity);
             }
-            //
-            //create enemy copies at a location near the player
+
+            // Spawn enemies
             Vector3 playerPos = player.transform.position;
-            for (int i = 0; i < numberOfEnemies; i++)
-            {
+            for (int i = 0; i < numberOfEnemies; i++) {
+                randomIndex = UnityEngine.Random.Range(0, spawnAreas.Count);
+                selectedSpawnArea = spawnAreas[randomIndex];
+                Bounds spawnBounds = selectedSpawnArea.GetComponent<MeshCollider>().bounds;
                 Vector3 position;
                 do
                 {
                     position = new Vector3(
                         UnityEngine.Random.Range(spawnBounds.min.x, spawnBounds.max.x),
-                        spawnAreaY,
+                        selectedSpawnArea.transform.position.y,
                         UnityEngine.Random.Range(spawnBounds.min.z, spawnBounds.max.z)
                     );
                 } while (Vector3.Distance(playerPos, position) < 3);
