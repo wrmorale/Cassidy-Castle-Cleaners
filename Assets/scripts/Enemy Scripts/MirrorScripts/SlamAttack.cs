@@ -9,38 +9,43 @@ public class SlamAttack : ActionNode
     public MirrorBossMirror posessedMirror;
     public float fallSpeed = 1.0f;
     public float rotationSpeed = 5.0f;
+    public float animationTime;
+    public bool animationIsPlaying = false;
 
     private Vector3 initialPosition;
     private Quaternion initialRotation;
-    private float elapsedTime = 0.0f;
+    private float fallForwardRotation;
 
     protected override void OnStart() {
         GameObject mirrorMain = GameObject.Find("BossRoot");
         if (mirrorMain == null) {
             Debug.LogError("Cannot find Boss");
         }
+        animationTime = 5;
+        animationIsPlaying = true;
         posessedMirror = mirrorMain.GetComponent<MirrorBossMain>().currPosessedMirror;
         initialRotation = posessedMirror.transform.rotation;
+        fallForwardRotation = initialRotation.eulerAngles.z;;
     }
 
     protected override void OnStop() {
     }
 
     protected override State OnUpdate() {
-        state = State.Running;
-        elapsedTime += Time.deltaTime;
-        float step = fallSpeed * Time.deltaTime;
+        if(animationIsPlaying){
+            if(animationTime > 0){
+                animationTime -= Time.deltaTime;
+                fallForwardRotation -= 0.1f;
+                posessedMirror.transform.rotation = Quaternion.Euler(fallForwardRotation, 0.0f, 0.0f);
+                return State.Running;
+            }
+            else{
+                animationTime = 0;
+                animationIsPlaying = false;
+                return State.Success;
+            }
+        }
 
-        /* Move the object downward
-        Vector3 newPosition = posessedMirror.transform.position;
-        newPosition.y -= step;
-        posessedMirror.transform.position = newPosition;*/
-
-        // Rotate the object forward gradually
-        Quaternion targetRotation = Quaternion.Euler(90.0f, 0.0f, 0.0f);
-        Quaternion newRotation = Quaternion.RotateTowards(posessedMirror.transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-        posessedMirror.transform.rotation = newRotation;
-        
-        return State.Success;
+        return State.Running;        
     }
 }
