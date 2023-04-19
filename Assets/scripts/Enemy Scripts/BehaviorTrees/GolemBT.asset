@@ -1,0 +1,462 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d285eb63c2cdd74180de7cfceaa96ad, type: 3}
+  m_Name: GolemBT
+  m_EditorClassIdentifier: 
+  rootNode:
+    rid: 2088461210442268672
+  nodes:
+  - rid: 2088461210442268672
+  - rid: 2088461210442268676
+  - rid: 2088461210442268679
+  - rid: 2088461210442268680
+  - rid: 2088461210442268681
+  - rid: 2088461210442268682
+  - rid: 2088461210442268683
+  - rid: 2088461210442268684
+  - rid: 2088461210442268685
+  - rid: 2088461210442268686
+  - rid: 2088461210442268687
+  - rid: 2088461210442268688
+  - rid: 2088461210442268689
+  - rid: 2088461210442268690
+  - rid: 2088461210442268691
+  - rid: 2088461210442268692
+  - rid: 2088461210442268693
+  - rid: 2088461210442268694
+  - rid: 2088461210442268697
+  - rid: 2088461210442268700
+  - rid: 2088461210442268701
+  - rid: 2088461210442268704
+  - rid: 2088461210442268705
+  - rid: 2088461210442268706
+  - rid: 2088461210442268708
+  - rid: 2088461210442268710
+  - rid: 2088461210442268712
+  - rid: 2088461210442268713
+  - rid: 2088461210442268714
+  treeState: 0
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+    aggro: 0
+  viewPosition: {x: 2, y: -19.5, z: 0}
+  viewScale: {x: 0.49717674, y: 0.49717674, z: 1}
+  references:
+    version: 2
+    RefIds:
+    - rid: 2088461210442268672
+      type: {class: RootNode, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: aa51c18e-54db-4976-8537-78ffe575fc33
+        position: {x: 34.50005, y: 137.7659}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+        description: 
+        drawGizmos: 0
+        child:
+          rid: 2088461210442268704
+    - rid: 2088461210442268676
+      type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: ba12defdf437b8f47a041bd2abaf0755
+        position: {x: -76.99985, y: 1638.7712}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+        description: Dash sequence
+        drawGizmos: 0
+        children: []
+    - rid: 2088461210442268679
+      type: {class: RandomSelector, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 4517ba814f2f47248b4c9dd1282154f5
+        position: {x: 53.50016, y: 1503.7714}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+        description: Random % chance
+        drawGizmos: 0
+        children:
+        - rid: 2088461210442268676
+        - rid: 2088461210442268694
+    - rid: 2088461210442268680
+      type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 4e46af19a922f2e4480c0865835c0f62
+        position: {x: -96.49987, y: 1319.7712}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+        description: Try dash
+        drawGizmos: 0
+        children:
+        - rid: 2088461210442268683
+        - rid: 2088461210442268682
+        - rid: 2088461210442268681
+        - rid: 2088461210442268679
+    - rid: 2088461210442268681
+      type: {class: Log, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 5ab01d8412e5adf4a94cf5093457dd2f
+        position: {x: -188.4999, y: 1503.7714}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+        description: Start dash cooldown
+        drawGizmos: 0
+        message: 
+    - rid: 2088461210442268682
+      type: {class: Log, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 0307faa480ced6c4dbe767501ff23602
+        position: {x: -383.49988, y: 1503.7714}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+        description: Dash off cooldown?
+        drawGizmos: 0
+        message: 
+    - rid: 2088461210442268683
+      type: {class: Log, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 334ea55ebcdd8ae4480e0dc673b24e2d
+        position: {x: -568.9999, y: 1503.7714}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+        description: Player in dash range?
+        drawGizmos: 0
+        message: 
+    - rid: 2088461210442268684
+      type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 903f3887d55440943b29d068216f44e6
+        position: {x: -1362.9999, y: 1319.7712}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+        description: Try shortest range attacks
+        drawGizmos: 0
+        children:
+        - rid: 2088461210442268685
+        - rid: 2088461210442268686
+    - rid: 2088461210442268685
+      type: {class: Log, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 3c69841d7705a8047bf14bb139c949f7
+        position: {x: -1579.9999, y: 1475.7712}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+        description: Player in shortest attack range?
+        drawGizmos: 0
+        message: 
+    - rid: 2088461210442268686
+      type: {class: RandomSelector, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: d986a1a460681d947a45cb0c0ab0deae
+        position: {x: -1350.4999, y: 1522.7712}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+        description: Higher chance for closest range attack
+        drawGizmos: 0
+        children:
+        - rid: 2088461210442268687
+        - rid: 2088461210442268688
+    - rid: 2088461210442268687
+      type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 5e846d719e9144e408b0b6347261fad9
+        position: {x: -1437.9999, y: 1652.2712}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+        description: Spin sequencer
+        drawGizmos: 0
+        children: []
+    - rid: 2088461210442268688
+      type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: abcc4ce02b335fe4abf63c98ca4f1a33
+        position: {x: -1275.4999, y: 1652.2712}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+        description: Light 1 + 2 sequencer
+        drawGizmos: 0
+        children: []
+    - rid: 2088461210442268689
+      type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 02f4f3a194bf72c459d09d0a995df212
+        position: {x: -790.4999, y: 1308.2712}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+        description: 2nd shortest attack range
+        drawGizmos: 0
+        children:
+        - rid: 2088461210442268690
+        - rid: 2088461210442268691
+    - rid: 2088461210442268690
+      type: {class: Log, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 26fa9090146f2f1499227871e786f41a
+        position: {x: -1002.4999, y: 1504.7712}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+        description: Player in second shortest attack range?
+        drawGizmos: 0
+        message: 
+    - rid: 2088461210442268691
+      type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 242b7b15e80128743bf6454719c5dc02
+        position: {x: -790.4999, y: 1504.7712}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+        description: Spin or Light sequence
+        drawGizmos: 0
+        children: []
+    - rid: 2088461210442268692
+      type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: bf70e943fd626ce4184842d2079ba433
+        position: {x: 261.50012, y: 1319.7712}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+        description: Walk to player sequence
+        drawGizmos: 0
+        children: []
+    - rid: 2088461210442268693
+      type: {class: Selector, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: efe94f8aedb17c947ab954a1dd411995
+        position: {x: -211.99985, y: 1050.2712}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+        description: Aggro behavior
+        drawGizmos: 0
+        children:
+        - rid: 2088461210442268684
+        - rid: 2088461210442268689
+        - rid: 2088461210442268680
+        - rid: 2088461210442268692
+    - rid: 2088461210442268694
+      type: {class: Failure, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: cbf2113dc43226b41a26928c942e2af1
+        position: {x: 180.50012, y: 1638.7712}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+        description: By reaching this failure, the golem will do walking sequence
+          instead
+        drawGizmos: 0
+        child:
+          rid: 2088461210442268697
+    - rid: 2088461210442268697
+      type: {class: Log, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: ed4f8de9c247e4645bff4e7204942719
+        position: {x: 180.50012, y: 1766.7712}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+        description: 
+        drawGizmos: 0
+        message: 
+    - rid: 2088461210442268700
+      type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 2a76250587471234e87ca566a04a54da
+        position: {x: -397.5, y: 482.5}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+        description: Staggered behavior
+        drawGizmos: 0
+        children: []
+    - rid: 2088461210442268701
+      type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 54505ba22f86ee346a4d42eee496ddce
+        position: {x: -619, y: 482.5001}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+        description: Death sequence
+        drawGizmos: 0
+        children: []
+    - rid: 2088461210442268704
+      type: {class: Repeat, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 69aa471a98102124bb60c575bfabfaba
+        position: {x: 34.500004, y: 389.02383}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+        description: 
+        drawGizmos: 0
+        child:
+          rid: 2088461210442268705
+        restartOnSuccess: 1
+        restartOnFailure: 1
+    - rid: 2088461210442268705
+      type: {class: Selector, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 5f421f6d2d6560849816ef8ef3376fa3
+        position: {x: 34.500004, y: 526.5}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+        description: 
+        drawGizmos: 0
+        children:
+        - rid: 2088461210442268710
+        - rid: 2088461210442268706
+    - rid: 2088461210442268706
+      type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 782624a5f7e1c6d4a8091085e5a7d33a
+        position: {x: 223.06822, y: 668}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+        description: Passive behavior
+        drawGizmos: 0
+        children:
+        - rid: 2088461210442268714
+    - rid: 2088461210442268708
+      type: {class: PlayerInRange, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: c1fb4fa97fe322d449df35b132bb9e02
+        position: {x: -344.2497, y: 812}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+        description: 'Player is in aggro range? (Note: Will ask others if we instead
+          want enemies to STAY aggro once player gets in range)'
+        drawGizmos: 0
+        range: 3
+    - rid: 2088461210442268710
+      type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: c183961588909e9458aa7d06ca3a6aef
+        position: {x: -194.2497, y: 668}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+        description: 
+        drawGizmos: 0
+        children:
+        - rid: 2088461210442268708
+        - rid: 2088461210442268712
+        - rid: 2088461210442268713
+    - rid: 2088461210442268712
+      type: {class: SetAnimatorBool, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: decb0bd4ea4c93d43baa098c49b642e7
+        position: {x: -159.74973, y: 844}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+        description: 
+        drawGizmos: 0
+        boolName: Walk
+        setTo: 1
+    - rid: 2088461210442268713
+      type: {class: MoveToPlayer, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: d267b3be3e15f29458a822d7b7d7b525
+        position: {x: 28.750244, y: 844}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+        description: 
+        drawGizmos: 0
+    - rid: 2088461210442268714
+      type: {class: SetAnimatorBool, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 64c72bb25a6e56745a0b001cd929a72a
+        position: {x: 247.40923, y: 812}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+        description: 
+        drawGizmos: 0
+        boolName: Walk
+        setTo: 0

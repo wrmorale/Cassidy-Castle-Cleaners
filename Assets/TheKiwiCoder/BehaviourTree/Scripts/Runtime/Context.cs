@@ -18,13 +18,15 @@ namespace TheKiwiCoder {
         public GameObject gameObject;
         public Transform transform;
         public Animator animator; //Will try to make it target the animator in the children.
-        public Rigidbody physics;
+        public Rigidbody rigidbody;
         public NavMeshAgent agent;
         //public SphereCollider sphereCollider;
         //public BoxCollider boxCollider;
         //public CapsuleCollider capsuleCollider;
         public CharacterController characterController;
         // Add other game specific systems here
+        public Enemy enemy;
+        public AttackManager attackManager;
         public MirrorBossMain mirrorBossScript;
 
         public static Context CreateFromGameObject(GameObject gameObject) {
@@ -33,15 +35,17 @@ namespace TheKiwiCoder {
             context.gameObject = gameObject;
             context.transform = gameObject.transform;
             context.animator = gameObject.GetComponentInChildren<Animator>(); //Enemies have their animator in their model, a child
-            context.physics = gameObject.GetComponent<Rigidbody>();
+            context.rigidbody = gameObject.GetComponent<Rigidbody>();
             context.agent = gameObject.GetComponent<NavMeshAgent>();
             //context.sphereCollider = gameObject.GetComponent<SphereCollider>();
             //context.boxCollider = gameObject.GetComponent<BoxCollider>();
             //context.capsuleCollider = gameObject.GetComponent<CapsuleCollider>();
             context.characterController = gameObject.GetComponent<CharacterController>();
-            context.mirrorBossScript = gameObject.GetComponentInParent<MirrorBossMain>();
-            
+
             // Add whatever else you need here...
+            context.enemy = gameObject.GetComponent<Enemy>();
+            context.attackManager = gameObject.GetComponent<AttackManager>();
+            context.mirrorBossScript = gameObject.GetComponentInParent<MirrorBossMain>();
 
             return context;
         }

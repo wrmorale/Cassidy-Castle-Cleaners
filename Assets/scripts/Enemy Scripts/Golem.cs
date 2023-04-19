@@ -78,7 +78,8 @@ public class Golem : Enemy
     private void enemyMovement() {
         directionToPlayer = playerBody.position - enemyBody.position;
         // if player is in range
-        if(playerInRange(movementRange)) {
+        if(playerInRange(movementRange)) { //If every enemy had the Walk bool, we could just make a node that calls this in every enemy script.
+            //But I have a feeling we will have enemies with slightly different naming conventions...
             animator.SetBool("Walk", true);
             // move enemy towards player
             /*Fix this: Can potentially make the golem face in weird directions*/

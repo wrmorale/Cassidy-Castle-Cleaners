@@ -331,6 +331,7 @@ GameObject:
   - component: {fileID: 1817854267388228367}
   - component: {fileID: 2700265989810680977}
   - component: {fileID: 4095954526333945447}
+  - component: {fileID: 7780659639575687690}
   m_Layer: 0
   m_Name: GolemBT
   m_TagString: Enemy
@@ -540,6 +541,19 @@ MonoBehaviour:
       attackCancelFrameEnd: 49
       allCancelFrameStart: 0
       allCancelFrameEnd: 0
+--- !u!114 &7780659639575687690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2606690603601728555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58c6f9b140a52a14881ec09eaebb66eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tree: {fileID: 11400000, guid: 7ccd3c7b0d3f9de44bf5befcca117d9b, type: 2}
 --- !u!1 &4677064352751097569
 GameObject:
   m_ObjectHideFlags: 0
@@ -1201,6 +1215,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: golem24
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b951fbd9982f6a34080c7ff33e36a30e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b951fbd9982f6a34080c7ff33e36a30e, type: 3}
