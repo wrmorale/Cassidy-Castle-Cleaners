@@ -50,4 +50,8 @@ public class MirrorBossMirror : Enemy
         }
     }
 
+    public void slamTest(){
+        
+    }
+
 }

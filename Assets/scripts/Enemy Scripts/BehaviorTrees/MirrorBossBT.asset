@@ -45,12 +45,13 @@ MonoBehaviour:
   - rid: 2088461147737948163
   - rid: 2088461147737948164
   - rid: 2088461152764821504
+  - rid: 7060330725490819076
   treeState: 0
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 1
-  viewPosition: {x: 474.5, y: -198.5, z: 0}
-  viewScale: {x: 0.49717674, y: 0.49717674, z: 1}
+  viewPosition: {x: 1396, y: -1037, z: 0}
+  viewScale: {x: 1, y: 1, z: 1}
   references:
     version: 2
     RefIds:
@@ -156,6 +157,7 @@ MonoBehaviour:
         drawGizmos: 0
         children:
         - rid: 2088461108116455434
+        - rid: 7060330725490819076
         - rid: 2088461108116455435
     - rid: 2088461108116455433
       type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
@@ -178,7 +180,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 6308a70ba7968ba4a88aca2c7697d085
-        position: {x: -1191.732, y: 1408}
+        position: {x: -1350, y: 1401}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -191,7 +193,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 2c24f3fc7493977479aa2b2cdf67c302
-        position: {x: -1041.732, y: 1408}
+        position: {x: -1025, y: 1400}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -480,3 +482,18 @@ MonoBehaviour:
           aggro: 0
         description: 
         drawGizmos: 0
+    - rid: 7060330725490819076
+      type: {class: SlamAttack, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: a08ab15c4ca6c054884a71e98158de7b
+        position: {x: -1193, y: 1399}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+        description: 
+        drawGizmos: 0
+        posessedMirror: {fileID: 0}
+        fallSpeed: 5
+        rotationSpeed: 30

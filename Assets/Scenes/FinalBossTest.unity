@@ -1414,7 +1414,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh56964
+  m_Name: pb_Mesh34388
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7482,11 +7482,11 @@ MonoBehaviour:
   availableAbilities: []
   numberOfEnemies: 0
   maxDustPiles: 0
-  enemyPrefab: {fileID: 0}
+  enemyPrefab: {fileID: 2003156824}
   player: {fileID: 795224103}
   doorPortal: {fileID: 757472435}
   spawnArea: {fileID: 0}
-  dustPilePrefab: {fileID: 0}
+  dustPilePrefab: {fileID: 2003156824}
   pauseUI: {fileID: 0}
   playerStats: {fileID: 795224107}
   playerInput: {fileID: 0}
@@ -7559,6 +7559,12 @@ MonoBehaviour:
   - target: {fileID: 795224105}
     weight: 1
     radius: 0
+--- !u!1 &2003156824 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8327740662560138380, guid: 3fec4a32b1661b648bdcb0b9faccc35d,
+    type: 3}
+  m_PrefabInstance: {fileID: 901375244}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3283279919234077930
 PrefabInstance:
   m_ObjectHideFlags: 0
