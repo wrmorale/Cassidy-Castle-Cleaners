@@ -44,11 +44,12 @@ MonoBehaviour:
   - rid: 2088461210442268712
   - rid: 2088461210442268713
   - rid: 2088461210442268714
+  - rid: 2088461210442268715
   treeState: 0
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 0
-  viewPosition: {x: 2, y: -19.5, z: 0}
+  viewPosition: {x: 266, y: -45, z: 0}
   viewScale: {x: 0.49717674, y: 0.49717674, z: 1}
   references:
     version: 2
@@ -59,7 +60,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: aa51c18e-54db-4976-8537-78ffe575fc33
-        position: {x: 34.50005, y: 137.7659}
+        position: {x: 34.500008, y: 124.062}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -351,7 +352,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 69aa471a98102124bb60c575bfabfaba
-        position: {x: 34.500004, y: 389.02383}
+        position: {x: 34.499985, y: 348.7501}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -396,14 +397,14 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: c1fb4fa97fe322d449df35b132bb9e02
-        position: {x: -344.2497, y: 812}
+        position: {x: -640.50006, y: 814.3132}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
         description: 'Player is in aggro range? (Note: Will ask others if we instead
           want enemies to STAY aggro once player gets in range)'
         drawGizmos: 0
-        range: 3
+        range: 2
     - rid: 2088461210442268710
       type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:
@@ -419,6 +420,7 @@ MonoBehaviour:
         children:
         - rid: 2088461210442268708
         - rid: 2088461210442268712
+        - rid: 2088461210442268715
         - rid: 2088461210442268713
     - rid: 2088461210442268712
       type: {class: SetAnimatorBool, ns: , asm: Assembly-CSharp}
@@ -426,7 +428,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: decb0bd4ea4c93d43baa098c49b642e7
-        position: {x: -159.74973, y: 844}
+        position: {x: -456.00006, y: 846.3131}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -460,3 +462,15 @@ MonoBehaviour:
         drawGizmos: 0
         boolName: Walk
         setTo: 0
+    - rid: 2088461210442268715
+      type: {class: RotateToMovement, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: ebd2716ec99b14b48b717f48a33a626c
+        position: {x: -209.18114, y: 862.8722}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+        description: 
+        drawGizmos: 0

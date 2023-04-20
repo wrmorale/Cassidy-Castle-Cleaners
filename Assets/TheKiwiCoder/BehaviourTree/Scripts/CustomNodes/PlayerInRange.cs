@@ -15,10 +15,19 @@ public class PlayerInRange : ActionNode
     }
 
     protected override State OnUpdate() {
-        float distance = (context.enemy.player.position - context.transform.position).magnitude;
-        if (distance <= range)
+
+        //Sometimes reports back the incorrect Y value.
+        //float distance = (context.enemy.playerBody.position - context.rigidbody.position).magnitude;
+        bool playerInRange = context.enemy.playerInRange(range);
+        if (playerInRange)
+        {
+            Debug.Log("Player in range");
             return State.Success;
+        }
         else
+        {
+            Debug.LogWarning("Player out of range");
             return State.Failure;
+        }
     }
 }

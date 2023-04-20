@@ -16,10 +16,12 @@ public class MoveToPlayer : ActionNode
     }
 
     protected override State OnUpdate() {
-        Vector3 toPlayer = context.enemy.player.position - context.rigidbody.position;
+        Vector3 toPlayer = context.enemy.playerBody.position - context.rigidbody.position;
+        //Maybe the context.player position does not update? But then it wouldn't make sense why the bug happens when I get near him
         toPlayer.y = 0; //Ignore player's vertical position
-        Vector3 movement = toPlayer.normalized * context.enemy.movementSpeed;
-        context.rigidbody.MovePosition(context.rigidbody.position + (movement * Time.deltaTime));
+        Vector3 movement = toPlayer.normalized * context.enemy.movementSpeed * Time.fixedDeltaTime;
+        context.rigidbody.MovePosition(context.rigidbody.position + (movement));
+        context.enemy.movement = movement; //Updates enemy movement stat for other uses.
         return State.Success;
     }
 }
