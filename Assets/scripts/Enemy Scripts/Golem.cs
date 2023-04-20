@@ -75,43 +75,43 @@ public class Golem : Enemy
         //} 
     }
 
-    private void enemyMovement() {
-        directionToPlayer = playerBody.position - enemyBody.position;
-        // if player is in range
-        if(playerInRange(movementRange)) { //If every enemy had the Walk bool, we could just make a node that calls this in every enemy script.
-            //But I have a feeling we will have enemies with slightly different naming conventions...
-            animator.SetBool("Walk", true);
-            // move enemy towards player
-            /*Fix this: Can potentially make the golem face in weird directions*/
-            movement = directionToPlayer.normalized * movementSpeed * Time.fixedDeltaTime;
-            enemyBody.MovePosition(enemyBody.position + movement);
-        }
-    }
+    //private void enemyMovement() {
+    //    directionToPlayer = playerBody.position - enemyBody.position;
+    //    // if player is in range
+    //    if(playerInRange(movementRange)) { //If every enemy had the Walk bool, we could just make a node that calls this in every enemy script.
+    //        //But I have a feeling we will have enemies with slightly different naming conventions...
+    //        animator.SetBool("Walk", true);
+    //        // move enemy towards player
+    //        /*Fix this: Can potentially make the golem face in weird directions*/
+    //        movement = directionToPlayer.normalized * movementSpeed * Time.fixedDeltaTime;
+    //        enemyBody.MovePosition(enemyBody.position + movement);
+    //    }
+    //}
 
     /*Called every frame if not attacking*/
-    public void enemyAction(){
-        directionToPlayer = playerBody.position - enemyBody.position;
-        distanceToPlayer = directionToPlayer.magnitude;
-        float randomNumber = Random.Range(0, 100);
-        //Spin
-        if (distanceToPlayer <= abilities[0].abilityRange && randomNumber < abilities[0].abilityChance && actionCooldownTimer <= 0){
-            animator.SetBool("Walk", false); //Can move this into a state machine node, putting animator as member of Context
-            state = GolemState.Attacking; //This too
-            attackManager.handleAttacks(abilities[0]); //And this, adding attackManager to Context
-            actionCooldownTimer = abilities[0].abilityCooldown; //Same here, although probably want to make it a different node
-            //And should go after the attack finishes, not when it starts
-        } //light 1
-        else if (distanceToPlayer <= abilities[1].abilityRange && actionCooldownTimer <= 0){
-            animator.SetBool("Walk", false);
-            state = GolemState.Attacking;
-            attackManager.handleAttacks(abilities[1]);
-            actionCooldownTimer = abilities[1].abilityCooldown;
-        } //light 2 if light 1 went before
-        if (light1Complete && distanceToPlayer <= abilities[2].abilityRange){
-            animator.SetBool("Walk", false);
-            state = GolemState.Attacking;
-            actionCooldownTimer = abilities[2].abilityCooldown;
-            attackManager.handleAttacks(abilities[2]);
-        }
-    }
+    //public void enemyAction(){
+    //    directionToPlayer = playerBody.position - enemyBody.position;
+    //    distanceToPlayer = directionToPlayer.magnitude;
+    //    float randomNumber = Random.Range(0, 100);
+    //    //Spin
+    //    if (distanceToPlayer <= abilities[0].abilityRange && randomNumber < abilities[0].abilityChance && actionCooldownTimer <= 0){
+    //        animator.SetBool("Walk", false); //Can move this into a state machine node, putting animator as member of Context
+    //        state = GolemState.Attacking; //This too
+    //        attackManager.handleAttacks(abilities[0]); //And this, adding attackManager to Context
+    //        actionCooldownTimer = abilities[0].abilityCooldown; //Same here, although probably want to make it a different node
+    //        //And should go after the attack finishes, not when it starts
+    //    } //light 1
+    //    else if (distanceToPlayer <= abilities[1].abilityRange && actionCooldownTimer <= 0){
+    //        animator.SetBool("Walk", false);
+    //        state = GolemState.Attacking;
+    //        attackManager.handleAttacks(abilities[1]);
+    //        actionCooldownTimer = abilities[1].abilityCooldown;
+    //    } //light 2 if light 1 went before
+    //    if (light1Complete && distanceToPlayer <= abilities[2].abilityRange){
+    //        animator.SetBool("Walk", false);
+    //        state = GolemState.Attacking;
+    //        actionCooldownTimer = abilities[2].abilityCooldown;
+    //        attackManager.handleAttacks(abilities[2]);
+    //    }
+    //}
 }
