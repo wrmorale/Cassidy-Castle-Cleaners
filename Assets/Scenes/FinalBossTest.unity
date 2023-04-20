@@ -7585,7 +7585,7 @@ PrefabInstance:
     - target: {fileID: 3787061770945546188, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10
+      value: 10.2
       objectReference: {fileID: 0}
     - target: {fileID: 3787061770945546188, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
         type: 3}
@@ -7636,6 +7636,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BossRoot
+      objectReference: {fileID: 0}
+    - target: {fileID: 5806063354098486109, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5972610662029407917, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
         type: 3}
