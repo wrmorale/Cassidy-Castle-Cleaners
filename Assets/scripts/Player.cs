@@ -25,10 +25,11 @@ public class Player : MonoBehaviour
     public float fallLimit = -10; 
     
     //UI stuff
-    public UIDocument hud;
+    /*public UIDocument hud;
     private HealthBar healthbar;
     
-    [Range(0,1)]
+    [Range(0,1)]*/
+    private PlayerHealthBar healthbar;
     public float healthPercent = 1;
 
     public bool isInvulnerable;
@@ -40,10 +41,12 @@ public class Player : MonoBehaviour
         alive = true;
         isInvulnerable = false;
 
-
+        /*
         var root = hud.rootVisualElement;
-        healthbar = root.Q<HealthBar>();
-        healthbar.value = health / maxHealth;
+        healthbar = root.Q<HealthBar>();*/
+        healthbar = GetComponentInChildren<PlayerHealthBar>();
+        healthbar.setMaxHealth(healthPercent);
+        
     }
 
     // Update is called once per frame
@@ -61,7 +64,7 @@ public class Player : MonoBehaviour
             health -= damage;
             health = Mathf.Clamp(health, 0 , maxHealth);
             healthPercent = health / maxHealth;
-            healthbar.value = healthPercent;  
+            healthbar.setHealth(healthPercent);
             if(health <= 0){
                 alive = false;
             }

@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour{
     public GameObject enemyPrefab;
     public GameObject player;
     public GameObject doorPortal;
-    public GameObject spawnArea;
+    public List<GameObject> spawnAreas = new List<GameObject>();//changed to array to hold many spawn areas
     public GameObject dustPilePrefab;
     public GameObject pauseUI;
     public Player playerStats;
@@ -55,10 +55,11 @@ public class GameManager : MonoBehaviour{
     private InputAction pauseAction;
 
     //UI stuff
-    public UIDocument hud;
+    /*public UIDocument hud;
     private CleaningBar cleaningbar;
 
-    [Range(0,1)]
+    [Range(0,1)]*/
+    private CleaningCircle cleaningCircle;
     public float cleaningPercent = 0;
 
     private float dustPilesCleaned;
@@ -93,28 +94,35 @@ public class GameManager : MonoBehaviour{
         gamePaused = false;
         currentGold = 0;
         numberOfDustPiles = maxDustPiles;
-        float spawnAreaY = spawnArea.transform.position.y;
+        int randomIndex = UnityEngine.Random.Range(0, spawnAreas.Count);
+        GameObject selectedSpawnArea;
+        
         //Dust Pile Spawn
         if(!objectsInstantiated){
-            Bounds spawnBounds = spawnArea.GetComponent<MeshCollider>().bounds;
-            for (int i = 0; i < numberOfDustPiles; i++)
-            {
+            // Spawn dust piles
+            for (int i = 0; i < maxDustPiles; i++) {
+                randomIndex = UnityEngine.Random.Range(0, spawnAreas.Count);
+                selectedSpawnArea = spawnAreas[randomIndex];
+                Bounds spawnBounds = selectedSpawnArea.GetComponent<MeshCollider>().bounds;
                 Vector3 position = new Vector3(
                     UnityEngine.Random.Range(spawnBounds.min.x, spawnBounds.max.x),
-                    spawnAreaY,
+                    selectedSpawnArea.transform.position.y,
                     UnityEngine.Random.Range(spawnBounds.min.z, spawnBounds.max.z)
                 );
                 Instantiate(dustPilePrefab, position, Quaternion.identity);
             }
-            //
-            //create enemy copies at a location near the player
+
+            // Spawn enemies
             Vector3 playerPos = player.transform.position;
-            for(int i = 0; i < numberOfEnemies; i++){
+            for (int i = 0; i < numberOfEnemies; i++) {
+                randomIndex = UnityEngine.Random.Range(0, spawnAreas.Count);
+                selectedSpawnArea = spawnAreas[randomIndex];
+                Bounds spawnBounds = selectedSpawnArea.GetComponent<MeshCollider>().bounds;
                 Vector3 position;
                 do {
                     position = new Vector3(
                         UnityEngine.Random.Range(spawnBounds.min.x, spawnBounds.max.x),
-                        spawnAreaY,
+                        selectedSpawnArea.transform.position.y,
                         UnityEngine.Random.Range(spawnBounds.min.z, spawnBounds.max.z)
                     );
                 } while (Vector3.Distance(playerPos, position) < 3);
@@ -132,16 +140,18 @@ public class GameManager : MonoBehaviour{
         }
 
         // UI set up
-        var root = hud.rootVisualElement;
+        /*var root = hud.rootVisualElement;
         Debug.Log("root: " + root);
         cleaningbar = root.Q<CleaningBar>();
-        Debug.Log("cleaningbar: "+ cleaningbar);
+        Debug.Log("cleaningbar: "+ cleaningbar);*/
+        cleaningCircle = GetComponentInChildren<CleaningCircle>();
         totalHealth = maxDustPiles * dustPilePrefab.GetComponent<DustPile>().maxHealth;
-        cleaningbar.value = totalHealth * 0.5f / totalHealth;
+        cleaningPercent = totalHealth * 0.5f / totalHealth;
+        cleaningCircle.setCleaning(cleaningPercent);
 
         // fog
         RenderSettings.fog = true;
-        fogDensity = cleaningbar.value;
+        fogDensity = cleaningPercent;
 
         // Start executing function after 2.0f, and re-execute every 2.0f
         InvokeRepeating("DecreaseCleanliness", 2.0f, 2.0f);
@@ -166,7 +176,7 @@ public class GameManager : MonoBehaviour{
             }
         }
         if (!playerStats.alive && playerStats.lives == 1 ||
-        cleaningbar.value == 0){
+        cleaningPercent == 0){
             playerStats.lives--;
             //Debug.Log("You're Dead, Loser");
             //here we could insert a scene jump to a losing scene
@@ -183,11 +193,13 @@ public class GameManager : MonoBehaviour{
         numberOfDustPiles = dustPiles.Length;
         //checks if there are no dustpiles and updates UI bar
         if (numberOfDustPiles == 0) {
-            cleaningbar.value = 1;
+            cleaningPercent = 1;
+            cleaningCircle.setCleaning(cleaningPercent);
         }
         var newPooledHealth = PoolDustHealth(dustPiles);
         if (newPooledHealth < pooledHealth) {
-            cleaningbar.value += (pooledHealth - newPooledHealth) / totalHealth;
+            cleaningPercent += (pooledHealth - newPooledHealth) / totalHealth;
+            cleaningCircle.setCleaning(cleaningPercent);
         }
         pooledHealth = newPooledHealth; // get the current health pool of dustpiles.
 
@@ -239,7 +251,7 @@ public class GameManager : MonoBehaviour{
     }
 
     private void DecreaseCleanliness() {
-        cleaningbar.value -= dirtyingRate * numberOfDustPiles / totalHealth;
+        cleaningPercent -= dirtyingRate * numberOfDustPiles / totalHealth;
     }
 
 }
