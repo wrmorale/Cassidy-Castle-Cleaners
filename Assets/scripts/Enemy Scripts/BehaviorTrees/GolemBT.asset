@@ -44,13 +44,13 @@ MonoBehaviour:
   - rid: 2088461236925366282
   - rid: 2088461236925366283
   - rid: 2088461244631089152
-  - rid: 2088461244631089153
+  - rid: 2088461255032963075
   treeState: 0
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 0
-  viewPosition: {x: 598, y: -370.5, z: 0}
-  viewScale: {x: 0.57175326, y: 0.57175326, z: 1}
+  viewPosition: {x: 603, y: -607, z: 0}
+  viewScale: {x: 0.7561437, y: 0.7561437, z: 1}
   references:
     version: 2
     RefIds:
@@ -412,7 +412,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 5790ce4f4cf8bd64f949cfd1402657d6
-        position: {x: -747.00006, y: 1376.9722}
+        position: {x: -684, y: 1328.5001}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -425,7 +425,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 9be9ddc85037af64483c80e4b4820f38
-        position: {x: -421.99976, y: 1439.4998}
+        position: {x: -353.00012, y: 1452.5327}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -456,23 +456,21 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
-        description: Ok this doesn't make both run at the same time because it will
-          only do RotateToMovement once and then just wait for the attack to finish.
+        description: 
         drawGizmos: 0
         children:
         - rid: 2088461236925366281
-        - rid: 2088461244631089153
-    - rid: 2088461244631089153
-      type: {class: RotateToMovement, ns: , asm: Assembly-CSharp}
+        - rid: 2088461255032963075
+    - rid: 2088461255032963075
+      type: {class: RotateWhileAttacking, ns: , asm: Assembly-CSharp}
       data:
         state: 0
         started: 0
-        guid: a954c010c6950c644b308bba527439bb
-        position: {x: -572.0001, y: 1392.4722}
+        guid: b80c56c4a17a35e478586ce40ccb184f
+        position: {x: -513.00006, y: 1328.5001}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
         description: 
         drawGizmos: 0
-        rotateTo: 0
-        speedMultiplier: 1
+        speedMultiplier: 3
