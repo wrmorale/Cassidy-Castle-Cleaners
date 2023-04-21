@@ -43,12 +43,14 @@ MonoBehaviour:
   - rid: 2088461236925366281
   - rid: 2088461236925366282
   - rid: 2088461236925366283
+  - rid: 2088461244631089152
+  - rid: 2088461244631089153
   treeState: 0
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 0
-  viewPosition: {x: 256, y: -158.5, z: 0}
-  viewScale: {x: 0.43232757, y: 0.43232757, z: 1}
+  viewPosition: {x: 598, y: -370.5, z: 0}
+  viewScale: {x: 0.57175326, y: 0.57175326, z: 1}
   references:
     version: 2
     RefIds:
@@ -343,6 +345,8 @@ MonoBehaviour:
           aggro: 0
         description: 
         drawGizmos: 0
+        rotateTo: 1
+        speedMultiplier: 1
     - rid: 2088461236925366276
       type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:
@@ -387,7 +391,7 @@ MonoBehaviour:
         children:
         - rid: 2088461236925366280
         - rid: 2088461236925366283
-        - rid: 2088461236925366281
+        - rid: 2088461244631089152
         - rid: 2088461236925366282
     - rid: 2088461236925366280
       type: {class: PlayerInRangeOfAttack, ns: , asm: Assembly-CSharp}
@@ -395,7 +399,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: fc8a9aefcc6307241a7dba11d3deb3a2
-        position: {x: -591.99976, y: 1158.4998}
+        position: {x: -762.0001, y: 1046}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -408,7 +412,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 5790ce4f4cf8bd64f949cfd1402657d6
-        position: {x: -496.99982, y: 1343.4998}
+        position: {x: -747.00006, y: 1376.9722}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -434,7 +438,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: a1592f941328cb24ca85768b7989161f
-        position: {x: -534.9998, y: 1254.4999}
+        position: {x: -731.99994, y: 1158.5}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -442,3 +446,33 @@ MonoBehaviour:
         drawGizmos: 0
         boolName: Walk
         setTo: 0
+    - rid: 2088461244631089152
+      type: {class: Parallel, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: a8cf2c30022ba1f438661ce042ae6814
+        position: {x: -557.9999, y: 1192.5}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+        description: Ok this doesn't make both run at the same time because it will
+          only do RotateToMovement once and then just wait for the attack to finish.
+        drawGizmos: 0
+        children:
+        - rid: 2088461236925366281
+        - rid: 2088461244631089153
+    - rid: 2088461244631089153
+      type: {class: RotateToMovement, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: a954c010c6950c644b308bba527439bb
+        position: {x: -572.0001, y: 1392.4722}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+        description: 
+        drawGizmos: 0
+        rotateTo: 0
+        speedMultiplier: 1

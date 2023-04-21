@@ -8,19 +8,34 @@ public class AttackManager : MonoBehaviour, IFrameCheckHandler
 {
     public List<AttackData> attacks;
     private AttackData currentAttack;
+    [HideInInspector] public bool attacking = false;
 
     enum ActionState {Inactionable, AttackCancelable}
     private ActionState actionState;
+
+    void Awake()
+    {
+        foreach (AttackData attack in attacks)
+        {
+            attack.clip.initialize();
+            attack.checker.initialize(this, attack.clip);
+        }
+
+        currentAttack = attacks[0];
+    }
+
+    void Update()
+    {
+        if(attacking)
+            updateMe();
+    }
 
     public void onActiveFrameStart() {
         currentAttack.hitbox.SetActive(true);
     }
 
     public void onActiveFrameEnd() {
-
         currentAttack.hitbox.SetActive(false);
-        //Will work as long as every attack name matches its corresponding animator bool
-        currentAttack.clip.animator.SetBool(currentAttack.name, false);
     }
     public void onAttackCancelFrameStart() {
         actionState = ActionState.AttackCancelable;
@@ -36,22 +51,12 @@ public class AttackManager : MonoBehaviour, IFrameCheckHandler
     public void onLastFrameEnd(){
         Debug.Log("Current attack finished");
         currentAttack.clip.animator.SetBool(currentAttack.name, false);
+        attacking = false;
     }
 
-    void Awake()
-    {
-        foreach(AttackData attack in attacks)
-        {
-            attack.clip.initialize();
-            attack.checker.initialize(this, attack.clip);
-        }
 
-        currentAttack = attacks[0];
-    }
-
-    public void updateMe(float time) // yes we need this
+    public void updateMe() // yes we need this
     {
-        //activeChecker.checkFrames();
         currentAttack.checker.checkFrames();
 
         if (actionState == ActionState.Inactionable){}
@@ -81,9 +86,10 @@ public class AttackManager : MonoBehaviour, IFrameCheckHandler
         if (currentAttack != null)
         {
             currentAttack.clip.animator.SetBool(currentAttack.name, true);
-            currentAttack.clip.animator.Play(currentAttack.clip.animatorStateName, 0);
+            //currentAttack.clip.animator.Play(currentAttack.clip.animatorStateName, 0);
             currentAttack.checker.initCheck();
             currentAttack.checker.checkFrames();
+            attacking = true;
         }
     }
 }

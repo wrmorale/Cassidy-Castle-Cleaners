@@ -20,7 +20,7 @@ public class DoAttack : ActionNode
     }
 
     protected override State OnUpdate() {
-        if(attack == null)
+        if (attack == null)
         {
             Debug.LogError("Invalid attack name in Node DoAttack");
             return State.Failure;
@@ -30,9 +30,12 @@ public class DoAttack : ActionNode
         //So we can use that to tell when the attack is finsihed.
         //Not sure if best way to keep track of that, might change later
         //OnLastFrameEnd() of AttackManager is not being called for some reason...
-        if (context.animator.GetBool(attackName))
+        if (context.animator.GetBool(attackName)) {
             return State.Running; //Attack animation is still going
+        }
         else
+        {
             return State.Success; //Attack animation has finished
+        }
     }
 }
