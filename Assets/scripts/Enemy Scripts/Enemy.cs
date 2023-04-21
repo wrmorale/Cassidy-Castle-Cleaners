@@ -18,8 +18,8 @@ public class Enemy : MonoBehaviour
 
     [Header("Attacks info")]
     //public float basicAttackCooldownTimer = 0;
-    public List<Ability> abilities;
-    public float specialCooldownTimer = 0; //Cooldown used for special abilities, like Golem's Dash
+    //public List<Ability> abilities;
+    [HideInInspector] public float specialCooldownTimer = 0; //Cooldown used for special abilities, like Golem's Dash
 
     [Header("Movement info")]
     [SerializeField] public float movementSpeed;

@@ -8,9 +8,11 @@ public class Golem : Enemy
 {
     //Has some kind of dash attack that actually moves it, and otherwise does not move while attacking.
 
+    
     private AttackManager attackManager;
     private Vector3 directionToPlayer;
     private float distanceToPlayer;
+    [Header("Golem Stuff")]
     public bool isDashing;
     public bool light1Complete;
 

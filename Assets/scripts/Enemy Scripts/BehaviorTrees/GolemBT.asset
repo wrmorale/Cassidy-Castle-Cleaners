@@ -23,7 +23,6 @@ MonoBehaviour:
   - rid: 2088461210442268687
   - rid: 2088461210442268688
   - rid: 2088461210442268691
-  - rid: 2088461210442268692
   - rid: 2088461210442268693
   - rid: 2088461210442268694
   - rid: 2088461210442268697
@@ -37,18 +36,19 @@ MonoBehaviour:
   - rid: 2088461210442268713
   - rid: 2088461210442268714
   - rid: 2088461210442268715
-  - rid: 2088461236925366272
-  - rid: 2088461236925366273
-  - rid: 2088461236925366274
-  - rid: 2088461236925366275
   - rid: 2088461236925366276
   - rid: 2088461236925366278
+  - rid: 2088461236925366279
+  - rid: 2088461236925366280
+  - rid: 2088461236925366281
+  - rid: 2088461236925366282
+  - rid: 2088461236925366283
   treeState: 0
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 0
-  viewPosition: {x: 227, y: -132, z: 0}
-  viewScale: {x: 0.65751624, y: 0.65751624, z: 1}
+  viewPosition: {x: 256, y: -158.5, z: 0}
+  viewScale: {x: 0.43232757, y: 0.43232757, z: 1}
   references:
     version: 2
     RefIds:
@@ -72,7 +72,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: ba12defdf437b8f47a041bd2abaf0755
-        position: {x: -313.23166, y: 2328.0847}
+        position: {x: -221.5, y: 1968.8}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -85,7 +85,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 4517ba814f2f47248b4c9dd1282154f5
-        position: {x: -182.73161, y: 2193.0845}
+        position: {x: -91, y: 1833.8}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -100,7 +100,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 5ab01d8412e5adf4a94cf5093457dd2f
-        position: {x: -424.7316, y: 2193.0845}
+        position: {x: -281.4999, y: 1834}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -113,7 +113,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: d986a1a460681d947a45cb0c0ab0deae
-        position: {x: -833.7317, y: 2044.0845}
+        position: {x: -742, y: 1684.8}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -128,7 +128,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 5e846d719e9144e408b0b6347261fad9
-        position: {x: -921.2317, y: 2173.5847}
+        position: {x: -829.5, y: 1814.3}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -141,7 +141,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: abcc4ce02b335fe4abf63c98ca4f1a33
-        position: {x: -758.7317, y: 2173.5847}
+        position: {x: -667, y: 1814.3}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -154,24 +154,11 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 242b7b15e80128743bf6454719c5dc02
-        position: {x: -574.7316, y: 2038.5845}
+        position: {x: -483, y: 1679.3}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
         description: Spin or Light sequence
-        drawGizmos: 0
-        children: []
-    - rid: 2088461210442268692
-      type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
-      data:
-        state: 0
-        started: 0
-        guid: bf70e943fd626ce4184842d2079ba433
-        position: {x: -51.731674, y: 1866.0847}
-        blackboard:
-          moveToPosition: {x: 0, y: 0, z: 0}
-          aggro: 0
-        description: Walk to player sequence
         drawGizmos: 0
         children: []
     - rid: 2088461210442268693
@@ -180,24 +167,22 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: efe94f8aedb17c947ab954a1dd411995
-        position: {x: -298.23163, y: 1604.0846}
+        position: {x: -255.16798, y: 829.80115}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
         description: Aggro behavior
         drawGizmos: 0
         children:
-        - rid: 2088461236925366272
-        - rid: 2088461236925366273
-        - rid: 2088461236925366274
-        - rid: 2088461210442268692
+        - rid: 2088461236925366279
+        - rid: 2088461210442268710
     - rid: 2088461210442268694
       type: {class: Failure, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:
         state: 0
         started: 0
         guid: cbf2113dc43226b41a26928c942e2af1
-        position: {x: -55.731667, y: 2328.0847}
+        position: {x: 36, y: 1968.8}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -212,7 +197,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: ed4f8de9c247e4645bff4e7204942719
-        position: {x: -55.731667, y: 2456.0845}
+        position: {x: 36, y: 2096.8}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -296,11 +281,11 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: c183961588909e9458aa7d06ca3a6aef
-        position: {x: -131.50006, y: 837.74097}
+        position: {x: -90.99996, y: 989.9999}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
-        description: 
+        description: Walk sequence
         drawGizmos: 0
         children:
         - rid: 2088461210442268712
@@ -312,7 +297,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: decb0bd4ea4c93d43baa098c49b642e7
-        position: {x: -318.50006, y: 1006.24097}
+        position: {x: -277.9999, y: 1158.4999}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -326,11 +311,11 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: d267b3be3e15f29458a822d7b7d7b525
-        position: {x: 50.499954, y: 1003.74097}
+        position: {x: -90.99996, y: 1311.4999}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
-        description: 
+        description: Walk Sequence
         drawGizmos: 0
     - rid: 2088461210442268714
       type: {class: SetAnimatorBool, ns: , asm: Assembly-CSharp}
@@ -338,7 +323,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 64c72bb25a6e56745a0b001cd929a72a
-        position: {x: 247.40923, y: 812}
+        position: {x: 222.99991, y: 797.9999}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -352,79 +337,19 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: ebd2716ec99b14b48b717f48a33a626c
-        position: {x: -131.50006, y: 1003.74097}
+        position: {x: -181.99991, y: 1236.4999}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
         description: 
         drawGizmos: 0
-    - rid: 2088461236925366272
-      type: {class: CheckBossPhase, ns: , asm: Assembly-CSharp}
-      data:
-        state: 0
-        started: 0
-        guid: a1abae957dcf36f489aa426ea6cfece1
-        position: {x: -790.7317, y: 1873.5845}
-        blackboard:
-          moveToPosition: {x: 0, y: 0, z: 0}
-          aggro: 0
-        description: Player in shortest attack range?
-        drawGizmos: 0
-        child:
-          rid: 2088461210442268686
-        phase: 0
-    - rid: 2088461236925366273
-      type: {class: CheckBossPhase, ns: , asm: Assembly-CSharp}
-      data:
-        state: 0
-        started: 0
-        guid: ca9883554c84ab44bb757142ca555b69
-        position: {x: -574.7316, y: 1873.5845}
-        blackboard:
-          moveToPosition: {x: 0, y: 0, z: 0}
-          aggro: 0
-        description: Player in second shortest attack range?
-        drawGizmos: 0
-        child:
-          rid: 2088461210442268691
-        phase: 0
-    - rid: 2088461236925366274
-      type: {class: CheckBossPhase, ns: , asm: Assembly-CSharp}
-      data:
-        state: 0
-        started: 0
-        guid: 138437955cf4f6c42bb4268e661d95e1
-        position: {x: -313.23166, y: 1785.5846}
-        blackboard:
-          moveToPosition: {x: 0, y: 0, z: 0}
-          aggro: 0
-        description: Player in dash range?
-        drawGizmos: 0
-        child:
-          rid: 2088461236925366275
-        phase: 0
-    - rid: 2088461236925366275
-      type: {class: CheckBossPhase, ns: , asm: Assembly-CSharp}
-      data:
-        state: 0
-        started: 0
-        guid: 1ad2a0bfb436e9b469b5bca69fdcc639
-        position: {x: -313.23166, y: 1910.0845}
-        blackboard:
-          moveToPosition: {x: 0, y: 0, z: 0}
-          aggro: 0
-        description: Dash off cooldown?
-        drawGizmos: 0
-        child:
-          rid: 2088461236925366276
-        phase: 0
     - rid: 2088461236925366276
       type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:
         state: 0
         started: 0
         guid: e045b7d7f2808984a9be3f6f3f35ee7f
-        position: {x: -313.23166, y: 2038.5845}
+        position: {x: -221.5, y: 1679.3}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -446,4 +371,74 @@ MonoBehaviour:
         description: 
         drawGizmos: 0
         child:
-          rid: 2088461210442268710
+          rid: 2088461210442268693
+    - rid: 2088461236925366279
+      type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: d2fb5dc2328d2cf47b9719bc525c22be
+        position: {x: -404.99994, y: 990.0001}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+        description: 
+        drawGizmos: 0
+        children:
+        - rid: 2088461236925366280
+        - rid: 2088461236925366283
+        - rid: 2088461236925366281
+        - rid: 2088461236925366282
+    - rid: 2088461236925366280
+      type: {class: PlayerInRangeOfAttack, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: fc8a9aefcc6307241a7dba11d3deb3a2
+        position: {x: -591.99976, y: 1158.4998}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+        description: 
+        drawGizmos: 0
+        attackName: SpinAttack
+    - rid: 2088461236925366281
+      type: {class: DoAttack, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 5790ce4f4cf8bd64f949cfd1402657d6
+        position: {x: -496.99982, y: 1343.4998}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+        description: 
+        drawGizmos: 0
+        attackName: SpinAttack
+    - rid: 2088461236925366282
+      type: {class: Wait, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 9be9ddc85037af64483c80e4b4820f38
+        position: {x: -421.99976, y: 1439.4998}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+        description: 
+        drawGizmos: 0
+        duration: 1
+    - rid: 2088461236925366283
+      type: {class: SetAnimatorBool, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: a1592f941328cb24ca85768b7989161f
+        position: {x: -534.9998, y: 1254.4999}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+        description: 
+        drawGizmos: 0
+        boolName: Walk
+        setTo: 0

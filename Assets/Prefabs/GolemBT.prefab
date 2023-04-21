@@ -406,40 +406,7 @@ MonoBehaviour:
   enemyName: Golem
   maxHealth: 18
   currentHealth: 0
-  aggroRange: 2
-  abilities:
-  - abilityName: SpinAttack
-    abilityType: Sweep
-    abilityDamage: 4
-    abilityRange: 1.8
-    abilityCooldown: 4.5
-    abilityChance: 30
-    castTime: 1
-    damageMultiplier: 1
-  - abilityName: Light1
-    abilityType: Melee
-    abilityDamage: 5
-    abilityRange: 1.29
-    abilityCooldown: 4
-    abilityChance: 50
-    castTime: 1
-    damageMultiplier: 1
-  - abilityName: Light2
-    abilityType: Melee
-    abilityDamage: 5
-    abilityRange: 2.5
-    abilityCooldown: 2.5
-    abilityChance: 0
-    castTime: 1
-    damageMultiplier: 1
-  - abilityName: Dash
-    abilityType: Movement
-    abilityDamage: 4
-    abilityRange: 3
-    abilityCooldown: 7
-    abilityChance: 0
-    castTime: 1
-    damageMultiplier: 1
+  aggroRange: 4
   specialCooldownTimer: 0
   movementSpeed: 0.3
   rotationSpeed: 1
@@ -478,9 +445,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 879157da5ff124546b28b898f94f534f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyInstance: {fileID: 1817854267388228367}
   attacks:
   - name: Light1
+    damage: 5
+    range: 1.3
     hitbox: {fileID: 629870976696930832}
     clip:
       animator: {fileID: 7249107271869851658}
@@ -496,6 +464,8 @@ MonoBehaviour:
       allCancelFrameStart: 0
       allCancelFrameEnd: 0
   - name: Light2
+    damage: 5
+    range: 2.5
     hitbox: {fileID: 6355576061597113706}
     clip:
       animator: {fileID: 7249107271869851658}
@@ -511,6 +481,8 @@ MonoBehaviour:
       allCancelFrameStart: 0
       allCancelFrameEnd: 0
   - name: SpinAttack
+    damage: 4
+    range: 1.8
     hitbox: {fileID: 8750645048523731814}
     clip:
       animator: {fileID: 7249107271869851658}
@@ -523,6 +495,23 @@ MonoBehaviour:
       activeFrameEnd: 34
       attackCancelFrameStart: 35
       attackCancelFrameEnd: 49
+      allCancelFrameStart: 0
+      allCancelFrameEnd: 0
+  - name: Dash
+    damage: 4
+    range: 3
+    hitbox: {fileID: 1250803297610215111}
+    clip:
+      animator: {fileID: 7249107271869851658}
+      clip: {fileID: -851199388697429409, guid: b951fbd9982f6a34080c7ff33e36a30e,
+        type: 3}
+      animatorStateName: dash
+      layerNumber: 0
+    checker:
+      activeFrameStart: 0
+      activeFrameEnd: 0
+      attackCancelFrameStart: 0
+      attackCancelFrameEnd: 0
       allCancelFrameStart: 0
       allCancelFrameEnd: 0
 --- !u!114 &7780659639575687690
