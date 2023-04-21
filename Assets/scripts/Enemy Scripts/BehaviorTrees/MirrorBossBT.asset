@@ -46,6 +46,7 @@ MonoBehaviour:
   - rid: 2088461147737948164
   - rid: 2088461152764821504
   - rid: 7060330725490819076
+  - rid: 7060330780642508800
   treeState: 0
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
@@ -173,6 +174,7 @@ MonoBehaviour:
         drawGizmos: 0
         children:
         - rid: 2088461108116455436
+        - rid: 7060330780642508800
         - rid: 2088461108116455437
     - rid: 2088461108116455434
       type: {class: Log, ns: TheKiwiCoder, asm: Assembly-CSharp}
@@ -206,7 +208,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: a2a9b26521f2bbf4399b153d4d7bb29f
-        position: {x: -825.23206, y: 1408}
+        position: {x: -863.02203, y: 1400.3956}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -219,7 +221,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 5083f2efbeea26445bd1c65504527e7c
-        position: {x: -675.232, y: 1408}
+        position: {x: -512.2665, y: 1406.4791}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -489,6 +491,18 @@ MonoBehaviour:
         started: 0
         guid: a08ab15c4ca6c054884a71e98158de7b
         position: {x: -1193, y: 1399}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+        description: 
+        drawGizmos: 0
+    - rid: 7060330780642508800
+      type: {class: BossShootProjectiles, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: fcf1f5946faf0114492df5464ba851da
+        position: {x: -693.87494, y: 1399.9125}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
