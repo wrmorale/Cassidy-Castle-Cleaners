@@ -59,8 +59,9 @@ public class Enemy : MonoBehaviour
     }
 
     void Update(){
-        //specialCooldownTimer -= Time.deltaTime;
-        Debug.Log("Special cooldown timer: " + specialCooldownTimer);
+        /*BIG PROBLEM: Update stops working entirely if there are errors in the game manager*/
+        
+        
 
         //// Check for nearby dust piles that need healing
         //foreach (DustPile dustPile in dustPiles) {
@@ -81,6 +82,12 @@ public class Enemy : MonoBehaviour
         //}
 
         
+    }
+
+    private void FixedUpdate()
+    {
+        specialCooldownTimer -= Time.deltaTime;
+        Debug.Log("Special cooldown timer: " + specialCooldownTimer);
     }
 
     //Changed to virtual so that boss mirrors can override this
