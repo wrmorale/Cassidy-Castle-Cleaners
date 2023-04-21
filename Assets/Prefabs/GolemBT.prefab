@@ -407,7 +407,6 @@ MonoBehaviour:
   maxHealth: 18
   currentHealth: 0
   aggroRange: 4
-  specialCooldownTimer: 0
   movementSpeed: 0.3
   rotationSpeed: 1
   idleMovementRange: 0
@@ -499,7 +498,7 @@ MonoBehaviour:
       allCancelFrameEnd: 0
   - name: Dash
     damage: 4
-    range: 3
+    range: 4
     hitbox: {fileID: 1250803297610215111}
     clip:
       animator: {fileID: 7249107271869851658}
@@ -508,12 +507,13 @@ MonoBehaviour:
       animatorStateName: dash
       layerNumber: 0
     checker:
-      activeFrameStart: 0
-      activeFrameEnd: 0
-      attackCancelFrameStart: 0
-      attackCancelFrameEnd: 0
+      activeFrameStart: 6
+      activeFrameEnd: 25
+      attackCancelFrameStart: 42
+      attackCancelFrameEnd: 44
       allCancelFrameStart: 0
       allCancelFrameEnd: 0
+  attacking: 0
 --- !u!114 &7780659639575687690
 MonoBehaviour:
   m_ObjectHideFlags: 0

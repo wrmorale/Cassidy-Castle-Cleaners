@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
     [Header("Attacks info")]
     //public float basicAttackCooldownTimer = 0;
     //public List<Ability> abilities;
-    [HideInInspector] public float specialCooldownTimer = 0; //Cooldown used for special abilities, like Golem's Dash
+    [HideInInspector] public float specialCooldownTimer; //Cooldown used for special abilities, like Golem's Dash
 
     [Header("Movement info")]
     [SerializeField] public float movementSpeed;
@@ -53,28 +53,34 @@ public class Enemy : MonoBehaviour
         currentHealth = maxHealth;
         enemyHealthBar.setMaxHealth(HealthPercent);
         BTrunner = GetComponent<BehaviourTreeRunner>();
+        specialCooldownTimer = 0.0f;
         //damageFlashObject = Instantiate(damageFlashPrefab, transform.position, Quaternion.identity);
         //damageFlash = damageFlashObject.GetComponent<DamageFlash>();
     }
 
     void Update(){
-        // Check for nearby dust piles that need healing
-        foreach (DustPile dustPile in dustPiles) {
-            if (dustPile.health < dustPile.maxHealth) {
-                float distance = Vector3.Distance(transform.position, dustPile.transform.position);
-                if (distance <= detectionRange) {//check if dust pile doesn't have full health and is nearby
-                    dustPile.IncreaseHealth(healingSpeed * Time.deltaTime);
-                }
-            }
-        }
+        //specialCooldownTimer -= Time.deltaTime;
+        Debug.Log("Special cooldown timer: " + specialCooldownTimer);
 
-        // Check if we need to generate a new dust pile
-        if (dustPiles.Count < maxDustPiles) {
-            GameObject newDustPile = Instantiate(dustPilePrefab, transform.position + new Vector3(Random.Range(-1.0f, 1.0f), 0, Random.Range(-1.0f, 1.0f)), Quaternion.identity);
-            DustPile newDustPileScript = newDustPile.GetComponent<DustPile>();
-            newDustPileScript.SetHealth(0.1f); // set a low starting health
-            dustPiles.Add(newDustPileScript);
-        }
+        //// Check for nearby dust piles that need healing
+        //foreach (DustPile dustPile in dustPiles) {
+        //    if (dustPile.health < dustPile.maxHealth) {
+        //        float distance = Vector3.Distance(transform.position, dustPile.transform.position);
+        //        if (distance <= detectionRange) {//check if dust pile doesn't have full health and is nearby
+        //            dustPile.IncreaseHealth(healingSpeed * Time.deltaTime);
+        //        }
+        //    }
+        //}
+
+        //// Check if we need to generate a new dust pile
+        //if (dustPiles.Count < maxDustPiles) {
+        //    GameObject newDustPile = Instantiate(dustPilePrefab, transform.position + new Vector3(Random.Range(-1.0f, 1.0f), 0, Random.Range(-1.0f, 1.0f)), Quaternion.identity);
+        //    DustPile newDustPileScript = newDustPile.GetComponent<DustPile>();
+        //    newDustPileScript.SetHealth(0.1f); // set a low starting health
+        //    dustPiles.Add(newDustPileScript);
+        //}
+
+        
     }
 
     //Changed to virtual so that boss mirrors can override this
