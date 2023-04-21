@@ -25,7 +25,14 @@ public class SlamAttack : ActionNode
     private float fallAnimationTime;
     private float riseAnimationTime;
 
+    /*Most important needed changes
+     - Needs a hitbox so it can actually deal damage (But only during the initial fall)
+     - Need code to handle if the player makes boss transition to phase 2 during this attack.
+       This can be done by making the boss instantly return to its original position in the OnStop() method
+     */
+
     protected override void OnStart() {
+        /*Get the current posessed mirror using context.mirrorBossScript.currPosessedMirror*/
         GameObject mirrorMain = GameObject.Find("BossRoot"); //gets mirror boss from scene
         if (mirrorMain == null) {
             Debug.LogError("Cannot find Boss");
@@ -48,6 +55,14 @@ public class SlamAttack : ActionNode
 
     protected override State OnUpdate() {
         
+        /*Move this into another new node - a WaitForAnimation node
+         Instead of having a varible within this node, make it check if the context.animator is currently playing an animation
+        and return SUCCESS when it is finished*/
+        /*Do not rotate the mirror using code - I wanted a MeleeAttack node that can be used for any type of enemy.
+         Each mirror has an animator - create a placeholder animation that rotates the mirror, and attach a hitbox like how all of the
+        enemy attacks have a hitbox.
+        Then, create a new attack on the mirror's AttackManager and assign the animator and hitbox to it.
+        And make the MeleeAttack node call AttackManager.handleAttacks[abilityMirrorSlam] <-- I still need to adjust this to take attack names instead of abilities*/
         if(animationIsPlaying){
             if(fallAnimationTime > 0){
                 //currently does damage based on the collision script attached to mirror prefab

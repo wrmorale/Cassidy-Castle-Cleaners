@@ -45,7 +45,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5162906578704727440}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ce1d8b62e5b6cc4296e730312bc0d9e, type: 3}
+  m_Script: {fileID: 11500000, guid: 453d2ffd982875041b179df707aad669, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mirrors:
@@ -54,7 +54,7 @@ MonoBehaviour:
   - {fileID: 6112376593408787560}
   - {fileID: 1108866297013288925}
   currPosessedMirror: {fileID: 0}
-  canBeHarmed: 0
+  canBeHarmed: 1
   enemyName: The Entity
   maxHealth: 15
   aggro: 0
