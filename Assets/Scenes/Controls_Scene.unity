@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414736, b: 0.121078536, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -419,8 +419,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d64768db61b4143279cdc2deaff405eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  original: {fileID: 594904030}
-  newImg: {fileID: 21300000, guid: a573b7261621c4c0d9b28b87b445f310, type: 3}
+  originalImage: {fileID: 594904030}
+  keyboardSprite: {fileID: 21300000, guid: a573b7261621c4c0d9b28b87b445f310, type: 3}
+  controllerSprite: {fileID: 21300000, guid: 678d32f0fd7f74211a2d0a902088f8f6, type: 3}
 --- !u!1 &623354845
 GameObject:
   m_ObjectHideFlags: 0
@@ -566,6 +567,7 @@ GameObject:
   - component: {fileID: 802276971}
   - component: {fileID: 802276970}
   - component: {fileID: 802276969}
+  - component: {fileID: 802276972}
   m_Layer: 5
   m_Name: Keyboard
   m_TagString: Untagged
@@ -649,6 +651,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 802276972}
+        m_TargetAssemblyTypeName: ButtonImageChange, Assembly-CSharp
+        m_MethodName: newImage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &802276970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -687,6 +701,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 802276967}
   m_CullTransparentMesh: 1
+--- !u!114 &802276972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802276967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e94aa876536afa499702f873e98f7e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalImage: {fileID: 802276970}
+  keyboardSprite: {fileID: 21300000, guid: 52a84adfd9e1547f09a5a6416f55d60f, type: 3}
+  controllerSprite: {fileID: 21300000, guid: 5b318d4a7541148679d0eafbadc28c6d, type: 3}
 --- !u!1 &1828812444
 GameObject:
   m_ObjectHideFlags: 0
