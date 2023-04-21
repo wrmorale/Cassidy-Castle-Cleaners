@@ -19,6 +19,11 @@ public class DustBunny : Enemy, IFrameCheckHandler
     enum ActionState {Inactionable, AttackCancelable}
     private ActionState actionState;
 
+    private float lastRootY;
+    private GameObject model;
+    private GameObject metarig;
+    private GameObject hip;
+
     public enum BunnyState{
         Idle,
         Attacking
@@ -40,11 +45,13 @@ public class DustBunny : Enemy, IFrameCheckHandler
 
     private void enemyMovement() {
         stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        // MoveRoot();
         // if player is in range
         if(Vector3.Distance(enemyBody.position, playerBody.position) < movementRange) {
             // move enemy towards player
             if (stateInfo.normalizedTime >= 1f){
                 animator.SetBool("Moving", true);
+                MoveRoot();
                 movement = (playerBody.position - enemyBody.position) * movementSpeed;
                 enemyBody.MovePosition(enemyBody.position + (movement * Time.fixedDeltaTime));
             }
@@ -59,6 +66,7 @@ public class DustBunny : Enemy, IFrameCheckHandler
                     idleMovement = enemyBody.position + new Vector3(Random.Range(-idleMovementRange, idleMovementRange), 0, Random.Range(-idleMovementRange, idleMovementRange));
                     movement = (idleMovement - enemyBody.position).normalized * movementSpeed;
                     animator.SetBool("Moving", true);
+                    MoveRoot();
                 } 
                 else {
                     movement = Vector3.zero;
@@ -153,6 +161,11 @@ public class DustBunny : Enemy, IFrameCheckHandler
 
         activeChecker = pounceChecker;
         activeClip = pounceClip;
+
+        model = transform.Find("DustBunnyModel10").gameObject;
+        metarig = transform.Find("DustBunnyModel10/metarig").gameObject;
+        hip = transform.Find("DustBunnyModel10/metarig/hip").gameObject;
+        lastRootY = hip.transform.localPosition.y;
     }
 
     public void updateMe(float time) // yes we need this
@@ -183,6 +196,21 @@ public class DustBunny : Enemy, IFrameCheckHandler
         activeClip.animator.Play(activeClip.animatorStateName, 0);
         activeChecker.initCheck();
         activeChecker.checkFrames();
+    }
+    public void MoveRoot()
+    {
+        if (lastRootY != hip.transform.localPosition.y)
+        {
+            Debug.Log("moveroot");
+            float diff = lastRootY - hip.transform.localPosition.y;
+            enemyBody.MovePosition(
+                transform.forward * diff * metarig.transform.localScale.y * transform.localScale.z
+            );
+            model.transform.localPosition =
+                model.transform.localPosition
+                + (Vector3.forward * -diff * metarig.transform.localScale.y);
+        }
+        lastRootY = hip.transform.localPosition.y;
     }
 
 }
