@@ -6,7 +6,8 @@ using TheKiwiCoder;
 [System.Serializable]
 public class SetSpecialCooldown : ActionNode
 {
-    public float setTo = 0.0f;
+    /*This node sets a time x seconds in the future, when our special will go "off cooldown"*/
+    public float xSecondsInFuture = 0.0f;
 
     protected override void OnStart() {
     }
@@ -15,8 +16,8 @@ public class SetSpecialCooldown : ActionNode
     }
 
     protected override State OnUpdate() {
-        context.enemy.specialCooldownTimer = setTo;
-        Debug.Log("Set special cooldown to " + setTo);
+        blackboard.specialCooldownEnds = Time.time + xSecondsInFuture;
+        Debug.Log("Special will go off cooldown at " + blackboard.specialCooldownEnds);
         return State.Success;
     }
 }

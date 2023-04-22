@@ -16,11 +16,6 @@ public class Enemy : MonoBehaviour
     private EnemyHealthBar enemyHealthBar;
     private float HealthPercent = 1;
 
-    [Header("Attacks info")]
-    //public float basicAttackCooldownTimer = 0;
-    //public List<Ability> abilities;
-    [HideInInspector] public float specialCooldownTimer; //Cooldown used for special abilities, like Golem's Dash
-
     [Header("Movement info")]
     [SerializeField] public float movementSpeed;
     public float rotationSpeed;
@@ -53,7 +48,6 @@ public class Enemy : MonoBehaviour
         currentHealth = maxHealth;
         enemyHealthBar.setMaxHealth(HealthPercent);
         BTrunner = GetComponent<BehaviourTreeRunner>();
-        specialCooldownTimer = 0.0f;
         //damageFlashObject = Instantiate(damageFlashPrefab, transform.position, Quaternion.identity);
         //damageFlash = damageFlashObject.GetComponent<DamageFlash>();
     }
@@ -82,12 +76,6 @@ public class Enemy : MonoBehaviour
         //}
 
         
-    }
-
-    private void FixedUpdate()
-    {
-        specialCooldownTimer -= Time.deltaTime;
-        //Debug.Log("Special cooldown timer: " + specialCooldownTimer);
     }
 
     //Changed to virtual so that boss mirrors can override this

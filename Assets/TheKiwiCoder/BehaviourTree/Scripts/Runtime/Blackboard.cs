@@ -14,5 +14,6 @@ namespace TheKiwiCoder {
 
         public Vector3 moveToPosition;
         public bool aggro = false;
+        public float specialCooldownEnds = 0.0f; //Cooldown used for special abilities, like Golem's Dash
     }
 }

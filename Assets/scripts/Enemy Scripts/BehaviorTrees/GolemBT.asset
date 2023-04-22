@@ -53,7 +53,8 @@ MonoBehaviour:
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 0
-  viewPosition: {x: 547, y: -288, z: 0}
+    specialCooldownEnds: 0
+  viewPosition: {x: 330.5, y: -295, z: 0}
   viewScale: {x: 0.49717674, y: 0.49717674, z: 1}
   references:
     version: 2
@@ -68,6 +69,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
         child:
@@ -78,10 +80,11 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: ba12defdf437b8f47a041bd2abaf0755
-        position: {x: 133.48038, y: 1522.4}
+        position: {x: 147.99991, y: 1619.4999}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: Dash sequence
         drawGizmos: 0
         children:
@@ -94,13 +97,15 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 4517ba814f2f47248b4c9dd1282154f5
-        position: {x: 387.49997, y: 1380.5}
+        position: {x: 259.39606, y: 1490.5}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: Random % chance
         drawGizmos: 0
         children:
+        - rid: 2088461210442268676
         - rid: 2088461210442268694
     - rid: 2088461210442268686
       type: {class: RandomSelector, ns: TheKiwiCoder, asm: Assembly-CSharp}
@@ -108,10 +113,11 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: d986a1a460681d947a45cb0c0ab0deae
-        position: {x: -817, y: 1610.5}
+        position: {x: -1074.6215, y: 1799.3018}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: Higher chance for closest range attack
         drawGizmos: 0
         children:
@@ -123,10 +129,11 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 5e846d719e9144e408b0b6347261fad9
-        position: {x: -904.5, y: 1740}
+        position: {x: -1149.6215, y: 1928.8019}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: Spin sequencer
         drawGizmos: 0
         children: []
@@ -136,10 +143,11 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: abcc4ce02b335fe4abf63c98ca4f1a33
-        position: {x: -742, y: 1740}
+        position: {x: -987.12146, y: 1928.8019}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: Light 1 + 2 sequencer
         drawGizmos: 0
         children: []
@@ -149,10 +157,11 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 242b7b15e80128743bf6454719c5dc02
-        position: {x: -504.5, y: 1683}
+        position: {x: -890.50006, y: 1799.4999}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: Spin or Light sequence
         drawGizmos: 0
         children: []
@@ -166,11 +175,11 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: Aggro behavior
         drawGizmos: 0
         children:
         - rid: 2088461236925366279
-        - rid: 2088461236925366276
         - rid: 2088461210442268710
     - rid: 2088461210442268694
       type: {class: Failure, ns: TheKiwiCoder, asm: Assembly-CSharp}
@@ -178,10 +187,11 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: cbf2113dc43226b41a26928c942e2af1
-        position: {x: 465.9999, y: 1522.5}
+        position: {x: 403.49988, y: 1619.5}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: By reaching this failure, the golem will do walking sequence
           instead
         drawGizmos: 0
@@ -193,10 +203,11 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: ed4f8de9c247e4645bff4e7204942719
-        position: {x: 465.9999, y: 1650.5}
+        position: {x: 403.49988, y: 1747.5}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
         message: Chose not to dash
@@ -210,6 +221,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: Staggered behavior
         drawGizmos: 0
         children: []
@@ -223,6 +235,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: Death sequence
         drawGizmos: 0
         children: []
@@ -236,6 +249,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
         child:
@@ -252,6 +266,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
         children:
@@ -267,6 +282,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: Passive behavior
         drawGizmos: 0
         children:
@@ -281,6 +297,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: Walk sequence
         drawGizmos: 0
         children:
@@ -297,6 +314,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
         boolName: Walk
@@ -311,6 +329,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: Walk Sequence
         drawGizmos: 0
     - rid: 2088461210442268714
@@ -323,6 +342,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
         boolName: Walk
@@ -337,6 +357,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
         rotateTo: 1
@@ -351,13 +372,14 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: Try dash
         drawGizmos: 0
         children:
         - rid: 5265791478174318594
         - rid: 2088461262538670080
         - rid: 5265791478174318596
-        - rid: 2088461210442268676
+        - rid: 2088461210442268679
     - rid: 2088461236925366278
       type: {class: PlayerInAggroRange, ns: , asm: Assembly-CSharp}
       data:
@@ -368,6 +390,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
         child:
@@ -382,6 +405,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
         children:
@@ -398,6 +422,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
         attackName: SpinAttack
@@ -411,6 +436,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
         attackName: SpinAttack
@@ -424,6 +450,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
         boolName: Walk
@@ -438,6 +465,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
         children:
@@ -453,6 +481,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
         speedMultiplier: 3
@@ -466,6 +495,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
     - rid: 5265791478174318594
@@ -478,6 +508,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
         attackName: Dash
@@ -487,10 +518,11 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 7b225a914a6d1ad4eb53e66aa8f03381
-        position: {x: 58.28042, y: 1664.8}
+        position: {x: -2.0000992, y: 1762.4999}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
         boolName: Walk
@@ -505,19 +537,21 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
-        setTo: 3
+        xSecondsInFuture: 3
     - rid: 5265791478174318597
       type: {class: DoAttack, ns: , asm: Assembly-CSharp}
       data:
         state: 0
         started: 0
         guid: b4dde07497c52614989f39da8f3b38d6
-        position: {x: 168.80003, y: 1729.6002}
+        position: {x: 127.49991, y: 1852.9999}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
         attackName: Dash
@@ -527,10 +561,11 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: be04bef71b797a14eafdf36883cb9d6e
-        position: {x: 319.08044, y: 1727.2002}
+        position: {x: 305.99985, y: 1826.4998}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
         duration: 1
