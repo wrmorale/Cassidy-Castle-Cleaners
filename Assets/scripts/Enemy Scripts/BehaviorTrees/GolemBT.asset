@@ -36,7 +36,6 @@ MonoBehaviour:
   - rid: 2088461210442268714
   - rid: 2088461210442268715
   - rid: 2088461236925366276
-  - rid: 2088461236925366278
   - rid: 2088461236925366279
   - rid: 2088461236925366280
   - rid: 2088461236925366281
@@ -50,13 +49,16 @@ MonoBehaviour:
   - rid: 5265791478174318598
   - rid: 2088461262538670080
   - rid: 2088461282818916352
+  - rid: 2088461282818916353
+  - rid: 2088461282818916354
+  - rid: 2088461282818916355
   treeState: 0
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 0
     specialCooldownEnds: 0
-  viewPosition: {x: 788.5, y: -500.5, z: 0}
-  viewScale: {x: 0.7561437, y: 0.7561437, z: 1}
+  viewPosition: {x: 171.5, y: -16.5, z: 0}
+  viewScale: {x: 0.49717674, y: 0.49717674, z: 1}
   references:
     version: 2
     RefIds:
@@ -271,7 +273,7 @@ MonoBehaviour:
         description: 
         drawGizmos: 0
         children:
-        - rid: 2088461236925366278
+        - rid: 2088461282818916353
         - rid: 2088461210442268706
     - rid: 2088461210442268706
       type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
@@ -279,7 +281,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 782624a5f7e1c6d4a8091085e5a7d33a
-        position: {x: 223.06822, y: 668}
+        position: {x: 291.49994, y: 668}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -288,13 +290,14 @@ MonoBehaviour:
         drawGizmos: 0
         children:
         - rid: 2088461210442268714
+        - rid: 2088461282818916354
     - rid: 2088461210442268710
       type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:
         state: 0
         started: 0
         guid: c183961588909e9458aa7d06ca3a6aef
-        position: {x: 553.73706, y: 1002.4001}
+        position: {x: 553.5, y: 1105}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -311,7 +314,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: decb0bd4ea4c93d43baa098c49b642e7
-        position: {x: 366.53708, y: 1170.4001}
+        position: {x: 366.5, y: 1273}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -326,7 +329,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: d267b3be3e15f29458a822d7b7d7b525
-        position: {x: 553.73706, y: 1323.2002}
+        position: {x: 553.5, y: 1425.5}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -339,7 +342,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 64c72bb25a6e56745a0b001cd929a72a
-        position: {x: 222.99991, y: 797.9999}
+        position: {x: 184.49997, y: 836.02185}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -354,7 +357,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: ebd2716ec99b14b48b717f48a33a626c
-        position: {x: 462.5371, y: 1248.8}
+        position: {x: 462.5, y: 1351.5}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -381,21 +384,6 @@ MonoBehaviour:
         - rid: 2088461262538670080
         - rid: 5265791478174318596
         - rid: 2088461210442268679
-    - rid: 2088461236925366278
-      type: {class: PlayerInAggroRange, ns: , asm: Assembly-CSharp}
-      data:
-        state: 0
-        started: 0
-        guid: 250bf01703cfa5a49ba0edcc92c52e82
-        position: {x: -131.50003, y: 683.56165}
-        blackboard:
-          moveToPosition: {x: 0, y: 0, z: 0}
-          aggro: 0
-          specialCooldownEnds: 0
-        description: 
-        drawGizmos: 0
-        child:
-          rid: 2088461210442268693
     - rid: 2088461236925366279
       type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:
@@ -514,6 +502,50 @@ MonoBehaviour:
         description: 
         drawGizmos: 0
         duration: 1
+    - rid: 2088461282818916353
+      type: {class: IsAggro, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: c6098185a52ba4443abb0374f9d6d34b
+        position: {x: -179.99994, y: 668}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: 
+        drawGizmos: 0
+        child:
+          rid: 2088461210442268693
+    - rid: 2088461282818916354
+      type: {class: PlayerInAggroRange, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 8c9d57bae30ffe74799fe636ac7775d2
+        position: {x: 388.43063, y: 792}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: 
+        drawGizmos: 0
+        child:
+          rid: 2088461282818916355
+    - rid: 2088461282818916355
+      type: {class: SetAggro, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 98cda56a634cd8748b501c962528a4a2
+        position: {x: 459.42505, y: 922.87506}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: 
+        drawGizmos: 0
+        setTo: 1
     - rid: 5265791478174318594
       type: {class: PlayerInRangeOfAttack, ns: , asm: Assembly-CSharp}
       data:
