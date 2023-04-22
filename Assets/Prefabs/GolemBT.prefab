@@ -480,7 +480,7 @@ MonoBehaviour:
       allCancelFrameStart: 0
       allCancelFrameEnd: 0
   - name: SpinAttack
-    damage: 4
+    damage: 5
     range: 1.8
     hitbox: {fileID: 8750645048523731814}
     clip:

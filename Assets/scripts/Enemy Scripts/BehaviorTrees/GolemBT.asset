@@ -52,13 +52,17 @@ MonoBehaviour:
   - rid: 2088461282818916353
   - rid: 2088461282818916354
   - rid: 2088461282818916355
+  - rid: 2088461284640817152
+  - rid: 2088461284640817153
+  - rid: 2088461284640817154
+  - rid: 2088461284640817155
   treeState: 0
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 0
     specialCooldownEnds: 0
-  viewPosition: {x: 211, y: -54.5, z: 0}
-  viewScale: {x: 0.65751624, y: 0.65751624, z: 1}
+  viewPosition: {x: 614, y: -392, z: 0}
+  viewScale: {x: 0.57175326, y: 0.57175326, z: 1}
   references:
     version: 2
     RefIds:
@@ -400,7 +404,7 @@ MonoBehaviour:
         children:
         - rid: 2088461236925366280
         - rid: 2088461236925366283
-        - rid: 2088461244631089152
+        - rid: 2088461284640817152
         - rid: 2088461282818916352
     - rid: 2088461236925366280
       type: {class: PlayerInRangeOfAttack, ns: , asm: Assembly-CSharp}
@@ -422,7 +426,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 5790ce4f4cf8bd64f949cfd1402657d6
-        position: {x: -740.6925, y: 1432}
+        position: {x: -941.50006, y: 1574.7627}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -451,7 +455,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: a8cf2c30022ba1f438661ce042ae6814
-        position: {x: -654.6925, y: 1281.5}
+        position: {x: -866.5, y: 1423.7626}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -467,7 +471,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: b80c56c4a17a35e478586ce40ccb184f
-        position: {x: -567.1925, y: 1432}
+        position: {x: -768.4998, y: 1575}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -546,6 +550,66 @@ MonoBehaviour:
         description: 
         drawGizmos: 0
         setTo: 1
+    - rid: 2088461284640817152
+      type: {class: RandomSelector, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 1c9fb8d5506a410439d1b60c50fe63c1
+        position: {x: -667.0003, y: 1281.5}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: 
+        drawGizmos: 0
+        children:
+        - rid: 2088461244631089152
+        - rid: 2088461284640817153
+    - rid: 2088461284640817153
+      type: {class: Parallel, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 6f9ee64b632479e419cf9c3477375bfa
+        position: {x: -517.0001, y: 1423.9998}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: 
+        drawGizmos: 0
+        children:
+        - rid: 2088461284640817154
+        - rid: 2088461284640817155
+    - rid: 2088461284640817154
+      type: {class: DoAttack, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: ce2fd44e6458e6a4aa733a921d6d7401
+        position: {x: -592, y: 1578.5}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: 
+        drawGizmos: 0
+        attackName: Light1
+    - rid: 2088461284640817155
+      type: {class: RotateWhileAttacking, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 99d021a98c2c0364884953f3c5ce2a80
+        position: {x: -434.49976, y: 1575}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: 
+        drawGizmos: 0
+        speedMultiplier: 3
     - rid: 5265791478174318594
       type: {class: PlayerInRangeOfAttack, ns: , asm: Assembly-CSharp}
       data:

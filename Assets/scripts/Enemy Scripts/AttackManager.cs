@@ -19,6 +19,7 @@ public class AttackManager : MonoBehaviour, IFrameCheckHandler
         {
             attack.clip.initialize();
             attack.checker.initialize(this, attack.clip);
+            attack.hitbox.GetComponent<collisionDetection>().damage = attack.damage; //Set the damage of the hitbox
         }
 
         currentAttack = attacks[0];

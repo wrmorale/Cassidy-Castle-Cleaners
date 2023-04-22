@@ -12393,7 +12393,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh33658
+  m_Name: pb_Mesh30134
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -20102,7 +20102,6 @@ MonoBehaviour:
   maxHealth: 3
   currentHealth: 0
   aggroRange: 0
-  specialCooldownTimer: 0
   movementSpeed: 0.5
   rotationSpeed: 0
   idleMovementRange: 0
