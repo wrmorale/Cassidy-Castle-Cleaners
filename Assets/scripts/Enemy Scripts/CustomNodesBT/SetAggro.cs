@@ -4,8 +4,10 @@ using UnityEngine;
 using TheKiwiCoder;
 
 [System.Serializable]
-public class #SCRIPTNAME# : ActionNode
+public class SetAggro : ActionNode
 {
+    public bool setTo = true;
+
     /*Called the first time this node is ran on a tick.
     If a node returns RUNNING it will not call OnStart()
     on the next tick*/
@@ -20,6 +22,7 @@ public class #SCRIPTNAME# : ActionNode
 
     /*Called every tick that this node is executed*/
     protected override State OnUpdate() {
+        blackboard.aggro = setTo;
         return State.Success;
     }
 }

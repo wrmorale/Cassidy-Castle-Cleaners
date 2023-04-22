@@ -51,7 +51,8 @@ MonoBehaviour:
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 1
-  viewPosition: {x: 925, y: -568.5, z: 0}
+    specialCooldownEnds: 0
+  viewPosition: {x: 137.5, y: 83.5, z: 0}
   viewScale: {x: 0.65751624, y: 0.65751624, z: 1}
   references:
     version: 2
@@ -66,6 +67,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
         child:
@@ -80,6 +82,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
         children:
@@ -95,6 +98,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
         child:
@@ -109,6 +113,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
         duration: 5
@@ -122,6 +127,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: Attack cycle. X random attacks, followed by changing mirror
         drawGizmos: 0
         children:
@@ -139,6 +145,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
         children:
@@ -154,6 +161,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: Slam attack
         drawGizmos: 0
         children:
@@ -170,6 +178,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: Shooting projectiles + exhaustion afterwards
         drawGizmos: 0
         children:
@@ -186,6 +195,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
         message: Slam!
@@ -199,6 +209,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
         duration: 2
@@ -212,6 +223,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
         message: Shooting!
@@ -225,6 +237,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
         duration: 2
@@ -238,6 +251,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
         child:
@@ -253,6 +267,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
         child:
@@ -269,6 +284,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
         duration: 2
@@ -282,6 +298,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
     - rid: 2088461145881968640
@@ -294,6 +311,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: Phase 1
         drawGizmos: 0
         child:
@@ -309,6 +327,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
         children:
@@ -324,6 +343,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: Phase 2 (spawn enemies)
         drawGizmos: 0
         child:
@@ -339,6 +359,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
         message: Boss is idle Phase 2
@@ -352,6 +373,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
         children:
@@ -367,6 +389,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
         duration: 3
@@ -380,6 +403,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: Pre-fight behavior goes here.
         drawGizmos: 0
         children:
@@ -395,6 +419,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
         message: Boss is idle
@@ -408,6 +433,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
         child:
@@ -424,6 +450,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: Leftmost nodes will only happen when this phase starts
         drawGizmos: 0
         children:
@@ -440,6 +467,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
         message: Started phase 2
@@ -453,6 +481,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
         child:
@@ -469,6 +498,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
         duration: 3
@@ -482,6 +512,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
     - rid: 7060330725490819076

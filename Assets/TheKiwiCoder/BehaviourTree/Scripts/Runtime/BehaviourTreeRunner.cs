@@ -29,7 +29,9 @@ namespace TheKiwiCoder {
         }
 
         // Update is called once per frame
-        void Update() {
+        /*Changed to FixedUpdate. Doesn't interfere with any of Kiwi's nodes, but it might
+         interefere with our own code. If problems arise, check here first.*/
+        void FixedUpdate() {
             if (tree) {
                 tree.Update();
             }
