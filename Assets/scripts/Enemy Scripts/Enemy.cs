@@ -87,7 +87,7 @@ public class Enemy : MonoBehaviour
     private void FixedUpdate()
     {
         specialCooldownTimer -= Time.deltaTime;
-        Debug.Log("Special cooldown timer: " + specialCooldownTimer);
+        //Debug.Log("Special cooldown timer: " + specialCooldownTimer);
     }
 
     //Changed to virtual so that boss mirrors can override this

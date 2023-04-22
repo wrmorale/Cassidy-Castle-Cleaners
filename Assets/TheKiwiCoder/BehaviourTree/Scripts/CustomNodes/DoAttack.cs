@@ -29,7 +29,7 @@ public class DoAttack : ActionNode
         //Attack manager sets a bool with a matching attack name to true, then sets it to false when the attack is finished.
         //So we can use that to tell when the attack is finsihed.
         //Not sure if best way to keep track of that, might change later
-        //OnLastFrameEnd() of AttackManager is not being called for some reason...
+        /*Update: Not sure why but Dash's OnLastFrame is called earlier than it's supposed to*/
         if (context.animator.GetBool(attackName)) {
             return State.Running; //Attack animation is still going
         }

@@ -45,7 +45,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_ExitTime: 1
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -237,7 +237,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_ExitTime: 1
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -561,7 +561,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_ExitTime: 1
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -664,7 +664,7 @@ AnimatorStateMachine:
     m_Position: {x: 400, y: 100, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4092063126915144540}
-    m_Position: {x: 950, y: -130, z: 0}
+    m_Position: {x: 1280, y: -420, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4087135134197673321}
     m_Position: {x: 1000, y: 200, z: 0}
@@ -685,7 +685,7 @@ AnimatorStateMachine:
     m_Position: {x: 1000, y: 390, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6396610679463580454}
-    m_Position: {x: 690, y: -200, z: 0}
+    m_Position: {x: 690, y: -220, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -882,9 +882,6 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: Walk
-    m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: Dash
     m_EventTreshold: 0
@@ -894,10 +891,10 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.53826976
+  m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_ExitTime: 0.67900336
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -1166,7 +1163,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.20788348
+  m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_ExitTime: 0.86141104
   m_HasExitTime: 1

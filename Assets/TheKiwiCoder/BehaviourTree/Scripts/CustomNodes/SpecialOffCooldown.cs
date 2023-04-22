@@ -15,6 +15,8 @@ public class SpecialOffCooldown : ActionNode
     protected override State OnUpdate() {
         /*Does the context it's using not get updated properly? Does it only reference what
          * the enemy's stats were right at the start?*/
+        /*YES - This context.enemy is a COPY of the enemy object, not the original*/
+        Debug.Log("Special cooldown timer: " + context.enemy.specialCooldownTimer);
         if (context.enemy.specialCooldownTimer <= 0)
             return State.Success;
         else

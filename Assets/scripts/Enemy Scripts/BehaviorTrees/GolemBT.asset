@@ -44,18 +44,18 @@ MonoBehaviour:
   - rid: 2088461236925366283
   - rid: 2088461244631089152
   - rid: 2088461255032963075
-  - rid: 5265791478174318593
   - rid: 5265791478174318594
   - rid: 5265791478174318595
   - rid: 5265791478174318596
   - rid: 5265791478174318597
   - rid: 5265791478174318598
+  - rid: 2088461262538670080
   treeState: 0
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 0
-  viewPosition: {x: 148.8, y: -1043.2, z: 0}
-  viewScale: {x: 0.8695652, y: 0.8695652, z: 1}
+  viewPosition: {x: 228.5, y: -595.5, z: 0}
+  viewScale: {x: 0.65751624, y: 0.65751624, z: 1}
   references:
     version: 2
     RefIds:
@@ -95,7 +95,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 4517ba814f2f47248b4c9dd1282154f5
-        position: {x: 174.67511, y: 1368.3998}
+        position: {x: 387.49997, y: 1380.5}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -179,7 +179,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: cbf2113dc43226b41a26928c942e2af1
-        position: {x: 362, y: 1522.4001}
+        position: {x: 465.9999, y: 1522.5}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -194,7 +194,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: ed4f8de9c247e4645bff4e7204942719
-        position: {x: 362, y: 1650.4003}
+        position: {x: 465.9999, y: 1650.5}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -356,7 +356,7 @@ MonoBehaviour:
         drawGizmos: 0
         children:
         - rid: 5265791478174318594
-        - rid: 5265791478174318593
+        - rid: 2088461262538670080
         - rid: 5265791478174318596
         - rid: 2088461210442268676
     - rid: 2088461236925366278
@@ -471,13 +471,13 @@ MonoBehaviour:
         description: 
         drawGizmos: 0
         speedMultiplier: 3
-    - rid: 5265791478174318593
+    - rid: 2088461262538670080
       type: {class: SpecialOffCooldown, ns: , asm: Assembly-CSharp}
       data:
         state: 0
         started: 0
-        guid: 48beb3923199e0f458ab24505b09fb5d
-        position: {x: -129.14484, y: 1412.8003}
+        guid: 681d6a20b6077734fa0a34d86f445ddc
+        position: {x: -140.5, y: 1578.5001}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -489,7 +489,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 2c06e6a981a16df4fb93eee69658467d
-        position: {x: -245.60007, y: 1348}
+        position: {x: -274.4811, y: 1490.5}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -516,7 +516,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: fe690bcf0305ab54d9a8345913b1eb0e
-        position: {x: -18.000038, y: 1424.8002}
+        position: {x: -18.499943, y: 1490.5002}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
