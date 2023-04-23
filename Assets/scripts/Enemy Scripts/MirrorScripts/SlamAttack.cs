@@ -66,7 +66,7 @@ public class SlamAttack : ActionNode
         if(animationIsPlaying){
             if(fallAnimationTime > 0){
                 //currently does damage based on the collision script attached to mirror prefab
-                posessedMirror.basicAttackDamage = posessedMirror.abilities[0].abilityDamage; //uses the slam ability damage from ability prefab
+                //posessedMirror.basicAttackDamage = posessedMirror.abilities[0].abilityDamage; //uses the slam ability damage from ability prefab
 
                 fallAnimationTime -= Time.deltaTime * rotationSpeed * 2; //pretty much the speed at which it falls
                 fallPercent = (1 - fallAnimationTime / 5); //also tied to the way it falls
@@ -83,7 +83,7 @@ public class SlamAttack : ActionNode
                 return State.Running;
             }
             else if(riseAnimationTime > 0){ //for when it comes back up, looks a bit different but works in similar way
-                posessedMirror.basicAttackDamage = 0;
+                //posessedMirror.basicAttackDamage = 0;
                 riseAnimationTime -= Time.deltaTime * rotationSpeed;
                 fallPercent = (1 - riseAnimationTime / 5);
                 rotationDirection = Quaternion.Euler(0, yRotation, initialRotation.z * fallPercent);

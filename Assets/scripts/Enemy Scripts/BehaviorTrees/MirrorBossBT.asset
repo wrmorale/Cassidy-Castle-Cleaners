@@ -52,8 +52,8 @@ MonoBehaviour:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 1
     specialCooldownEnds: 0
-  viewPosition: {x: 137.5, y: 83.5, z: 0}
-  viewScale: {x: 0.65751624, y: 0.65751624, z: 1}
+  viewPosition: {x: 24, y: 286.5, z: 0}
+  viewScale: {x: 0.7561437, y: 0.7561437, z: 1}
   references:
     version: 2
     RefIds:
@@ -525,6 +525,7 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
     - rid: 7060330780642508800
@@ -537,5 +538,6 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
+          specialCooldownEnds: 0
         description: 
         drawGizmos: 0
