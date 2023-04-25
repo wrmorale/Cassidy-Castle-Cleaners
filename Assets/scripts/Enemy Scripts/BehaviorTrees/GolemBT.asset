@@ -17,13 +17,11 @@ MonoBehaviour:
   nodes:
   - rid: 2088461210442268672
   - rid: 2088461210442268676
-  - rid: 2088461210442268679
   - rid: 2088461210442268686
   - rid: 2088461210442268687
   - rid: 2088461210442268688
   - rid: 2088461210442268691
   - rid: 2088461210442268693
-  - rid: 2088461210442268694
   - rid: 2088461210442268697
   - rid: 2088461210442268700
   - rid: 2088461210442268701
@@ -60,13 +58,16 @@ MonoBehaviour:
   - rid: 2088461346290794497
   - rid: 2088461346290794498
   - rid: 2088461346290794499
+  - rid: 2088461348826775552
+  - rid: 2088461348826775553
+  - rid: 2088461348826775554
   treeState: 0
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 0
     specialCooldownEnds: 0
-  viewPosition: {x: 97, y: -1098, z: 0}
-  viewScale: {x: 0.7561437, y: 0.7561437, z: 1}
+  viewPosition: {x: 744, y: -716.5, z: 0}
+  viewScale: {x: 0.65751624, y: 0.65751624, z: 1}
   references:
     version: 2
     RefIds:
@@ -91,7 +92,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: ba12defdf437b8f47a041bd2abaf0755
-        position: {x: 147.99991, y: 1619.4999}
+        position: {x: 61.538757, y: 1598}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -99,24 +100,10 @@ MonoBehaviour:
         description: Dash sequence
         drawGizmos: 0
         children:
+        - rid: 2088461348826775553
         - rid: 5265791478174318595
         - rid: 2088461346290794496
         - rid: 5265791478174318598
-    - rid: 2088461210442268679
-      type: {class: RandomSelector, ns: TheKiwiCoder, asm: Assembly-CSharp}
-      data:
-        state: 0
-        started: 0
-        guid: 4517ba814f2f47248b4c9dd1282154f5
-        position: {x: 703.5, y: 1578.5}
-        blackboard:
-          moveToPosition: {x: 0, y: 0, z: 0}
-          aggro: 0
-          specialCooldownEnds: 0
-        description: Random % chance
-        drawGizmos: 0
-        children:
-        - rid: 2088461210442268694
     - rid: 2088461210442268686
       type: {class: RandomSelector, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:
@@ -192,29 +179,13 @@ MonoBehaviour:
         - rid: 2088461236925366279
         - rid: 2088461236925366276
         - rid: 2088461210442268710
-    - rid: 2088461210442268694
-      type: {class: Failure, ns: TheKiwiCoder, asm: Assembly-CSharp}
-      data:
-        state: 0
-        started: 0
-        guid: cbf2113dc43226b41a26928c942e2af1
-        position: {x: 853.5, y: 1707.5}
-        blackboard:
-          moveToPosition: {x: 0, y: 0, z: 0}
-          aggro: 0
-          specialCooldownEnds: 0
-        description: By reaching this failure, the golem will do walking sequence
-          instead
-        drawGizmos: 0
-        child:
-          rid: 2088461210442268697
     - rid: 2088461210442268697
       type: {class: Log, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:
         state: 0
         started: 0
         guid: ed4f8de9c247e4645bff4e7204942719
-        position: {x: 853.5, y: 1835.5}
+        position: {x: 231.53867, y: 1602.5}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -390,8 +361,9 @@ MonoBehaviour:
         children:
         - rid: 5265791478174318594
         - rid: 2088461262538670080
+        - rid: 2088461348826775552
         - rid: 5265791478174318596
-        - rid: 2088461210442268676
+        - rid: 2088461348826775554
     - rid: 2088461236925366279
       type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:
@@ -489,7 +461,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 681d6a20b6077734fa0a34d86f445ddc
-        position: {x: -140.5, y: 1578.5001}
+        position: {x: -216, y: 1388.5}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -620,7 +592,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 540036d15c8027c4092bf04b40e262fc
-        position: {x: 133.49997, y: 1814.4998}
+        position: {x: 47.03865, y: 1793}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -636,7 +608,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 56729d490f6296a48b90f2e0b23cdcf0
-        position: {x: 222.99998, y: 1967}
+        position: {x: 122.03865, y: 1928.5}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -652,7 +624,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 3771800f1defad746ba2727d349f7348
-        position: {x: -16.499947, y: 2132.9175}
+        position: {x: 47.03865, y: 2047.5}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -666,7 +638,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 2b11d6c4a1998f44ab237cf8443889aa
-        position: {x: 191.17755, y: 2151}
+        position: {x: 197.03867, y: 2047.5}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -675,13 +647,58 @@ MonoBehaviour:
         drawGizmos: 0
         duration: 0.3
         dashSpeed: 10
+    - rid: 2088461348826775552
+      type: {class: LookingAtPlayer, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: d6c8bcb19d725a94fac2f4eadf87ff28
+        position: {x: -191.5, y: 1452.5}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: 
+        drawGizmos: 0
+        degreesOfRange: 10
+    - rid: 2088461348826775553
+      type: {class: RandomFailure, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 9a8e1c9e1f67d0f43907eaa904911fdf
+        position: {x: -297.9613, y: 1793}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: This causes a chance for the golem to decided not to dash, but
+          the dash cooldown will still start.
+        drawGizmos: 0
+        chanceOfFailure: 0.7
+    - rid: 2088461348826775554
+      type: {class: Selector, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 950cff4b10906434fbbed9d599d1f9d6
+        position: {x: 136.53876, y: 1445.5}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: 
+        drawGizmos: 0
+        children:
+        - rid: 2088461210442268676
+        - rid: 2088461210442268697
     - rid: 5265791478174318594
       type: {class: PlayerInRangeOfAttack, ns: , asm: Assembly-CSharp}
       data:
         state: 0
         started: 0
         guid: 2c06e6a981a16df4fb93eee69658467d
-        position: {x: -274.4811, y: 1490.5}
+        position: {x: -235, y: 1324.5}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -695,7 +712,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 7b225a914a6d1ad4eb53e66aa8f03381
-        position: {x: -122.149185, y: 1794.5}
+        position: {x: -120.46126, y: 1793}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -710,7 +727,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: fe690bcf0305ab54d9a8345913b1eb0e
-        position: {x: -18.499943, y: 1490.5002}
+        position: {x: -41.49994, y: 1452.5}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -724,7 +741,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: b4dde07497c52614989f39da8f3b38d6
-        position: {x: -16.500032, y: 2011.2277}
+        position: {x: -45.461258, y: 1928.5}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -738,7 +755,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: be04bef71b797a14eafdf36883cb9d6e
-        position: {x: 441.49985, y: 1794.5}
+        position: {x: 211.53876, y: 1793}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
