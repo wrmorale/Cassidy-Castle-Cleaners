@@ -68,6 +68,7 @@ public class Golem : Enemy
 
     private void enemyMovement() {
         directionToPlayer = playerBody.position - enemyBody.position;
+        directionToPlayer.y = 0;
         // if player is in range
         if(playerInRange(movementRange)) {
             animator.SetBool("Walk", true);
