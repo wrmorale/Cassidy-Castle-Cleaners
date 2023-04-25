@@ -46,19 +46,17 @@ MonoBehaviour:
   - rid: 2088461147737948164
   - rid: 2088461152764821504
   - rid: 7060330863029649409
-  - rid: 7060330863029649412
   - rid: 7060330863029649413
   - rid: 7060330863029649414
   - rid: 7060330863029649415
   - rid: 7060330863029649416
-  - rid: 7060330863029649417
   treeState: 0
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 1
     specialCooldownEnds: 0
-  viewPosition: {x: 1161, y: -760, z: 0}
-  viewScale: {x: 0.65751624, y: 0.65751624, z: 1}
+  viewPosition: {x: 1157, y: -570, z: 0}
+  viewScale: {x: 0.57175326, y: 0.57175326, z: 1}
   references:
     version: 2
     RefIds:
@@ -172,8 +170,6 @@ MonoBehaviour:
         children:
         - rid: 2088461108116455434
         - rid: 7060330863029649409
-        - rid: 7060330863029649417
-        - rid: 7060330863029649412
         - rid: 7060330863029649413
         - rid: 2088461108116455435
     - rid: 2088461108116455433
@@ -212,14 +208,14 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 2c24f3fc7493977479aa2b2cdf67c302
-        position: {x: -1067.6243, y: 1437.5209}
+        position: {x: -1199.982, y: 1437.5209}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
           specialCooldownEnds: 0
         description: 
         drawGizmos: 0
-        duration: 1
+        duration: 2
     - rid: 2088461108116455436
       type: {class: Log, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:
@@ -533,31 +529,16 @@ MonoBehaviour:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
           specialCooldownEnds: 0
-        description: 
+        description: Having issues getting it to work with this at the moment
         drawGizmos: 0
         attackName: Slam
-    - rid: 7060330863029649412
-      type: {class: SetAnimatorBool, ns: , asm: Assembly-CSharp}
-      data:
-        state: 0
-        started: 0
-        guid: 2031b733f121f5446b5bb3db1dff1287
-        position: {x: -1421.5409, y: 1439.0417}
-        blackboard:
-          moveToPosition: {x: 0, y: 0, z: 0}
-          aggro: 0
-          specialCooldownEnds: 0
-        description: 
-        drawGizmos: 0
-        boolName: Slam
-        setTo: 1
     - rid: 7060330863029649413
       type: {class: DoAttack, ns: , asm: Assembly-CSharp}
       data:
         state: 0
         started: 0
         guid: 7cd16a2fb9c1b7b4d92224f2923b0a3a
-        position: {x: -1257.5475, y: 1449.5475}
+        position: {x: -1388.9204, y: 1437.5209}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -608,17 +589,3 @@ MonoBehaviour:
         description: 
         drawGizmos: 0
         attackName: 
-    - rid: 7060330863029649417
-      type: {class: Log, ns: TheKiwiCoder, asm: Assembly-CSharp}
-      data:
-        state: 0
-        started: 0
-        guid: 337b53a0bc5a3c842bd33edc074860fa
-        position: {x: -1527.9069, y: 1498.4177}
-        blackboard:
-          moveToPosition: {x: 0, y: 0, z: 0}
-          aggro: 0
-          specialCooldownEnds: 0
-        description: 
-        drawGizmos: 0
-        message: IN RANFGE

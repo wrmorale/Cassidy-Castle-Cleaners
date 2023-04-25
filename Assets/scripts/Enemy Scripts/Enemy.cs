@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
 
     [Header("Collider + Physics info")]
     public Rigidbody enemyBody;
-    [HideInInspector] public Rigidbody playerBody;
+    public Rigidbody playerBody;
 
     [Header("Animator info")]
     //public Animator animator;
