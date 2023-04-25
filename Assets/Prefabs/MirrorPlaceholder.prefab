@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4842711974964508890}
   - component: {fileID: 974190922841495079}
+  - component: {fileID: 8153435263872746099}
+  - component: {fileID: 5684997394802390402}
   m_Layer: 0
   m_Name: ModelPlaceholder
   m_TagString: Enemy
@@ -28,7 +30,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2610923612291659948}
   m_Father: {fileID: 1780637471120049345}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -52,60 +55,13 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!1 &3666671126868498160
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1780637471120049345}
-  - component: {fileID: 4900889677093518918}
-  - component: {fileID: 3909353705541877551}
-  - component: {fileID: 4021332433591015594}
-  - component: {fileID: 5928403739542624165}
-  - component: {fileID: 5616337374384034975}
-  - component: {fileID: 5351078915540374530}
-  m_Layer: 0
-  m_Name: MirrorPlaceholder
-  m_TagString: Enemy
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1780637471120049345
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3666671126868498160}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -8, z: 0}
-  m_LocalScale: {x: 0.5, y: 2, z: 1.5}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 4842711974964508890}
-  - {fileID: 1298486549437012011}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &4900889677093518918
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3666671126868498160}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &3909353705541877551
+--- !u!23 &8153435263872746099
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3666671126868498160}
+  m_GameObject: {fileID: 1398219617420170969}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -141,6 +97,112 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &5684997394802390402
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398219617420170969}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2913457003584489853
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2610923612291659948}
+  - component: {fileID: 8925953319824230928}
+  - component: {fileID: 7719496702779484478}
+  m_Layer: 0
+  m_Name: Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &2610923612291659948
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2913457003584489853}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4842711974964508890}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8925953319824230928
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2913457003584489853}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7719496702779484478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2913457003584489853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4c640e31c5811348922c843fc81aec6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pc: {fileID: 0}
+  player: {fileID: 0}
+  enemy: {fileID: 5928403739542624165}
+  damage: 1
+--- !u!1 &3666671126868498160
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1780637471120049345}
+  - component: {fileID: 4021332433591015594}
+  - component: {fileID: 5928403739542624165}
+  - component: {fileID: 5616337374384034975}
+  m_Layer: 0
+  m_Name: MirrorPlaceholder
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1780637471120049345
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3666671126868498160}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -8, z: 0}
+  m_LocalScale: {x: 0.5, y: 2, z: 1.5}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4842711974964508890}
+  - {fileID: 1298486549437012011}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &4021332433591015594
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -150,7 +212,7 @@ BoxCollider:
   m_GameObject: {fileID: 3666671126868498160}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -168,42 +230,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Mirror
   maxHealth: 10
-  health: 0
-  basicAttackDamage: 0
-  basicAttackSpeed: 0
-  attackRange: 0
+  currentHealth: 0
+  aggroRange: 0
   movementSpeed: 0
-  movementRange: 0
-  idleMovementRange: 0
-  staggerLimit: 0
-  abilities:
-  - abilityName: Slam
-    abilityType: AoE
-    abilityDamage: 4
-    abilityRange: 0
-    abilityCooldown: 0
-    abilityChance: 0
-    castTime: 0
-    damageMultiplier: 0
-  abilityCooldownTimer: 0
-  dashCooldownTimer: 0
-  actionCooldownTimer: 0
-  abilityCounter: 0
-  longestAttackRange: 0
-  isAttacking: 0
-  movement: {x: 0, y: 0, z: 0}
-  idleMovement: {x: 0, y: 0, z: 0}
   rotationSpeed: 0
-  elapsedTime: 0
-  isIdle: 0
-  enemyInstance: {fileID: 3666671126868498160}
-  bodyCollider: {fileID: 3666671126868498160}
+  idleMovementRange: 0
+  movement: {x: 0, y: 0, z: 0}
   enemyBody: {fileID: 0}
   playerBody: {fileID: 0}
-  player: {fileID: 0}
-  animator: {fileID: 0}
-  animationFinished: 1
-  detectionRange: 5
+  detectionRange: 2
   healingSpeed: 0.1
   dustPilePrefab: {fileID: 0}
   maxDustPiles: 5
@@ -222,23 +257,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 879157da5ff124546b28b898f94f534f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyInstance: {fileID: 0}
-  attacks: []
---- !u!114 &5351078915540374530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3666671126868498160}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4c640e31c5811348922c843fc81aec6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pc: {fileID: 0}
-  player: {fileID: 0}
-  enemy: {fileID: 5928403739542624165}
+  attacks:
+  - name: Slam
+    damage: 5
+    range: 2
+    hitbox: {fileID: 2913457003584489853}
+    clip:
+      animator: {fileID: 974190922841495079}
+      clip: {fileID: 7400000, guid: dd4b060b9321e9d4f98a74b8f039339d, type: 2}
+      animatorStateName: Slam
+      layerNumber: 0
+    checker:
+      activeFrameStart: 13
+      activeFrameEnd: 40
+      attackCancelFrameStart: 0
+      attackCancelFrameEnd: 0
+      allCancelFrameStart: 0
+      allCancelFrameEnd: 0
+  attacking: 0
 --- !u!1 &4817280267641702473
 GameObject:
   m_ObjectHideFlags: 0
