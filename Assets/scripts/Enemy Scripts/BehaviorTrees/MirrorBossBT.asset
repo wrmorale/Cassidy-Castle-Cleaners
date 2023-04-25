@@ -47,16 +47,16 @@ MonoBehaviour:
   - rid: 2088461152764821504
   - rid: 7060330863029649409
   - rid: 7060330863029649413
-  - rid: 7060330863029649414
   - rid: 7060330863029649415
-  - rid: 7060330863029649416
+  - rid: 7060330880204275712
+  - rid: 7060330880204275713
   treeState: 0
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 1
     specialCooldownEnds: 0
-  viewPosition: {x: 1157, y: -570, z: 0}
-  viewScale: {x: 0.57175326, y: 0.57175326, z: 1}
+  viewPosition: {x: 923, y: -1142, z: 0}
+  viewScale: {x: 0.8695652, y: 0.8695652, z: 1}
   references:
     version: 2
     RefIds:
@@ -170,6 +170,7 @@ MonoBehaviour:
         children:
         - rid: 2088461108116455434
         - rid: 7060330863029649409
+        - rid: 7060330880204275712
         - rid: 7060330863029649413
         - rid: 2088461108116455435
     - rid: 2088461108116455433
@@ -187,6 +188,8 @@ MonoBehaviour:
         drawGizmos: 0
         children:
         - rid: 2088461108116455436
+        - rid: 7060330863029649415
+        - rid: 7060330880204275713
         - rid: 2088461108116455437
     - rid: 2088461108116455434
       type: {class: Log, ns: TheKiwiCoder, asm: Assembly-CSharp}
@@ -194,35 +197,35 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 6308a70ba7968ba4a88aca2c7697d085
-        position: {x: -1800.2594, y: 1438}
+        position: {x: -1768.4501, y: 1435.251}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
           specialCooldownEnds: 0
         description: 
         drawGizmos: 0
-        message: Slam!
+        message: Slam Called
     - rid: 2088461108116455435
       type: {class: Wait, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:
         state: 0
         started: 0
         guid: 2c24f3fc7493977479aa2b2cdf67c302
-        position: {x: -1199.982, y: 1437.5209}
+        position: {x: -1040.7488, y: 1437.7489}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
           specialCooldownEnds: 0
         description: 
         drawGizmos: 0
-        duration: 2
+        duration: 1
     - rid: 2088461108116455436
       type: {class: Log, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:
         state: 0
         started: 0
         guid: a2a9b26521f2bbf4399b153d4d7bb29f
-        position: {x: -852.12994, y: 1434.5775}
+        position: {x: -792.686, y: 1435}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -236,7 +239,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 5083f2efbeea26445bd1c65504527e7c
-        position: {x: -131.00012, y: 1434.2502}
+        position: {x: -256.68604, y: 1437}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -524,12 +527,12 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: e3fe90a4d3ea2e54a808567f17018fd4
-        position: {x: -1633, y: 1438}
+        position: {x: -1592.4501, y: 1437.251}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
           specialCooldownEnds: 0
-        description: Having issues getting it to work with this at the moment
+        description: 
         drawGizmos: 0
         attackName: Slam
     - rid: 7060330863029649413
@@ -538,7 +541,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 7cd16a2fb9c1b7b4d92224f2923b0a3a
-        position: {x: -1388.9204, y: 1437.5209}
+        position: {x: -1216.7489, y: 1436.749}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -546,46 +549,46 @@ MonoBehaviour:
         description: 
         drawGizmos: 0
         attackName: Slam
-    - rid: 7060330863029649414
-      type: {class: PlayerInRangeOfAttack, ns: , asm: Assembly-CSharp}
-      data:
-        state: 0
-        started: 0
-        guid: 2943c455869046a4e8bd822f8995b5d3
-        position: {x: -672.6351, y: 1436.678}
-        blackboard:
-          moveToPosition: {x: 0, y: 0, z: 0}
-          aggro: 0
-          specialCooldownEnds: 0
-        description: 
-        drawGizmos: 0
-        attackName: 
     - rid: 7060330863029649415
       type: {class: SetAnimatorBool, ns: , asm: Assembly-CSharp}
       data:
         state: 0
         started: 0
         guid: 25b7c19a8f2a003498bdeb5fc59915f2
-        position: {x: -479.1396, y: 1439.1216}
+        position: {x: -615.686, y: 1437}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
           specialCooldownEnds: 0
         description: 
         drawGizmos: 0
-        boolName: 
+        boolName: Shooting
         setTo: 1
-    - rid: 7060330863029649416
-      type: {class: DoAttack, ns: , asm: Assembly-CSharp}
+    - rid: 7060330880204275712
+      type: {class: SetAnimatorBool, ns: , asm: Assembly-CSharp}
       data:
         state: 0
         started: 0
-        guid: a4015d25409d1214aab3dd5be9f8cd8b
-        position: {x: -301.85016, y: 1437.4502}
+        guid: 4e4a987b2dc2e164bb0cda6d21bcb5d2
+        position: {x: -1394.2507, y: 1436.9999}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
           specialCooldownEnds: 0
         description: 
         drawGizmos: 0
-        attackName: 
+        boolName: Slam
+        setTo: 1
+    - rid: 7060330880204275713
+      type: {class: BossShootProjectiles, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 8a755a10cd3c34643a480a0bd9a2b207
+        position: {x: -434.68607, y: 1439}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: 
+        drawGizmos: 0

@@ -8,6 +8,7 @@ public class MirrorBossMirror : Enemy
     public bool entityPossessing = false;
     public Material matInactive;
     public Material matPosessed;
+    public GameObject projectilePrefab;
     MeshRenderer mesh;
     MirrorBossMain mainScript;
 

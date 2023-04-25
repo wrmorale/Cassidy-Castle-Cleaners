@@ -17,6 +17,9 @@ public class BossShootProjectiles : ActionNode
     protected override State OnUpdate() {
         MirrorBossMain mirrorBossRoot = context.mirrorBossScript;
         mirrorBossRoot.projectileAttack();
-        return State.Success;
+        if(mirrorBossRoot.projectileAttackDuration <= 0.0f){
+            return State.Success;
+        }
+        return State.Running;
     }
 }

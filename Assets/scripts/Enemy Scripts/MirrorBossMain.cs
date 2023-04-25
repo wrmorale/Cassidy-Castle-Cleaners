@@ -18,6 +18,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
     [SerializeField] public float maxHealth = 1.0f; //Shouldn't these be integers?
     float currentHealth;
     float healthPercent = 1.0f;
+    public float projectileAttackDuration = 5.0f;
 
     /*I should probably experiment a bit with the golem before I give the others their tasks...*/
     [Header("Aggro Status")]
@@ -125,27 +126,27 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
 
     //Starts the projectile attack
     public void projectileAttack(){
-        float abilityDuration = 5.0f; //temp ability duration, this could be set to the animation time
+        projectileAttackDuration = 2.0f; //temp ability duration, this could be set to the animation time
         float timeSinceLastProjectile = 0.0f; // Tracks time since last projectile was fired
         float projectilesPerSec = 2;  //temporary attack speed
         float secondsPerProjectile = 1.0f / projectilesPerSec; // Calculate the time between each projectile
-        GameObject projectilePrefab = Resources.Load<GameObject>("Projectile");
-        while(abilityDuration >= 0.0f){
-            abilityDuration -= Time.deltaTime;
+        GameObject projectile = currPosessedMirror.projectilePrefab; 
+        while(projectileAttackDuration >= 0.0f){
+            projectileAttackDuration -= Time.deltaTime;
             timeSinceLastProjectile += Time.deltaTime;
             if (timeSinceLastProjectile >= secondsPerProjectile) {
                 foreach(MirrorBossMirror mirror in mirrors){
                     // Instantiate a clone of the projectile prefab at the mirror's position and rotation
-                    GameObject projectile = Instantiate(projectilePrefab, mirror.transform.position, mirror.transform.rotation);
+                    GameObject projectileClone = Instantiate(projectile, mirror.transform.position, mirror.transform.rotation);
                     // Activate the clone
-                    projectile.SetActive(true);
+                    projectileClone.SetActive(true);
                 }
                 // Reset the time since the last projectile was fired
                 timeSinceLastProjectile -= secondsPerProjectile;
             }
         }
-        /*while(abilityDuration >= 0.0){
-            abilityDuration -= Time.deltaTime;
+        /*while(projectileAttackDuration >= 0.0){
+            projectileAttackDuration -= Time.deltaTime;
             foreach(MirrorBossMirror mirror in mirrors){
                 float projectilesPerSec = 2; //temporary attack speed
                 //Make projectiles spawn at the rate of the projectilesPerSec
