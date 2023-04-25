@@ -86,6 +86,9 @@ public class GameManager : MonoBehaviour{
         // Adds the pause button to the script
         pauseAction = playerInput.actions["Pause"];
 
+        // Locks the cursor into the gamescene so the mouse cannot go out of the window
+        UnityEngine.Cursor.lockState = CursorLockMode.Confined;
+
         timer = 0;
         levelLoader = FindObjectOfType(typeof(LevelLoader)) as LevelLoader;
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
