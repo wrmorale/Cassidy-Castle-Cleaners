@@ -102,10 +102,12 @@ public class GameManager : MonoBehaviour{
         GameObject selectedSpawnArea;
         
         //Dust Pile Spawn
-        if(!objectsInstantiated){
+        if(!objectsInstantiated && spawnAreas.Count > 0){
             // Spawn dust piles
             for (int i = 0; i < maxDustPiles; i++) {
                 randomIndex = UnityEngine.Random.Range(0, spawnAreas.Count);
+                Debug.Log("Random Index: " + randomIndex);
+                Debug.Log("spawnAreas.Count: " + spawnAreas.Count);
                 selectedSpawnArea = spawnAreas[randomIndex];
                 Bounds spawnBounds = selectedSpawnArea.GetComponent<MeshCollider>().bounds;
                 Vector3 position = new Vector3(
