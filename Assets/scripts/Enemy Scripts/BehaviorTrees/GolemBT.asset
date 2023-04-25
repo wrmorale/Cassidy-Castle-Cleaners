@@ -66,8 +66,8 @@ MonoBehaviour:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 0
     specialCooldownEnds: 0
-  viewPosition: {x: 744, y: -716.5, z: 0}
-  viewScale: {x: 0.65751624, y: 0.65751624, z: 1}
+  viewPosition: {x: -102, y: -609.5, z: 0}
+  viewScale: {x: 0.7561437, y: 0.7561437, z: 1}
   references:
     version: 2
     RefIds:
@@ -176,8 +176,6 @@ MonoBehaviour:
         description: Aggro behavior
         drawGizmos: 0
         children:
-        - rid: 2088461236925366279
-        - rid: 2088461236925366276
         - rid: 2088461210442268710
     - rid: 2088461210442268697
       type: {class: Log, ns: TheKiwiCoder, asm: Assembly-CSharp}

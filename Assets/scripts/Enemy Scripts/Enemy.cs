@@ -21,10 +21,11 @@ public class Enemy : MonoBehaviour
     public float rotationSpeed;
     [SerializeField] public float idleMovementRange;
     [HideInInspector] public Vector3 movement;
-    
+    public float gravityForce = -9.81f;
+    float storedGravity = 0f;
 
     [Header("Collider + Physics info")]
-    public Rigidbody enemyBody;
+    [HideInInspector] public CharacterController enemyController;
     [HideInInspector] public Rigidbody playerBody;
 
     [Header("Animator info")]
@@ -42,7 +43,7 @@ public class Enemy : MonoBehaviour
 
     //GameObject damageFlashObject;
     void Start(){
-        enemyBody = GetComponent<Rigidbody>();
+        enemyController = GetComponent<CharacterController>();
         playerBody = FindObjectOfType<Player>().GetComponent<Rigidbody>(); //Should find player automatically now
         enemyHealthBar = GetComponentInChildren<EnemyHealthBar>();
         currentHealth = maxHealth;
@@ -76,6 +77,23 @@ public class Enemy : MonoBehaviour
         //}
 
         
+    }
+
+    private void FixedUpdate()
+    {
+        if (!enemyController.isGrounded)
+        {
+            Debug.Log("Fixed update");
+            //Simulates gravity acceleration
+            storedGravity += gravityForce * Time.fixedDeltaTime;
+            enemyController.Move(new Vector3(0, storedGravity, 0));
+            /*This doesn't seem to work - likely the CharacterController can only accept 1
+             Move() call at a time.*/
+        }
+        else
+        {
+            storedGravity = 0;
+        }
     }
 
     //Changed to virtual so that boss mirrors can override this
