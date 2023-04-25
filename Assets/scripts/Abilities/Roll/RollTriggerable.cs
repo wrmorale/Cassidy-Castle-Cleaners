@@ -50,7 +50,7 @@ public class RollTriggerable : PlayerAbility, IFrameCheckHandler
     public override void updateMe(float time) 
     {
         frameChecker.checkFrames();
-        player.controller.Move(player.transform.forward * time * player.playerSpeed * 2f);
+        player.controller.Move(player.transform.forward * time * player.playerSpeed * 1f);//this single number controls the roll distance
     }
     public override void Activate()
     {
