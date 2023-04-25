@@ -447,7 +447,7 @@ MonoBehaviour:
   attacks:
   - name: Light1
     damage: 5
-    range: 1.3
+    range: 0.7
     hitbox: {fileID: 629870976696930832}
     clip:
       animator: {fileID: 7249107271869851658}
@@ -464,7 +464,7 @@ MonoBehaviour:
       allCancelFrameEnd: 0
   - name: Light2
     damage: 5
-    range: 2.5
+    range: 1.5
     hitbox: {fileID: 6355576061597113706}
     clip:
       animator: {fileID: 7249107271869851658}
@@ -481,7 +481,7 @@ MonoBehaviour:
       allCancelFrameEnd: 0
   - name: SpinAttack
     damage: 5
-    range: 1.8
+    range: 1.5
     hitbox: {fileID: 8750645048523731814}
     clip:
       animator: {fileID: 7249107271869851658}
