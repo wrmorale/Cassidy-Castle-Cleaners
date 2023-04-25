@@ -101,16 +101,24 @@ public class BroomAttackManager : MonoBehaviour, IFrameCheckHandler
     public void updateMe(float time) // yes we need this
     {
         activeChecker.checkFrames();
-        
+
+        // buffer input
+        int idx = player.ParseAbilityInput();
+        if (idx >= 0)
+        {
+            bufferedAbility = idx;
+            Debug.Log("stored ability: " + bufferedAbility);
+        }
+
         if (actionState == ActionState.Inactionable)
         { 
-            // buffer input
-            int idx = player.ParseAbilityInput();
-            if (idx >= 0)
-            {
-                bufferedAbility = idx;
-            }
-            Debug.Log("stored ability: " + bufferedAbility);
+            // // buffer input
+            // int idx = player.ParseAbilityInput();
+            // if (idx >= 0)
+            // {
+            //     bufferedAbility = idx;
+            //     Debug.Log("stored ability: " + bufferedAbility);
+            // }
         }
 
         if (actionState == ActionState.AttackCancelable)
@@ -154,7 +162,7 @@ public class BroomAttackManager : MonoBehaviour, IFrameCheckHandler
                 pan.SetActive(false);
             }
         }
-        
+
         if (player.state == States.PlayerStates.Attacking) { player.MoveRoot(); }
     }
 
