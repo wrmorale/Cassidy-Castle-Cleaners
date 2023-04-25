@@ -44,9 +44,11 @@ public class DustBunny : Enemy, IFrameCheckHandler
         if(Vector3.Distance(enemyBody.position, playerBody.position) < movementRange) {
             // move enemy towards player
             if (stateInfo.normalizedTime >= 1f){
+                Vector3 toPlayer = playerBody.position - enemyBody.position;
+                toPlayer.y = 0;
                 animator.SetBool("Moving", true);
-                movement = (playerBody.position - enemyBody.position) * movementSpeed;
-                enemyBody.MovePosition(enemyBody.position + (movement * Time.fixedDeltaTime));
+                movement = toPlayer.normalized * movementSpeed * Time.fixedDeltaTime;
+                enemyBody.MovePosition(enemyBody.position + (movement));
             }
         }
         else {
