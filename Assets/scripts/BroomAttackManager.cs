@@ -39,48 +39,26 @@ public class BroomAttackManager : MonoBehaviour, IFrameCheckHandler
     private int combo = 0;
     enum ActionState {Inactionable, AttackCancelable, AllCancelable}
     private ActionState actionState;
+    private int bufferedAbility = -1;
 
     /* Attack frame data management */
     public void onActiveFrameStart() {
         // call hitbox detection
-        if (combo == 1){
-            attack1_collider.SetActive(true);
-        }
-        else if (combo == 2){
-            attack2_collider.SetActive(true);
-        }
-        else if (combo == 0){
-            attack3_collider.SetActive(true);
-        }
+        SetWeaponCollider(true);
     }
     public void onActiveFrameEnd() {
-        if (combo == 1){
-            attack1_collider.SetActive(false);
-        }
-        else if (combo == 2){
-            attack2_collider.SetActive(false);
-        }
-        else if (combo == 0){
-            attack3_collider.SetActive(false);
-        }
+        SetWeaponCollider(false);
     }
     public void onAttackCancelFrameStart() {
         actionState = ActionState.AttackCancelable;
-        // let the player move between attacks
-        if (combo != 0){
-            Vector2 input = player.moveAction.ReadValue<Vector2>();
-            if (input.x != 0 || input.y != 0){
-                Vector3 move = new Vector3(input.x, 0, input.y);
-                move = player.RotatePlayer(input);
-                player.controller.Move(move * Time.deltaTime * 0.01f);
-            }
-        }
+        RotateBetweenAttacks();
     }
     public void onAttackCancelFrameEnd() {
         if (actionState == ActionState.AttackCancelable) actionState = ActionState.Inactionable;
     }
     public void onAllCancelFrameStart() {
         actionState = ActionState.AllCancelable;
+        RotateBetweenAttacks();
     }
     public void onAllCancelFrameEnd() {
         if (actionState == ActionState.AllCancelable) actionState = ActionState.Inactionable;
@@ -125,8 +103,16 @@ public class BroomAttackManager : MonoBehaviour, IFrameCheckHandler
         activeChecker.checkFrames();
         
         if (actionState == ActionState.Inactionable)
-        {  
+        { 
+            // buffer input
+            int idx = player.ParseAbilityInput();
+            if (idx >= 0)
+            {
+                bufferedAbility = idx;
+            }
+            Debug.Log("stored ability: " + bufferedAbility);
         }
+
         if (actionState == ActionState.AttackCancelable)
         {
             if (player.attackAction.triggered)
@@ -135,16 +121,17 @@ public class BroomAttackManager : MonoBehaviour, IFrameCheckHandler
                 handleAttacks();
             }
         }
+
         if (actionState == ActionState.AllCancelable)
         {
-            /*
+            
             if (player.attackAction.triggered)
             {
                 actionState = ActionState.Inactionable;
-                combo = 0;
-                // handleAttacks();
+                //combo = 0;
+                if (combo > 0) { handleAttacks(); }
             }
-            */
+
             if (player.jumpAction.triggered)
             {
                 actionState = ActionState.Inactionable;
@@ -154,17 +141,20 @@ public class BroomAttackManager : MonoBehaviour, IFrameCheckHandler
                 broom.SetActive(false);
                 pan.SetActive(false);
             }
-            if (player.channeledAbility >= 0)
+
+            if (bufferedAbility >= 0 || player.channeledAbility >= 0)
             {
                 actionState = ActionState.Inactionable;
                 combo = 0;
                 activeClip.animator.SetBool("Attacking", false);
-                player.ActivateAbility();
+                player.ActivateAbility(bufferedAbility >= 0 ? bufferedAbility: player.channeledAbility);
+                bufferedAbility = -1;
                 player.ResetRoot();
                 broom.SetActive(false);
                 pan.SetActive(false);
             }
         }
+        
         if (player.state == States.PlayerStates.Attacking) { player.MoveRoot(); }
     }
 
@@ -206,5 +196,31 @@ public class BroomAttackManager : MonoBehaviour, IFrameCheckHandler
         activeClip.play();
         activeChecker.initCheck();
         activeChecker.checkFrames();
+    }
+
+    private void RotateBetweenAttacks() 
+    {
+        // let the player move between attacks
+        if (combo != 0){
+            Vector2 input = player.moveAction.ReadValue<Vector2>();
+            if (input.x != 0 || input.y != 0){
+                Vector3 move = new Vector3(input.x, 0, input.y);
+                move = player.RotatePlayer(input);
+                player.controller.Move(move * Time.deltaTime * 0.01f);
+            }
+        }
+    }
+
+    private void SetWeaponCollider(bool b)
+    {
+        if (combo == 1){
+            attack1_collider.SetActive(b);
+        }
+        else if (combo == 2){
+            attack2_collider.SetActive(b);
+        }
+        else if (combo == 0){
+            attack3_collider.SetActive(b);
+        }
     }
 }

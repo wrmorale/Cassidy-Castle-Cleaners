@@ -172,10 +172,10 @@ public class TargetLock : MonoBehaviour
     public void FaceTarget()
     {
         //Debug.Log(player.ParseAbilityInput());
-        channeledAbility = player.ParseAbilityInput();
+        //channeledAbility = player.ParseAbilityInput();
 
         if (player.attackAction.triggered ||
-            channeledAbility >= 0)
+            player.channeledAbility >= 0)
         {
             controller.transform.LookAt(currentTarget);
         }

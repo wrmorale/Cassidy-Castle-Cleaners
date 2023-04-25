@@ -37,6 +37,7 @@ public class BleachBombTriggerable : PlayerAbility, IFrameCheckHandler
     public void onAllCancelFrameStart()
     {
         state = aState.AllCancelable;
+        Debug.Log("set all canceleable");
     }
     public void onAllCancelFrameEnd()
     {
@@ -44,10 +45,13 @@ public class BleachBombTriggerable : PlayerAbility, IFrameCheckHandler
     }
     public void onLastFrameStart()
     {
+        player.SetState(States.PlayerStates.Idle);
+        Debug.Log("set idle");
     }
     public void onLastFrameEnd()
     {
         player.SetState(States.PlayerStates.Idle);
+        Debug.Log("set idle");
     }
 
 

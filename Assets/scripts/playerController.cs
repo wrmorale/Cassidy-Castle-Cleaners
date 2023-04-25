@@ -144,7 +144,6 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
 
     void Update()
     {
-        // add gravity
         ApplyGravity();
 
         // update playercharacter values
@@ -154,7 +153,6 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
 
         // store ability pressed, if any
         channeledAbility = ParseAbilityInput();
-
 
         if (groundedPlayer)
         {
@@ -197,7 +195,7 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
             }
             else if (channeledAbility >= 0 && !inJumpsquat)
             {
-                ActivateAbility();
+                ActivateAbility(channeledAbility);
             }
         }
 
@@ -294,11 +292,11 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
         }
     }
 
-    public void ActivateAbility()
+    public void ActivateAbility(int idx)
     {
         SetState(States.PlayerStates.Ability);
         targetLock.FaceTarget();
-        activeAbility = playerAbilities[channeledAbility];
+        activeAbility = playerAbilities[idx];
         activeAbility.Activate();
     }
 
