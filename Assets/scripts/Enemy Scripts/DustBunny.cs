@@ -33,21 +33,41 @@ public class DustBunny : Enemy
         
     //}
 
-    //void Update(){
-    //    //Debug.Log("Longest attack range: " + longestAttackRange);
-    //    if (isAttacking){
-    //        //Won't move, should only be affected by gravity
-    //        updateMe(Time.deltaTime);
-    //    }
-    //    else{
-    //        enemyMovement();
-    //        //Action cooldown timer is 0 by default, so it will attack as soon as possible
-    //        //One problem seems to be the playerInRange function...
-    //        if (playerInRange(longestAttackRange) && actionCooldownTimer <= 0 && playerInRange(movementRange)) //If off cooldown and player in range, perform action
-    //        {
-    //            enemyAction();
-    //        }
-    //    }
+    // private void enemyMovement() {
+    //     stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+    //     // if player is in range
+    //     if(Vector3.Distance(enemyBody.position, playerBody.position) < movementRange) {
+    //         // move enemy towards player
+    //         if (stateInfo.normalizedTime >= 1f){
+    //             Vector3 toPlayer = playerBody.position - enemyBody.position;
+    //             toPlayer.y = 0;
+    //             animator.SetBool("Moving", true);
+    //             movement = toPlayer.normalized * movementSpeed * Time.fixedDeltaTime;
+    //             enemyBody.MovePosition(enemyBody.position + (movement));
+    //         }
+    //     }
+    //     else {
+    //         //enemy idle movement
+    //         elapsedTime += Time.deltaTime;
+    //         if (elapsedTime >= 3f) {
+    //             elapsedTime = 0;
+    //             isIdle = !isIdle;
+    //             if (isIdle) {
+    //                 idleMovement = enemyBody.position + new Vector3(Random.Range(-idleMovementRange, idleMovementRange), 0, Random.Range(-idleMovementRange, idleMovementRange));
+    //                 movement = (idleMovement - enemyBody.position).normalized * movementSpeed;
+    //                 animator.SetBool("Moving", true);
+    //             } 
+    //             else {
+    //                 movement = Vector3.zero;
+    //                 animator.SetBool("Moving", false);
+    //             }
+    //         }
+    //         enemyBody.MovePosition(enemyBody.position + (movement * Time.fixedDeltaTime));
+    //     }
+    //     if (movement != Vector3.zero) {
+    //         enemyBody.rotation = Quaternion.LookRotation(movement);
+    //     }
+    // }
 
     //    actionCooldownTimer -= Time.deltaTime;
 
