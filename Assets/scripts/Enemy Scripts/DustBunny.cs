@@ -2,189 +2,218 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DustBunny : Enemy, IFrameCheckHandler
+public class DustBunny : Enemy
 {
-    [SerializeField]
-    public GameObject pounceCollider;
-    [SerializeField]
-    private FrameParser pounceClip;
-    [SerializeField]
-    private FrameChecker pounceChecker;
+    //[SerializeField]
+    //public GameObject pounceCollider;
+    //[SerializeField]
+    //private FrameParser pounceClip;
+    //[SerializeField]
+    //private FrameChecker pounceChecker;
 
-    private FrameParser activeClip;
-    private FrameChecker activeChecker;
+    //private FrameParser activeClip;
+    //private FrameChecker activeChecker;
 
-    private string currentAttack;
+    //private string currentAttack;
+    //float postActionCooldown = 0.0f;
 
-    enum ActionState {Inactionable, AttackCancelable}
-    private ActionState actionState;
+    //enum ActionState {Inactionable, AttackCancelable}
+    //private ActionState actionState;
 
-    public enum BunnyState{
-        Idle,
-        Attacking
-    }
-    public BunnyState state = BunnyState.Idle;
+    //bool isAggro = false;
+    //public enum BunnyState{
+    //    Idle,
+    //    Attacking
+    //}
+    //public BunnyState state = BunnyState.Idle;
 
-    void FixedUpdate() {
-        enemyMovement();
-    }
+    
 
-    void Update() {
-        if (state == BunnyState.Idle){
-            enemyAttack();
-        }
-        if (state == BunnyState.Attacking){
-            updateMe(Time.deltaTime);
-        }
-    }
+    //void FixedUpdate(){
+        
+    //}
 
-    private void enemyMovement() {
-        stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-        // if player is in range
-        if(Vector3.Distance(enemyBody.position, playerBody.position) < movementRange) {
-            // move enemy towards player
-            if (stateInfo.normalizedTime >= 1f){
-                Vector3 toPlayer = playerBody.position - enemyBody.position;
-                toPlayer.y = 0;
-                animator.SetBool("Moving", true);
-                movement = toPlayer.normalized * movementSpeed * Time.fixedDeltaTime;
-                enemyBody.MovePosition(enemyBody.position + (movement));
-            }
-        }
-        else {
-            //enemy idle movement
-            elapsedTime += Time.deltaTime;
-            if (elapsedTime >= 3f) {
-                elapsedTime = 0;
-                isIdle = !isIdle;
-                if (isIdle) {
-                    idleMovement = enemyBody.position + new Vector3(Random.Range(-idleMovementRange, idleMovementRange), 0, Random.Range(-idleMovementRange, idleMovementRange));
-                    movement = (idleMovement - enemyBody.position).normalized * movementSpeed;
-                    animator.SetBool("Moving", true);
-                } 
-                else {
-                    movement = Vector3.zero;
-                    animator.SetBool("Moving", false);
-                }
-            }
-            enemyBody.MovePosition(enemyBody.position + (movement * Time.fixedDeltaTime));
-        }
-        if (movement != Vector3.zero) {
-            enemyBody.rotation = Quaternion.LookRotation(movement);
-        }
-    }
+    // private void enemyMovement() {
+    //     stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+    //     // if player is in range
+    //     if(Vector3.Distance(enemyBody.position, playerBody.position) < movementRange) {
+    //         // move enemy towards player
+    //         if (stateInfo.normalizedTime >= 1f){
+    //             Vector3 toPlayer = playerBody.position - enemyBody.position;
+    //             toPlayer.y = 0;
+    //             animator.SetBool("Moving", true);
+    //             movement = toPlayer.normalized * movementSpeed * Time.fixedDeltaTime;
+    //             enemyBody.MovePosition(enemyBody.position + (movement));
+    //         }
+    //     }
+    //     else {
+    //         //enemy idle movement
+    //         elapsedTime += Time.deltaTime;
+    //         if (elapsedTime >= 3f) {
+    //             elapsedTime = 0;
+    //             isIdle = !isIdle;
+    //             if (isIdle) {
+    //                 idleMovement = enemyBody.position + new Vector3(Random.Range(-idleMovementRange, idleMovementRange), 0, Random.Range(-idleMovementRange, idleMovementRange));
+    //                 movement = (idleMovement - enemyBody.position).normalized * movementSpeed;
+    //                 animator.SetBool("Moving", true);
+    //             } 
+    //             else {
+    //                 movement = Vector3.zero;
+    //                 animator.SetBool("Moving", false);
+    //             }
+    //         }
+    //         enemyBody.MovePosition(enemyBody.position + (movement * Time.fixedDeltaTime));
+    //     }
+    //     if (movement != Vector3.zero) {
+    //         enemyBody.rotation = Quaternion.LookRotation(movement);
+    //     }
+    // }
 
-    public void enemyAttack(){
-        //if able to attack, the enemy does so
-        //first checks to see if enemy is in range for an attack
-        if(Vector2.Distance(enemyBody.position, playerBody.position) < longestAttackRange && actionCooldownTimer <= 0) {
-            enemyAction();
-        }
-        actionCooldownTimer -= Time.deltaTime;
-        abilityCooldownTimer -= Time.deltaTime;
-        if(abilityCooldownTimer < 0) {
-            abilityCooldownTimer = 0;
-        }
-    }
+    //    actionCooldownTimer -= Time.deltaTime;
 
-    public void enemyAction(){
-        //if off ability cooldown can use ability depending on chance to use that ability
-        if(abilityCooldownTimer == 0){
-            abilityCounter = 0;
-            foreach (Ability ability in abilities) {
-                //before checking if an ability can be cast check if the player is in ability range
-                if(Vector2.Distance(enemyBody.position, playerBody.position) < ability.abilityRange){
-                    float randomNumber = Random.Range(0, 100);
-                    if (randomNumber < ability.abilityChance) {
-                        useAbility(abilityCounter);
-                        actionCooldownTimer = (1 / basicAttackSpeed);
-                        break;
-                    }
-                    abilityCounter++;
-                }
-            }
-        }
-    }
+    //    /*
+    //    //Do we have to call Super()?
+    //    if (isAttacking){
+    //        //Basically wait for attack animation to finish playing
+    //        stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+    //        //Have to check the state name otherwise it may be checking the wrong animation
+    //        if(stateInfo.normalizedTime >= 1 && stateInfo.IsName("Pounce")){
+    //            animator.SetBool("Pounce", false);
+    //            isAttacking = false;
+    //            actionCooldownTimer = postActionCooldown;
+    //            Debug.LogError("Finished attack animation");
+    //        }
+    //    }*/
+    //}
 
-    private void useAbility(int abilityNum){
-        abilityCooldownTimer = abilities[abilityNum].abilityCooldown;
-        handleAttacks(abilities[abilityNum]);
-        /*
-        //first check what type of ability it is and will do stuff depending on type of ability
-        if(abilities[abilityNum].abilityType == "Movement"){
-            animator.SetBool("MovementAttack", true);
-            checkCollision(abilities[abilityNum].abilityDamage);
-            StartCoroutine(waitForAnimation("MovementAttack"));
-        }*/
-        //have other ability types as else if statments and we can add simple code to deal damage correctly. 
-    }
+    ////Problem with enemy animation: The bunny jumps forward to a spot but then resets to its original position.
+    ////The bunny should really just be jumping in place and then let the actual movement speed move them around
+    //private void enemyMovement() {
+    //    stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+    //    // if player is in range
+    //    if(playerInRange(movementRange)){ //This means enemies will stop persuit if player gets far enough. Do we want that?
+    //        // move enemy towards player
+    //        // Only move if the current animation is complete? Is that just a misunderstanding of how looping works?
+    //        animator.SetBool("Moving", true);
+    //        Vector3 toPlayer = playerBody.position - enemyBody.position;
+    //        toPlayer.y = 0; //Ignore player's vertical position
+    //        movement = toPlayer.normalized * movementSpeed;
+    //        enemyBody.MovePosition(enemyBody.position + (movement * Time.fixedDeltaTime));
+    //    }
+    //    else {
+    //        //enemy idle movement
+    //        elapsedTime += Time.deltaTime;
+    //        if (elapsedTime >= 3f) {
+    //            elapsedTime = 0;
+    //            isIdle = !isIdle;
+    //            if (isIdle) {
+    //                //If left idle for long enough, it could wander far from its original position
+    //                idleMovement = new Vector3(Random.Range(-idleMovementRange, idleMovementRange), 0, Random.Range(-idleMovementRange, idleMovementRange));
+    //                movement = idleMovement.normalized * movementSpeed;
+    //                animator.SetBool("Moving", true);
+    //            } 
+    //            else {
+    //                movement = Vector3.zero;
+    //                animator.SetBool("Moving", false);
+    //            }
+    //        }
+    //        enemyBody.MovePosition(enemyBody.position + (movement * Time.fixedDeltaTime));
+    //    }
+    //    if (movement != Vector3.zero) {
+    //        enemyBody.rotation = Quaternion.LookRotation(movement);
+    //    }
+    //}
 
-    public void onActiveFrameStart() {
-        //have if statements to see which ability to play here
-        if(currentAttack == "Pounce"){
-            pounceCollider.SetActive(true);
-        }
-    }
-    public void onActiveFrameEnd() {
-        state = BunnyState.Idle;
-        if(currentAttack == "Pounce"){
-            pounceCollider.SetActive(false);
-            activeClip.animator.SetBool("Pounce", false);
-        }
-    }
-    public void onAttackCancelFrameStart() {
-        actionState = ActionState.AttackCancelable;
-        //have it so that it can cast another attack after the last attack
-        //if it wants to
-    }
-    public void onAttackCancelFrameEnd() {
-        if (actionState == ActionState.AttackCancelable) actionState = ActionState.Inactionable;
-    }
-    public void onAllCancelFrameStart(){}
-    public void onAllCancelFrameEnd(){}
-    public void onLastFrameStart(){}
-    public void onLastFrameEnd(){
-        state = BunnyState.Idle;
-        activeClip.animator.SetBool("Pounce", false);
-    }
+    //public void enemyAction(){
+    //    //if off ability cooldown can use ability depending on chance to use that ability
+    //    isAttacking = true;
+    //    Debug.Log("Pouncing!");
+    //    useAbility(0);
+    //    //Since the frame handler doesn't seem to be working, we'll play the animnation a different way, with no hitbox.
+    //    //animator.SetBool("Pounce", true);
+    //    //animator.SetBool("Moving", false);
+    //    postActionCooldown = abilities[0].abilityCooldown;
+        
+    //}
 
-    void Awake()
-    {
-        pounceClip.initialize();
-        pounceChecker.initialize(this, pounceClip);
+    //private void useAbility(int abilityNum){
+    //    handleAttacks(abilities[abilityNum]);
+    //    /*
+    //    //first check what type of ability it is and will do stuff depending on type of ability
+    //    if(abilities[abilityNum].abilityType == "Movement"){
+    //        animator.SetBool("MovementAttack", true);
+    //        checkCollision(abilities[abilityNum].abilityDamage);
+    //        StartCoroutine(waitForAnimation("MovementAttack"));
+    //    }*/
+    //    //have other ability types as else if statments and we can add simple code to deal damage correctly. 
+    //}
 
-        activeChecker = pounceChecker;
-        activeClip = pounceClip;
-    }
+    //public void onActiveFrameStart() {
+    //    //have if statements to see which ability to play here
+    //    if(currentAttack == "Pounce"){
+    //        pounceCollider.SetActive(true);
+    //    }
+    //}
+    //public void onActiveFrameEnd() {
+    //    state = BunnyState.Idle;
+    //    if(currentAttack == "Pounce"){
+    //        pounceCollider.SetActive(false);
+    //        //activeClip.animator.SetBool("Pounce", false); //I feel like having this here is wrong...
+    //    }
+    //}
+    //public void onAttackCancelFrameStart() {
+    //    actionState = ActionState.AttackCancelable;
+    //    //have it so that it can cast another attack after the last attack
+    //    //if it wants to
+    //}
+    //public void onAttackCancelFrameEnd() {
+    //    if (actionState == ActionState.AttackCancelable) actionState = ActionState.Inactionable;
+    //}
+    //public void onAllCancelFrameStart(){}
+    //public void onAllCancelFrameEnd(){}
+    //public void onLastFrameStart(){}
+    //public void onLastFrameEnd(){ //I think called when the animation ends.
+    //    state = BunnyState.Idle;
+    //    activeClip.animator.SetBool("Pounce", false);
+    //    isAttacking = false;
+    //    actionCooldownTimer = postActionCooldown; //Cooldown starts AFTER the action finishes
+    //}
 
-    public void updateMe(float time) // yes we need this
-    {
-        activeChecker.checkFrames();
+    //void Awake(){
+    //    pounceClip.initialize();
+    //    pounceChecker.initialize(this, pounceClip);
 
-        if (actionState == ActionState.Inactionable){}
-        if (actionState == ActionState.AttackCancelable)
-        {
-            actionState = ActionState.Inactionable;
-        }
-    }
-    public void handleAttacks(Ability ability)
-    {
-        int frames = 0; // amount of frames in anim 
-        actionState = ActionState.Inactionable;
-        state = BunnyState.Attacking;
+    //    activeChecker = pounceChecker;
+    //    activeClip = pounceClip;
+    //}
 
-        currentAttack = ability.abilityName;
+    //public void updateMe(float time){ // yes we need this
+    //    activeChecker.checkFrames();
 
-        if (currentAttack == "Pounce")
-        {
-            activeChecker = pounceChecker;
-            activeClip = pounceClip;
-        }
-        frames = activeClip.getTotalFrames();
-        activeClip.animator.SetBool(ability.abilityName, true);
-        activeClip.animator.Play(activeClip.animatorStateName, 0);
-        activeChecker.initCheck();
-        activeChecker.checkFrames();
-    }
+    //    if (actionState == ActionState.Inactionable){}
+    //    if (actionState == ActionState.AttackCancelable)
+    //    {
+    //        actionState = ActionState.Inactionable;
+    //    }
+    //}
 
+    //public void handleAttacks(Ability ability){
+    //    int frames = 0; // amount of frames in anim 
+    //    actionState = ActionState.Inactionable;
+    //    state = BunnyState.Attacking;
+
+    //    currentAttack = ability.abilityName;
+
+    //    if (currentAttack == "Pounce")
+    //    {
+    //        activeChecker = pounceChecker; //I believe this checks each frame to see if the hitbox should be active
+    //        activeClip = pounceClip; //I believe this is the animation clip, though the variable is private and unassigned
+    //    }
+    //    frames = activeClip.getTotalFrames();
+    //    activeClip.animator.SetBool(ability.abilityName, true); //<- These two statements might be the cause? Would have to read over frame checker doc
+    //    activeClip.animator.Play(activeClip.animatorStateName, 0); //<-
+    //    activeChecker.initCheck();
+    //    activeChecker.checkFrames();
+    //    //All of these seem to match what is in the Golem code
+    //}
 }

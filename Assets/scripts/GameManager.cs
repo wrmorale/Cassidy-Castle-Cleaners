@@ -26,6 +26,7 @@ public class Ability{
 public class GameManager : MonoBehaviour{
     public static GameManager instance;
 
+    public bool disableLosing = false;
     public float timer;
     public Text timerText;
     public bool roomCleared;
@@ -183,7 +184,10 @@ public class GameManager : MonoBehaviour{
             playerStats.lives--;
             //Debug.Log("You're Dead, Loser");
             //here we could insert a scene jump to a losing scene
-            levelLoader.LoadTargetLevel("Loss_scene");
+            if (!disableLosing)
+            {
+                levelLoader.LoadTargetLevel("Loss_scene");
+            }
         }
         if (enemies.Length == 0 && dustPiles.Length == 0 && !roomCleared){
             roomCleared = true;
