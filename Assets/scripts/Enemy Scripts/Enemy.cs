@@ -54,28 +54,24 @@ public class Enemy : MonoBehaviour
 
     void Update(){
         /*BIG PROBLEM: Update stops working entirely if there are errors in the game manager*/
-        
-        
 
-        //// Check for nearby dust piles that need healing
-        //foreach (DustPile dustPile in dustPiles) {
-        //    if (dustPile.health < dustPile.maxHealth) {
-        //        float distance = Vector3.Distance(transform.position, dustPile.transform.position);
-        //        if (distance <= detectionRange) {//check if dust pile doesn't have full health and is nearby
-        //            dustPile.IncreaseHealth(healingSpeed * Time.deltaTime);
-        //        }
-        //    }
-        //}
+        // Check for nearby dust piles that need healing
+        foreach (DustPile dustPile in dustPiles) {
+            if (dustPile.health < dustPile.maxHealth) {
+                float distance = Vector3.Distance(transform.position, dustPile.transform.position);
+                if (distance <= detectionRange) {//check if dust pile doesn't have full health and is nearby
+                    dustPile.IncreaseHealth(healingSpeed * Time.deltaTime);
+                }
+            }
+        }
 
-        //// Check if we need to generate a new dust pile
-        //if (dustPiles.Count < maxDustPiles) {
-        //    GameObject newDustPile = Instantiate(dustPilePrefab, transform.position + new Vector3(Random.Range(-1.0f, 1.0f), 0, Random.Range(-1.0f, 1.0f)), Quaternion.identity);
-        //    DustPile newDustPileScript = newDustPile.GetComponent<DustPile>();
-        //    newDustPileScript.SetHealth(0.1f); // set a low starting health
-        //    dustPiles.Add(newDustPileScript);
-        //}
-
-        
+        // Check if we need to generate a new dust pile
+        if (dustPiles.Count < maxDustPiles) {
+            GameObject newDustPile = Instantiate(dustPilePrefab, transform.position + new Vector3(Random.Range(-1.0f, 1.0f), 0, Random.Range(-1.0f, 1.0f)), Quaternion.identity);
+            DustPile newDustPileScript = newDustPile.GetComponent<DustPile>();
+            newDustPileScript.SetHealth(0.1f); // set a low starting health
+            dustPiles.Add(newDustPileScript);
+        }
     }
 
     //Changed to virtual so that boss mirrors can override this
