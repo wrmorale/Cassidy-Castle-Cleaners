@@ -36,7 +36,7 @@ public class TargetLock : MonoBehaviour
     private int channeledAbility;
     
     private float maxAngle;
-    private Transform currentTarget;
+    public Transform currentTarget;
     private float mouseX;
     private float mouseY;
 
@@ -65,8 +65,7 @@ public class TargetLock : MonoBehaviour
         else
         {
             // handles being locked on a target
-            // TODO: rename this function to something better
-            NewInputTarget(currentTarget); 
+            LookAtTarget(currentTarget); 
         }
 
         if (aimIcon) 
@@ -106,7 +105,7 @@ public class TargetLock : MonoBehaviour
         }
     }
 
-    private void NewInputTarget(Transform target) // sets new input value.
+    private void LookAtTarget(Transform target) // sets new input value.
     {
         if (!currentTarget) return;
 
@@ -123,10 +122,13 @@ public class TargetLock : MonoBehaviour
         }
         //Debug.Log(player.ParseAbilityInput());
         channeledAbility = player.ParseAbilityInput();
+        /*Weird that this doesn't seem to work for abilities*/
         if (player.attackAction.triggered ||
             channeledAbility != -1)
         {
             // turn player towards enemy when they attack.
+            /*Probably why turning towards the enemy feels slightly janky, but it works*/
+            Debug.Log("Redirected attack towards target");
             controller.transform.LookAt(currentTarget); 
         }
     }

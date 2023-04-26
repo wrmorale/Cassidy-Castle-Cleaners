@@ -9,32 +9,16 @@ using States;
 [RequireComponent(typeof(CharacterController), typeof(PlayerInput))]
 public class playerController : MonoBehaviour, IFrameCheckHandler
 {
-    [SerializeField]
-    public float playerSpeed = 2.5f;
+    [SerializeField] public float playerSpeed = 2.5f;
+    [SerializeField] private float walkSpeed = 1.5f;
+    [SerializeField] private float walkThreshold = 0.5f;
+    [SerializeField] private float jumpHeight = 1.0f;
+    [SerializeField] private float gravityValue = -9.81f;
+    [SerializeField] public float turnSmoothTime = 0.0f;
+    [SerializeField] private FrameParser jumpClip;
+    [SerializeField] private FrameChecker jumpFrameChecker;
 
-    [SerializeField]
-    private float walkSpeed = 1.5f;
-
-    [SerializeField]
-    private float walkThreshold = 0.5f;
-
-    [SerializeField]
-    private float jumpHeight = 1.0f;
-
-    [SerializeField]
-    private float gravityValue = -9.81f;
-
-    [SerializeField]
-    public float turnSmoothTime = 0.0f;
-
-    [SerializeField]
-    private FrameParser jumpClip;
-
-    [SerializeField]
-    private FrameChecker jumpFrameChecker;
-
-    [SerializeField]
-    private PlayerAbility[] playerAbilities = new PlayerAbility[4];
+    [SerializeField] private PlayerAbility[] playerAbilities = new PlayerAbility[4];
 
     private float turnSmoothVelocity;
 
@@ -42,6 +26,7 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
     public CharacterController controller;
     private PlayerInput playerInput;
     private BroomAttackManager attackManager;
+    TargetLock targetLock;
 
     [HideInInspector]
     public PlayerAbility activeAbility;
@@ -58,14 +43,8 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
 
     [HideInInspector]
     public InputAction moveAction;
-
-    [HideInInspector]
     public InputAction walkAction;
-
-    [HideInInspector]
     public InputAction jumpAction;
-
-    [HideInInspector]
     public InputAction attackAction;
 
     [HideInInspector]
@@ -138,6 +117,8 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
         jumpClip.initialize();
         jumpFrameChecker.initialize(this, jumpClip);
         SetState(States.PlayerStates.Idle);
+
+        targetLock = gameObject.GetComponent<TargetLock>();
     }
 
     void Update()
@@ -232,6 +213,9 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
         if (input.x != 0 || input.y != 0)
         { // if there is movement input
             bool walking = false;
+
+            /*Need to make this relative to the enemy position*/
+
             Vector3 move = new Vector3(input.x, 0, input.y);
             if (move.magnitude < walkThreshold || walkAction.triggered)
             {
@@ -239,7 +223,9 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
             }
 
             // store calculated model rotation
-            move = RotatePlayer(input);
+            /*On second thought, making movement relative to the enemy without also changing how the camera locks on would
+             be a bad idea. But I guess I could change the animations*/
+                move = RotatePlayer(input);
 
             if (walking)
             {
@@ -293,6 +279,11 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
 
     public void ActivateAbility()
     {
+        if (targetLock.currentTarget)
+        { //Face lock-on target if locked on
+            controller.transform.LookAt(targetLock.currentTarget);
+        }
+
         SetState(States.PlayerStates.Ability);
         activeAbility = playerAbilities[channeledAbility];
         activeAbility.Activate();
