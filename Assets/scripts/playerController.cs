@@ -292,16 +292,13 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
         activeAbility.Activate();
     }
 
-    //Returns distance to the current lock-on target
-    public float getDistanceToTarget()
+    //Returns a vector from player to the current lock-on target
+    public Vector3 toTargetPosition()
     {
         if (targetLock.currentTarget)
-        {
-            distanceToTaget = (targetLock.currentTarget.position - transform.position).magnitude;
-        }
+            return targetLock.currentTarget.position - transform.position;
         else
-            distanceToTaget = 3.0f;
-        return distanceToTaget;
+            return Vector3.zero;
     }
 
     public Vector3 RotatePlayer(Vector2 input)

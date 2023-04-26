@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bomb : Projectile
 {
     private Rigidbody body;
-    [HideInInspector] public float distanceToTarget = 3.0f;
+    [HideInInspector] public Vector3 toTarget = Vector3.zero;
     [SerializeField] private Explosion explosion;
     private void Awake()
     {
@@ -25,10 +25,22 @@ public class Bomb : Projectile
         Vector3 force = (Vector3.up + transform.forward);
         force.Normalize();
         force *= speed;
+        
+        if(toTarget != Vector3.zero)
+        {
+            float hDiscanceToTarget = new Vector3(toTarget.x, 0, toTarget.z).magnitude;
+            float hAdjustment = hDiscanceToTarget / 3.0f;
 
-        float adjustment = distanceToTarget / 3.0f;
-        force.x *= adjustment;
-        force.z *= adjustment;
+            if(hAdjustment >= 1.0)
+            {
+                force.x *= hAdjustment;
+                force.z *= hAdjustment;
+            }
+            else
+            {
+                force.y *= Mathf.Pow(hAdjustment, 2);
+            }
+        }
 
         body.AddForce(force);
     }
