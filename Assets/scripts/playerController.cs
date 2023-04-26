@@ -26,7 +26,8 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
     public CharacterController controller;
     private PlayerInput playerInput;
     private BroomAttackManager attackManager;
-    TargetLock targetLock;
+    TargetLock targetLock; /*Added for lock-on improvements*/
+    float distanceToTaget = 0.0f;
 
     [HideInInspector]
     public PlayerAbility activeAbility;
@@ -282,11 +283,25 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
         if (targetLock.currentTarget)
         { //Face lock-on target if locked on
             controller.transform.LookAt(targetLock.currentTarget);
+            
+            //Could also make it adjust to height as well...
         }
 
         SetState(States.PlayerStates.Ability);
         activeAbility = playerAbilities[channeledAbility];
         activeAbility.Activate();
+    }
+
+    //Returns distance to the current lock-on target
+    public float getDistanceToTarget()
+    {
+        if (targetLock.currentTarget)
+        {
+            distanceToTaget = (targetLock.currentTarget.position - transform.position).magnitude;
+        }
+        else
+            distanceToTaget = 3.0f;
+        return distanceToTaget;
     }
 
     public Vector3 RotatePlayer(Vector2 input)

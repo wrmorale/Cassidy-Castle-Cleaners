@@ -69,6 +69,7 @@ public class BleachBombTriggerable : PlayerAbility, IFrameCheckHandler
     {
         Bomb clone = Instantiate(projectile, bulletSpawn.position, Quaternion.LookRotation(heading));
         clone.Initialize(speed, lifetime, damage, stagger, heading);
+        clone.distanceToTarget = player.getDistanceToTarget();
         clone.launch();
     }
 
