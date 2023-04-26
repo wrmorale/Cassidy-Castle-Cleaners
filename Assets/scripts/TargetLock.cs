@@ -129,7 +129,11 @@ public class TargetLock : MonoBehaviour
             // turn player towards enemy when they attack.
             /*Probably why turning towards the enemy feels slightly janky, but it works*/
             Debug.Log("Redirected attack towards target");
-            controller.transform.LookAt(currentTarget); 
+
+            Quaternion newRotation = Quaternion.LookRotation(player.toTargetPosition(), controller.transform.up);
+            newRotation = Quaternion.Euler(0, newRotation.eulerAngles.y, 0);
+            controller.transform.rotation = newRotation;
+            //controller.transform.LookAt(currentTarget); //Old rotate method if we want it
         }
     }
 

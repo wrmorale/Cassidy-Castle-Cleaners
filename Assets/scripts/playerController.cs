@@ -282,7 +282,10 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
     {
         if (targetLock.currentTarget)
         { //Face lock-on target if locked on
-            controller.transform.LookAt(targetLock.currentTarget);
+
+            Quaternion newRotation = Quaternion.LookRotation(toTargetPosition(), controller.transform.up);
+            newRotation = Quaternion.Euler(0, newRotation.eulerAngles.y, 0);
+            controller.transform.rotation = newRotation;
             
             //Could also make it adjust to height as well...
         }
