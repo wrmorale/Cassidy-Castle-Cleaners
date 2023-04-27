@@ -75,8 +75,8 @@ MonoBehaviour:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 0
     specialCooldownEnds: 0
-  viewPosition: {x: 526.5, y: -6, z: 0}
-  viewScale: {x: 0.2842624, y: 0.2842624, z: 1}
+  viewPosition: {x: 730, y: -276, z: 0}
+  viewScale: {x: 0.65751624, y: 0.65751624, z: 1}
   references:
     version: 2
     RefIds:
@@ -500,7 +500,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: ce2fd44e6458e6a4aa733a921d6d7401
-        position: {x: -1646.2439, y: 1785.4998}
+        position: {x: -1674.4003, y: 1785.6001}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
