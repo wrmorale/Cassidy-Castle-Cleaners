@@ -279,7 +279,7 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
 
     public void ActivateAbility()
     {
-        if (targetLock.currentTarget) //To Do: Do NOT do this if ability = roll
+        if (targetLock.currentTarget && channeledAbility != 1) //To Do: Make roll not an ability so that this exception doesn't cause problem
         { //Face lock-on target if locked on
 
             Quaternion newRotation = Quaternion.LookRotation(toTargetPosition(), controller.transform.up);
