@@ -2374,7 +2374,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0.24568214, y: -0.21555056, z: 0.056133363, w: 0.9434126}
+  m_LocalRotation: {x: 0.24568215, y: -0.21555054, z: 0.056133363, w: 0.9434126}
   m_LocalPosition: {x: 4.535243, y: 3.367744, z: -0.21111326}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3644,11 +3644,6 @@ PrefabInstance:
       propertyPath: dustPilePrefab
       value: 
       objectReference: {fileID: 919132148348794008}
-    - target: {fileID: 7173823815757115312, guid: 943a96f1e11b1e94eb09a572eb234277,
-        type: 3}
-      propertyPath: attacks.Array.data[0].range
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 8327740662560138378, guid: 943a96f1e11b1e94eb09a572eb234277,
         type: 3}
       propertyPath: m_RootOrder
@@ -11888,7 +11883,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1201922360}
-  m_LocalRotation: {x: 0.24568212, y: -0.21555056, z: 0.056133363, w: 0.9434126}
+  m_LocalRotation: {x: 0.24568214, y: -0.21555054, z: 0.05613336, w: 0.9434126}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -12499,7 +12494,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh46168
+  m_Name: pb_Mesh34630
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

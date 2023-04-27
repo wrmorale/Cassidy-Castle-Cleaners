@@ -37,7 +37,7 @@ MonoBehaviour:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 0
     specialCooldownEnds: 0
-  viewPosition: {x: 493, y: 2, z: 0}
+  viewPosition: {x: 166, y: -240.5, z: 0}
   viewScale: {x: 0.7561437, y: 0.7561437, z: 1}
   references:
     version: 2
@@ -127,7 +127,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 4cbb02fed27fcec439c801081dab181d
-        position: {x: 333.48297, y: 602.6026}
+        position: {x: 333.5, y: 602.5}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -156,7 +156,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: dba9e335e958b1b4b9266ae9db31e2ff
-        position: {x: 149.59995, y: 602.39984}
+        position: {x: 149.49998, y: 602.5}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -164,7 +164,7 @@ MonoBehaviour:
         description: 
         drawGizmos: 0
         boolName: Moving
-        setTo: 1
+        setTo: 0
     - rid: 9070050151572963337
       type: {class: Selector, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:
@@ -204,7 +204,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 1fcb630237ba57d4785770aa1b749327
-        position: {x: -708.0781, y: 891.70197}
+        position: {x: -702.7102, y: 892}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -233,7 +233,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 8c8914f2208ad964e8c39dff43f064dd
-        position: {x: -303.2, y: 891.9999}
+        position: {x: -330.7725, y: 892}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0

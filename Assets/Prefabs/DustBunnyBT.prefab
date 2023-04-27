@@ -493,7 +493,7 @@ MonoBehaviour:
   currentHealth: 0
   aggroRange: 4
   movementSpeed: 0.4
-  rotationSpeed: 0
+  rotationSpeed: 3
   idleMovementRange: 2
   movement: {x: 0, y: 0, z: 0}
   enemyBody: {fileID: 8327740662560138379}
@@ -529,7 +529,7 @@ MonoBehaviour:
   attacks:
   - name: Pounce
     damage: 1
-    range: 2
+    range: 0.5
     hitbox: {fileID: 1670567562144362016}
     clip:
       animator: {fileID: 308640922255947236}
