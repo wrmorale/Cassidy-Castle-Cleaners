@@ -9812,6 +9812,8 @@ MonoBehaviour:
   minDistance: 0.1
   maxDistance: 3
   isTargeting: 0
+  currentTarget: {fileID: 0}
+  targetModelTrans: {fileID: 0}
 --- !u!54 &795224118 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 7428022771512999015, guid: 780a7481df1a48d4792aed7fd543ee02,
@@ -11826,7 +11828,7 @@ PrefabInstance:
     - target: {fileID: 2181674869418801407, guid: cabf16ecb10bda34d97b0117b67ace74,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.963
+      value: 9.553
       objectReference: {fileID: 0}
     - target: {fileID: 2181674869418801407, guid: cabf16ecb10bda34d97b0117b67ace74,
         type: 3}

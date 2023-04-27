@@ -75,8 +75,8 @@ MonoBehaviour:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 0
     specialCooldownEnds: 0
-  viewPosition: {x: 526.5, y: -6, z: 0}
-  viewScale: {x: 0.2842624, y: 0.2842624, z: 1}
+  viewPosition: {x: 553.5, y: -856, z: 0}
+  viewScale: {x: 1, y: 1, z: 1}
   references:
     version: 2
     RefIds:
@@ -86,7 +86,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: aa51c18e-54db-4976-8537-78ffe575fc33
-        position: {x: 34.49995, y: 313.14795}
+        position: {x: -0.48025894, y: 409.2653}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -101,7 +101,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: ba12defdf437b8f47a041bd2abaf0755
-        position: {x: 61.538757, y: 1598}
+        position: {x: 59.500034, y: 1609.9772}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -119,7 +119,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: efe94f8aedb17c947ab954a1dd411995
-        position: {x: -255.16798, y: 829.80115}
+        position: {x: -330.00012, y: 986.99994}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -136,7 +136,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: ed4f8de9c247e4645bff4e7204942719
-        position: {x: 231.53867, y: 1602.5}
+        position: {x: 229.50003, y: 1614.4772}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -178,7 +178,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 69aa471a98102124bb60c575bfabfaba
-        position: {x: 34.49995, y: 419.48856}
+        position: {x: -0.48025894, y: 515.76526}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -195,7 +195,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 5f421f6d2d6560849816ef8ef3376fa3
-        position: {x: 34.500004, y: 526.5}
+        position: {x: -0.48025894, y: 622.76526}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -211,7 +211,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 782624a5f7e1c6d4a8091085e5a7d33a
-        position: {x: 291.49994, y: 668}
+        position: {x: 324.73047, y: 764.19525}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -227,7 +227,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: c183961588909e9458aa7d06ca3a6aef
-        position: {x: 553.5, y: 1105}
+        position: {x: 538.99976, y: 1152.9999}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -244,7 +244,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: decb0bd4ea4c93d43baa098c49b642e7
-        position: {x: 366.5, y: 1273}
+        position: {x: 351.9998, y: 1320.9999}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -259,7 +259,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: d267b3be3e15f29458a822d7b7d7b525
-        position: {x: 553.5, y: 1425.5}
+        position: {x: 538.99976, y: 1473.4999}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -272,7 +272,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 64c72bb25a6e56745a0b001cd929a72a
-        position: {x: 216.49995, y: 815.99994}
+        position: {x: 249.73051, y: 912.19525}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -287,7 +287,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: ebd2716ec99b14b48b717f48a33a626c
-        position: {x: 462.5, y: 1351.5}
+        position: {x: 447.99976, y: 1399.4999}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -302,7 +302,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: e045b7d7f2808984a9be3f6f3f35ee7f
-        position: {x: -64.8, y: 1192.8}
+        position: {x: -104.99998, y: 1152.9773}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -321,7 +321,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: d2fb5dc2328d2cf47b9719bc525c22be
-        position: {x: -1427.7439, y: 1184.9998}
+        position: {x: -1391.5, y: 1141}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -340,7 +340,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: fc8a9aefcc6307241a7dba11d3deb3a2
-        position: {x: -1647.2439, y: 1361.4998}
+        position: {x: -1611, y: 1317.5}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -354,7 +354,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 5790ce4f4cf8bd64f949cfd1402657d6
-        position: {x: -1167.7439, y: 1683.4996}
+        position: {x: -1131.5, y: 1639.5}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -368,7 +368,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: a1592f941328cb24ca85768b7989161f
-        position: {x: -1449.2439, y: 1360.9998}
+        position: {x: -1413, y: 1317}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -383,7 +383,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: a8cf2c30022ba1f438661ce042ae6814
-        position: {x: -1092.7439, y: 1532.4998}
+        position: {x: -1056.5, y: 1488.5}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -399,7 +399,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: b80c56c4a17a35e478586ce40ccb184f
-        position: {x: -994.74396, y: 1683.4996}
+        position: {x: -958.5, y: 1639.5}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -413,7 +413,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 681d6a20b6077734fa0a34d86f445ddc
-        position: {x: -216, y: 1388.5}
+        position: {x: -217.99997, y: 1400.4772}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -426,7 +426,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: b4619ec357eab7e44a5f148246be9e50
-        position: {x: -1092.5002, y: 1361.0002}
+        position: {x: -1056.5, y: 1317}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -440,7 +440,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: c6098185a52ba4443abb0374f9d6d34b
-        position: {x: -179.99994, y: 668}
+        position: {x: -330.00012, y: 836}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -455,7 +455,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 8c9d57bae30ffe74799fe636ac7775d2
-        position: {x: 388.43063, y: 792}
+        position: {x: 421.7305, y: 888.19525}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -470,7 +470,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 98cda56a634cd8748b501c962528a4a2
-        position: {x: 459.42505, y: 922.87506}
+        position: {x: 492.7305, y: 1019.19525}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -484,7 +484,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 6f9ee64b632479e419cf9c3477375bfa
-        position: {x: -1599.2439, y: 1666.4998}
+        position: {x: -1563, y: 1622.5}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -500,7 +500,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: ce2fd44e6458e6a4aa733a921d6d7401
-        position: {x: -1646.2439, y: 1785.4998}
+        position: {x: -1610, y: 1741.5}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -514,7 +514,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 99d021a98c2c0364884953f3c5ce2a80
-        position: {x: -1599.2439, y: 1860.9998}
+        position: {x: -1563, y: 1817}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -528,7 +528,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 540036d15c8027c4092bf04b40e262fc
-        position: {x: 47.03865, y: 1793}
+        position: {x: 45.000008, y: 1804.9772}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -544,7 +544,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 56729d490f6296a48b90f2e0b23cdcf0
-        position: {x: 122.03865, y: 1928.5}
+        position: {x: 120.00003, y: 1940.4773}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -560,7 +560,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 3771800f1defad746ba2727d349f7348
-        position: {x: 47.03865, y: 2047.5}
+        position: {x: 45.000008, y: 2059.4773}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -574,7 +574,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 2b11d6c4a1998f44ab237cf8443889aa
-        position: {x: 197.03867, y: 2047.5}
+        position: {x: 195, y: 2059.4773}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -589,7 +589,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: d6c8bcb19d725a94fac2f4eadf87ff28
-        position: {x: -191.5, y: 1452.5}
+        position: {x: -193.49994, y: 1464.4773}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -603,7 +603,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 9a8e1c9e1f67d0f43907eaa904911fdf
-        position: {x: -297.9613, y: 1793}
+        position: {x: -299.99997, y: 1804.9772}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -611,14 +611,14 @@ MonoBehaviour:
         description: This causes a chance for the golem to decided not to dash, but
           the dash cooldown will still start.
         drawGizmos: 0
-        chanceOfFailure: 0.7
+        chanceOfFailure: 0.3
     - rid: 2088461348826775554
       type: {class: Selector, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:
         state: 0
         started: 0
         guid: 950cff4b10906434fbbed9d599d1f9d6
-        position: {x: 136.53876, y: 1445.5}
+        position: {x: 134.5, y: 1457.4773}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -634,7 +634,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: f9171bd8617c1794ca8fdd4c7459f144
-        position: {x: -1502.7439, y: 1532.4998}
+        position: {x: -1466.5, y: 1488.5}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -651,7 +651,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: dd9405de4cae46545910bae4a6ced121
-        position: {x: -1378.9999, y: 1666.5001}
+        position: {x: -1343, y: 1622.5}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -667,7 +667,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 859bc9d0d7ab8074f8da932cae5f2a4d
-        position: {x: -1427.7439, y: 1785.4998}
+        position: {x: -1391.5, y: 1741.5}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -681,7 +681,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: cc21c54e90401d941b749e923b5421c0
-        position: {x: -1379.2439, y: 1856.9998}
+        position: {x: -1343, y: 1813}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -695,7 +695,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: c325779eaf0aa7446ae8d32c7d9d6cea
-        position: {x: -1824.3777, y: 1360.9998}
+        position: {x: -1788.5, y: 1317}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -709,7 +709,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 92b6dc05904315e41af7cc481c165c17
-        position: {x: -1277.7439, y: 1380.4996}
+        position: {x: -1241.5, y: 1336.5}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -725,7 +725,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 7cf5205dd09565541a5ce668397e93c0
-        position: {x: -1796, y: 1666.5001}
+        position: {x: -1760, y: 1622.5}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -844,7 +844,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 2c06e6a981a16df4fb93eee69658467d
-        position: {x: -235, y: 1324.5}
+        position: {x: -236.99994, y: 1336.4773}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -858,7 +858,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 7b225a914a6d1ad4eb53e66aa8f03381
-        position: {x: -120.46126, y: 1793}
+        position: {x: -122.49998, y: 1804.9772}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -873,7 +873,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: fe690bcf0305ab54d9a8345913b1eb0e
-        position: {x: -41.49994, y: 1452.5}
+        position: {x: -43.49995, y: 1464.4773}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -887,7 +887,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: b4dde07497c52614989f39da8f3b38d6
-        position: {x: -45.461258, y: 1928.5}
+        position: {x: -47.49995, y: 1940.4773}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -901,7 +901,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: be04bef71b797a14eafdf36883cb9d6e
-        position: {x: 211.53876, y: 1793}
+        position: {x: 209.50003, y: 1804.9772}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0

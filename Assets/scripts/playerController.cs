@@ -26,8 +26,7 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
     public CharacterController controller;
     private PlayerInput playerInput;
     private BroomAttackManager attackManager;
-    TargetLock targetLock; /*Added for lock-on improvements*/
-    float distanceToTaget = 0.0f;
+    public TargetLock targetLock; /*Added for lock-on improvements*/
 
     [HideInInspector]
     public PlayerAbility activeAbility;
@@ -280,7 +279,7 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
 
     public void ActivateAbility()
     {
-        if (targetLock.currentTarget)
+        if (targetLock.currentTarget) //To Do: Do NOT do this if ability = roll
         { //Face lock-on target if locked on
 
             Quaternion newRotation = Quaternion.LookRotation(toTargetPosition(), controller.transform.up);
@@ -299,7 +298,7 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
     public Vector3 toTargetPosition()
     {
         if (targetLock.currentTarget)
-            return targetLock.currentTarget.position - transform.position;
+            return targetLock.currentTarget.position - transform.position; //Should replace transform with bullet spawn position
         else
             return Vector3.zero;
     }
