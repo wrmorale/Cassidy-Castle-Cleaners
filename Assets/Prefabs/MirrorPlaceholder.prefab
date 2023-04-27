@@ -249,9 +249,9 @@ MonoBehaviour:
   matInactive: {fileID: 2100000, guid: 8b0c50355814bb64191ae6c59e49cc6a, type: 2}
   matPosessed: {fileID: 2100000, guid: a964d1fcb50248643a1290f32ccccd25, type: 2}
   projectilePrefab: {fileID: 8625248510964038548}
-  projectileSpeed: 1.57
+  projectileSpeed: 2
   projectileLifetime: 2
-  projectileDamage: 3
+  projectileDamage: 4
   bulletSpawn: {fileID: 1581469713310629160}
 --- !u!114 &5616337374384034975
 MonoBehaviour:
@@ -632,7 +632,7 @@ PrefabInstance:
     - target: {fileID: 8732169454410375250, guid: 5a08fdb5a9c9d3c4c9f8f13ce3c6b979,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8732169454410375250, guid: 5a08fdb5a9c9d3c4c9f8f13ce3c6b979,
         type: 3}

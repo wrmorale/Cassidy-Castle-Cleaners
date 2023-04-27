@@ -18,7 +18,8 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
     [SerializeField] public float maxHealth = 1.0f; //Shouldn't these be integers?
     float currentHealth;
     float healthPercent = 1.0f;
-    public float projectileAttackDuration = 10.0f;
+    float projectileAttackDuration = 5.0f;
+    float projectilesPerSec = 2.0f;
 
     /*I should probably experiment a bit with the golem before I give the others their tasks...*/
     [Header("Aggro Status")]
@@ -126,15 +127,15 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
         }
     }
     
-    public IEnumerator projectileAttack(float duration, float projectilesPerSec) {
+    public IEnumerator projectileAttack() {
         Projectile projectile = currPosessedMirror.projectilePrefab; 
         float secondsPerProjectile = 1.0f / projectilesPerSec; // Calculate the time between each projectile
-        float projectileTimer = secondsPerProjectile; // Tracks time since last projectile was fired
         float elapsedTime = 0.0f; // Tracks time since the attack started
-        while (elapsedTime < duration) {
+        while (elapsedTime < projectileAttackDuration) {
+            setAllMirrorAnimations("Shooting", true);
             foreach (MirrorBossMirror mirror in mirrors) {
-                Animator anim = mirror.GetComponentInChildren<Animator>();
-                anim.SetBool("Shooting", true);
+                //Animator anim = mirror.GetComponentInChildren<Animator>();
+                //anim.SetBool("Shooting", true);
                 // Instantiate a clone of the projectile prefab at the mirror's position and rotation
                 Projectile projectileClone = Instantiate(projectile, mirror.transform.position, mirror.transform.rotation);
                 Vector3 direction = mirror.transform.right;
@@ -142,13 +143,17 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
                 projectileClone.gameObject.SetActive(true);
                 projectileClone.Initialize(mirror.projectileSpeed, mirror.projectileLifetime, mirror.projectileDamage, 1f, direction);
             }
-            yield return new WaitForSeconds(secondsPerProjectile); // Pause the coroutine until the next frame
+            yield return new WaitForSeconds(secondsPerProjectile); // Waits until shooting next projectile
             elapsedTime += secondsPerProjectile; // Increment the elapsed time
         }
         isCoroutineRunning = false;
+        setAllMirrorAnimations("Shooting", false);
+    }
+
+    public void setAllMirrorAnimations(string animName, bool setTo){
         foreach (MirrorBossMirror mirror in mirrors) {
             Animator anim = mirror.GetComponentInChildren<Animator>();
-            anim.SetBool("Shooting", false);
+            anim.SetBool(animName, setTo);
         }
     }
 }

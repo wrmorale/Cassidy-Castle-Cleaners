@@ -11,7 +11,7 @@ public class BossShootProjectiles : ActionNode
     protected override void OnStart() {
         MirrorBossMain mirrorBossRoot = context.mirrorBossScript;
         mirrorBossRoot.isCoroutineRunning = true;
-        mirrorBossRoot.StartCoroutine(mirrorBossRoot.projectileAttack(6.0f, 1f));
+        mirrorBossRoot.StartCoroutine(mirrorBossRoot.projectileAttack());
     }
 
     protected override void OnStop() {
