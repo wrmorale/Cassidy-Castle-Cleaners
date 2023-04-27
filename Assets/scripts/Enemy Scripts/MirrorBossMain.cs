@@ -18,13 +18,15 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
     [SerializeField] public float maxHealth = 1.0f; //Shouldn't these be integers?
     float currentHealth;
     float healthPercent = 1.0f;
-    public float projectileAttackDuration = 5.0f;
+    public float projectileAttackDuration = 10.0f;
 
     /*I should probably experiment a bit with the golem before I give the others their tasks...*/
     [Header("Aggro Status")]
     public bool aggro = false;
     public Transform player;
     [HideInInspector] public int phase; //1 = phase 1, 2 = spawn enemies, 3 = final phase, 4+ = defeated
+
+    public bool isCoroutineRunning = false;
 
     // Start is called before the first frame update
     void Start()
@@ -123,37 +125,30 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
             Debug.LogWarning("Boss cannot be hurt right now!");
         }
     }
-
-    //Starts the projectile attack
-    public void projectileAttack(){
-        projectileAttackDuration = 2.0f; //temp ability duration, this could be set to the animation time
-        float timeSinceLastProjectile = 0.0f; // Tracks time since last projectile was fired
-        float projectilesPerSec = 2;  //temporary attack speed
+    
+    public IEnumerator projectileAttack(float duration, float projectilesPerSec) {
+        Projectile projectile = currPosessedMirror.projectilePrefab; 
         float secondsPerProjectile = 1.0f / projectilesPerSec; // Calculate the time between each projectile
-        GameObject projectile = currPosessedMirror.projectilePrefab; 
-        while(projectileAttackDuration >= 0.0f){
-            projectileAttackDuration -= Time.deltaTime;
-            timeSinceLastProjectile += Time.deltaTime;
-            if (timeSinceLastProjectile >= secondsPerProjectile) {
-                foreach(MirrorBossMirror mirror in mirrors){
-                    // Instantiate a clone of the projectile prefab at the mirror's position and rotation
-                    GameObject projectileClone = Instantiate(projectile, mirror.transform.position, mirror.transform.rotation);
-                    // Activate the clone
-                    projectileClone.SetActive(true);
-                }
-                // Reset the time since the last projectile was fired
-                timeSinceLastProjectile -= secondsPerProjectile;
+        float projectileTimer = secondsPerProjectile; // Tracks time since last projectile was fired
+        float elapsedTime = 0.0f; // Tracks time since the attack started
+        while (elapsedTime < duration) {
+            foreach (MirrorBossMirror mirror in mirrors) {
+                Animator anim = mirror.GetComponentInChildren<Animator>();
+                anim.SetBool("Shooting", true);
+                // Instantiate a clone of the projectile prefab at the mirror's position and rotation
+                Projectile projectileClone = Instantiate(projectile, mirror.transform.position, mirror.transform.rotation);
+                Vector3 direction = mirror.transform.right;
+                // Activate and Initialize the clone
+                projectileClone.gameObject.SetActive(true);
+                projectileClone.Initialize(mirror.projectileSpeed, mirror.projectileLifetime, mirror.projectileDamage, 1f, direction);
             }
+            yield return new WaitForSeconds(secondsPerProjectile); // Pause the coroutine until the next frame
+            elapsedTime += secondsPerProjectile; // Increment the elapsed time
         }
-        /*while(projectileAttackDuration >= 0.0){
-            projectileAttackDuration -= Time.deltaTime;
-            foreach(MirrorBossMirror mirror in mirrors){
-                float projectilesPerSec = 2; //temporary attack speed
-                //Make projectiles spawn at the rate of the projectilesPerSec
-                    
-                // projectiles spawn pattern
-            }
-        }*/
-        
+        isCoroutineRunning = false;
+        foreach (MirrorBossMirror mirror in mirrors) {
+            Animator anim = mirror.GetComponentInChildren<Animator>();
+            anim.SetBool("Shooting", false);
+        }
     }
 }

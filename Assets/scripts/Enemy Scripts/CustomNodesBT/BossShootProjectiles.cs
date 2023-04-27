@@ -9,6 +9,9 @@ public class BossShootProjectiles : ActionNode
     //Make ALL mirrors fire projectiles for X seconds at a rate of X projectiles per second
 
     protected override void OnStart() {
+        MirrorBossMain mirrorBossRoot = context.mirrorBossScript;
+        mirrorBossRoot.isCoroutineRunning = true;
+        mirrorBossRoot.StartCoroutine(mirrorBossRoot.projectileAttack(6.0f, 1f));
     }
 
     protected override void OnStop() {
@@ -16,10 +19,11 @@ public class BossShootProjectiles : ActionNode
 
     protected override State OnUpdate() {
         MirrorBossMain mirrorBossRoot = context.mirrorBossScript;
-        mirrorBossRoot.projectileAttack();
-        if(mirrorBossRoot.projectileAttackDuration <= 0.0f){
+        if(mirrorBossRoot.isCoroutineRunning){
+            return State.Running;
+        }
+        else{
             return State.Success;
         }
-        return State.Running;
     }
 }

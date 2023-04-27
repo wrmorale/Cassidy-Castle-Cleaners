@@ -8,9 +8,15 @@ public class MirrorBossMirror : Enemy
     public bool entityPossessing = false;
     public Material matInactive;
     public Material matPosessed;
-    public GameObject projectilePrefab;
     MeshRenderer mesh;
     MirrorBossMain mainScript;
+
+    [Header("Projectile Stats")]
+    [SerializeField] public Projectile projectilePrefab;
+    [SerializeField] public float projectileSpeed;
+    [SerializeField] public float projectileLifetime;
+    [SerializeField] public float projectileDamage;
+    public Transform bulletSpawn;
 
     // Start is called before the first frame update
     void Start()
@@ -50,9 +56,5 @@ public class MirrorBossMirror : Enemy
             Debug.LogWarning("This mirror is not posessed!");
         }
     }
-
-    public void slamTest(){
-        
-    }
-
+    
 }

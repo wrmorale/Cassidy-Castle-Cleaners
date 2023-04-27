@@ -93,6 +93,19 @@ public class AttackManager : MonoBehaviour, IFrameCheckHandler
             attacking = true;
         }
     }
+    public void handleRangedAttacks(string attackName)
+    {
+        actionState = ActionState.Inactionable;
+        currentAttack = getAttack(attackName);
+        if (currentAttack != null)
+        {
+            currentAttack.clip.animator.SetBool(currentAttack.name, true);
+            //currentAttack.clip.animator.Play(currentAttack.clip.animatorStateName, 0);
+            currentAttack.checker.initCheck();
+            currentAttack.checker.checkFrames();
+            attacking = true;
+        }
+    }
 }
 
 [System.Serializable]
