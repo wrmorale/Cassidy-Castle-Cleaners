@@ -186,7 +186,7 @@ public class GameManager : MonoBehaviour{
             playerStats.lives--;
             //Debug.Log("You're Dead, Loser");
             //here we could insert a scene jump to a losing scene
-            mana = 0;
+            mana = 0;//reset mana variable just in case player plays again
             levelLoader.LoadTargetLevel("Loss_scene");
         }
         if (enemies.Length == 0 && dustPiles.Length == 0 && !roomCleared){
