@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,8 +19,11 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
     [SerializeField] public float maxHealth = 1.0f; //Shouldn't these be integers?
     float currentHealth;
     float healthPercent = 1.0f;
-    float projectileAttackDuration = 5.0f;
-    float projectilesPerSec = 2.0f;
+
+    [Header("Projectile Stats")]
+    [SerializeField] float projectileAttackDuration = 5.0f;
+    [SerializeField] float projectilesPerSec = 3.0f;
+    [SerializeField] float projectileMaxAngle = 25.0f;
 
     /*I should probably experiment a bit with the golem before I give the others their tasks...*/
     [Header("Aggro Status")]
@@ -84,7 +88,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
             }
         }
 
-        int choice = (Random.Range(0, mirrorIndicies.Count));
+        int choice = (UnityEngine.Random.Range(0, mirrorIndicies.Count));
         PosessMirror(mirrorIndicies[choice]);
     }
 
@@ -128,20 +132,22 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
     }
     
     public IEnumerator projectileAttack() {
-        Projectile projectile = currPosessedMirror.projectilePrefab; 
+        Projectile projectile = currPosessedMirror.projectilePrefab;
         float secondsPerProjectile = 1.0f / projectilesPerSec; // Calculate the time between each projectile
         float elapsedTime = 0.0f; // Tracks time since the attack started
+        int patternChoice = (UnityEngine.Random.Range(0, 1)); //chooses randome patterm
         while (elapsedTime < projectileAttackDuration) {
             setAllMirrorAnimations("Shooting", true);
             foreach (MirrorBossMirror mirror in mirrors) {
-                //Animator anim = mirror.GetComponentInChildren<Animator>();
-                //anim.SetBool("Shooting", true);
+                Vector3 spawnPosition = mirror.transform.position;
+                spawnPosition.y -= 0.5f; //sets spawn position slightly lower than center of mirror
                 // Instantiate a clone of the projectile prefab at the mirror's position and rotation
-                Projectile projectileClone = Instantiate(projectile, mirror.transform.position, mirror.transform.rotation);
-                Vector3 direction = mirror.transform.right;
-                // Activate and Initialize the clone
+                Projectile projectileClone = Instantiate(projectile, spawnPosition, mirror.transform.rotation);
+                float angleStep = projectilePattern(patternChoice, elapsedTime); //gets the angle to shoot depending on pattern
+                Vector3 stepVector = Quaternion.AngleAxis(angleStep, Vector3.up) * mirror.transform.right; //calculates the angle to shoot
+                // Initialize and Activate the clone
+                projectileClone.Initialize(mirror.projectileSpeed, mirror.projectileLifetime, mirror.projectileDamage, 1f, stepVector);
                 projectileClone.gameObject.SetActive(true);
-                projectileClone.Initialize(mirror.projectileSpeed, mirror.projectileLifetime, mirror.projectileDamage, 1f, direction);
             }
             yield return new WaitForSeconds(secondsPerProjectile); // Waits until shooting next projectile
             elapsedTime += secondsPerProjectile; // Increment the elapsed time
@@ -155,5 +161,16 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
             Animator anim = mirror.GetComponentInChildren<Animator>();
             anim.SetBool(animName, setTo);
         }
+    }
+
+    public float projectilePattern(int patternNum, float projectileCounter){
+        if(patternNum == 0){ //shoots in a cos wave pattern
+            return (float)Math.Cos(projectileCounter) * projectileMaxAngle;
+        }
+        else if(patternNum == 1){ //shoots randomly
+            return UnityEngine.Random.Range(-projectileMaxAngle, projectileMaxAngle);
+        }
+
+        return 0.0f;
     }
 }
