@@ -13,6 +13,7 @@ public class BleachBombTriggerable : PlayerAbility, IFrameCheckHandler
     [SerializeField] private float lifetime = 1f;
     [SerializeField] private float damage = 7f;
     [SerializeField] private float stagger = 1f;
+    [SerializeField] private float cost = 50f;
     [SerializeField] private FrameParser clip;
     [SerializeField] private FrameChecker frameChecker;
     
@@ -21,7 +22,12 @@ public class BleachBombTriggerable : PlayerAbility, IFrameCheckHandler
     private aState state;
     public void onActiveFrameStart()
     {
-        SpawnProjectile(playerForward);
+        if(GameManager.instance.mana >= cost){
+            GameManager.instance.mana -= cost;//mana reduced when using ability
+            SpawnProjectile(playerForward);
+        }else{
+            Debug.Log("Bleach Bomb: Not Enough Mana");
+        }
     }
     public void onActiveFrameEnd()
     {

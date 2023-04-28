@@ -16,6 +16,7 @@ public class FeatherDusterTriggerable : PlayerAbility, IFrameCheckHandler
     [SerializeField] private float spread = 120f;
     [SerializeField] private int projectileCount = 3;
     [SerializeField] private float firerate = .1f;
+    [SerializeField] private float cost = 10f;
     [SerializeField] private FrameParser clip;
     [SerializeField] private FrameChecker frameChecker;
     
@@ -24,7 +25,12 @@ public class FeatherDusterTriggerable : PlayerAbility, IFrameCheckHandler
     private aState state;
     public void onActiveFrameStart()
     {
-        player.StartCoroutine(Fire());
+        if(GameManager.instance.mana >= cost){
+            GameManager.instance.mana -= cost;//mana reduced when using ability
+            player.StartCoroutine(Fire());
+        }else{
+            Debug.Log("Feather Duster: Not Enough Mana");
+        }
     }
     public void onActiveFrameEnd()
     {

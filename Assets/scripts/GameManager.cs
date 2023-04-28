@@ -61,6 +61,9 @@ public class GameManager : MonoBehaviour{
     [Range(0,1)]*/
     private CleaningCircle cleaningCircle;
     public float cleaningPercent = 0;
+    public float mana = 0;//mana initiation
+    public float maxMana = 100f;
+    public float dustPileReward = 20f;
 
     private float dustPilesCleaned;
     private float dirtyingRate = 0.3f; // rate at which the room gets dirty
@@ -183,6 +186,7 @@ public class GameManager : MonoBehaviour{
             playerStats.lives--;
             //Debug.Log("You're Dead, Loser");
             //here we could insert a scene jump to a losing scene
+            mana = 0;
             levelLoader.LoadTargetLevel("Loss_scene");
         }
         if (enemies.Length == 0 && dustPiles.Length == 0 && !roomCleared){
@@ -191,8 +195,17 @@ public class GameManager : MonoBehaviour{
             //Room clear condition successfully logged
             Debug.Log("Room clear");
             //Add some code to advance to next scene
+            mana = maxMana;//This number is a question mark at the moment
         }
         numberOfEnemies = enemies.Length;
+        if(dustPiles.Length < numberOfDustPiles){//increase mana by the dustPileReward after destroying a dust pile
+            float multiplier = numberOfDustPiles-dustPiles.Length;//in case you destroy multiple dust piles at once
+            if(multiplier*mana >= maxMana-(multiplier*dustPileReward)){
+                mana = maxMana;
+            }else{
+                mana += multiplier*dustPileReward;
+            }
+        }
         numberOfDustPiles = dustPiles.Length;
         //checks if there are no dustpiles and updates UI bar
         if (numberOfDustPiles == 0) {
@@ -237,6 +250,7 @@ public class GameManager : MonoBehaviour{
             doorPortal.SetActive(false);
             if (currentSceneIndex < lastRoomIndex) {
                 //Debug.Log(currRoom);
+                mana = 0;//reset mana for next room
                 levelLoader.LoadNextLevel();
             } else {
                 // show end credits, player went through all rooms.
