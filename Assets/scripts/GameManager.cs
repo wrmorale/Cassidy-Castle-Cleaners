@@ -64,6 +64,8 @@ public class GameManager : MonoBehaviour{
     public float mana = 0;//mana initiation
     public float maxMana = 100f;
     public float dustPileReward = 20f;
+    public float bleachBombCost = 50f;
+    public float dusterCost = 10f;
 
     private float dustPilesCleaned;
     private float dirtyingRate = 0.3f; // rate at which the room gets dirty

@@ -13,7 +13,7 @@ public class BleachBombTriggerable : PlayerAbility, IFrameCheckHandler
     [SerializeField] private float lifetime = 1f;
     [SerializeField] private float damage = 7f;
     [SerializeField] private float stagger = 1f;
-    [SerializeField] private float cost = 50f;
+    [SerializeField] public float cost;
     [SerializeField] private FrameParser clip;
     [SerializeField] private FrameChecker frameChecker;
     
@@ -85,5 +85,11 @@ public class BleachBombTriggerable : PlayerAbility, IFrameCheckHandler
         clip.initialize();
         frameChecker.initialize(this, clip);
         bulletSpawn = player.transform.Find("maid68/metarig/hip/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R");
+
+        // Set the cost based on the value of dusterCost in GameManager
+        if (GameManager.instance != null)
+        {
+            cost = GameManager.instance.bleachBombCost;
+        }
     }
 }

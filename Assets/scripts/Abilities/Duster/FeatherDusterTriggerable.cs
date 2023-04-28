@@ -16,7 +16,7 @@ public class FeatherDusterTriggerable : PlayerAbility, IFrameCheckHandler
     [SerializeField] private float spread = 120f;
     [SerializeField] private int projectileCount = 3;
     [SerializeField] private float firerate = .1f;
-    [SerializeField] private float cost = 10f;
+    [SerializeField] private float cost;
     [SerializeField] private FrameParser clip;
     [SerializeField] private FrameChecker frameChecker;
     
@@ -89,6 +89,12 @@ public class FeatherDusterTriggerable : PlayerAbility, IFrameCheckHandler
         clip.initialize();
         frameChecker.initialize(this, clip);
         bulletSpawn = player.transform.Find("maid68/metarig/hip/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R");
+
+        // Set the cost based on the value of dusterCost in GameManager
+        if (GameManager.instance != null)
+        {
+            cost = GameManager.instance.dusterCost;
+        }
     }
 
     IEnumerator Fire()
