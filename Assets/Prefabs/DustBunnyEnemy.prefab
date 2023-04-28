@@ -526,7 +526,7 @@ MonoBehaviour:
   healingSpeed: 0.1
   dustPilePrefab: {fileID: 0}
   maxDustPiles: 5
-  pounceCollider: {fileID: 0}
+  pounceCollider: {fileID: 1670567562144362016}
   pounceClip:
     animator: {fileID: 308640922255947236}
     clip: {fileID: 7400000, guid: 04cd1aff6ee52d24f973f570540ec876, type: 2}
