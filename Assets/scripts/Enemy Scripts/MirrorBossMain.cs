@@ -135,7 +135,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
         Projectile projectile = currPosessedMirror.projectilePrefab;
         float secondsPerProjectile = 1.0f / projectilesPerSec; // Calculate the time between each projectile
         float elapsedTime = 0.0f; // Tracks time since the attack started
-        int patternChoice = (UnityEngine.Random.Range(0, 1)); //chooses randome patterm
+        int patternChoice = (UnityEngine.Random.Range(0, 1)); //chooses random pattern
         while (elapsedTime < projectileAttackDuration) {
             setAllMirrorAnimations("Shooting", true);
             foreach (MirrorBossMirror mirror in mirrors) {
@@ -170,7 +170,6 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
         else if(patternNum == 1){ //shoots randomly
             return UnityEngine.Random.Range(-projectileMaxAngle, projectileMaxAngle);
         }
-
         return 0.0f;
     }
 }
