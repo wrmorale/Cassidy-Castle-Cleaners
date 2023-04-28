@@ -43,7 +43,6 @@ public class TargetLock : MonoBehaviour
     
     void DebugCinemachineInfo()
     {
-        Debug.Log("x speed: " + cinemachineFreeLook.m_XAxis.m_AccelTime);
         //Debug.Log("orbits: " + cinemachineFreeLook.m_Orbits[2].m_Radius);
     }
 

@@ -57,13 +57,14 @@ public class FeatherDusterTriggerable : PlayerAbility, IFrameCheckHandler
     public override void updateMe(float time) 
     {
         frameChecker.checkFrames();
-        //Debug.Log(clip.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.8f && !clip.animator.IsInTransition(0));
-        if (clip.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.8f && !clip.animator.IsInTransition(0)) // && state is ability
+
+        // if we are playing a different animation than this ability, change the player state
+        // This avoids hard locking the player.
+        if (!clip.animator.GetCurrentAnimatorStateInfo(0).IsName(clip.animatorStateName) &&
+            player.state == pState.Ability)
         {
-            // Animation has ended, do something here...
-            Debug.Log("set idle");
-            if (player.state == pState.Ability)
-                player.SetState(States.PlayerStates.Idle);
+            player.SetState(States.PlayerStates.Idle);
+            // Animation has ended, we should be out of the Ability State
         }
     }
     public override void Activate()
