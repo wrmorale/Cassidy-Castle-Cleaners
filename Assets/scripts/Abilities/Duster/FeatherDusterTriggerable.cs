@@ -57,6 +57,14 @@ public class FeatherDusterTriggerable : PlayerAbility, IFrameCheckHandler
     public override void updateMe(float time) 
     {
         frameChecker.checkFrames();
+        //Debug.Log(clip.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.8f && !clip.animator.IsInTransition(0));
+        if (clip.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.8f && !clip.animator.IsInTransition(0)) // && state is ability
+        {
+            // Animation has ended, do something here...
+            Debug.Log("set idle");
+            if (player.state == pState.Ability)
+                player.SetState(States.PlayerStates.Idle);
+        }
     }
     public override void Activate()
     {
@@ -71,7 +79,7 @@ public class FeatherDusterTriggerable : PlayerAbility, IFrameCheckHandler
 
     public void SpawnProjectile(Vector3 heading) 
     {
-        Debug.Log("projectile spawned at " + bulletSpawn.position);
+        // Debug.Log("projectile spawned at " + bulletSpawn.position);
         Projectile clone = Instantiate(projectile, bulletSpawn.position, Quaternion.LookRotation(heading));
         clone.Initialize(speed, lifetime, damage, stagger, heading);
     }
