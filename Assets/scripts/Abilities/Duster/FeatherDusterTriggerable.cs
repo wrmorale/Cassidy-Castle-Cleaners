@@ -16,7 +16,7 @@ public class FeatherDusterTriggerable : PlayerAbility, IFrameCheckHandler
     [SerializeField] private float spread = 120f;
     [SerializeField] private int projectileCount = 3;
     [SerializeField] private float firerate = .1f;
-    [SerializeField] private float cost;
+    [SerializeField] public float cost;
     [SerializeField] private FrameParser clip;
     [SerializeField] private FrameChecker frameChecker;
     
