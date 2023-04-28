@@ -45,19 +45,24 @@ public class BleachBombTriggerable : PlayerAbility, IFrameCheckHandler
     }
     public void onLastFrameStart()
     {
-        player.SetState(States.PlayerStates.Idle);
-        Debug.Log("set idle");
     }
     public void onLastFrameEnd()
     {
         player.SetState(States.PlayerStates.Idle);
-        Debug.Log("set idle");
+        //Debug.Log("set idle");
     }
 
 
     public override void updateMe(float time) 
     {
         frameChecker.checkFrames();
+        if (clip.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.8f && !clip.animator.IsInTransition(0)) // && state is ability
+        {
+            // Animation has ended, do something here...
+            if (player.state == pState.Ability)
+                player.SetState(States.PlayerStates.Idle);
+            Debug.Log("set idle");
+        }
     }
     public override void Activate()
     {

@@ -14,7 +14,7 @@ public class Duster : Projectile
     {
         if (other.tag == "Enemy") 
         {
-            Debug.Log("projectile hit");
+            // Debug.Log("projectile hit");
             Enemy enemy = other.GetComponent<Enemy>();
             enemy.isHit(damage);
             Destroy(gameObject);
