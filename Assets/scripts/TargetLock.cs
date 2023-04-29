@@ -36,7 +36,9 @@ public class TargetLock : MonoBehaviour
     private int channeledAbility;
     
     private float maxAngle;
-    private Transform currentTarget;
+    [HideInInspector]
+    public Transform currentTarget;
+    public Vector3 targetColliderCenter;
     private float mouseX;
     private float mouseY;
 
@@ -65,8 +67,7 @@ public class TargetLock : MonoBehaviour
         else
         {
             // handles being locked on a target
-            // TODO: rename this function to something better
-            NewInputTarget(currentTarget); 
+            LookAtTarget(currentTarget); 
         }
 
         if (aimIcon) 
@@ -99,6 +100,18 @@ public class TargetLock : MonoBehaviour
         {
             isTargeting = true;
             currentTarget = closest.transform;
+            //Get's enemy model, which always has an animator attached
+            BoxCollider enemyCollision = currentTarget.GetComponent<BoxCollider>();
+            if (enemyCollision)
+            {
+                targetColliderCenter = enemyCollision.center * currentTarget.localScale.y;
+            }
+            else
+            {
+                /*If enemy does not have a BoxCollider, use this as aim adjustment instead.*/
+                targetColliderCenter = new Vector3(0, 0.2f, 0);
+                Debug.LogWarning(currentTarget + " does not have a BoxCollider to use for lock-on targeting");
+            }
             targetGroup.AddMember(currentTarget, 0.7f, 1f);
             // cinemachineFreeLook.m_YAxis.m_MaxSpeed = 0f;
             // cinemachineFreeLook.m_XAxis.m_MaxSpeed = 0f;
@@ -106,7 +119,7 @@ public class TargetLock : MonoBehaviour
         }
     }
 
-    private void NewInputTarget(Transform target) // sets new input value.
+    private void LookAtTarget(Transform target) // sets new input value.
     {
         if (!currentTarget) return;
 
@@ -123,11 +136,18 @@ public class TargetLock : MonoBehaviour
         }
         //Debug.Log(player.ParseAbilityInput());
         channeledAbility = player.ParseAbilityInput();
+        /*Weird that this doesn't seem to work for abilities*/
         if (player.attackAction.triggered ||
             channeledAbility != -1)
         {
             // turn player towards enemy when they attack.
-            controller.transform.LookAt(currentTarget); 
+            /*Probably why turning towards the enemy feels slightly janky, but it works*/
+            //Debug.Log("Redirected attack towards target");
+
+            Quaternion newRotation = Quaternion.LookRotation(player.toTargetPosition(), controller.transform.up);
+            newRotation = Quaternion.Euler(0, newRotation.eulerAngles.y, 0);
+            controller.transform.rotation = newRotation;
+            //controller.transform.LookAt(currentTarget); //Old rotate method if we want it
         }
     }
 
@@ -146,13 +166,13 @@ public class TargetLock : MonoBehaviour
             float curDistance = diff.magnitude;
             if (curDistance < distance)
             {
-                Debug.Log("In range.");
+                //Debug.Log("In range.");
                 Vector3 viewPos = mainCamera.WorldToViewportPoint(go.transform.position);
                 Vector2 newPos = new Vector3(viewPos.x - 0.5f, viewPos.y - 0.5f);
-                Debug.Log(Vector3.Angle(diff.normalized, mainCamera.transform.forward) < maxAngle);
+                //Debug.Log(Vector3.Angle(diff.normalized, mainCamera.transform.forward) < maxAngle);
                 if (Vector3.Angle(diff.normalized, mainCamera.transform.forward) < maxAngle)
                 {
-                    Debug.Log("in View");
+                    //Debug.Log("in View");
                     closest = go;
                     currAngle = Vector3.Angle(diff.normalized, mainCamera.transform.forward.normalized);
                     distance = curDistance;
