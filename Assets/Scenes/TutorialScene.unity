@@ -17988,7 +17988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 195ee0684370fd64785a4d7a6396deaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableLosing: 0
+  disableLosing: 1
   timer: 0
   timerText: {fileID: 0}
   roomCleared: 0
@@ -18850,12 +18850,12 @@ PrefabInstance:
     - target: {fileID: 6904719146668348922, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000008405164
+      value: -0.0000000084051575
       objectReference: {fileID: 0}
     - target: {fileID: 6904719146668348922, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000018352707
+      value: 0.0000000018352693
       objectReference: {fileID: 0}
     - target: {fileID: 6904719147228723758, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
@@ -18925,12 +18925,12 @@ PrefabInstance:
     - target: {fileID: 6904719148039652034, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000023497828
+      value: 0.000000023497828
       objectReference: {fileID: 0}
     - target: {fileID: 6904719148039652034, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.00000000632227
+      value: -0.00000000632227
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe987c0be70e4764e92e8aff74c2356e, type: 3}
