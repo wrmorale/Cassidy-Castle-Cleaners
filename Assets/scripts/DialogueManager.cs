@@ -53,10 +53,10 @@ public class DialogueManager : MonoBehaviour
 
         nameText.text = dialogueDatabase.ElementAt(dialogueIndex).Key;
 
-        DisplayNextSentence(dialogueDatabase.ElementAt(dialogueIndex).Key);
+        DisplayNextSentence();
     }
 
-    public void DisplayNextSentence(string speaker) 
+    public void DisplayNextSentence() 
     {
         if (dialogueIndex == 6)
         {
@@ -64,11 +64,10 @@ public class DialogueManager : MonoBehaviour
             return;
         }
         else if (dialogueIndex == 2){
-            dialoguebox.setActive(false);
+            dialoguebox.SetActive(false);
         }
 
-        dialogueText.text = dialogueDatabase[speaker];
-        dialogueDatabase[speaker];
+        dialogueText.text = dialogueDatabase.ElementAt(dialogueIndex).Value;
         dialogueIndex++;
     }
 
