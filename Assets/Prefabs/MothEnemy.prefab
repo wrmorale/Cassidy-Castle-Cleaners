@@ -417,6 +417,8 @@ GameObject:
   - component: {fileID: 8327740662560138383}
   - component: {fileID: 8372967417428799471}
   - component: {fileID: 7169664591826417395}
+  - component: {fileID: 3038296913795440695}
+  - component: {fileID: 7420708766062261213}
   m_Layer: 0
   m_Name: MothEnemy
   m_TagString: Enemy
@@ -485,53 +487,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Moth
   maxHealth: 8
-  health: 8
-  basicAttackDamage: 1
-  basicAttackSpeed: 0.8
-  attackRange: 6
+  currentHealth: 0
+  aggroRange: 6
   movementSpeed: 0.5
-  movementRange: 3
+  rotationSpeed: 3
   idleMovementRange: 2
-  staggerLimit: 0
-  abilities:
-  - abilityName: Shoot
-    abilityType: Ranged
-    abilityDamage: 6
-    abilityRange: 10
-    abilityCooldown: 4
-    abilityChance: 99
-    castTime: 1
-    damageMultiplier: 1
-  abilityCooldownTimer: 0
-  dashCooldownTimer: 0
-  actionCooldownTimer: 0
-  abilityCounter: 0
-  longestAttackRange: 0
-  isAttacking: 0
   movement: {x: 0, y: 0, z: 0}
-  idleMovement: {x: 0, y: 0, z: 0}
-  rotationSpeed: 0
-  elapsedTime: 0
-  isIdle: 0
-  enemyInstance: {fileID: 8327740662560138380}
-  bodyCollider: {fileID: 8327740662560138380}
   enemyBody: {fileID: 8327740662560138379}
   playerBody: {fileID: 0}
-  player: {fileID: 0}
-  animator: {fileID: 8446685595553216187}
-  animationFinished: 1
   detectionRange: 5
   healingSpeed: 0.1
   dustPilePrefab: {fileID: 0}
   maxDustPiles: 5
-  cooldownTime: 5
-  cooldownRemaining: 0
-  fleeDuration: 1
-  fleeRemaining: 0
   projectilePrefab: {fileID: 2758012890476290084}
   projectileSpeed: 3.4
   projectileLifetime: 2
-  projectileDamage: 5
+  projectileDamage: 2
   bulletSpawn: {fileID: 1128690899316445487}
 --- !u!114 &7169664591826417395
 MonoBehaviour:
@@ -545,6 +516,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8473b334f435d2f4590aa29d1a6c8746, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3038296913795440695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8327740662560138380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58c6f9b140a52a14881ec09eaebb66eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tree: {fileID: 11400000, guid: a624ec06df01ad541b60d79160c40749, type: 2}
+--- !u!114 &7420708766062261213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8327740662560138380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 879157da5ff124546b28b898f94f534f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attacks:
+  - name: RangedAbility
+    damage: 0
+    range: 4
+    hitbox: {fileID: 0}
+    clip:
+      animator: {fileID: 8446685595553216187}
+      clip: {fileID: 7400000, guid: 04cd1aff6ee52d24f973f570540ec876, type: 2}
+      animatorStateName: 
+      layerNumber: 0
+    checker:
+      activeFrameStart: 0
+      activeFrameEnd: 0
+      attackCancelFrameStart: 0
+      attackCancelFrameEnd: 0
+      allCancelFrameStart: 0
+      allCancelFrameEnd: 0
+  attacking: 0
 --- !u!1001 &1756683609672880476
 PrefabInstance:
   m_ObjectHideFlags: 0

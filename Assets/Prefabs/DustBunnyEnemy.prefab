@@ -189,6 +189,7 @@ MonoBehaviour:
   pc: {fileID: 0}
   player: {fileID: 0}
   enemy: {fileID: 4479651422631388256}
+  damage: 1
 --- !u!1 &2124830505903851128
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,6 +421,8 @@ GameObject:
   - component: {fileID: 8327740662560138383}
   - component: {fileID: 4479651422631388256}
   - component: {fileID: 1133196839942710766}
+  - component: {fileID: 1563084828671396265}
+  - component: {fileID: 3664055732107207087}
   m_Layer: 0
   m_Name: DustBunnyEnemy
   m_TagString: Enemy
@@ -487,59 +490,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Dust Bunny
   maxHealth: 10
-  health: 2
-  basicAttackDamage: 1
-  basicAttackSpeed: 0.4
-  attackRange: 3
+  currentHealth: 0
+  aggroRange: 4
   movementSpeed: 0.4
-  movementRange: 5
+  rotationSpeed: 3
   idleMovementRange: 2
-  staggerLimit: 0
-  abilities:
-  - abilityName: Pounce
-    abilityType: Movement
-    abilityDamage: 2
-    abilityRange: 4
-    abilityCooldown: 4
-    abilityChance: 30
-    castTime: 0
-    damageMultiplier: 0
-  abilityCooldownTimer: 0
-  dashCooldownTimer: 0
-  actionCooldownTimer: 0
-  abilityCounter: 0
-  longestAttackRange: 0
-  isAttacking: 0
   movement: {x: 0, y: 0, z: 0}
-  idleMovement: {x: 0, y: 0, z: 0}
-  rotationSpeed: 0
-  elapsedTime: 0
-  isIdle: 0
-  enemyInstance: {fileID: 8327740662560138380}
-  bodyCollider: {fileID: 8327740662560138380}
   enemyBody: {fileID: 8327740662560138379}
   playerBody: {fileID: 0}
-  player: {fileID: 0}
-  animator: {fileID: 308640922255947236}
-  animationFinished: 1
   detectionRange: 5
   healingSpeed: 0.1
-  dustPilePrefab: {fileID: 0}
+  dustPilePrefab: {fileID: 919132149155446097, guid: 3c4a0b7c132b04731a2911bd65d6ccdd,
+    type: 3}
   maxDustPiles: 5
-  pounceCollider: {fileID: 0}
-  pounceClip:
-    animator: {fileID: 308640922255947236}
-    clip: {fileID: 7400000, guid: 04cd1aff6ee52d24f973f570540ec876, type: 2}
-    animatorStateName: Pounce
-    layerNumber: 0
-  pounceChecker:
-    activeFrameStart: 30
-    activeFrameEnd: 47
-    attackCancelFrameStart: 0
-    attackCancelFrameEnd: 0
-    allCancelFrameStart: 0
-    allCancelFrameEnd: 0
-  state: 0
 --- !u!114 &1133196839942710766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -552,6 +515,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8473b334f435d2f4590aa29d1a6c8746, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1563084828671396265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8327740662560138380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 879157da5ff124546b28b898f94f534f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attacks:
+  - name: Pounce
+    damage: 1
+    range: 0.5
+    hitbox: {fileID: 1670567562144362016}
+    clip:
+      animator: {fileID: 308640922255947236}
+      clip: {fileID: 7400000, guid: 04cd1aff6ee52d24f973f570540ec876, type: 2}
+      animatorStateName: Pounce
+      layerNumber: 0
+    checker:
+      activeFrameStart: 30
+      activeFrameEnd: 40
+      attackCancelFrameStart: 41
+      attackCancelFrameEnd: 50
+      allCancelFrameStart: 0
+      allCancelFrameEnd: 0
+  attacking: 0
+--- !u!114 &3664055732107207087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8327740662560138380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58c6f9b140a52a14881ec09eaebb66eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tree: {fileID: 11400000, guid: ce38af9ebedb7be418bd73613fce7574, type: 2}
 --- !u!1001 &5406457128441344983
 PrefabInstance:
   m_ObjectHideFlags: 0

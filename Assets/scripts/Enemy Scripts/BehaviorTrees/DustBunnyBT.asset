@@ -37,8 +37,8 @@ MonoBehaviour:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 0
     specialCooldownEnds: 0
-  viewPosition: {x: 166, y: -240.5, z: 0}
-  viewScale: {x: 0.7561437, y: 0.7561437, z: 1}
+  viewPosition: {x: 495, y: 8, z: 0}
+  viewScale: {x: 0.65751624, y: 0.65751624, z: 1}
   references:
     version: 2
     RefIds:
@@ -111,7 +111,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 37043481f8798cd4db0dbac9d8a704f1
-        position: {x: 183.19995, y: 435.99994}
+        position: {x: 408.80002, y: 392.39996}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -127,7 +127,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 4cbb02fed27fcec439c801081dab181d
-        position: {x: 333.5, y: 602.5}
+        position: {x: 559.2, y: 557.99994}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -142,7 +142,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 60ae6853799a93646bf0dcaf76db059a
-        position: {x: 483.99985, y: 746.5563}
+        position: {x: 450.4, y: 687.2}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -156,7 +156,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: dba9e335e958b1b4b9266ae9db31e2ff
-        position: {x: 149.49998, y: 602.5}
+        position: {x: 300.00012, y: 558.4}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
