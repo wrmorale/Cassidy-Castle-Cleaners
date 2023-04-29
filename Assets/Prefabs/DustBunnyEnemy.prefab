@@ -421,8 +421,10 @@ GameObject:
   - component: {fileID: 8327740662560138383}
   - component: {fileID: 4479651422631388256}
   - component: {fileID: 1133196839942710766}
+  - component: {fileID: 7173823815757115312}
+  - component: {fileID: 2209821581627068002}
   m_Layer: 6
-  m_Name: DustBunnyEnemy
+  m_Name: DustBunnyBT
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -489,9 +491,9 @@ MonoBehaviour:
   enemyName: Dust Bunny
   maxHealth: 10
   currentHealth: 0
-  aggroRange: 0
+  aggroRange: 4
   movementSpeed: 0.4
-  rotationSpeed: 0
+  rotationSpeed: 3
   idleMovementRange: 2
   movement: {x: 0, y: 0, z: 0}
   enemyBody: {fileID: 8327740662560138379}
@@ -512,6 +514,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8473b334f435d2f4590aa29d1a6c8746, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7173823815757115312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8327740662560138380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 879157da5ff124546b28b898f94f534f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attacks:
+  - name: Pounce
+    damage: 1
+    range: 0.5
+    hitbox: {fileID: 1670567562144362016}
+    clip:
+      animator: {fileID: 308640922255947236}
+      clip: {fileID: 7400000, guid: 04cd1aff6ee52d24f973f570540ec876, type: 2}
+      animatorStateName: Pounce
+      layerNumber: 0
+    checker:
+      activeFrameStart: 30
+      activeFrameEnd: 40
+      attackCancelFrameStart: 41
+      attackCancelFrameEnd: 50
+      allCancelFrameStart: 0
+      allCancelFrameEnd: 0
+  attacking: 0
+--- !u!114 &2209821581627068002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8327740662560138380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58c6f9b140a52a14881ec09eaebb66eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tree: {fileID: 11400000, guid: ce38af9ebedb7be418bd73613fce7574, type: 2}
 --- !u!1001 &5406457128441344983
 PrefabInstance:
   m_ObjectHideFlags: 0
