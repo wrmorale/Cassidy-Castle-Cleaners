@@ -3966,10 +3966,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70fc32e2b83814936b4afefbdc01f357, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue:
-    name: The Maid
-    sentences:
-    - "I\u2019m not that new to cleaning, you know\u2026"
 --- !u!114 &613288935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6299,13 +6295,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70fc32e2b83814936b4afefbdc01f357, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue:
-    name: Cassidy
-    sentences:
-    - "Listen, new hire. I know you want to jump right into things, but we should
-      go ahead and teach you the basics. First, clean these dust piles. Look around
-      if you don\u2019t see them right in front of you. (Press Button 1 to Attack
-      and Right Stick to look around.)"
 --- !u!114 &1042994888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15161,6 +15150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: {fileID: 1686378076}
   dialogueText: {fileID: 208698856}
+  dialoguebox: {fileID: 1092545694}
 --- !u!4 &1673181972
 Transform:
   m_ObjectHideFlags: 0
@@ -18860,12 +18850,12 @@ PrefabInstance:
     - target: {fileID: 6904719146668348922, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000000084051575
+      value: 0.000000008405164
       objectReference: {fileID: 0}
     - target: {fileID: 6904719146668348922, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000018352693
+      value: -0.0000000018352707
       objectReference: {fileID: 0}
     - target: {fileID: 6904719147228723758, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
@@ -19160,6 +19150,11 @@ PrefabInstance:
         type: 3}
       propertyPath: hud
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7428022771512999012, guid: 780a7481df1a48d4792aed7fd543ee02,
+        type: 3}
+      propertyPath: health
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 7428022771512999012, guid: 780a7481df1a48d4792aed7fd543ee02,
         type: 3}
