@@ -8,6 +8,7 @@ public class collisionDetection : MonoBehaviour
     public playerController pc;
     public Player player;
     public Enemy enemy;
+    [HideInInspector] public float damage = 1; //Set by enemys' attack manager
     
     private void OnTriggerEnter(Collider other){
         if(other.tag == "Enemy" && pc.state == States.PlayerStates.Attacking){
@@ -29,7 +30,7 @@ public class collisionDetection : MonoBehaviour
         if(other.tag == "Player" && this.tag != "weapon"){
             Player playerEx = other.GetComponent<Player>();
             //Debug.Log(enemy.basicAttackDamage);
-            playerEx.isHit(enemy.basicAttackDamage);
+            playerEx.isHit(damage);
         }
     }
 }

@@ -26,6 +26,7 @@ public class Ability{
 public class GameManager : MonoBehaviour{
     public static GameManager instance;
 
+    public bool disableLosing = false;
     public float timer;
     public Text timerText;
     public bool roomCleared;
@@ -85,6 +86,9 @@ public class GameManager : MonoBehaviour{
     void Start() {
         // Adds the pause button to the script
         pauseAction = playerInput.actions["Pause"];
+
+        // Locks the cursor into the gamescene so the mouse cannot go out of the window
+        UnityEngine.Cursor.lockState = CursorLockMode.Confined;
 
         timer = 0;
         levelLoader = FindObjectOfType(typeof(LevelLoader)) as LevelLoader;
@@ -180,7 +184,10 @@ public class GameManager : MonoBehaviour{
             playerStats.lives--;
             //Debug.Log("You're Dead, Loser");
             //here we could insert a scene jump to a losing scene
-            levelLoader.LoadTargetLevel("Loss_scene");
+            if (!disableLosing)
+            {
+                levelLoader.LoadTargetLevel("Loss_scene");
+            }
         }
         if (enemies.Length == 0 && dustPiles.Length == 0 && !roomCleared){
             roomCleared = true;
