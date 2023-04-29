@@ -214,7 +214,6 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
         { // if there is movement input
             bool walking = false;
 
-            /*Need to make this relative to the enemy position*/
 
             Vector3 move = new Vector3(input.x, 0, input.y);
             if (move.magnitude < walkThreshold || walkAction.triggered)
@@ -223,9 +222,7 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
             }
 
             // store calculated model rotation
-            /*On second thought, making movement relative to the enemy without also changing how the camera locks on would
-             be a bad idea. But I guess I could change the animations*/
-                move = RotatePlayer(input);
+            move = RotatePlayer(input);
 
             if (walking)
             {
