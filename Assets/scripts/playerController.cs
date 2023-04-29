@@ -194,7 +194,7 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
             }
             else if (channeledAbility >= 0 && !inJumpsquat)
             {
-                ActivateAbility();
+                ActivateAbility(channeledAbility);
             }
         }
 
@@ -291,10 +291,10 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
         }
     }
 
-    public void ActivateAbility()
+    public void ActivateAbility(int idx)
     {
         SetState(States.PlayerStates.Ability);
-        activeAbility = playerAbilities[channeledAbility];
+        activeAbility = playerAbilities[idx];
         activeAbility.Activate();
     }
 
