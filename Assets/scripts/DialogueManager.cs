@@ -11,6 +11,7 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
     public GameObject dialoguebox;
+    public GameObject continueButton;
     public static int dialogueIndex;
     public GameManager roomCleared;
     public GameObject controls; 
@@ -43,6 +44,7 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         dialoguebox = GameObject.Find("DialogueBox");
+        continueButton = GameObject.Find("ContinueButton");
         controls = GameObject.Find("Controls");
         controls.SetActive(false);
         StartDialogue();
@@ -62,13 +64,17 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence() 
     {
+        if(dialogueIndex == 5){
+            EndDialogue();
+        }
+
         string speaker = (dialogueDatabase.ElementAt(dialogueIndex).Value).Item1;
-        Debug.Log("Starting conversation with " + speaker);
+        //Debug.Log("Starting conversation with " + speaker);
         string speakerText = (dialogueDatabase.ElementAt(dialogueIndex).Value).Item2;
 
         nameText.text = speaker;
         dialogueText.text = speakerText;
-        Debug.Log("current line " + speakerText);
+        //Debug.Log("current line " + speakerText);
 
        if (dialogueIndex == 2){
             dialoguebox.SetActive(false);
@@ -76,14 +82,17 @@ public class DialogueManager : MonoBehaviour
         }
         else if (dialogueIndex >= 3){
             controls.SetActive(false); // when they continue again pop up should disappear
+            //dialoguebox.SetActive(true);
         }
-
+        
         dialogueIndex++;
         //Debug.Log("current index: " + dialogueIndex);
     }
 
     void EndDialogue ()
-    {
+    {   
+        continueButton.SetActive(false);
+        dialoguebox.SetActive(false);
         Debug.Log("End of conversation.");
     }
 }
