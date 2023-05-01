@@ -41,8 +41,8 @@ MonoBehaviour:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 0
     specialCooldownEnds: 0
-  viewPosition: {x: 816, y: 221, z: 0}
-  viewScale: {x: 0.57175326, y: 0.57175326, z: 1}
+  viewPosition: {x: 618, y: -69, z: 0}
+  viewScale: {x: 0.65751624, y: 0.65751624, z: 1}
   references:
     version: 2
     RefIds:
@@ -223,7 +223,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 5eb66a184e7bcb24e84878bc4cbba287
-        position: {x: 78.40002, y: 835.77386}
+        position: {x: 78.5, y: 835}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -323,7 +323,7 @@ MonoBehaviour:
           specialCooldownEnds: 0
         description: 
         drawGizmos: 0
-        duration: 1.15
+        duration: 1.625
     - rid: 9070050190289010708
       type: {class: DoRangedAttack, ns: , asm: Assembly-CSharp}
       data:
@@ -338,18 +338,13 @@ MonoBehaviour:
         description: 
         drawGizmos: 0
         attackName: RangedAbility
-        projectilePrefab: {fileID: 0}
-        projectileSpeed: 3.4
-        projectileLifetime: 2
-        projectileDamage: 5
-        bulletSpawn: {fileID: 0}
     - rid: 9070050190289010709
       type: {class: SetAnimatorBool, ns: , asm: Assembly-CSharp}
       data:
         state: 0
         started: 0
         guid: fb37ee0d722b7044a99f14af0c681750
-        position: {x: -354.55762, y: 736}
+        position: {x: -352.97903, y: 736}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -371,4 +366,4 @@ MonoBehaviour:
           specialCooldownEnds: 0
         description: 
         drawGizmos: 0
-        duration: 2
+        duration: 1
