@@ -18,6 +18,10 @@ public class MothProjectile : Projectile
             player.isHit(damage);
             Destroy(gameObject);
         }
+        else if(other.tag == "Untagged")
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnDestroy()

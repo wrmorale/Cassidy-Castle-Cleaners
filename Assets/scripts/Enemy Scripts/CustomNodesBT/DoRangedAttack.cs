@@ -16,12 +16,13 @@ public class DoRangedAttack : ActionNode
         attack = context.attackManager.getAttack(attackName);
         if (attack == null)
             return;
-        Vector3 heading = (context.enemy.playerBody.position - context.rigidbody.position).normalized;    
+
+        Vector3 heading = context.enemy.playerBody.position - context.rigidbody.position;  
         Projectile clone = UnityEngine.Object.Instantiate(context.moth.projectilePrefab, context.moth.bulletSpawn.position, Quaternion.LookRotation(heading));
         clone.gameObject.SetActive(true);
         clone.Initialize(context.moth.projectileSpeed, context.moth.projectileLifetime, context.moth.projectileDamage, 1f, heading);
-        
 
+        
     }
 
     /*Called after OnUpdate if the node returns SUCCESS or 
@@ -32,7 +33,18 @@ public class DoRangedAttack : ActionNode
 
     /*Called every tick that this node is executed*/
     protected override State OnUpdate() {
-            return State.Success; 
+        if (attack == null)
+        {
+            Debug.LogError("Invalid attack name in Node DoAttack");
+            return State.Failure;
+        }
+        if (context.animator.GetBool(attackName)) {
+            return State.Running; //Attack animation is still going
+        }
+        else
+        {
+            return State.Success; //Attack animation has finished
+        }
 
     }
 }
