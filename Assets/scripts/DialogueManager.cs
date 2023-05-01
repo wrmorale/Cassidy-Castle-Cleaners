@@ -10,11 +10,10 @@ public class DialogueManager : MonoBehaviour
 {
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
-    private Queue<string> sentences;
-
     public GameObject dialoguebox;
-
     public static int dialogueIndex;
+    public GameManager roomCleared;
+    public GameObject controls; 
 
 
     private Dictionary<int, Tuple<string, string>> dialogueDatabase = new Dictionary<int, Tuple<string, string>>()
@@ -43,9 +42,10 @@ public class DialogueManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        dialogueIndex = 0;
-
         dialoguebox = GameObject.Find("DialogueBox");
+        controls = GameObject.Find("Controls");
+        controls.SetActive(false);
+        StartDialogue();
     }
 
     public void StartDialogue ()
@@ -54,7 +54,9 @@ public class DialogueManager : MonoBehaviour
         Debug.Log("Starting conversation with " + speaker);
 
         nameText.text = speaker;
-
+        
+        dialogueIndex = 0;
+        
         DisplayNextSentence();
     }
 
@@ -62,22 +64,22 @@ public class DialogueManager : MonoBehaviour
     {
         string speaker = (dialogueDatabase.ElementAt(dialogueIndex).Value).Item1;
         Debug.Log("Starting conversation with " + speaker);
+        string speakerText = (dialogueDatabase.ElementAt(dialogueIndex).Value).Item2;
 
         nameText.text = speaker;
+        dialogueText.text = speakerText;
+        Debug.Log("current line " + speakerText);
 
-        string speakerText = (dialogueDatabase.ElementAt(dialogueIndex).Value).Item2;
-        if (dialogueIndex == 6)
-        {
-            EndDialogue();
-            return;
-        }
-        else if (dialogueIndex == 2){
+       if (dialogueIndex == 2){
             dialoguebox.SetActive(false);
+            controls.SetActive(true);
         }
-        else {
-             dialogueText.text = speakerText;
-             dialogueIndex++;
+        else if (dialogueIndex >= 3){
+            controls.SetActive(false); // when they continue again pop up should disappear
         }
+
+        dialogueIndex++;
+        //Debug.Log("current index: " + dialogueIndex);
     }
 
     void EndDialogue ()
