@@ -31,21 +31,85 @@ MonoBehaviour:
   - rid: 9070050190289010702
   - rid: 9070050190289010704
   - rid: 9070050190289010705
-  - rid: 9070050190289010706
   - rid: 9070050190289010707
   - rid: 9070050190289010708
-  - rid: 9070050190289010709
   - rid: 9070050200856821760
+  - rid: 4349733997256376322
+  - rid: 4349733997256376323
+  - rid: 4349733997256376324
+  - rid: 4349733997256376325
   treeState: 0
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 0
     specialCooldownEnds: 0
-  viewPosition: {x: 618, y: -69, z: 0}
-  viewScale: {x: 0.65751624, y: 0.65751624, z: 1}
+  viewPosition: {x: 1039, y: -385, z: 0}
+  viewScale: {x: 0.7561437, y: 0.7561437, z: 1}
   references:
     version: 2
     RefIds:
+    - rid: 4349733997256376322
+      type: {class: DoAttack, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: e68d66830460a204e80a26dc8c77d00e
+        position: {x: -1290, y: 1124}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: 
+        drawGizmos: 0
+        attackName: RangedAbility
+    - rid: 4349733997256376323
+      type: {class: Parallel, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 0a9cb00e25a8de94fbefe8d70dbcfc76
+        position: {x: -1065, y: 967.5}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: 
+        drawGizmos: 0
+        children:
+        - rid: 4349733997256376322
+        - rid: 4349733997256376324
+        - rid: 4349733997256376325
+    - rid: 4349733997256376324
+      type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 157ad8665ce190744ae45caf68399fbf
+        position: {x: -1065.0001, y: 1124}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: 
+        drawGizmos: 0
+        children:
+        - rid: 9070050190289010707
+        - rid: 9070050190289010708
+        - rid: 9070050200856821760
+    - rid: 4349733997256376325
+      type: {class: RotateWhileAttacking, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: aabc0cad141da6146a46adc015d99d07
+        position: {x: -816.00006, y: 1124}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: 
+        drawGizmos: 0
+        speedMultiplier: 1
     - rid: 9070050190289010688
       type: {class: RootNode, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:
@@ -251,7 +315,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: e94cefd73ee539948928be529965d775
-        position: {x: -725.6724, y: 592.99994}
+        position: {x: -1031.9998, y: 767.9999}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -261,18 +325,14 @@ MonoBehaviour:
         children:
         - rid: 9070050190289010704
         - rid: 9070050190289010705
-        - rid: 9070050190289010706
-        - rid: 9070050190289010707
-        - rid: 9070050190289010708
-        - rid: 9070050200856821760
-        - rid: 9070050190289010709
+        - rid: 4349733997256376323
     - rid: 9070050190289010704
       type: {class: PlayerInRangeOfAttack, ns: , asm: Assembly-CSharp}
       data:
         state: 0
         started: 0
         guid: 0884d2ae5e0ac4b498944a877ac67fac
-        position: {x: -1339.9902, y: 736}
+        position: {x: -1502.0002, y: 935.5}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -286,7 +346,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: e001936defd90cf4fb1846d98a0fdb68
-        position: {x: -1160, y: 736}
+        position: {x: -1322.0002, y: 935.5}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -295,28 +355,13 @@ MonoBehaviour:
         drawGizmos: 0
         boolName: Moving
         setTo: 0
-    - rid: 9070050190289010706
-      type: {class: SetAnimatorBool, ns: , asm: Assembly-CSharp}
-      data:
-        state: 0
-        started: 0
-        guid: 2f498491be2965145ac78144ae1af80c
-        position: {x: -1010, y: 736}
-        blackboard:
-          moveToPosition: {x: 0, y: 0, z: 0}
-          aggro: 0
-          specialCooldownEnds: 0
-        description: 
-        drawGizmos: 0
-        boolName: RangedAbility
-        setTo: 1
     - rid: 9070050190289010707
       type: {class: Wait, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:
         state: 0
         started: 0
         guid: a91daee7993add6488a3ae4588175326
-        position: {x: -860, y: 736}
+        position: {x: -1215.0001, y: 1261}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -330,7 +375,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: a189b1a892bbf604691a84ad607badc2
-        position: {x: -710, y: 736}
+        position: {x: -1065.2307, y: 1260.8569}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -338,28 +383,13 @@ MonoBehaviour:
         description: 
         drawGizmos: 0
         attackName: RangedAbility
-    - rid: 9070050190289010709
-      type: {class: SetAnimatorBool, ns: , asm: Assembly-CSharp}
-      data:
-        state: 0
-        started: 0
-        guid: fb37ee0d722b7044a99f14af0c681750
-        position: {x: -352.97903, y: 736}
-        blackboard:
-          moveToPosition: {x: 0, y: 0, z: 0}
-          aggro: 0
-          specialCooldownEnds: 0
-        description: 
-        drawGizmos: 0
-        boolName: RangedAbility
-        setTo: 0
     - rid: 9070050200856821760
       type: {class: Wait, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:
         state: 0
         started: 0
         guid: 9da10efe7c6abb948950a6c9328baad2
-        position: {x: -531.00006, y: 735.9998}
+        position: {x: -915.00006, y: 1261}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
