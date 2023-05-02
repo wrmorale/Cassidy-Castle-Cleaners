@@ -16,6 +16,7 @@ public class FeatherDusterTriggerable : PlayerAbility, IFrameCheckHandler
     [SerializeField] private float spread = 120f;
     [SerializeField] private int projectileCount = 3;
     [SerializeField] private float firerate = .1f;
+    [SerializeField] public float cost;
     [SerializeField] private FrameParser clip;
     [SerializeField] private FrameChecker frameChecker;
     
@@ -35,7 +36,12 @@ public class FeatherDusterTriggerable : PlayerAbility, IFrameCheckHandler
             playerForward = ((player.targetLock.currentTarget.position + player.targetLock.targetColliderCenter) - bulletSpawn.position).normalized;
             Debug.DrawLine(bulletSpawn.position, (player.targetLock.currentTarget.position + player.targetLock.targetColliderCenter), Color.white, 3.0f); //Only visible with Gizmos >:(
         }
-        player.StartCoroutine(Fire());
+        if(GameManager.instance.mana >= cost){
+            GameManager.instance.mana -= cost;//mana reduced when using ability
+            player.StartCoroutine(Fire());
+        }else{
+            Debug.Log("Feather Duster: Not Enough Mana");
+        }
     }
     public void onActiveFrameEnd()
     {
@@ -103,6 +109,12 @@ public class FeatherDusterTriggerable : PlayerAbility, IFrameCheckHandler
         clip.initialize();
         frameChecker.initialize(this, clip);
         bulletSpawn = player.transform.Find("maid68/metarig/hip/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R");
+
+        // Set the cost based on the value of dusterCost in GameManager
+        if (GameManager.instance != null)
+        {
+            cost = GameManager.instance.dusterCost;
+        }
     }
 
     IEnumerator Fire()
