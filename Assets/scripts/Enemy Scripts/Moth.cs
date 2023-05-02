@@ -9,12 +9,12 @@ public class Moth : Enemy
     //public float fleeDuration = 1f;
     //public float fleeRemaining = 0f;
 
-    //[Header("Projectile Stats")]
-    //public Projectile projectilePrefab;
-    //[SerializeField] private float projectileSpeed;
-    //[SerializeField] private float projectileLifetime;
-    //[SerializeField] private float projectileDamage;
-    //public Transform bulletSpawn;
+    [Header("Projectile Stats")]
+    public Projectile projectilePrefab;
+    [SerializeField] public float projectileSpeed;
+    [SerializeField] public float projectileLifetime;
+    [SerializeField] public float projectileDamage;
+    public Transform bulletSpawn;
 
     //private bool shouldRotateTowardsPlayer = true;
 

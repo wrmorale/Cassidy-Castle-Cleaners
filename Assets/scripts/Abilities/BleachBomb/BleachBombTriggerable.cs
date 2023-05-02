@@ -13,6 +13,7 @@ public class BleachBombTriggerable : PlayerAbility, IFrameCheckHandler
     [SerializeField] private float lifetime = 1f;
     [SerializeField] private float damage = 7f;
     [SerializeField] private float stagger = 1f;
+    [SerializeField] public float cost;
     [SerializeField] private FrameParser clip;
     [SerializeField] private FrameChecker frameChecker;
     
@@ -21,7 +22,12 @@ public class BleachBombTriggerable : PlayerAbility, IFrameCheckHandler
     private aState state;
     public void onActiveFrameStart()
     {
-        SpawnProjectile(playerForward);
+        if(GameManager.instance.mana >= cost){
+            GameManager.instance.mana -= cost;//mana reduced when using ability
+            SpawnProjectile(playerForward);
+        }else{
+            Debug.Log("Bleach Bomb: Not Enough Mana");
+        }
     }
     public void onActiveFrameEnd()
     {
@@ -54,6 +60,15 @@ public class BleachBombTriggerable : PlayerAbility, IFrameCheckHandler
     public override void updateMe(float time) 
     {
         frameChecker.checkFrames();
+
+        // if we are playing a different animation than this ability, change the player state
+        // This avoids hard locking the player.
+        if (!clip.animator.GetCurrentAnimatorStateInfo(0).IsName(clip.animatorStateName) &&
+            player.state == pState.Ability)
+        {
+            player.SetState(States.PlayerStates.Idle);
+            // Animation has ended, we should be out of the Ability State
+        }
     }
     public override void Activate()
     {
@@ -69,6 +84,7 @@ public class BleachBombTriggerable : PlayerAbility, IFrameCheckHandler
     {
         Bomb clone = Instantiate(projectile, bulletSpawn.position, Quaternion.LookRotation(heading));
         clone.Initialize(speed, lifetime, damage, stagger, heading);
+        clone.toTarget = player.toTargetPosition();
         clone.launch();
     }
 
@@ -79,5 +95,11 @@ public class BleachBombTriggerable : PlayerAbility, IFrameCheckHandler
         clip.initialize();
         frameChecker.initialize(this, clip);
         bulletSpawn = player.transform.Find("maid68/metarig/hip/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R");
+
+        // Set the cost based on the value of dusterCost in GameManager
+        if (GameManager.instance != null)
+        {
+            cost = GameManager.instance.bleachBombCost;
+        }
     }
 }
