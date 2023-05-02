@@ -79,10 +79,12 @@ public class DialogueManager : MonoBehaviour
        if (dialogueIndex == 2){
             dialoguebox.SetActive(false);
             controls.SetActive(true);
+            continueButton.SetActive(false);
         }
         else if (dialogueIndex >= 3){
-            controls.SetActive(false); // when they continue again pop up should disappear
+            //controls.SetActive(false); // when they continue again pop up should disappear
             //dialoguebox.SetActive(true);
+            
         }
         
         dialogueIndex++;
