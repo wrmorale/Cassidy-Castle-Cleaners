@@ -43,8 +43,8 @@ MonoBehaviour:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 0
     specialCooldownEnds: 0
-  viewPosition: {x: 677, y: -93, z: 0}
-  viewScale: {x: 0.65751624, y: 0.65751624, z: 1}
+  viewPosition: {x: 474, y: -15, z: 0}
+  viewScale: {x: 0.57175326, y: 0.57175326, z: 1}
   references:
     version: 2
     RefIds:
@@ -102,14 +102,14 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: aabc0cad141da6146a46adc015d99d07
-        position: {x: -335.52148, y: 948.99994}
+        position: {x: -334.25092, y: 949}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
           specialCooldownEnds: 0
         description: 
         drawGizmos: 0
-        speedMultiplier: 1
+        speedMultiplier: 3
     - rid: 9070050190289010688
       type: {class: RootNode, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:
