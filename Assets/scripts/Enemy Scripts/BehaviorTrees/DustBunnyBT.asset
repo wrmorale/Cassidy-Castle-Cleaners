@@ -204,21 +204,21 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 1fcb630237ba57d4785770aa1b749327
-        position: {x: -702.7102, y: 892}
+        position: {x: -699.95825, y: 892.00006}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
           specialCooldownEnds: 0
         description: 
         drawGizmos: 0
-        attackName: Pounce
+        attackName: Headbutt
     - rid: 9070050151572963340
       type: {class: SetAnimatorBool, ns: , asm: Assembly-CSharp}
       data:
         state: 0
         started: 0
         guid: c9733b3f93df9fa47a7b806726cb19c4
-        position: {x: -502.37308, y: 892}
+        position: {x: -501.99988, y: 892.00006}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -240,7 +240,7 @@ MonoBehaviour:
           specialCooldownEnds: 0
         description: 
         drawGizmos: 0
-        attackName: Pounce
+        attackName: Headbutt
     - rid: 9070050151572963342
       type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:

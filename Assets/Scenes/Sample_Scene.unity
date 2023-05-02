@@ -2374,7 +2374,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0.24568215, y: -0.21555054, z: 0.056133363, w: 0.9434126}
+  m_LocalRotation: {x: 0.24568214, y: -0.21555056, z: 0.056133363, w: 0.9434126}
   m_LocalPosition: {x: 4.535243, y: 3.367744, z: -0.21111326}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10440,6 +10440,11 @@ PrefabInstance:
       propertyPath: dustPilePrefab
       value: 
       objectReference: {fileID: 919132148348794008}
+    - target: {fileID: 7173823815757115312, guid: 3fec4a32b1661b648bdcb0b9faccc35d,
+        type: 3}
+      propertyPath: attacks.Array.data[0].range
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 8327740662560138378, guid: 3fec4a32b1661b648bdcb0b9faccc35d,
         type: 3}
       propertyPath: m_RootOrder
@@ -10503,7 +10508,7 @@ PrefabInstance:
     - target: {fileID: 8327740662560138380, guid: 3fec4a32b1661b648bdcb0b9faccc35d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fec4a32b1661b648bdcb0b9faccc35d, type: 3}
@@ -11795,7 +11800,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1201922360}
-  m_LocalRotation: {x: 0.24568214, y: -0.21555054, z: 0.05613336, w: 0.9434126}
+  m_LocalRotation: {x: 0.24568212, y: -0.21555056, z: 0.056133363, w: 0.9434126}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -22644,6 +22649,11 @@ MonoBehaviour:
   playerStats: {fileID: 795224107}
   playerInput: {fileID: 795224121}
   cleaningPercent: 0
+  mana: 0
+  maxMana: 100
+  dustPileReward: 20
+  bleachBombCost: 50
+  dusterCost: 10
 --- !u!4 &1928179609
 Transform:
   m_ObjectHideFlags: 0
