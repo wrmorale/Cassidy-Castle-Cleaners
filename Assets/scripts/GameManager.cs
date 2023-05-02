@@ -24,7 +24,7 @@ public class Ability{
 }
 
 public class GameManager : MonoBehaviour{
-    public static GameManager instance;
+    public static GameManager instance { get; private set; }
 
     public bool disableLosing = false;
     public float timer;
@@ -79,13 +79,14 @@ public class GameManager : MonoBehaviour{
     //setup singleton
     private void Awake() {
 
-        // if(instance != null){
-        //     Destroy(this.gameObject);
-        //     return;
-        // }
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
 
         instance = this;
-        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(gameObject);
     }
 
     void Start() {
