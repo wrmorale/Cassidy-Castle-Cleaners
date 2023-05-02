@@ -28,6 +28,7 @@ namespace TheKiwiCoder {
         public Enemy enemy;
         public AttackManager attackManager;
         public MirrorBossMain mirrorBossScript;
+        public Moth moth; 
 
         public static Context CreateFromGameObject(GameObject gameObject) {
             // Fetch all commonly used components
@@ -46,6 +47,7 @@ namespace TheKiwiCoder {
             context.enemy = gameObject.GetComponent<Enemy>();
             context.attackManager = gameObject.GetComponent<AttackManager>();
             context.mirrorBossScript = gameObject.GetComponentInParent<MirrorBossMain>();
+            context.moth = gameObject.GetComponent<Moth>();
 
             return context;
         }
