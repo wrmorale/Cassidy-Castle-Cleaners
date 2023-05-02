@@ -17,11 +17,12 @@ public class MoveToPlayer : ActionNode
 
     protected override State OnUpdate() {
         //PlayerBody.position - position of Rigidbody of Enemy
-        Vector3 toPlayer = context.enemy.playerBody.position - context.rigidbody.position;
+        //I wonder if there is a difference between transform and charController.transform?
+        Vector3 toPlayer = context.enemy.playerBody.position - context.transform.position;
 
         toPlayer.y = 0; //Ignore player's vertical position
         Vector3 movement = toPlayer.normalized * context.enemy.movementSpeed * Time.fixedDeltaTime;
-        context.rigidbody.MovePosition(context.rigidbody.position + (movement));
+        //context.rigidbody.MovePosition(context.rigidbody.position + (movement));
         context.enemy.movement = movement; //Updates enemy movement stat for other uses.
         return State.Success;
     }

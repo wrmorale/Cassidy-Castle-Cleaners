@@ -2374,7 +2374,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0.24568215, y: -0.21555054, z: 0.056133363, w: 0.9434126}
+  m_LocalRotation: {x: 0.2456821, y: -0.21555047, z: 0.056133334, w: 0.9434126}
   m_LocalPosition: {x: 4.535243, y: 3.367744, z: -0.21111326}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -11795,7 +11795,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1201922360}
-  m_LocalRotation: {x: 0.24568214, y: -0.21555054, z: 0.05613336, w: 0.9434126}
+  m_LocalRotation: {x: 0.2456821, y: -0.21555051, z: 0.05613335, w: 0.9434126}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -12317,7 +12317,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh34630
+  m_Name: pb_Mesh35856
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -22644,6 +22644,11 @@ MonoBehaviour:
   playerStats: {fileID: 795224107}
   playerInput: {fileID: 795224121}
   cleaningPercent: 0
+  mana: 0
+  maxMana: 100
+  dustPileReward: 20
+  bleachBombCost: 50
+  dusterCost: 10
 --- !u!4 &1928179609
 Transform:
   m_ObjectHideFlags: 0
