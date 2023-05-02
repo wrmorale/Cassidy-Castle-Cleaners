@@ -17,7 +17,7 @@ public class DoRangedAttack : ActionNode
         if (attack == null)
             return;
 
-        Vector3 heading = context.enemy.playerBody.position - context.rigidbody.position;  
+        Vector3 heading = (context.enemy.playerBody.position - context.rigidbody.position).normalized;  
         Projectile clone = UnityEngine.Object.Instantiate(context.moth.projectilePrefab, context.moth.bulletSpawn.position, Quaternion.LookRotation(heading));
         clone.gameObject.SetActive(true);
         clone.Initialize(context.moth.projectileSpeed, context.moth.projectileLifetime, context.moth.projectileDamage, 1f, heading);

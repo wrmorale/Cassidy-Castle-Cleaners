@@ -18,8 +18,8 @@ public class MothProjectile : Projectile
             player.isHit(damage);
             Destroy(gameObject);
         }
-        else if(other.tag == "Untagged")
-        {
+        //Can change to other tags like "Room" and such 
+        else if(other.tag == "Furniture"){
             Destroy(gameObject);
         }
     }
