@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour
     [SerializeField]public float maxHealth; //Shouldn't these be integers?
     [HideInInspector][SerializeField]public float currentHealth;
     [SerializeField]public float aggroRange;
+    [SerializeField]public float maxStaggerAmount;
+    public float currentStaggerAmount = 0;
     private EnemyHealthBar enemyHealthBar;
     private float HealthPercent = 1;
 
@@ -38,7 +40,9 @@ public class Enemy : MonoBehaviour
     public int maxDustPiles = 5;
     private List<DustPile> dustPiles = new List<DustPile>();
 
+    [Header("Behaviour Tree info")]
     BehaviourTreeRunner BTrunner;
+    bool isStaggered = false;
 
     //GameObject damageFlashObject;
     void Start(){
@@ -86,6 +90,21 @@ public class Enemy : MonoBehaviour
         enemyHealthBar.setHealth(HealthPercent);
 
         /*To add: Staggering*/
+        float staggerAmount = 1; //each player attack should have an amount that will be passed as a param for isHit()
+        if(maxStaggerAmount>0){ //for bigger enemies
+            currentStaggerAmount += staggerAmount;
+            if(currentStaggerAmount >= maxStaggerAmount){
+                //do stagger stuff
+                isStaggered = true;
+                //do the BT interupt
+                //do stag anim in BT
+                currentStaggerAmount = 0; //reset stagger after being staggered
+            }
+        }
+        else{//smaller enemies
+            //do just an animation like getting pushed back?
+        }
+        
 
         //Died?
         if(currentHealth <= 0){
