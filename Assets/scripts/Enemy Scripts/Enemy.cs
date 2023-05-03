@@ -94,11 +94,11 @@ public class Enemy : MonoBehaviour
         if(maxStaggerAmount>0){ //for bigger enemies
             currentStaggerAmount += staggerAmount;
             if(currentStaggerAmount >= maxStaggerAmount){
-                //do stagger stuff
                 isStaggered = true;
                 //do the BT interupt
-                //do stag anim in BT
-                currentStaggerAmount = 0; //reset stagger after being staggered
+                BTrunner.tree.rootNode.Abort();
+                //stagger animation done in BT
+                //reset stagger done in BT
             }
         }
         else{//smaller enemies
@@ -108,7 +108,7 @@ public class Enemy : MonoBehaviour
 
         //Died?
         if(currentHealth <= 0){
-            /*To add: Replace this Destory with a behavior tree interrupt*/
+            /*To add: Replace this Destroy with a behavior tree interrupt*/
             Destroy(gameObject);
         }
     }

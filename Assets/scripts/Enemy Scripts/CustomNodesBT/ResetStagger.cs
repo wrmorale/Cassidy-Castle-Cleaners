@@ -4,20 +4,17 @@ using UnityEngine;
 using TheKiwiCoder;
 
 [System.Serializable]
-public class CheckStagger : DecoratorNode
+public class ResetStagger : ActionNode
 {
     protected override void OnStart() {
+        context.enemy.isStaggered = false;
+        context.enemy.currentStaggerAmount = 0;
     }
 
     protected override void OnStop() {
-        //context.enemy.isStaggered = false;
-        //context.enemy.currentStaggerAmount = 0;
     }
 
     protected override State OnUpdate() {
-        if (context.enemy.isStaggered == true)
-            return child.Update();
-        else
-            return State.Failure;
+        return State.Success;
     }
 }
