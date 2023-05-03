@@ -37,8 +37,8 @@ MonoBehaviour:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 0
     specialCooldownEnds: 0
-  viewPosition: {x: 495, y: 8, z: 0}
-  viewScale: {x: 0.65751624, y: 0.65751624, z: 1}
+  viewPosition: {x: 116, y: 7, z: 0}
+  viewScale: {x: 0.2842624, y: 0.2842624, z: 1}
   references:
     version: 2
     RefIds:
@@ -204,7 +204,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 1fcb630237ba57d4785770aa1b749327
-        position: {x: -699.95825, y: 892.00006}
+        position: {x: -468, y: 901.7601}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -218,7 +218,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: c9733b3f93df9fa47a7b806726cb19c4
-        position: {x: -501.99988, y: 892.00006}
+        position: {x: -270, y: 901.7601}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0

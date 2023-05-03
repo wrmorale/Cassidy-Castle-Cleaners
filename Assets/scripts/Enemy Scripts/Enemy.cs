@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour
     public float rotationSpeed;
     [SerializeField] public float idleMovementRange;
     [HideInInspector] public Vector3 movement;
+    public bool isStaggered = false;
     
 
     [Header("Collider + Physics info")]
@@ -42,7 +43,6 @@ public class Enemy : MonoBehaviour
 
     [Header("Behaviour Tree info")]
     BehaviourTreeRunner BTrunner;
-    bool isStaggered = false;
 
     //GameObject damageFlashObject;
     void Start(){
