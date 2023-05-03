@@ -23,7 +23,7 @@ public class RotateToMovement : ActionNode
     protected override State OnUpdate() {
         if(rotateTo == RotateOption.Movement)
         {
-            Quaternion newRotation = Quaternion.LookRotation(context.enemy.movement, context.charController.transform.up);
+            Quaternion newRotation = Quaternion.LookRotation(context.enemy.moveHistory, context.charController.transform.up);
             // Set x and z rotation to zero
             newRotation = Quaternion.Euler(0f, newRotation.eulerAngles.y, 0f);
             context.charController.transform.rotation = Quaternion.Slerp(context.charController.transform.rotation, newRotation, Time.fixedDeltaTime * context.enemy.rotationSpeed * speedMultiplier);

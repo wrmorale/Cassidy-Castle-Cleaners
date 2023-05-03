@@ -19,11 +19,8 @@ public class MoveToPlayer : ActionNode
         //PlayerBody.position - position of Rigidbody of Enemy
         //I wonder if there is a difference between transform and charController.transform?
         Vector3 toPlayer = context.enemy.playerBody.position - context.transform.position;
-
         toPlayer.y = 0; //Ignore player's vertical position
-        Vector3 movement = toPlayer.normalized * context.enemy.movementSpeed * Time.fixedDeltaTime;
-        //context.rigidbody.MovePosition(context.rigidbody.position + (movement));
-        context.enemy.movement = movement; //Updates enemy movement stat for other uses.
+        context.enemy.movement += toPlayer.normalized * context.enemy.movementSpeed * Time.fixedDeltaTime;
         return State.Success;
     }
 }
