@@ -75,8 +75,8 @@ MonoBehaviour:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 0
     specialCooldownEnds: 0
-  viewPosition: {x: 259, y: -966, z: 0}
-  viewScale: {x: 0.7561437, y: 0.7561437, z: 1}
+  viewPosition: {x: 343.5, y: -842, z: 0}
+  viewScale: {x: 0.65751624, y: 0.65751624, z: 1}
   references:
     version: 2
     RefIds:
@@ -612,7 +612,7 @@ MonoBehaviour:
         description: This causes a chance for the golem to decided not to dash, but
           the dash cooldown will still start.
         drawGizmos: 0
-        chanceOfFailure: 0
+        chanceOfFailure: 0.3
     - rid: 2088461348826775554
       type: {class: Selector, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:
