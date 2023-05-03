@@ -407,10 +407,13 @@ MonoBehaviour:
   maxHealth: 18
   currentHealth: 0
   aggroRange: 4
+  maxStaggerAmount: 3
+  currentStaggerAmount: 0
   movementSpeed: 0.5
   rotationSpeed: 1
   idleMovementRange: 0
   movement: {x: 0, y: 0, z: 0}
+  isStaggered: 0
   enemyBody: {fileID: 5875378272749639627}
   playerBody: {fileID: 0}
   detectionRange: 5

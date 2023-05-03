@@ -888,6 +888,7 @@ MonoBehaviour:
   health: 0
   movementSpeed: 2
   basicDamage: 5
+  staggerDamage: 1
   attackSpeed: 1
   cooldownReduction: 1
   alive: 1

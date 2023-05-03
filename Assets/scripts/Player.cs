@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     [SerializeField]public float health;
     [SerializeField]public float movementSpeed;
     [SerializeField]public float basicDamage;
+    [SerializeField]public float staggerDamage;
     [SerializeField]public float attackSpeed;
     [SerializeField]public float cooldownReduction;
     
