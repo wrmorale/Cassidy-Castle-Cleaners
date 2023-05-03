@@ -455,17 +455,17 @@ PrefabInstance:
     - target: {fileID: 6904719146668348922, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.21332425
+      value: 0.21332423
       objectReference: {fileID: 0}
     - target: {fileID: 6904719146668348922, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000010620849
+      value: -0.000000020372093
       objectReference: {fileID: 0}
     - target: {fileID: 6904719146668348922, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000023190663
+      value: 0.0000000044482533
       objectReference: {fileID: 0}
     - target: {fileID: 6904719147228723758, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
@@ -525,12 +525,12 @@ PrefabInstance:
     - target: {fileID: 6904719148039652034, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000016615472
+      value: 0.000000016615472
       objectReference: {fileID: 0}
     - target: {fileID: 6904719148039652034, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000004470518
+      value: -0.000000004470518
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe987c0be70e4764e92e8aff74c2356e, type: 3}
@@ -666,8 +666,14 @@ MonoBehaviour:
   dustPilePrefab: {fileID: 921964182}
   pauseUI: {fileID: 2049526319}
   playerStats: {fileID: 2029081638}
+  playercontroller: {fileID: 1857691451}
   playerInput: {fileID: 2029081645}
   cleaningPercent: 0
+  mana: 0
+  maxMana: 100
+  dustPileReward: 20
+  bleachBombCost: 50
+  dusterCost: 10
 --- !u!4 &336052126
 Transform:
   m_ObjectHideFlags: 0
@@ -1656,7 +1662,7 @@ PrefabInstance:
         type: 3}
       propertyPath: pounceCollider
       value: 
-      objectReference: {fileID: 636425213}
+      objectReference: {fileID: 0}
     - target: {fileID: 8327740662560138378, guid: 3fec4a32b1661b648bdcb0b9faccc35d,
         type: 3}
       propertyPath: m_RootOrder
@@ -1769,12 +1775,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fec4a32b1661b648bdcb0b9faccc35d, type: 3}
---- !u!1 &636425213 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1670567562144362016, guid: 3fec4a32b1661b648bdcb0b9faccc35d,
-    type: 3}
-  m_PrefabInstance: {fileID: 636425212}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &652187862
 GameObject:
   m_ObjectHideFlags: 0
@@ -10294,6 +10294,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7428022771512999011, guid: 780a7481df1a48d4792aed7fd543ee02,
         type: 3}
+      propertyPath: targetLock
+      value: 
+      objectReference: {fileID: 2029081642}
+    - target: {fileID: 7428022771512999011, guid: 780a7481df1a48d4792aed7fd543ee02,
+        type: 3}
       propertyPath: turnSmoothTime
       value: 0
       objectReference: {fileID: 0}
@@ -10404,6 +10409,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 780a7481df1a48d4792aed7fd543ee02, type: 3}
+--- !u!114 &1857691451 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7428022771512999011, guid: 780a7481df1a48d4792aed7fd543ee02,
+    type: 3}
+  m_PrefabInstance: {fileID: 1857691450}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029081637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ff65f0c896144040af4a687c79f2030, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1863557899
 GameObject:
   m_ObjectHideFlags: 0

@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour{
     public GameObject dustPilePrefab;
     public GameObject pauseUI;
     public Player playerStats;
+    public playerController playercontroller;
 
     private bool objectsInstantiated = false;
 
@@ -185,15 +186,16 @@ public class GameManager : MonoBehaviour{
                 Array.Clear(enemies, i, 1);
             }
         }
-        if (!playerStats.alive && playerStats.lives == 1 ||
-        cleaningPercent == 0){
+        if (!playerStats.alive && playerStats.lives == 1 || cleaningPercent == 0){
             playerStats.lives--;
             //Debug.Log("You're Dead, Loser");
             //here we could insert a scene jump to a losing scene
             if (!disableLosing)
             {
                 mana = 0;
-                levelLoader.LoadTargetLevel("Loss_scene");
+                playercontroller.HandleDeath();
+                
+                levelLoader.LoadTargetLevel("Loss_Scene");
             }
         }
         if (enemies.Length == 0 && dustPiles.Length == 0 && !roomCleared){

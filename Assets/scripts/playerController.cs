@@ -27,6 +27,7 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
     private PlayerInput playerInput;
     private BroomAttackManager attackManager;
     public TargetLock targetLock; /*Added for lock-on improvements*/
+    public Player playerStats;
 
     [HideInInspector]
     public PlayerAbility activeAbility;
@@ -119,6 +120,7 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
         SetState(States.PlayerStates.Idle);
 
         targetLock = gameObject.GetComponent<TargetLock>();
+        playerStats = gameObject.GetComponent<Player>();
     }
 
     void Update()
@@ -149,7 +151,7 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
             attackManager.updateMe(Time.deltaTime);
         }
 
-        if (state != States.PlayerStates.Attacking && state != States.PlayerStates.Ability)
+        if (state != States.PlayerStates.Attacking && state != States.PlayerStates.Ability && state != States.PlayerStates.Dead)
         {
             SetState(States.PlayerStates.Idle);
             model.transform.localPosition = Vector3.zero;
@@ -178,9 +180,16 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
                 ActivateAbility(channeledAbility);
             }
         }
+        
 
         // cycle cooldowns
         ManageCooldowns(Time.deltaTime);
+    }
+    public void HandleDeath()
+    {
+        SetState(States.PlayerStates.Dead);
+        animator.SetTrigger("Death");
+
     }
 
     private void ApplyGravity()
