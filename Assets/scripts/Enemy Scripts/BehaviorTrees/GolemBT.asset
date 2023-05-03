@@ -84,8 +84,8 @@ MonoBehaviour:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 0
     specialCooldownEnds: 0
-  viewPosition: {x: 518, y: -200, z: 0}
-  viewScale: {x: 0.375937, y: 0.375937, z: 1}
+  viewPosition: {x: 391, y: -80, z: 0}
+  viewScale: {x: 0.25, y: 0.25, z: 1}
   references:
     version: 2
     RefIds:
@@ -896,9 +896,9 @@ MonoBehaviour:
         - rid: 2581180579587817476
         - rid: 2581180579587817478
         - rid: 2581180579587817477
-        - rid: 2581180579587817480
         - rid: 2581180579587817484
         - rid: 2581180579587817483
+        - rid: 2581180579587817480
     - rid: 2581180579587817476
       type: {class: Wait, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:
@@ -912,7 +912,7 @@ MonoBehaviour:
           specialCooldownEnds: 0
         description: 
         drawGizmos: 0
-        duration: 1.3
+        duration: 1.2
     - rid: 2581180579587817477
       type: {class: SetAnimatorBool, ns: , asm: Assembly-CSharp}
       data:
@@ -949,7 +949,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: b2d888e1bca82ab4ba78ec1981354318
-        position: {x: -851.3398, y: 896}
+        position: {x: -547.235, y: 893.506}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -962,7 +962,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 75211e70d5da59344ac657fe552449f0
-        position: {x: -524.95264, y: 886.3799}
+        position: {x: -707.98804, y: 892.50995}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -977,14 +977,14 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: c219961e42f48394782ed52307f6c6e3
-        position: {x: -689.0001, y: 891.33997}
+        position: {x: -876.9999, y: 893.00793}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
           specialCooldownEnds: 0
         description: 
         drawGizmos: 0
-        duration: 2
+        duration: 1.8
     - rid: 5265791478174318594
       type: {class: PlayerInRangeOfAttack, ns: , asm: Assembly-CSharp}
       data:
