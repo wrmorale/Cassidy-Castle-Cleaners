@@ -407,7 +407,7 @@ MonoBehaviour:
   maxHealth: 18
   currentHealth: 0
   aggroRange: 4
-  maxStaggerAmount: 2
+  maxStaggerAmount: 3
   currentStaggerAmount: 0
   movementSpeed: 0.5
   rotationSpeed: 1

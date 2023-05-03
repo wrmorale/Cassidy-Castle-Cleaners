@@ -10,8 +10,6 @@ public class CheckStagger : DecoratorNode
     }
 
     protected override void OnStop() {
-        //context.enemy.isStaggered = false;
-        //context.enemy.currentStaggerAmount = 0;
     }
 
     protected override State OnUpdate() {

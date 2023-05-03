@@ -79,7 +79,7 @@ public class Enemy : MonoBehaviour
     }
 
     //Changed to virtual so that boss mirrors can override this
-    public virtual void isHit(float damage){
+    public virtual void isHit(float damage, float staggerDamage){
         //decrease health
         currentHealth -= damage;
         //damageFlash.FlashStart();
@@ -89,11 +89,10 @@ public class Enemy : MonoBehaviour
         HealthPercent = currentHealth / maxHealth;
         enemyHealthBar.setHealth(HealthPercent);
 
-        /*To add: Staggering*/
-        float staggerAmount = 1; //each player attack should have an amount that will be passed as a param for isHit()
+        //Staggering
         if(maxStaggerAmount>0){ //for bigger enemies
-            currentStaggerAmount += staggerAmount;
-            if(currentStaggerAmount >= maxStaggerAmount){
+            currentStaggerAmount += 2;
+            if(currentStaggerAmount >= maxStaggerAmount && isStaggered == false){
                 isStaggered = true;
                 //do the BT interupt
                 BTrunner.tree.rootNode.Abort();
