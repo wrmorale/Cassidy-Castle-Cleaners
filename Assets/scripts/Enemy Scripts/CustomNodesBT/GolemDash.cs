@@ -32,11 +32,8 @@ public class GolemDash : ActionNode
 
     /*Called every tick that this node is executed*/
     protected override State OnUpdate() {
-        Vector3 moveDirection = blackboard.moveToPosition - context.rigidbody.position;
-        
-        Vector3 movement = moveDirection.normalized * dashSpeed * Time.fixedDeltaTime;
-        context.rigidbody.MovePosition(context.rigidbody.position + (movement));
-        context.enemy.movement = movement; //Updates enemy movement stat for other uses.
+        Vector3 moveDirection = blackboard.moveToPosition - context.transform.position;
+        context.enemy.movement += moveDirection.normalized * dashSpeed;
 
         if (Time.time >= endOn)
         {

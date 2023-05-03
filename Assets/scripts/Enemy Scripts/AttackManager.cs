@@ -32,10 +32,12 @@ public class AttackManager : MonoBehaviour, IFrameCheckHandler
     }
 
     public void onActiveFrameStart() {
+        Debug.Log("Hitbox activated");
         currentAttack.hitbox.SetActive(true);
     }
 
     public void onActiveFrameEnd() {
+        Debug.Log("Hitbox deactivated");
         currentAttack.hitbox.SetActive(false);
     }
     public void onAttackCancelFrameStart() {

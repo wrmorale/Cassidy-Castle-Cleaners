@@ -75,8 +75,8 @@ MonoBehaviour:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 0
     specialCooldownEnds: 0
-  viewPosition: {x: 83.5, y: -328.5, z: 0}
-  viewScale: {x: 0.57175326, y: 0.57175326, z: 1}
+  viewPosition: {x: 259, y: -966, z: 0}
+  viewScale: {x: 0.7561437, y: 0.7561437, z: 1}
   references:
     version: 2
     RefIds:
@@ -129,6 +129,7 @@ MonoBehaviour:
         children:
         - rid: 2088461236925366279
         - rid: 2088461351394213895
+        - rid: 2088461236925366276
         - rid: 2088461210442268710
     - rid: 2088461210442268697
       type: {class: Log, ns: TheKiwiCoder, asm: Assembly-CSharp}
@@ -500,7 +501,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: ce2fd44e6458e6a4aa733a921d6d7401
-        position: {x: -1610, y: 1741.5}
+        position: {x: -1638, y: 1741.5}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -611,7 +612,7 @@ MonoBehaviour:
         description: This causes a chance for the golem to decided not to dash, but
           the dash cooldown will still start.
         drawGizmos: 0
-        chanceOfFailure: 0.3
+        chanceOfFailure: 0
     - rid: 2088461348826775554
       type: {class: Selector, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:
@@ -858,7 +859,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 7b225a914a6d1ad4eb53e66aa8f03381
-        position: {x: -122.49998, y: 1804.9772}
+        position: {x: -142.02803, y: 1805}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -887,7 +888,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: b4dde07497c52614989f39da8f3b38d6
-        position: {x: -47.49995, y: 1940.4773}
+        position: {x: -48.82253, y: 1940.5}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
