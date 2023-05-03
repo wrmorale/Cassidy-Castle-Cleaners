@@ -91,7 +91,7 @@ public class Enemy : MonoBehaviour
 
         //Staggering
         if(maxStaggerAmount>0){ //for bigger enemies
-            currentStaggerAmount += 2;
+            currentStaggerAmount += staggerDamage;
             if(currentStaggerAmount >= maxStaggerAmount && isStaggered == false){
                 isStaggered = true;
                 //do the BT interupt
