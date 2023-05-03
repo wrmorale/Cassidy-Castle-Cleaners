@@ -20,12 +20,12 @@ public class PlayerInAggroRange : DecoratorNode
         float distance = (context.enemy.playerBody.position - context.transform.position).magnitude;
         if (distance <= context.enemy.aggroRange)
         {
-            Debug.Log("Player in aggro range");
+            //Debug.Log("Player in aggro range");
             return child.Update();
         }
         else
         {
-            Debug.LogWarning("Player out of aggro range");
+            //Debug.LogWarning("Player out of aggro range");
             return State.Failure;
         }
     }

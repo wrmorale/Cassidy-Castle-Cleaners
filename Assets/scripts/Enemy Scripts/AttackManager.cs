@@ -27,8 +27,11 @@ public class AttackManager : MonoBehaviour, IFrameCheckHandler
 
     void Update()
     {
-        if(attacking)
+        if (attacking)
+        {
             updateMe();
+        }
+            
     }
 
     public void onActiveFrameStart() {
@@ -93,6 +96,7 @@ public class AttackManager : MonoBehaviour, IFrameCheckHandler
             currentAttack.checker.initCheck();
             currentAttack.checker.checkFrames();
             attacking = true;
+            Debug.Log("Activating attack: " + currentAttack.name);
         }
     }
 }

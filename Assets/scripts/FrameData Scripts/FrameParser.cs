@@ -18,7 +18,10 @@ public class FrameParser
 
     public void initialize()
     {
+        //Is the problem that it thinks the clip only has 1 frame?
         _totalFrames = Mathf.RoundToInt(clip.length * clip.frameRate);
+        Debug.Log(clip.name + " has " + _totalFrames + "frames.");
+        //Yes it is...
 
         if (animator.isActiveAndEnabled) 
         {

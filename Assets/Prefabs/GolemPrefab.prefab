@@ -455,7 +455,7 @@ MonoBehaviour:
     hitbox: {fileID: 629870976696930832}
     clip:
       animator: {fileID: 2275572853724953662}
-      clip: {fileID: 4523782979721099966, guid: 057dfc13aad75d14c83a983e4cb0c5f1,
+      clip: {fileID: 4523782979721099966, guid: 79aa66d911f0d724dac97bc2fc806eef,
         type: 3}
       animatorStateName: light_1
       layerNumber: 0
@@ -506,7 +506,7 @@ MonoBehaviour:
     hitbox: {fileID: 1250803297610215111}
     clip:
       animator: {fileID: 2275572853724953662}
-      clip: {fileID: -851199388697429409, guid: 057dfc13aad75d14c83a983e4cb0c5f1,
+      clip: {fileID: -851199388697429409, guid: 79aa66d911f0d724dac97bc2fc806eef,
         type: 3}
       animatorStateName: dash
       layerNumber: 0
