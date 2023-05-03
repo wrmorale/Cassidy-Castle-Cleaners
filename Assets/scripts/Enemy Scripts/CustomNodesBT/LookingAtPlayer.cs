@@ -24,10 +24,10 @@ public class LookingAtPlayer : ActionNode
 
     /*Called every tick that this node is executed*/
     protected override State OnUpdate() {
-        Vector3 toPlayer = context.enemy.playerBody.position - context.rigidbody.position;
+        Vector3 toPlayer = context.enemy.playerBody.position - context.transform.position;
         toPlayer.y = 0;
-        Quaternion newRotation = Quaternion.LookRotation(toPlayer, context.rigidbody.transform.up);
-        float difference = context.rigidbody.rotation.eulerAngles.y - newRotation.eulerAngles.y;
+        Quaternion newRotation = Quaternion.LookRotation(toPlayer, context.transform.up);
+        float difference = context.transform.rotation.eulerAngles.y - newRotation.eulerAngles.y;
 
         if (Mathf.Abs(difference) <= degreesOfRange)
             return State.Success;

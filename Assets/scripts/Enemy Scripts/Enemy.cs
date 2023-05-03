@@ -20,16 +20,16 @@ public class Enemy : MonoBehaviour
     [SerializeField] public float movementSpeed;
     public float rotationSpeed;
     [SerializeField] public float idleMovementRange;
-    [HideInInspector] 
-    public Vector3 movement;
-    public Vector3 moveHistory; //Used for rotating towards movement node
-    public Vector3 gravityBuildup;
+
+
+    [HideInInspector] public Vector3 movement;
+    [HideInInspector] public Vector3 moveHistory; //Used for rotating towards movement node
+    [HideInInspector] public Vector3 gravityBuildup;
     public float gravity = -9.81f;
 
 
-    [HideInInspector]
-    public CharacterController enemyController;
-    public Rigidbody playerBody;
+    [HideInInspector] public CharacterController enemyController;
+    [HideInInspector] public Rigidbody playerBody;
 
     [Header("Animator info")]
     //public Animator animator;
@@ -85,8 +85,8 @@ public class Enemy : MonoBehaviour
             gravityBuildup.y += gravity * Time.fixedDeltaTime;
         else
             gravityBuildup = Vector3.zero;
-        //Remember to use Time.fixedDeltatime in functions that affect movement
-        enemyController.Move(movement + (gravityBuildup * Time.fixedDeltaTime));
+        //Remember to NOT use Time.fixedDeltatime in functions that affect movement
+        enemyController.Move((movement + gravityBuildup) * Time.fixedDeltaTime);
         moveHistory = movement;
         movement = Vector3.zero;
     }
