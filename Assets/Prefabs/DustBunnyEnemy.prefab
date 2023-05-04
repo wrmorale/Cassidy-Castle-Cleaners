@@ -492,10 +492,13 @@ MonoBehaviour:
   maxHealth: 10
   currentHealth: 0
   aggroRange: 4
+  maxStaggerAmount: 0
+  currentStaggerAmount: 0
   movementSpeed: 0.4
   rotationSpeed: 3
   idleMovementRange: 2
   movement: {x: 0, y: 0, z: 0}
+  isStaggered: 0
   enemyBody: {fileID: 8327740662560138379}
   playerBody: {fileID: 0}
   detectionRange: 5
@@ -528,8 +531,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attacks:
   - name: Headbutt
-    damage: 1
-    range: 0.5
+    damage: 2
+    range: 0.25
     hitbox: {fileID: 3953727335876407316}
     clip:
       animator: {fileID: 2224496171676611476}
