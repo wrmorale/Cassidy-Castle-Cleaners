@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour{
     private float dustPilesCleaned;
     private float dirtyingRate = 0.3f; // rate at which the room gets dirty
     private float dustMaxHealth;
-    private float pooledHealth;
+    private float pooledHealth; 
     private float totalHealth;
 
     private float fogDensity;
@@ -259,6 +259,7 @@ public class GameManager : MonoBehaviour{
             doorPortal.SetActive(false);
             if (currentSceneIndex < lastRoomIndex) {
                 //Debug.Log(currRoom);
+                Destroy(gameObject);
                 mana = 0;//reset mana for next room
                 levelLoader.LoadNextLevel();
             } else {
