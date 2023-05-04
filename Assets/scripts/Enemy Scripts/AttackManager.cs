@@ -93,6 +93,17 @@ public class AttackManager : MonoBehaviour, IFrameCheckHandler
             attacking = true;
         }
     }
+
+    public void stopAttack()
+    {
+        if (attacking)
+        {
+            currentAttack.hitbox.SetActive(false);
+            currentAttack.clip.animator.SetBool(currentAttack.name, false);
+            attacking = false;
+            Debug.Log("Current attack canceled");
+        }
+    }
 }
 
 [System.Serializable]

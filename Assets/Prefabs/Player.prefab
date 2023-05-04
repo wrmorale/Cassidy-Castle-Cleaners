@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.00989685, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -458,6 +458,7 @@ MonoBehaviour:
   pc: {fileID: 7428022771512999011}
   player: {fileID: 7428022771512999012}
   enemy: {fileID: 0}
+  damage: 1
 --- !u!1 &7428022770733803843
 GameObject:
   m_ObjectHideFlags: 0
@@ -571,6 +572,7 @@ MonoBehaviour:
   pc: {fileID: 7428022771512999011}
   player: {fileID: 7428022771512999012}
   enemy: {fileID: 0}
+  damage: 1
 --- !u!1 &7428022771009043263
 GameObject:
   m_ObjectHideFlags: 0
@@ -684,6 +686,7 @@ MonoBehaviour:
   pc: {fileID: 7428022771512999011}
   player: {fileID: 7428022771512999012}
   enemy: {fileID: 0}
+  damage: 1
 --- !u!1 &7428022771512999016
 GameObject:
   m_ObjectHideFlags: 0
@@ -827,6 +830,8 @@ MonoBehaviour:
   - {fileID: 5318415682540987213, guid: 47091f31e5f188448b8932ce618daaf2, type: 3}
   - {fileID: 0}
   controller: {fileID: 0}
+  targetLock: {fileID: 0}
+  playerStats: {fileID: 0}
   activeAbility: {fileID: 0}
   moveAction:
     m_Name: Move
@@ -883,6 +888,7 @@ MonoBehaviour:
   health: 0
   movementSpeed: 2
   basicDamage: 5
+  staggerDamage: 1
   attackSpeed: 1
   cooldownReduction: 1
   alive: 1
@@ -915,9 +921,9 @@ MonoBehaviour:
   light1Checker:
     activeFrameStart: 7
     activeFrameEnd: 9
-    attackCancelFrameStart: 12
-    attackCancelFrameEnd: 16
-    allCancelFrameStart: 17
+    attackCancelFrameStart: 0
+    attackCancelFrameEnd: 0
+    allCancelFrameStart: 12
     allCancelFrameEnd: 26
   light2Clip:
     animator: {fileID: 5636604457870464056}
@@ -927,9 +933,9 @@ MonoBehaviour:
   light2Checker:
     activeFrameStart: 7
     activeFrameEnd: 11
-    attackCancelFrameStart: 12
-    attackCancelFrameEnd: 18
-    allCancelFrameStart: 19
+    attackCancelFrameStart: 0
+    attackCancelFrameEnd: 0
+    allCancelFrameStart: 12
     allCancelFrameEnd: 25
   light3Clip:
     animator: {fileID: 5636604457870464056}
@@ -941,7 +947,7 @@ MonoBehaviour:
     activeFrameEnd: 13
     attackCancelFrameStart: 0
     attackCancelFrameEnd: 0
-    allCancelFrameStart: 18
+    allCancelFrameStart: 14
     allCancelFrameEnd: 29
 --- !u!1001 &463506593754139484
 PrefabInstance:
