@@ -84,8 +84,8 @@ MonoBehaviour:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 0
     specialCooldownEnds: 0
-  viewPosition: {x: 391, y: -80, z: 0}
-  viewScale: {x: 0.25, y: 0.25, z: 1}
+  viewPosition: {x: 247.5, y: -456, z: 0}
+  viewScale: {x: 0.49717674, y: 0.49717674, z: 1}
   references:
     version: 2
     RefIds:
@@ -139,6 +139,7 @@ MonoBehaviour:
         - rid: 2088461236925366279
         - rid: 2088461351394213895
         - rid: 2088461210442268710
+        - rid: 2088461236925366276
     - rid: 2088461210442268697
       type: {class: Log, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:
@@ -606,7 +607,7 @@ MonoBehaviour:
           specialCooldownEnds: 0
         description: 
         drawGizmos: 0
-        degreesOfRange: 10
+        degreesOfRange: 30
     - rid: 2088461348826775553
       type: {class: RandomFailure, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:
@@ -712,7 +713,7 @@ MonoBehaviour:
           specialCooldownEnds: 0
         description: 
         drawGizmos: 0
-        degreesOfRange: 30
+        degreesOfRange: 110
     - rid: 2088461351394213893
       type: {class: Selector, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:
@@ -735,7 +736,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 7cf5205dd09565541a5ce668397e93c0
-        position: {x: -1760, y: 1622.5}
+        position: {x: -1788.4998, y: 1622.4998}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -774,7 +775,7 @@ MonoBehaviour:
           specialCooldownEnds: 0
         description: 
         drawGizmos: 0
-        attackName: SpinAttack
+        attackName: Light1
     - rid: 2088461351394213897
       type: {class: SetAnimatorBool, ns: , asm: Assembly-CSharp}
       data:

@@ -462,11 +462,17 @@ MonoBehaviour:
   maxHealth: 10
   currentHealth: 0
   aggroRange: 4
+  maxStaggerAmount: 0
+  currentStaggerAmount: 0
   movementSpeed: 0.4
   rotationSpeed: 3
   idleMovementRange: 2
+  isStaggered: 0
   movement: {x: 0, y: 0, z: 0}
-  enemyBody: {fileID: 0}
+  moveHistory: {x: 0, y: 0, z: 0}
+  gravityBuildup: {x: 0, y: 0, z: 0}
+  gravity: -9.81
+  enemyController: {fileID: 0}
   playerBody: {fileID: 0}
   detectionRange: 5
   healingSpeed: 0.1
@@ -497,20 +503,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attacks:
-  - name: Pounce
+  - name: Headbutt
     damage: 1
     range: 0.5
     hitbox: {fileID: 1670567562144362016}
     clip:
       animator: {fileID: 308640922255947236}
-      clip: {fileID: 7400000, guid: 04cd1aff6ee52d24f973f570540ec876, type: 2}
-      animatorStateName: Pounce
+      clip: {fileID: -8121543191890443619, guid: d81c5ba3111e7a847b5d8e3f0b0fa4aa,
+        type: 3}
+      animatorStateName: Headbutt
       layerNumber: 0
     checker:
-      activeFrameStart: 30
-      activeFrameEnd: 40
-      attackCancelFrameStart: 41
-      attackCancelFrameEnd: 50
+      activeFrameStart: 55
+      activeFrameEnd: 60
+      attackCancelFrameStart: 0
+      attackCancelFrameEnd: 0
       allCancelFrameStart: 0
       allCancelFrameEnd: 0
   attacking: 0
