@@ -17,6 +17,7 @@ public class DoAttack : ActionNode
     }
 
     protected override void OnStop() {
+        context.attackManager.stopAttack();
     }
 
     protected override State OnUpdate() {

@@ -24,7 +24,7 @@ public class Ability{
 }
 
 public class GameManager : MonoBehaviour{
-    public static GameManager instance;
+    public static GameManager instance { get; private set; }
 
     public bool disableLosing = false;
     public float timer;
@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour{
     public GameObject dustPilePrefab;
     public GameObject pauseUI;
     public Player playerStats;
+    public playerController playercontroller;
 
     private bool objectsInstantiated = false;
 
@@ -71,7 +72,7 @@ public class GameManager : MonoBehaviour{
     private float dustPilesCleaned;
     private float dirtyingRate = 0.3f; // rate at which the room gets dirty
     private float dustMaxHealth;
-    private float pooledHealth;
+    private float pooledHealth; 
     private float totalHealth;
 
     private float fogDensity;
@@ -79,13 +80,14 @@ public class GameManager : MonoBehaviour{
     //setup singleton
     private void Awake() {
 
-        // if(instance != null){
-        //     Destroy(this.gameObject);
-        //     return;
-        // }
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
 
         instance = this;
-        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(gameObject);
     }
 
     void Start() {
@@ -184,15 +186,16 @@ public class GameManager : MonoBehaviour{
                 Array.Clear(enemies, i, 1);
             }
         }
-        if (!playerStats.alive && playerStats.lives == 1 ||
-        cleaningPercent == 0){
+        if (!playerStats.alive && playerStats.lives == 1 || cleaningPercent == 0){
             playerStats.lives--;
             //Debug.Log("You're Dead, Loser");
             //here we could insert a scene jump to a losing scene
             if (!disableLosing)
             {
                 mana = 0;
-                levelLoader.LoadTargetLevel("Loss_scene");
+                playercontroller.HandleDeath();
+                
+                levelLoader.LoadTargetLevel("Loss_Scene");
             }
         }
         if (enemies.Length == 0 && dustPiles.Length == 0 && !roomCleared){
@@ -256,6 +259,7 @@ public class GameManager : MonoBehaviour{
             doorPortal.SetActive(false);
             if (currentSceneIndex < lastRoomIndex) {
                 //Debug.Log(currRoom);
+                Destroy(gameObject);
                 mana = 0;//reset mana for next room
                 levelLoader.LoadNextLevel();
             } else {

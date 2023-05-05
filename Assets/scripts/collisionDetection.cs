@@ -14,7 +14,7 @@ public class collisionDetection : MonoBehaviour
         if(other.tag == "Enemy" && pc.state == States.PlayerStates.Attacking){
             //applies to all with the enemy tag
             Enemy enemyEx = other.GetComponent<Enemy>();
-            enemyEx.isHit(player.basicDamage);
+            enemyEx.isHit(player.basicDamage, player.staggerDamage);
         }
 
         if(other.tag == "DustPile" && pc.state == States.PlayerStates.Attacking){

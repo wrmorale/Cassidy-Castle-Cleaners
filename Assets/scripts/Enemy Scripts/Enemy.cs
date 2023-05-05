@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour
     [SerializeField]public float maxHealth; //Shouldn't these be integers?
     [HideInInspector][SerializeField]public float currentHealth;
     [SerializeField]public float aggroRange;
+    [SerializeField]public float maxStaggerAmount;
+    public float currentStaggerAmount = 0;
     private EnemyHealthBar enemyHealthBar;
     private float HealthPercent = 1;
 
@@ -20,6 +22,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] public float movementSpeed;
     public float rotationSpeed;
     [SerializeField] public float idleMovementRange;
+    public bool isStaggered = false;
+    
 
 
     [HideInInspector] public Vector3 movement;
@@ -42,6 +46,7 @@ public class Enemy : MonoBehaviour
     public int maxDustPiles = 5;
     private List<DustPile> dustPiles = new List<DustPile>();
 
+    [Header("Behaviour Tree info")]
     BehaviourTreeRunner BTrunner;
 
     //GameObject damageFlashObject;
@@ -92,7 +97,7 @@ public class Enemy : MonoBehaviour
     }
 
     //Changed to virtual so that boss mirrors can override this
-    public virtual void isHit(float damage){
+    public virtual void isHit(float damage, float staggerDamage){
         //decrease health
         currentHealth -= damage;
         //damageFlash.FlashStart();
@@ -102,11 +107,25 @@ public class Enemy : MonoBehaviour
         HealthPercent = currentHealth / maxHealth;
         enemyHealthBar.setHealth(HealthPercent);
 
-        /*To add: Staggering*/
+        //Staggering
+        if(maxStaggerAmount>0){ //for bigger enemies
+            currentStaggerAmount += staggerDamage;
+            if(currentStaggerAmount >= maxStaggerAmount && isStaggered == false){
+                isStaggered = true;
+                //do the BT interupt
+                BTrunner.tree.rootNode.Abort();
+                //stagger animation done in BT
+                //reset stagger done in BT
+            }
+        }
+        else{//smaller enemies
+            //do just an animation like getting pushed back?
+        }
+        
 
         //Died?
         if(currentHealth <= 0){
-            /*To add: Replace this Destory with a behavior tree interrupt*/
+            /*To add: Replace this Destroy with a behavior tree interrupt*/
             Destroy(gameObject);
         }
     }
