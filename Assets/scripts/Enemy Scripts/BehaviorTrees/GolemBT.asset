@@ -84,8 +84,8 @@ MonoBehaviour:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 0
     specialCooldownEnds: 0
-  viewPosition: {x: 247.5, y: -456, z: 0}
-  viewScale: {x: 0.49717674, y: 0.49717674, z: 1}
+  viewPosition: {x: 238, y: -327.5, z: 0}
+  viewScale: {x: 0.43232757, y: 0.43232757, z: 1}
   references:
     version: 2
     RefIds:
@@ -138,8 +138,8 @@ MonoBehaviour:
         children:
         - rid: 2088461236925366279
         - rid: 2088461351394213895
-        - rid: 2088461210442268710
         - rid: 2088461236925366276
+        - rid: 2088461210442268710
     - rid: 2088461210442268697
       type: {class: Log, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:
