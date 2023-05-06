@@ -35,7 +35,8 @@ public class Player : MonoBehaviour
 
     private Animator animator;
 
-    public bool isInvulnerable;
+    [HideInInspector] public bool isInvulnerable; //This should be more clearly labeled as being i-frames for rolling
+    public bool invincibleCheat = false;
 
     // Start is called before the first frame update
     void Start()
@@ -65,7 +66,7 @@ public class Player : MonoBehaviour
     public void isHit(float damage){
         //print("Player took " + damage + " damage");
         
-        if(!isInvulnerable){
+        if(!isInvulnerable && !invincibleCheat){
             
             
             health -= damage;

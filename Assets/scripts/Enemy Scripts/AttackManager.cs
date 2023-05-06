@@ -96,7 +96,7 @@ public class AttackManager : MonoBehaviour, IFrameCheckHandler
             currentAttack.checker.initCheck();
             currentAttack.checker.checkFrames();
             attacking = true;
-            Debug.Log("Activating attack: " + currentAttack.name);
+            //Debug.Log("Activating attack: " + currentAttack.name);
         }
     }
 

@@ -17,7 +17,7 @@ public class SetSpecialCooldown : ActionNode
 
     protected override State OnUpdate() {
         blackboard.specialCooldownEnds = Time.time + xSecondsInFuture;
-        Debug.Log("Special will go off cooldown at " + blackboard.specialCooldownEnds);
+        //Debug.Log("Special will go off cooldown at " + blackboard.specialCooldownEnds);
         return State.Success;
     }
 }

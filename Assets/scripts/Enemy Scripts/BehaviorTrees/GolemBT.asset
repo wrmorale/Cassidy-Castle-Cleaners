@@ -84,8 +84,8 @@ MonoBehaviour:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 0
     specialCooldownEnds: 0
-  viewPosition: {x: 238, y: -327.5, z: 0}
-  viewScale: {x: 0.43232757, y: 0.43232757, z: 1}
+  viewPosition: {x: 1099, y: -589.5, z: 0}
+  viewScale: {x: 1, y: 1, z: 1}
   references:
     version: 2
     RefIds:
@@ -275,7 +275,7 @@ MonoBehaviour:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
           specialCooldownEnds: 0
-        description: Walk Sequence
+        description: 
         drawGizmos: 0
     - rid: 2088461210442268714
       type: {class: SetAnimatorBool, ns: , asm: Assembly-CSharp}
@@ -870,7 +870,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: b1f450a6c87d7b542a4c8cd37a292b35
-        position: {x: -1553.976, y: 894.11273}
+        position: {x: -1554, y: 892.5}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -906,12 +906,12 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 44ad1cf26b1e0854bac8f8d0cc4fe553
-        position: {x: -1387.2006, y: 898.73883}
+        position: {x: -1376.5607, y: 894}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
           specialCooldownEnds: 0
-        description: 
+        description: Time for anim 1 to complete (+ optional extra time)
         drawGizmos: 0
         duration: 1.2
     - rid: 2581180579587817477
@@ -920,7 +920,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 149dcbb407af57d44a5dec18b6dd9baf
-        position: {x: -1033.7949, y: 894.73883}
+        position: {x: -1034.0004, y: 892.5001}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -935,7 +935,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 52ec72c22208ecc429beffce3b1253ea
-        position: {x: -1206.2615, y: 899.0519}
+        position: {x: -1205.5, y: 894.00006}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -963,7 +963,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 75211e70d5da59344ac657fe552449f0
-        position: {x: -707.98804, y: 892.50995}
+        position: {x: -696.9998, y: 892.50006}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -978,14 +978,14 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: c219961e42f48394782ed52307f6c6e3
-        position: {x: -876.9999, y: 893.00793}
+        position: {x: -861.26263, y: 892.50006}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
           specialCooldownEnds: 0
-        description: 
+        description: Time for anim 2 to complete
         drawGizmos: 0
-        duration: 1.8
+        duration: 1.2
     - rid: 5265791478174318594
       type: {class: PlayerInRangeOfAttack, ns: , asm: Assembly-CSharp}
       data:

@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
     [HideInInspector][SerializeField]public float currentHealth;
     [SerializeField]public float aggroRange;
     [SerializeField]public float maxStaggerAmount;
-    public float currentStaggerAmount = 0;
+    [HideInInspector] public float currentStaggerAmount = 0;
     private EnemyHealthBar enemyHealthBar;
     private float HealthPercent = 1;
 
@@ -111,6 +111,7 @@ public class Enemy : MonoBehaviour
         if(maxStaggerAmount>0){ //for bigger enemies
             currentStaggerAmount += staggerDamage;
             if(currentStaggerAmount >= maxStaggerAmount && isStaggered == false){
+                Debug.Log("Enemy staggered!");
                 isStaggered = true;
                 //do the BT interupt
                 BTrunner.tree.rootNode.Abort();
@@ -119,7 +120,8 @@ public class Enemy : MonoBehaviour
             }
         }
         else{//smaller enemies
-            //do just an animation like getting pushed back?
+            //BTrunner.tree.rootNode.Abort();
+            //Always play flinch animation from start, even if the enemy is already flinching
         }
         
 

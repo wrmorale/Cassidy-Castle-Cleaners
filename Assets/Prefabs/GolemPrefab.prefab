@@ -405,12 +405,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyName: Golem
-  maxHealth: 18
+  maxHealth: 60
   currentHealth: 0
   aggroRange: 4
+  maxStaggerAmount: 30
+  currentStaggerAmount: 0
   movementSpeed: 0.5
   rotationSpeed: 1
   idleMovementRange: 0
+  isStaggered: 0
   movement: {x: 0, y: 0, z: 0}
   moveHistory: {x: 0, y: 0, z: 0}
   gravityBuildup: {x: 0, y: 0, z: 0}
