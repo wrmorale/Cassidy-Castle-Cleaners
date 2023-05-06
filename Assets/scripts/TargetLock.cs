@@ -6,7 +6,7 @@ using Cinemachine;
 using UnityEngine.UI;
 
 /** This code is from https://github.com/DANCH0U/Unity3D-Target-Lock-System/blob/main/TargetLock.cs 
- *  and has been modified to fit our project 
+ *  and has been modified to fit our project
  **/
 
 public class TargetLock : MonoBehaviour
@@ -38,6 +38,7 @@ public class TargetLock : MonoBehaviour
     private float maxAngle;
     [HideInInspector]
     public Transform currentTarget;
+    public Transform healthBar;
     public Vector3 targetColliderCenter;
     private float mouseX;
     private float mouseY;
@@ -86,11 +87,7 @@ public class TargetLock : MonoBehaviour
         {
             isTargeting = false;
             targetGroup.RemoveMember(currentTarget);
-            Debug.Log("removed: " + currentTarget);
-            // cinemachineFreeLook.m_XAxis.m_MinValue = initMinRotation;
-            // cinemachineFreeLook.m_XAxis.m_MaxValue = initMaxRotation;
-            cinemachineFreeLook.m_YAxis.m_MaxSpeed = 1f;
-            cinemachineFreeLook.m_XAxis.m_MaxSpeed = 180f;
+            targetGroup.RemoveMember(healthBar);
             currentTarget = null;
             return;
         }
@@ -112,21 +109,36 @@ public class TargetLock : MonoBehaviour
                 targetColliderCenter = new Vector3(0, 0.2f, 0);
                 Debug.LogWarning(currentTarget + " does not have a BoxCollider to use for lock-on targeting");
             }
-            targetGroup.AddMember(currentTarget, 0.7f, 1f);
-            // cinemachineFreeLook.m_YAxis.m_MaxSpeed = 0f;
-            // cinemachineFreeLook.m_XAxis.m_MaxSpeed = 0f;
+            // Vec = AddOffset(currentTarget.position);
+            healthBar = currentTarget.transform.Find("UI Canvas").gameObject.transform;
+            targetGroup.AddMember(currentTarget, 0.3f, 1f);
+            targetGroup.AddMember(healthBar, 0.7f, 1f);
             Debug.Log("current target: "+ currentTarget);
         }
     }
 
     private void LookAtTarget(Transform target) // sets new input value.
     {
-        if (!currentTarget) return;
+        if (!currentTarget)
+        {
+            isTargeting = false;
+            return;
+        }
 
-        //Vector3 viewPos = mainCamera.WorldToViewportPoint(target.position);
-        
+        BoxCollider enemyCollision = currentTarget.GetComponent<BoxCollider>();
+        if (enemyCollision)
+        {
+            targetColliderCenter = enemyCollision.center * currentTarget.localScale.y;
+        }
+        else
+        {
+            /*If enemy does not have a BoxCollider, use this as aim adjustment instead.*/
+            targetColliderCenter = new Vector3(0, 0.2f, 0);
+            Debug.LogWarning(currentTarget + " does not have a BoxCollider to use for lock-on targeting");
+        }
+
         if(aimIcon)
-            aimIcon.transform.position = mainCamera.WorldToScreenPoint(target.position);
+            aimIcon.transform.position = mainCamera.WorldToScreenPoint(target.position + targetColliderCenter);
 
         // if too far or too close to enemy, deselect them
         if ((target.position - transform.position).magnitude < minDistance ||
@@ -134,6 +146,7 @@ public class TargetLock : MonoBehaviour
             AssignTarget(); 
             return;
         }
+
         //Debug.Log(player.ParseAbilityInput());
         channeledAbility = player.ParseAbilityInput();
         /*Weird that this doesn't seem to work for abilities*/
@@ -181,6 +194,14 @@ public class TargetLock : MonoBehaviour
         }
         Debug.Log(closest);
         return closest;
+    }
+
+    private Vector3 AddOffset(Vector3 target)
+    {
+        Vector3 offset = targetLockOffset;
+        Debug.Log(offset);
+        offset = target + offset;
+        return offset;
     }
 
 
