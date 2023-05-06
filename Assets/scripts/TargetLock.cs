@@ -98,7 +98,7 @@ public class TargetLock : MonoBehaviour
             isTargeting = true;
             currentTarget = closest.transform;
             //Get's enemy model, which always has an animator attached
-            BoxCollider enemyCollision = currentTarget.GetComponent<BoxCollider>();
+            CharacterController enemyCollision = currentTarget.GetComponent<CharacterController>();
             if (enemyCollision)
             {
                 targetColliderCenter = enemyCollision.center * currentTarget.localScale.y;
@@ -107,7 +107,7 @@ public class TargetLock : MonoBehaviour
             {
                 /*If enemy does not have a BoxCollider, use this as aim adjustment instead.*/
                 targetColliderCenter = new Vector3(0, 0.2f, 0);
-                Debug.LogWarning(currentTarget + " does not have a BoxCollider to use for lock-on targeting");
+                Debug.LogWarning(currentTarget + " does not have a CharacterController to use for lock-on targeting");
             }
             // Vec = AddOffset(currentTarget.position);
             healthBar = currentTarget.transform.Find("UI Canvas").gameObject.transform;

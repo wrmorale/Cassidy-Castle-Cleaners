@@ -27,15 +27,20 @@ public class AttackManager : MonoBehaviour, IFrameCheckHandler
 
     void Update()
     {
-        if(attacking)
+        if (attacking)
+        {
             updateMe();
+        }
+            
     }
 
     public void onActiveFrameStart() {
+        Debug.Log("Hitbox activated");
         currentAttack.hitbox.SetActive(true);
     }
 
     public void onActiveFrameEnd() {
+        Debug.Log("Hitbox deactivated");
         currentAttack.hitbox.SetActive(false);
     }
     public void onAttackCancelFrameStart() {
@@ -91,6 +96,7 @@ public class AttackManager : MonoBehaviour, IFrameCheckHandler
             currentAttack.checker.initCheck();
             currentAttack.checker.checkFrames();
             attacking = true;
+            //Debug.Log("Activating attack: " + currentAttack.name);
         }
     }
 

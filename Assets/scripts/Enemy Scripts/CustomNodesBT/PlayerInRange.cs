@@ -16,7 +16,7 @@ public class PlayerInRange : DecoratorNode
 
     protected override State OnUpdate() {
         //If behaior trees use Update instead of FixedUpdate, sometimes reports back the incorrect Y value.
-        float distance = (context.enemy.playerBody.position - context.rigidbody.position).magnitude;
+        float distance = (context.enemy.playerBody.position - context.transform.position).magnitude;
         if (distance <= range)
         {
             return child.Update();

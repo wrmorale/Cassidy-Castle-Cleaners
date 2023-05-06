@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
     [HideInInspector][SerializeField]public float currentHealth;
     [SerializeField]public float aggroRange;
     [SerializeField]public float maxStaggerAmount;
-    public float currentStaggerAmount = 0;
+    [HideInInspector] public float currentStaggerAmount = 0;
     private EnemyHealthBar enemyHealthBar;
     private float HealthPercent = 1;
 
@@ -22,12 +22,17 @@ public class Enemy : MonoBehaviour
     [SerializeField] public float movementSpeed;
     public float rotationSpeed;
     [SerializeField] public float idleMovementRange;
-    [HideInInspector] public Vector3 movement;
     public bool isStaggered = false;
     
 
-    [Header("Collider + Physics info")]
-    public Rigidbody enemyBody;
+
+    [HideInInspector] public Vector3 movement;
+    [HideInInspector] public Vector3 moveHistory; //Used for rotating towards movement node
+    [HideInInspector] public Vector3 gravityBuildup;
+    public float gravity = -9.81f;
+
+
+    [HideInInspector] public CharacterController enemyController;
     [HideInInspector] public Rigidbody playerBody;
 
     [Header("Animator info")]
@@ -46,12 +51,13 @@ public class Enemy : MonoBehaviour
 
     //GameObject damageFlashObject;
     void Start(){
-        enemyBody = GetComponent<Rigidbody>();
+        enemyController = GetComponent<CharacterController>();
         playerBody = FindObjectOfType<Player>().GetComponent<Rigidbody>(); //Should find player automatically now
         enemyHealthBar = GetComponentInChildren<EnemyHealthBar>();
         currentHealth = maxHealth;
         enemyHealthBar.setMaxHealth(HealthPercent);
         BTrunner = GetComponent<BehaviourTreeRunner>();
+        gravityBuildup = Vector3.zero;
         //damageFlashObject = Instantiate(damageFlashPrefab, transform.position, Quaternion.identity);
         //damageFlash = damageFlashObject.GetComponent<DamageFlash>();
     }
@@ -78,6 +84,18 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        if (!enemyController.isGrounded)
+            gravityBuildup.y += gravity * Time.fixedDeltaTime;
+        else
+            gravityBuildup = Vector3.zero;
+        //Remember to NOT use Time.fixedDeltatime in functions that affect movement
+        enemyController.Move((movement + gravityBuildup) * Time.fixedDeltaTime);
+        moveHistory = movement;
+        movement = Vector3.zero;
+    }
+
     //Changed to virtual so that boss mirrors can override this
     public virtual void isHit(float damage, float staggerDamage){
         //decrease health
@@ -93,6 +111,7 @@ public class Enemy : MonoBehaviour
         if(maxStaggerAmount>0){ //for bigger enemies
             currentStaggerAmount += staggerDamage;
             if(currentStaggerAmount >= maxStaggerAmount && isStaggered == false){
+                Debug.Log("Enemy staggered!");
                 isStaggered = true;
                 //do the BT interupt
                 BTrunner.tree.rootNode.Abort();
@@ -101,7 +120,8 @@ public class Enemy : MonoBehaviour
             }
         }
         else{//smaller enemies
-            //do just an animation like getting pushed back?
+            //BTrunner.tree.rootNode.Abort();
+            //Always play flinch animation from start, even if the enemy is already flinching
         }
         
 

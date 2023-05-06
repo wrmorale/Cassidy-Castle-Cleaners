@@ -17,15 +17,15 @@ public class PlayerInAggroRange : DecoratorNode
     protected override State OnUpdate()
     {
         //If behaior trees use Update instead of FixedUpdate, sometimes reports back the incorrect Y value.
-        float distance = (context.enemy.playerBody.position - context.rigidbody.position).magnitude;
+        float distance = (context.enemy.playerBody.position - context.transform.position).magnitude;
         if (distance <= context.enemy.aggroRange)
         {
-            Debug.Log("Player in aggro range");
+            //Debug.Log("Player in aggro range");
             return child.Update();
         }
         else
         {
-            Debug.LogWarning("Player out of aggro range");
+            //Debug.LogWarning("Player out of aggro range");
             return State.Failure;
         }
     }
