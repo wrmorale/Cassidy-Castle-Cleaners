@@ -152,7 +152,7 @@ MonoBehaviour:
           specialCooldownEnds: 0
         description: 
         drawGizmos: 0
-        animatorStateName: lol
+        animatorStateName: Flinch
     - rid: 4349734132944994304
       type: {class: RotateToMovement, ns: , asm: Assembly-CSharp}
       data:
