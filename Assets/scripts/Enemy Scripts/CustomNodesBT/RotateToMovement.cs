@@ -13,6 +13,7 @@ public class RotateToMovement : ActionNode
     }
     public RotateOption rotateTo = RotateOption.Movement;
     public float speedMultiplier = 1.0f;
+    public bool rotateInstantly = false;
 
     protected override void OnStart() {
     }
@@ -36,7 +37,13 @@ public class RotateToMovement : ActionNode
             Quaternion newRotation = Quaternion.LookRotation(toPlayer, context.charController.transform.up);
             // Set x and z rotation to zero
             newRotation = Quaternion.Euler(0f, newRotation.eulerAngles.y, 0f);
-            context.charController.transform.rotation = Quaternion.Slerp(context.charController.transform.rotation, newRotation, Time.fixedDeltaTime * context.enemy.rotationSpeed * speedMultiplier);
+            if (rotateInstantly)
+            {
+                context.charController.transform.rotation = newRotation; //Instantly changes transform to new desired rotation
+                Debug.Log("Rotating to player instantly");
+            }
+            else
+                context.charController.transform.rotation = Quaternion.Slerp(context.charController.transform.rotation, newRotation, Time.fixedDeltaTime * context.enemy.rotationSpeed * speedMultiplier);
         }
 
         return State.Success;

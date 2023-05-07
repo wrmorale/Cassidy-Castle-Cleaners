@@ -84,8 +84,8 @@ MonoBehaviour:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 0
     specialCooldownEnds: 0
-  viewPosition: {x: 1099, y: -589.5, z: 0}
-  viewScale: {x: 1, y: 1, z: 1}
+  viewPosition: {x: 106.5, y: 36, z: 0}
+  viewScale: {x: 0.32690176, y: 0.32690176, z: 1}
   references:
     version: 2
     RefIds:
@@ -307,6 +307,7 @@ MonoBehaviour:
         drawGizmos: 0
         rotateTo: 1
         speedMultiplier: 1
+        rotateInstantly: 0
     - rid: 2088461236925366276
       type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:
