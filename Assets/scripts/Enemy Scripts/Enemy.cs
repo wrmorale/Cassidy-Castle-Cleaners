@@ -97,7 +97,7 @@ public class Enemy : MonoBehaviour
     }
 
     //Changed to virtual so that boss mirrors can override this
-    public virtual void isHit(float damage, float staggerDamage){
+    public virtual void isHit(float damage, float staggerDamage = 1.0f){
         //decrease health
         currentHealth -= damage;
         //damageFlash.FlashStart();
@@ -119,10 +119,11 @@ public class Enemy : MonoBehaviour
                 //reset stagger done in BT
             }
         }
-        else{//smaller enemies
+        else if(staggerDamage > 0) {//smaller enemies
             isStaggered = true;
             BTrunner.tree.rootNode.Abort();
             //Always play flinch animation from start, even if the enemy is already flinching
+            //(As long as the attack actually does stagger damage
         }
         
 

@@ -38,7 +38,10 @@ public class RotateToMovement : ActionNode
             // Set x and z rotation to zero
             newRotation = Quaternion.Euler(0f, newRotation.eulerAngles.y, 0f);
             if (rotateInstantly)
+            {
                 context.charController.transform.rotation = newRotation; //Instantly changes transform to new desired rotation
+                Debug.Log("Rotating to player instantly");
+            }
             else
                 context.charController.transform.rotation = Quaternion.Slerp(context.charController.transform.rotation, newRotation, Time.fixedDeltaTime * context.enemy.rotationSpeed * speedMultiplier);
         }
