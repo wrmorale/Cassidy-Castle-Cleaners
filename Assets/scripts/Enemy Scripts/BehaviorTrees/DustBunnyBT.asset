@@ -32,16 +32,125 @@ MonoBehaviour:
   - rid: 9070050151572963343
   - rid: 9070050151572963344
   - rid: 9070050151572963345
+  - rid: 4349734132135231488
+  - rid: 4349734132135231490
+  - rid: 4349734132135231492
+  - rid: 4349734132135231494
+  - rid: 4349734132135231495
+  - rid: 4349734132135231497
+  - rid: 4349734132135231498
   treeState: 0
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 0
     specialCooldownEnds: 0
-  viewPosition: {x: 160, y: -19.5, z: 0}
-  viewScale: {x: 0.49717674, y: 0.49717674, z: 1}
+  viewPosition: {x: 521.5, y: -81, z: 0}
+  viewScale: {x: 0.65751624, y: 0.65751624, z: 1}
   references:
     version: 2
     RefIds:
+    - rid: 4349734132135231488
+      type: {class: CheckStagger, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 5d41075d93691c94eaee4db5a6c8433d
+        position: {x: -345.00006, y: 347.99994}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: 
+        drawGizmos: 0
+        child:
+          rid: 4349734132135231490
+    - rid: 4349734132135231490
+      type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 6a28d1eb2222fd94294f061825532e47
+        position: {x: -439.50003, y: 485}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: 
+        drawGizmos: 0
+        children:
+        - rid: 4349734132135231495
+        - rid: 4349734132135231492
+        - rid: 4349734132135231498
+        - rid: 4349734132135231494
+    - rid: 4349734132135231492
+      type: {class: SetAnimatorTrigger, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 6d949c9b8d2a4554ea2090328004c07a
+        position: {x: -607.00006, y: 622.49994}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: 
+        drawGizmos: 0
+        triggerName: Flinch
+    - rid: 4349734132135231494
+      type: {class: ResetStagger, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: d0c2c036686288d409e8a1a7c2453fcc
+        position: {x: -283.0001, y: 622.49994}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: 
+        drawGizmos: 0
+    - rid: 4349734132135231495
+      type: {class: SetAggro, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 36a54d89579c2ef4ca5f094a10307c1e
+        position: {x: -769.7439, y: 622.5}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: 
+        drawGizmos: 0
+        setTo: 1
+    - rid: 4349734132135231497
+      type: {class: LookingAtPlayer, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 50e189206b16b9b4bbbaeab8a16bcdbc
+        position: {x: -646.51, y: 896.49994}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: 
+        drawGizmos: 0
+        degreesOfRange: 20
+    - rid: 4349734132135231498
+      type: {class: WaitForAnimation, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 04b456d435883e64384c18487db18fb7
+        position: {x: -439.50003, y: 626}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: 
+        drawGizmos: 0
+        animatorStateName: Flinch
     - rid: 9070050151572963328
       type: {class: RootNode, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:
@@ -88,6 +197,7 @@ MonoBehaviour:
         description: 
         drawGizmos: 0
         children:
+        - rid: 4349734132135231488
         - rid: 9070050151572963332
         - rid: 9070050151572963333
     - rid: 9070050151572963332
@@ -195,6 +305,7 @@ MonoBehaviour:
         description: 'Aggro Behavior '
         drawGizmos: 0
         children:
+        - rid: 4349734132135231497
         - rid: 9070050151572963339
         - rid: 9070050151572963340
         - rid: 9070050151572963341

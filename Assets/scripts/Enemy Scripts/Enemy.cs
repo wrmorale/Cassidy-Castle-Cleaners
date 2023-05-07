@@ -120,7 +120,8 @@ public class Enemy : MonoBehaviour
             }
         }
         else{//smaller enemies
-            //BTrunner.tree.rootNode.Abort();
+            isStaggered = true;
+            BTrunner.tree.rootNode.Abort();
             //Always play flinch animation from start, even if the enemy is already flinching
         }
         
