@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]public float aggroRange;
     [SerializeField]public float maxStaggerAmount;
     [HideInInspector] public float currentStaggerAmount = 0;
+    [HideInInspector] public bool isStaggered = false;
     private EnemyHealthBar enemyHealthBar;
     private float HealthPercent = 1;
 
@@ -22,8 +23,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] public float movementSpeed;
     public float rotationSpeed;
     [SerializeField] public float idleMovementRange;
-    public bool isStaggered = false;
-    
 
 
     [HideInInspector] public Vector3 movement;

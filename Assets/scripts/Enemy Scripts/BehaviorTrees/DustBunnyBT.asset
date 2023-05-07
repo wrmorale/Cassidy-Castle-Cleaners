@@ -45,7 +45,7 @@ MonoBehaviour:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 0
     specialCooldownEnds: 0
-  viewPosition: {x: 454.5, y: 135.5, z: 0}
+  viewPosition: {x: 257, y: 103.5, z: 0}
   viewScale: {x: 0.43232757, y: 0.43232757, z: 1}
   references:
     version: 2
@@ -152,7 +152,7 @@ MonoBehaviour:
           specialCooldownEnds: 0
         description: 
         drawGizmos: 0
-        animatorStateName: Flinch
+        animatorStateName: lol
     - rid: 4349734132944994304
       type: {class: RotateToMovement, ns: , asm: Assembly-CSharp}
       data:

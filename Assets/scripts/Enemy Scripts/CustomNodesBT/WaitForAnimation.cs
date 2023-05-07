@@ -43,11 +43,9 @@ public class WaitForAnimation : ActionNode
                 //(Have to do this because this node is called slightly before the animator transitions)
                 checkingForNextState = true;
             }
-            else if (Time.time >= timeOnWrongAnim + 5.0f)
+            else if (Time.time >= timeOnWrongAnim + 2.0f)
             {
-                /*This check doesn't quite work anymore under certain circumstanes
-                 I hope it doesn't lead to any frustration later on...*/
-                Debug.LogError("WaitForAnimation on wrong animation for more than 5 seconds!");
+                Debug.LogError("WaitForAnimation on wrong animation for more than 2 seconds!");
                 return State.Success;
             }
         }
