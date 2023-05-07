@@ -12,7 +12,7 @@ public class BleachBombTriggerable : PlayerAbility, IFrameCheckHandler
     [SerializeField] private float speed = 0.1f;
     [SerializeField] private float lifetime = 1f;
     [SerializeField] private float damage = 7f;
-    [SerializeField] private float stagger = 1f;
+    [SerializeField] private float stagger = 20f;
     [SerializeField] public float cost;
     [SerializeField] private FrameParser clip;
     [SerializeField] private FrameChecker frameChecker;

@@ -20,7 +20,7 @@ public class Explosion : MonoBehaviour
         if (other.tag == "Enemy") 
         {
             Enemy enemy = other.GetComponent<Enemy>();
-            enemy.isHit(damage, 0);
+            enemy.isHit(damage, stagger);
         }
         if (other.tag == "DustPile")
         {

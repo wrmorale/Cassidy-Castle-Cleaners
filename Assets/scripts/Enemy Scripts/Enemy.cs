@@ -125,10 +125,10 @@ public class Enemy : MonoBehaviour
             //Always play flinch animation from start, even if the enemy is already flinching
             //(As long as the attack actually does stagger damage
         }
-        
+        //Debug.Log("Enemy took " + staggerDamage + " stagger damage.");
 
         //Died?
-        if(currentHealth <= 0){
+        if (currentHealth <= 0){
             /*To add: Replace this Destroy with a behavior tree interrupt*/
             Destroy(gameObject);
         }
