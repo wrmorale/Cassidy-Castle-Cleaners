@@ -7,11 +7,20 @@ public class Explosion : MonoBehaviour
     private float damage;
     private float stagger;
     [SerializeField] private float lifetime = 0.8f;
+    [SerializeField] private AudioClip audioClip;
+    
+    private GameObject playerObj;
+    private AudioSource audioSource;
 
     public void Initialize(float damage, float stagger)
     {
+        //Audio Stuff
+        playerObj = GameObject.Find("Player");
+        audioSource = playerObj.GetComponentInChildren<AudioSource>();
+
         this.damage = damage;
         this.stagger = stagger;
+        audioSource.PlayOneShot(audioClip, 2.0f);
         Destroy(gameObject, lifetime);
     }
 
