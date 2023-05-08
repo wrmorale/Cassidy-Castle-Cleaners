@@ -410,10 +410,10 @@ MonoBehaviour:
   aggroRange: 4
   maxStaggerAmount: 30
   currentStaggerAmount: 0
+  isStaggered: 0
   movementSpeed: 0.5
   rotationSpeed: 1
   idleMovementRange: 0
-  isStaggered: 0
   movement: {x: 0, y: 0, z: 0}
   moveHistory: {x: 0, y: 0, z: 0}
   gravityBuildup: {x: 0, y: 0, z: 0}
@@ -471,7 +471,7 @@ MonoBehaviour:
       allCancelFrameEnd: 0
   - name: Light2
     damage: 5
-    range: 1.5
+    range: 0.7
     hitbox: {fileID: 6355576061597113706}
     clip:
       animator: {fileID: 2275572853724953662}
@@ -488,7 +488,7 @@ MonoBehaviour:
       allCancelFrameEnd: 0
   - name: SpinAttack
     damage: 5
-    range: 1.5
+    range: 0.7
     hitbox: {fileID: 8750645048523731814}
     clip:
       animator: {fileID: 2275572853724953662}
@@ -505,7 +505,7 @@ MonoBehaviour:
       allCancelFrameEnd: 0
   - name: Dash
     damage: 4
-    range: 4
+    range: 3
     hitbox: {fileID: 1250803297610215111}
     clip:
       animator: {fileID: 2275572853724953662}
@@ -514,10 +514,10 @@ MonoBehaviour:
       animatorStateName: dash
       layerNumber: 0
     checker:
-      activeFrameStart: 6
-      activeFrameEnd: 25
-      attackCancelFrameStart: 42
-      attackCancelFrameEnd: 44
+      activeFrameStart: 12
+      activeFrameEnd: 19
+      attackCancelFrameStart: 0
+      attackCancelFrameEnd: 0
       allCancelFrameStart: 0
       allCancelFrameEnd: 0
   attacking: 0
