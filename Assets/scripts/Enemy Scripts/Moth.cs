@@ -9,7 +9,6 @@ public class Moth : Enemy
     //public float fleeDuration = 1f;
     //public float fleeRemaining = 0f;
 
-
     [Header("Projectile Stats")]
     public Projectile projectilePrefab;
     [SerializeField] public float projectileSpeed;
