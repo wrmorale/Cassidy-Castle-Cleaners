@@ -481,7 +481,7 @@ MonoBehaviour:
       layerNumber: 0
     checker:
       activeFrameStart: 22
-      activeFrameEnd: 35
+      activeFrameEnd: 25
       attackCancelFrameStart: 36
       attackCancelFrameEnd: 37
       allCancelFrameStart: 0
@@ -514,7 +514,7 @@ MonoBehaviour:
       animatorStateName: dash
       layerNumber: 0
     checker:
-      activeFrameStart: 12
+      activeFrameStart: 15
       activeFrameEnd: 19
       attackCancelFrameStart: 0
       attackCancelFrameEnd: 0
