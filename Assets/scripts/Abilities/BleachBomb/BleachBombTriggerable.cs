@@ -16,13 +16,10 @@ public class BleachBombTriggerable : PlayerAbility, IFrameCheckHandler
     [SerializeField] public float cost;
     [SerializeField] private FrameParser clip;
     [SerializeField] private FrameChecker frameChecker;
-    [SerializeField] private AudioClip audioClip;
     
     private playerController player;
     private Vector3 playerForward;
     private aState state;
-    private GameObject playerObj;
-    private AudioSource audioSource;
     public void onActiveFrameStart()
     {
         if(GameManager.instance.mana >= cost){
@@ -82,10 +79,6 @@ public class BleachBombTriggerable : PlayerAbility, IFrameCheckHandler
         frameChecker.initCheck();
         frameChecker.checkFrames();
         cooldownTimer = baseCooldown;
-        
-        //Audio Stuff
-        playerObj = GameObject.Find("Player");
-        audioSource = playerObj.GetComponentInChildren<AudioSource>();
     }
     public void SpawnProjectile(Vector3 heading) 
     {

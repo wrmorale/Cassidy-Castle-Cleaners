@@ -69,4 +69,3 @@ MonoBehaviour:
     attackCancelFrameEnd: 0
     allCancelFrameStart: 0
     allCancelFrameEnd: 0
-  audioClip: {fileID: 8300000, guid: 2ccfae11b42b7c844bf0f5c2d5c810c4, type: 3}

@@ -15,19 +15,11 @@ public class DustPile : MonoBehaviour{
     private float healingTimer = 2f;
     private float healingCountdown;
 
-    [SerializeField] private AudioClip audioClip;
-    private GameObject playerObj;
-    private AudioSource audioSource;
-
     void Start(){
        health = maxHealth / 2;
        maxScale = 2;
        meshRenderer = GetComponent<MeshRenderer>();
        healingCountdown = healingTimer;
-
-        //Audio Stuff
-        playerObj = GameObject.Find("Player");
-        audioSource = playerObj.GetComponentInChildren<AudioSource>();       
     }
 
     private void Update() {
@@ -43,11 +35,11 @@ public class DustPile : MonoBehaviour{
     }
 
     public void isHit(float damage) {
+        print("DustPileTookDamage");
         health -= damage;
         if (health <= 0) {
             // Destroy the cube when it has no health left
-            audioSource.PlayOneShot(audioClip, 1.0f);
-
+            
             Destroy(gameObject);
         } else {
             // Decrease scale and opacity
