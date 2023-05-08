@@ -16,6 +16,7 @@ public class FeatherDusterTriggerable : PlayerAbility, IFrameCheckHandler
     [SerializeField] private float spread = 120f;
     [SerializeField] private int projectileCount = 3;
     [SerializeField] private float firerate = .1f;
+    [SerializeField] public float cost;
     [SerializeField] private FrameParser clip;
     [SerializeField] private FrameChecker frameChecker;
     
@@ -24,7 +25,23 @@ public class FeatherDusterTriggerable : PlayerAbility, IFrameCheckHandler
     private aState state;
     public void onActiveFrameStart()
     {
-        player.StartCoroutine(Fire());
+        /*Adjust throw direction according to the locked target's current position.
+         Done here so that the projectile aim can be adjusted right as they spawn, rather
+        than when the animation starts.*/
+        if (player.toTargetPosition() != Vector3.zero)
+        {
+            //Best point to target is probably the enemy's model
+            //Apparently this IS the world space of the transform, so why is it below the map and not where the model actually is?
+            //Transform of enemy = bottom of their collision box. Model position is somehow the same despite what the Unity editor shows
+            playerForward = ((player.targetLock.currentTarget.position + player.targetLock.targetColliderCenter) - bulletSpawn.position).normalized;
+            Debug.DrawLine(bulletSpawn.position, (player.targetLock.currentTarget.position + player.targetLock.targetColliderCenter), Color.white, 3.0f); //Only visible with Gizmos >:(
+        }
+        if(GameManager.instance.mana >= cost){
+            GameManager.instance.mana -= cost;//mana reduced when using ability
+            player.StartCoroutine(Fire());
+        }else{
+            Debug.Log("Feather Duster: Not Enough Mana");
+        }
     }
     public void onActiveFrameEnd()
     {
@@ -57,6 +74,15 @@ public class FeatherDusterTriggerable : PlayerAbility, IFrameCheckHandler
     public override void updateMe(float time) 
     {
         frameChecker.checkFrames();
+
+        // if we are playing a different animation than this ability, change the player state
+        // This avoids hard locking the player.
+        if (!clip.animator.GetCurrentAnimatorStateInfo(0).IsName(clip.animatorStateName) &&
+            player.state == pState.Ability)
+        {
+            player.SetState(States.PlayerStates.Idle);
+            // Animation has ended, we should be out of the Ability State
+        }
     }
     public override void Activate()
     {
@@ -83,6 +109,12 @@ public class FeatherDusterTriggerable : PlayerAbility, IFrameCheckHandler
         clip.initialize();
         frameChecker.initialize(this, clip);
         bulletSpawn = player.transform.Find("maid68/metarig/hip/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R");
+
+        // Set the cost based on the value of dusterCost in GameManager
+        if (GameManager.instance != null)
+        {
+            cost = GameManager.instance.dusterCost;
+        }
     }
 
     IEnumerator Fire()

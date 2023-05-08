@@ -18,6 +18,7 @@ namespace States
         AirBlocking,
         Talking,
         Unknown,
+        Dead,
     }
 
     public enum ActionState
