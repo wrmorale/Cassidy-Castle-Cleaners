@@ -459,7 +459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyName: Dust Bunny
-  maxHealth: 10
+  maxHealth: 15
   currentHealth: 0
   aggroRange: 4
   maxStaggerAmount: 0

@@ -67,6 +67,7 @@ public class GameManager : MonoBehaviour
     public float cleaningPercent = 0;
     public float mana = 0;//mana initiation
     public float maxMana = 100f;
+    public bool infiniteManaCheat = false; //If true, mana will constantly be reset to max
     public float dustPileReward = 20f;
     public float bleachBombCost = 50f;
     public float dusterCost = 10f;
@@ -255,6 +256,9 @@ public class GameManager : MonoBehaviour
 
         // Checks if player paused the game, if so stops time
         HandlePause();
+
+        if (infiniteManaCheat)
+            mana = maxMana;
     }
 
     /**

@@ -43,8 +43,8 @@ MonoBehaviour:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 0
     specialCooldownEnds: 0
-  viewPosition: {x: 897.5, y: -582.5, z: 0}
-  viewScale: {x: 1, y: 1, z: 1}
+  viewPosition: {x: 379, y: -42, z: 0}
+  viewScale: {x: 0.49717674, y: 0.49717674, z: 1}
   references:
     version: 2
     RefIds:
@@ -296,6 +296,7 @@ MonoBehaviour:
         drawGizmos: 0
         rotateTo: 1
         speedMultiplier: 1
+        rotateInstantly: 0
     - rid: 9070050190289010701
       type: {class: MoveToPlayer, ns: , asm: Assembly-CSharp}
       data:

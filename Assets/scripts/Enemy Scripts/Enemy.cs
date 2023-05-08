@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]public float aggroRange;
     [SerializeField]public float maxStaggerAmount;
     [HideInInspector] public float currentStaggerAmount = 0;
+    [HideInInspector] public bool isStaggered = false;
     private EnemyHealthBar enemyHealthBar;
     private float HealthPercent = 1;
 
@@ -22,8 +23,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] public float movementSpeed;
     public float rotationSpeed;
     [SerializeField] public float idleMovementRange;
-    public bool isStaggered = false;
-    
 
 
     [HideInInspector] public Vector3 movement;
@@ -97,7 +96,7 @@ public class Enemy : MonoBehaviour
     }
 
     //Changed to virtual so that boss mirrors can override this
-    public virtual void isHit(float damage, float staggerDamage){
+    public virtual void isHit(float damage, float staggerDamage = 1.0f){
         //decrease health
         currentHealth -= damage;
         //damageFlash.FlashStart();
@@ -119,14 +118,16 @@ public class Enemy : MonoBehaviour
                 //reset stagger done in BT
             }
         }
-        else{//smaller enemies
-            //BTrunner.tree.rootNode.Abort();
+        else if(staggerDamage > 0) {//smaller enemies
+            isStaggered = true;
+            BTrunner.tree.rootNode.Abort();
             //Always play flinch animation from start, even if the enemy is already flinching
+            //(As long as the attack actually does stagger damage
         }
-        
+        //Debug.Log("Enemy took " + staggerDamage + " stagger damage.");
 
         //Died?
-        if(currentHealth <= 0){
+        if (currentHealth <= 0){
             /*To add: Replace this Destroy with a behavior tree interrupt*/
             Destroy(gameObject);
         }
