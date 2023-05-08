@@ -46,7 +46,7 @@ public class DustPile : MonoBehaviour{
         health -= damage;
         if (health <= 0) {
             // Destroy the cube when it has no health left
-            audioSource.PlayOneShot(audioClip, 2.0f);
+            audioSource.PlayOneShot(audioClip, 1.0f);
 
             Destroy(gameObject);
         } else {
