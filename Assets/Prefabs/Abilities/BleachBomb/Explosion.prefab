@@ -76,6 +76,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 479704d55dd01594f97118646be5b986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lifetime: 0.8
+  audioClip: {fileID: 8300000, guid: 26390acb180dd8a46b6745145d7e5b26, type: 3}
+  audioLevel: 1
 --- !u!1001 &8088681698847141250
 PrefabInstance:
   m_ObjectHideFlags: 0
