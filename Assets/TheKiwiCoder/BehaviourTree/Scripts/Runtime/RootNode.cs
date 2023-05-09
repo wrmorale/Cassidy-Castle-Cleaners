@@ -16,7 +16,7 @@ namespace TheKiwiCoder {
         }
 
         protected override void OnStop() {
-
+            context.animator.speed = 1.0f;
         }
 
         protected override State OnUpdate() {
