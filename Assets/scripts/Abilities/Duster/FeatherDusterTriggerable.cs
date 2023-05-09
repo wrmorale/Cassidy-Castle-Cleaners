@@ -19,10 +19,14 @@ public class FeatherDusterTriggerable : PlayerAbility, IFrameCheckHandler
     [SerializeField] public float cost;
     [SerializeField] private FrameParser clip;
     [SerializeField] private FrameChecker frameChecker;
+    [SerializeField] private AudioClip audioClip;
+    [SerializeField] private float audioLevel;
     
     private playerController player;
     private Vector3 playerForward;
     private aState state;
+    private GameObject playerObj;
+    private AudioSource audioSource;
     public void onActiveFrameStart()
     {
         /*Adjust throw direction according to the locked target's current position.
@@ -93,6 +97,10 @@ public class FeatherDusterTriggerable : PlayerAbility, IFrameCheckHandler
         frameChecker.initCheck();
         frameChecker.checkFrames();
         cooldownTimer = baseCooldown;
+
+        //Audio Stuff
+        playerObj = GameObject.Find("Player");
+        audioSource = playerObj.GetComponentInChildren<AudioSource>();
     }
 
     public void SpawnProjectile(Vector3 heading) 
@@ -119,12 +127,14 @@ public class FeatherDusterTriggerable : PlayerAbility, IFrameCheckHandler
 
     IEnumerator Fire()
     {
+        
         for (int i = 0; i < projectileCount; i++)
         {
-            Debug.Log("we in");
+            //Debug.Log("we in");
             float theta = ((float)i).map(0, projectileCount - 1, -(spread / 2), spread / 2);
             Vector3 heading = Quaternion.Euler(0, -theta, 0) * playerForward;
             SpawnProjectile(heading);
+            audioSource.PlayOneShot(audioClip, audioLevel);
             yield return new WaitForSeconds(firerate);
         }
     }

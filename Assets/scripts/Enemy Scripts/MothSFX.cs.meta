@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: b6dd5c2075d76aa4f99b41c92aa3af11
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - attackWindupsfx: {fileID: 8300000, guid: 2cf5790679a1e8842a3da1a46b77f614, type: 3}
+  - attacksfx: {fileID: 8300000, guid: bbfaffa91a1d3484c86fd0130d498a71, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
