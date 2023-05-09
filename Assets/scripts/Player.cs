@@ -2,12 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
-using HudElements;
+
 
 public class Player : MonoBehaviour
 {
-    
-
     //this will keep track of stats for player
     [Header("stats")]
     [SerializeField]public float maxHealth;
@@ -34,6 +32,8 @@ public class Player : MonoBehaviour
     public float healthPercent = 1;
 
     private Animator animator;
+    private playerController playercontroller;
+    private BroomAttackManager atkmanager;
 
     [HideInInspector] public bool isInvulnerable; //This should be more clearly labeled as being i-frames for rolling
     public bool invincibleCheat = false;
@@ -50,6 +50,8 @@ public class Player : MonoBehaviour
         healthbar = root.Q<HealthBar>();*/
         healthbar = GetComponentInChildren<PlayerHealthBar>();
         animator = GetComponentInChildren<Animator>();
+        playercontroller = GetComponent<playerController>();
+        atkmanager = GetComponent<BroomAttackManager>();
         healthbar.setMaxHealth(healthPercent);
         
     }
@@ -74,14 +76,31 @@ public class Player : MonoBehaviour
             healthPercent = health / maxHealth;
             healthbar.setHealth(healthPercent);
             if(health >= 1){
-                animator.SetTrigger("Damaged");
-                animator.SetBool("Recovery", true);
+                StartCoroutine(HandleDamage());
             }
             else if(health <= 0){
                 alive = false;
             }
         }
         
+    }
+
+    IEnumerator HandleDamage(){
+        playercontroller.SetState(States.PlayerStates.Damaged);
+        
+        animator.SetBool("Falling", false); 
+        animator.SetBool("Jumping", false);
+        animator.SetBool("Walking", false);      
+        animator.SetBool("Running", false);
+        animator.SetBool("Attacking", false);
+        
+        atkmanager.SetWeaponCollider(false);
+        animator.SetTrigger("Damaged");
+        
+        
+        yield return new WaitForSeconds(0.5f);
+        animator.SetTrigger("Recovery");
+        playercontroller.SetState(States.PlayerStates.Idle);
     }
 
 }

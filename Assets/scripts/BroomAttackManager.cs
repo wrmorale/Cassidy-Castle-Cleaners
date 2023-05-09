@@ -219,7 +219,7 @@ public class BroomAttackManager : MonoBehaviour, IFrameCheckHandler
         }
     }
 
-    private void SetWeaponCollider(bool b)
+    public void SetWeaponCollider(bool b)
     {
         if (combo == 1){
             attack1_collider.SetActive(b);
