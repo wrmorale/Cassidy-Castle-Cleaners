@@ -114,6 +114,8 @@ public class Enemy : MonoBehaviour
             {
                 isDead = true; //Heavy is dead!
                 BTrunner.tree.rootNode.Abort();
+                gameObject.tag = "Untagged"; //Makes them unable to be targeted
+                //However if changing the enemy tag causes problems, we can instead use GetComponent to check if the enemy is dead in TargetLock.cs
                 return;
             }
 
