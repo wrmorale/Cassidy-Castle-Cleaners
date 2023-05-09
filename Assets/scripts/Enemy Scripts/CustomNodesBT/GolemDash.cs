@@ -17,10 +17,6 @@ public class GolemDash : ActionNode
     If a node returns RUNNING it will not call OnStart()
     on the next tick*/
     protected override void OnStart() {
-        Vector3 playerCurrLocation = context.enemy.playerBody.position;
-        playerCurrLocation.y = 0;
-        blackboard.moveToPosition = playerCurrLocation;
-
         endOn = Time.time + duration;
     }
 

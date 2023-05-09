@@ -38,13 +38,15 @@ MonoBehaviour:
   - rid: 4349733997256376323
   - rid: 4349733997256376324
   - rid: 4349733997256376325
+  - rid: 4349734178995568642
+  - rid: 4349734178995568643
   treeState: 0
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 0
     specialCooldownEnds: 0
-  viewPosition: {x: 379, y: -42, z: 0}
-  viewScale: {x: 0.49717674, y: 0.49717674, z: 1}
+  viewPosition: {x: 368, y: 128, z: 0}
+  viewScale: {x: 0.375937, y: 0.375937, z: 1}
   references:
     version: 2
     RefIds:
@@ -110,6 +112,34 @@ MonoBehaviour:
         description: 
         drawGizmos: 0
         speedMultiplier: 3
+    - rid: 4349734178995568642
+      type: {class: CheckDead, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: b49ac20ce28841045b30f00b372369e7
+        position: {x: -716.70886, y: 341}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: 
+        drawGizmos: 0
+        child:
+          rid: 4349734178995568643
+    - rid: 4349734178995568643
+      type: {class: RemoveEnemy, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: c5bffd4f0e88f154ba45f77b1cad83d3
+        position: {x: -716.5, y: 462.5}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: 
+        drawGizmos: 0
     - rid: 9070050190289010688
       type: {class: RootNode, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:
@@ -156,6 +186,7 @@ MonoBehaviour:
         description: 
         drawGizmos: 0
         children:
+        - rid: 4349734178995568642
         - rid: 9070050190289010696
         - rid: 9070050190289010691
     - rid: 9070050190289010691
