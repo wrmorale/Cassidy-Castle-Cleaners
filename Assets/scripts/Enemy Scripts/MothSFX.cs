@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class MothSFX : MonoBehaviour
 {
-    [Header("Audio Files")]
     AudioSource animationSoundPlayer;
     public AudioClip attackWindupsfx;
     public AudioClip attacksfx;
+    public float audioLevel;
 
     void Start()
     {
@@ -15,10 +15,10 @@ public class MothSFX : MonoBehaviour
     }
 
     private void playWindUpsfx(){
-        animationSoundPlayer.PlayOneShot(attackWindupsfx, 0.8F);
+        animationSoundPlayer.PlayOneShot(attackWindupsfx, audioLevel);
     }
 
     private void playAttacksfx(){
-        animationSoundPlayer.PlayOneShot(attacksfx, 0.8F);
+        animationSoundPlayer.PlayOneShot(attacksfx, audioLevel);
     }
 }

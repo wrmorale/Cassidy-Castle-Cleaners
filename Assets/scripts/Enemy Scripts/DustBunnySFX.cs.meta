@@ -3,7 +3,10 @@ guid: 74a6f85776ec94749adbff0fe9722151
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - hopsfx: {fileID: 8300000, guid: cf877fdff9408214aa98924b04258963, type: 3}
+  - chargesfx: {fileID: 8300000, guid: 6aae3f6b90c9a29438f87fbcfe6adf75, type: 3}
+  - pouncesfx: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
