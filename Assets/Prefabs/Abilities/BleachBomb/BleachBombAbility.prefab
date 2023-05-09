@@ -53,7 +53,7 @@ MonoBehaviour:
   lifetime: 1
   damage: 10
   stagger: 20
-  cost: 50
+  cost: 20
   clip:
     animator: {fileID: 0}
     clip: {fileID: 7400000, guid: 2ca5961c8026cd747a404d2df3cf39c6, type: 2}
@@ -66,3 +66,5 @@ MonoBehaviour:
     attackCancelFrameEnd: 0
     allCancelFrameStart: 0
     allCancelFrameEnd: 0
+  audioClip: {fileID: 0}
+  audioLevel: 0

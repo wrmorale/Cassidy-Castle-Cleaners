@@ -74,8 +74,8 @@ public class Player : MonoBehaviour
             healthPercent = health / maxHealth;
             healthbar.setHealth(healthPercent);
             if(health >= 1){
-                animator.SetTrigger("Damaged");
-                animator.SetBool("Recovery", true);
+                //animator.SetTrigger("Damaged");
+                //animator.SetBool("Recovery", true);
             }
             else if(health <= 0){
                 alive = false;
