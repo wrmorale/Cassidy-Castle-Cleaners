@@ -43,13 +43,15 @@ MonoBehaviour:
   - rid: 4349734173429727232
   - rid: 4349734173429727233
   - rid: 4349734173429727237
+  - rid: 4349734178995568640
+  - rid: 4349734178995568641
   treeState: 0
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 0
     specialCooldownEnds: 0
-  viewPosition: {x: 297, y: 92.5, z: 0}
-  viewScale: {x: 0.57175326, y: 0.57175326, z: 1}
+  viewPosition: {x: 364.5, y: 239.5, z: 0}
+  viewScale: {x: 0.2842624, y: 0.2842624, z: 1}
   references:
     version: 2
     RefIds:
@@ -201,7 +203,9 @@ MonoBehaviour:
         description: 
         drawGizmos: 0
         children:
+        - rid: 4349734178995568640
         - rid: 4349734173429727237
+        - rid: 4349734178995568641
     - rid: 4349734173429727237
       type: {class: Wait, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:
@@ -216,6 +220,33 @@ MonoBehaviour:
         description: 
         drawGizmos: 0
         duration: 2
+    - rid: 4349734178995568640
+      type: {class: SetAnimatorTrigger, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 5a59162a974d71044994b10fccfdadb2
+        position: {x: -998, y: 421}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: 
+        drawGizmos: 0
+        triggerName: Death
+    - rid: 4349734178995568641
+      type: {class: RemoveEnemy, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: a10a444f4814bcd4cb6180946b272568
+        position: {x: -649.5, y: 421}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: 
+        drawGizmos: 0
     - rid: 9070050151572963328
       type: {class: RootNode, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:

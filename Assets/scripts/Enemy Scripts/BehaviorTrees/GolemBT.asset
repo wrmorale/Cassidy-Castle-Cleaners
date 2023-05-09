@@ -79,13 +79,16 @@ MonoBehaviour:
   - rid: 2581180579587817480
   - rid: 2581180579587817483
   - rid: 2581180579587817484
+  - rid: 4349734178995568644
+  - rid: 4349734178995568646
+  - rid: 4349734178995568647
   treeState: 0
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 0
     specialCooldownEnds: 0
-  viewPosition: {x: 106.5, y: 36, z: 0}
-  viewScale: {x: 0.32690176, y: 0.32690176, z: 1}
+  viewPosition: {x: 1261, y: -213.5, z: 0}
+  viewScale: {x: 0.65751624, y: 0.65751624, z: 1}
   references:
     version: 2
     RefIds:
@@ -213,7 +216,7 @@ MonoBehaviour:
         description: 
         drawGizmos: 0
         children:
-        - rid: 2581180579587817472
+        - rid: 4349734178995568644
         - rid: 2088461282818916353
         - rid: 2088461210442268706
     - rid: 2088461210442268706
@@ -987,6 +990,50 @@ MonoBehaviour:
         description: Time for anim 2 to complete
         drawGizmos: 0
         duration: 1.2
+    - rid: 4349734178995568644
+      type: {class: Selector, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: bc2ac1ec8ee9e8c4290c937d974f6065
+        position: {x: -1110, y: 466}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: 
+        drawGizmos: 0
+        children:
+        - rid: 4349734178995568646
+        - rid: 2581180579587817472
+    - rid: 4349734178995568646
+      type: {class: CheckDead, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: ab67608ad9ed3ff4f9e6fee0ca7461c4
+        position: {x: -1652.7327, y: 610.5}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: 
+        drawGizmos: 0
+        child:
+          rid: 4349734178995568647
+    - rid: 4349734178995568647
+      type: {class: RemoveEnemy, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: c014a892258b4a144a31d8a49676d7bb
+        position: {x: -1652.5, y: 726.12427}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: 
+        drawGizmos: 0
     - rid: 5265791478174318594
       type: {class: PlayerInRangeOfAttack, ns: , asm: Assembly-CSharp}
       data:

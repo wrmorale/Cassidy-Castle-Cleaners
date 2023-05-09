@@ -114,7 +114,6 @@ public class Enemy : MonoBehaviour
             {
                 isDead = true; //Heavy is dead!
                 BTrunner.tree.rootNode.Abort();
-                GetComponentInChildren<Animator>().SetBool("Dead", true);
                 return;
             }
 
