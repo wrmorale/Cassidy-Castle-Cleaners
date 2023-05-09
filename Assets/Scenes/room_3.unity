@@ -2006,11 +2006,20 @@ MonoBehaviour:
   enemyPrefab: {fileID: 1161768988}
   player: {fileID: 2029081637}
   doorPortal: {fileID: 2044918206}
-  spawnAreas:
+  enemySpawnAreas:
   - {fileID: 521778372}
   - {fileID: 318758362}
   - {fileID: 71551038}
   - {fileID: 1180768018}
+  - {fileID: 1141871257}
+  - {fileID: 109043213}
+  dustSpawnAreas:
+  - {fileID: 521778372}
+  - {fileID: 318758362}
+  - {fileID: 71551038}
+  - {fileID: 1180768018}
+  - {fileID: 1141871257}
+  - {fileID: 109043213}
   dustPilePrefab: {fileID: 1453081827}
   pauseUI: {fileID: 151565201}
   playerStats: {fileID: 2029081638}
@@ -3665,12 +3674,12 @@ PrefabInstance:
     - target: {fileID: 6904719146668348922, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -3.2821468e-15
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6904719146668348922, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 1.6597894e-15
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6904719147228723758, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
