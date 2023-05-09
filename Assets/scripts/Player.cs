@@ -77,6 +77,8 @@ public class Player : MonoBehaviour
             healthbar.setHealth(healthPercent);
             if(health >= 1){
                 StartCoroutine(HandleDamage());
+                //animator.SetTrigger("Damaged");
+                //animator.SetBool("Recovery", true);
             }
             else if(health <= 0){
                 alive = false;
