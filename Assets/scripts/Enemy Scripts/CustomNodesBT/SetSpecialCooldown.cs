@@ -16,7 +16,11 @@ public class SetSpecialCooldown : ActionNode
     }
 
     protected override State OnUpdate() {
-        blackboard.specialCooldownEnds = Time.time + xSecondsInFuture;
+        //Only update if there is less than x time before the cooldown ends
+        if(blackboard.specialCooldownEnds - Time.time < xSecondsInFuture)
+        {
+            blackboard.specialCooldownEnds = Time.time + xSecondsInFuture;
+        }
         //Debug.Log("Special will go off cooldown at " + blackboard.specialCooldownEnds);
         return State.Success;
     }

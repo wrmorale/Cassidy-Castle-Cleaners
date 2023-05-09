@@ -119,9 +119,10 @@ public class TargetLock : MonoBehaviour
 
     private void LookAtTarget(Transform target) // sets new input value.
     {
-        if (!currentTarget)
+        //If target is dead
+        if (!currentTarget || currentTarget.tag != "Enemy")
         {
-            isTargeting = false;
+            AssignTarget();
             return;
         }
 
