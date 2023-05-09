@@ -853,6 +853,7 @@ MonoBehaviour:
   hopsfx: {fileID: 8300000, guid: cf877fdff9408214aa98924b04258963, type: 3}
   chargesfx: {fileID: 8300000, guid: 6aae3f6b90c9a29438f87fbcfe6adf75, type: 3}
   pouncesfx: {fileID: 8300000, guid: b1d25552a878d7044abb785859ea7bde, type: 3}
+  audioLevel: 0.25
 --- !u!4 &5516101816487679036 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b6d65ce9921488041b3e438d098c6485,
