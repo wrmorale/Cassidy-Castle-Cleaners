@@ -827,7 +827,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackWindupsfx: {fileID: 8300000, guid: 2cf5790679a1e8842a3da1a46b77f614, type: 3}
   attacksfx: {fileID: 8300000, guid: bbfaffa91a1d3484c86fd0130d498a71, type: 3}
-  audioLevel: 0.25
+  audioLevel: 0.4
 --- !u!4 &2299728706520807095 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 30c4a814325fe30458fc37939fc2e37c,
