@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]public float maxStaggerAmount;
     [HideInInspector] public float currentStaggerAmount = 0;
     [HideInInspector] public bool isStaggered = false;
+    [HideInInspector] public bool isDead = false;
     private EnemyHealthBar enemyHealthBar;
     private float HealthPercent = 1;
 
@@ -106,30 +107,44 @@ public class Enemy : MonoBehaviour
         HealthPercent = currentHealth / maxHealth;
         enemyHealthBar.setHealth(HealthPercent);
 
-        //Staggering
-        if(maxStaggerAmount>0){ //for bigger enemies
-            currentStaggerAmount += staggerDamage;
-            if(currentStaggerAmount >= maxStaggerAmount && isStaggered == false){
-                Debug.Log("Enemy staggered!");
-                isStaggered = true;
-                //do the BT interupt
+        //Died?
+        if (!isDead)
+        {
+            if (currentHealth <= 0)
+            {
+                isDead = true; //Heavy is dead!
                 BTrunner.tree.rootNode.Abort();
-                //stagger animation done in BT
-                //reset stagger done in BT
+                GetComponentInChildren<Animator>().SetBool("Dead", true);
+                return;
+            }
+
+            //Staggering
+            if (maxStaggerAmount > 0)
+            { //for bigger enemies
+                currentStaggerAmount += staggerDamage;
+                if (currentStaggerAmount >= maxStaggerAmount && isStaggered == false)
+                {
+                    Debug.Log("Enemy staggered!");
+                    isStaggered = true;
+                    //do the BT interupt
+                    BTrunner.tree.rootNode.Abort();
+                    //stagger animation done in BT
+                    //reset stagger done in BT
+                }
+            }
+            else if (staggerDamage > 0)
+            {//smaller enemies
+                isStaggered = true;
+                BTrunner.tree.rootNode.Abort();
+                //Always play flinch animation from start, even if the enemy is already flinching
+                //(As long as the attack actually does stagger damage
             }
         }
-        else if(staggerDamage > 0) {//smaller enemies
-            isStaggered = true;
-            BTrunner.tree.rootNode.Abort();
-            //Always play flinch animation from start, even if the enemy is already flinching
-            //(As long as the attack actually does stagger damage
-        }
-        //Debug.Log("Enemy took " + staggerDamage + " stagger damage.");
+    }
 
-        //Died?
-        if (currentHealth <= 0){
-            /*To add: Replace this Destroy with a behavior tree interrupt*/
-            Destroy(gameObject);
-        }
+    //Called by Behavior tree after the death animation
+    public void RemoveEnemy()
+    {
+        Destroy(gameObject);
     }
 }
