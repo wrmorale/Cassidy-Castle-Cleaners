@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 
 public class Player : MonoBehaviour
@@ -34,6 +34,9 @@ public class Player : MonoBehaviour
     private Animator animator;
     private playerController playercontroller;
     private BroomAttackManager atkmanager;
+    [SerializeField]
+    private Image hurtpng;
+    private Color color;
 
     [HideInInspector] public bool isInvulnerable; //This should be more clearly labeled as being i-frames for rolling
     public bool invincibleCheat = false;
@@ -63,6 +66,11 @@ public class Player : MonoBehaviour
             health = 0;
             alive = false;
         }
+        if(hurtpng.color.a > 0){
+            color = hurtpng.color;
+            color.a -= 0.01f;
+            hurtpng.color = color;
+        }
     }
 
     public void isHit(float damage){
@@ -77,8 +85,6 @@ public class Player : MonoBehaviour
             healthbar.setHealth(healthPercent);
             if(health >= 1){
                 StartCoroutine(HandleDamage());
-                //animator.SetTrigger("Damaged");
-                //animator.SetBool("Recovery", true);
             }
             else if(health <= 0){
                 alive = false;
@@ -95,13 +101,19 @@ public class Player : MonoBehaviour
         animator.SetBool("Walking", false);      
         animator.SetBool("Running", false);
         animator.SetBool("Attacking", false);
+        animator.SetBool("Rolling", false);
         
         atkmanager.SetWeaponCollider(false);
-        animator.SetTrigger("Damaged");
-        
+        atkmanager.combo = 0;
+        atkmanager.activeClip.animator.SetInteger("Combo", 0);
+        isInvulnerable = false;
+        //animator.SetTrigger("Damaged");
+        color = hurtpng.color;
+        color.a = 1f;
+        hurtpng.color = color;
         
         yield return new WaitForSeconds(0.5f);
-        animator.SetTrigger("Recovery");
+        //animator.SetTrigger("Recovery");
         playercontroller.SetState(States.PlayerStates.Idle);
     }
 

@@ -25,7 +25,7 @@ public class BroomAttackManager : MonoBehaviour, IFrameCheckHandler
     [SerializeField]
     private FrameChecker light3Checker;
 
-    private FrameParser activeClip;
+    public FrameParser activeClip;
     private FrameChecker activeChecker;
 
     private GameObject broom;
@@ -36,7 +36,7 @@ public class BroomAttackManager : MonoBehaviour, IFrameCheckHandler
     private playerController player;
     private Vector2 input = Vector2.zero;
 
-    private int combo = 0;
+    public int combo = 0;
     enum ActionState {Inactionable, AttackCancelable, AllCancelable}
     private ActionState actionState;
     private int bufferedAbility = -1;
