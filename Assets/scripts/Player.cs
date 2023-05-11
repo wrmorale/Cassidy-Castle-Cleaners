@@ -83,16 +83,20 @@ public class Player : MonoBehaviour
             health = Mathf.Clamp(health, 0 , maxHealth);
             healthPercent = health / maxHealth;
             healthbar.setHealth(healthPercent);
-            if(health >= 1){
-                StartCoroutine(HandleDamage());
-            }
-            else if(health <= 0){
+            //if(health >= 1){
+                //StartCoroutine(HandleDamage());
+                color = hurtpng.color;
+                color.a = 1f;
+                hurtpng.color = color;
+            //}
+            if(health <= 0){
                 alive = false;
             }
         }
         
     }
 
+    /*
     IEnumerator HandleDamage(){
         playercontroller.SetState(States.PlayerStates.Damaged);
         
@@ -116,5 +120,5 @@ public class Player : MonoBehaviour
         //animator.SetTrigger("Recovery");
         playercontroller.SetState(States.PlayerStates.Idle);
     }
-
+    */
 }
