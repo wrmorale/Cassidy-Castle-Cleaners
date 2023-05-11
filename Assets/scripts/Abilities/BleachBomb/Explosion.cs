@@ -7,11 +7,21 @@ public class Explosion : MonoBehaviour
     private float damage;
     private float stagger;
     [SerializeField] private float lifetime = 0.8f;
+    [SerializeField] private AudioClip audioClip;
+    [SerializeField] private float audioLevel;
+    
+    private GameObject playerObj;
+    private AudioSource audioSource;
 
     public void Initialize(float damage, float stagger)
     {
+        //Audio Stuff
+        playerObj = GameObject.Find("Player");
+        audioSource = playerObj.GetComponentInChildren<AudioSource>();
+
         this.damage = damage;
         this.stagger = stagger;
+        audioSource.PlayOneShot(audioClip, audioLevel);
         Destroy(gameObject, lifetime);
     }
 
@@ -20,7 +30,7 @@ public class Explosion : MonoBehaviour
         if (other.tag == "Enemy") 
         {
             Enemy enemy = other.GetComponent<Enemy>();
-            enemy.isHit(damage);
+            enemy.isHit(damage, stagger);
         }
         if (other.tag == "DustPile")
         {
@@ -33,5 +43,4 @@ public class Explosion : MonoBehaviour
             furniture.isHit(damage);
         }
     }
-
 }

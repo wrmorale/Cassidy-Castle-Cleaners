@@ -17,7 +17,7 @@ namespace TheKiwiCoder {
 
         protected override State OnUpdate() {
             float value = Random.value;
-            if (value > chanceOfFailure) {
+            if (value < chanceOfFailure) {
                 return State.Failure;
             }
             return State.Success;

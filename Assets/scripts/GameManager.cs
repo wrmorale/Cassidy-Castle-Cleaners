@@ -11,20 +11,22 @@ using HudElements;
 
 //this class can be used by both the player and enemies
 [System.Serializable]
-public class Ability{
+public class Ability
+{
     public string abilityName = "";
     public string abilityType = ""; //this would be like aoe, single target, heal, etc
     public float abilityDamage = 1; //negative # should work for healing
     public float abilityRange = 1;
     public float abilityCooldown = 1;
-    public float abilityChance = 1; 
+    public float abilityChance = 1;
     public float castTime = 1;
     public float damageMultiplier = 1;
     //public Transform abilityAnimation; //not tested but should work to play correct animation
 }
 
-public class GameManager : MonoBehaviour{
-    public static GameManager instance;
+public class GameManager : MonoBehaviour
+{
+    public static GameManager instance { get; private set; }
 
     public bool disableLosing = false;
     public float timer;
@@ -34,9 +36,9 @@ public class GameManager : MonoBehaviour{
     public bool gamePaused;
     public static int currentSceneIndex = 0;
     public static int currRoom = 0; // keeps track of the levels we beat
-    private int lastRoomIndex = 4; // 0 indexed so 4 total atm
+    private int lastRoomIndex = 5; // 0 indexed so 4 total atm
     private LevelLoader levelLoader;
-    public int currentGold; 
+    public int currentGold;
     public List<String> availableAbilities = new List<String>(); //not sure how we will keep track of abilities yet but a list of strings to hold ablities that can be learned
     //
     public int numberOfEnemies = 10;
@@ -45,10 +47,11 @@ public class GameManager : MonoBehaviour{
     public GameObject enemyPrefab;
     public GameObject player;
     public GameObject doorPortal;
-    public GameObject spawnArea;
+    public List<GameObject> spawnAreas = new List<GameObject>();//changed to array to hold many spawn areas
     public GameObject dustPilePrefab;
     public GameObject pauseUI;
     public Player playerStats;
+    public playerController playercontroller;
 
     private bool objectsInstantiated = false;
 
@@ -56,11 +59,18 @@ public class GameManager : MonoBehaviour{
     private InputAction pauseAction;
 
     //UI stuff
-    public UIDocument hud;
+    /*public UIDocument hud;
     private CleaningBar cleaningbar;
 
-    [Range(0,1)]
+    [Range(0,1)]*/
+    private CleaningCircle cleaningCircle;
     public float cleaningPercent = 0;
+    public float mana = 0;//mana initiation
+    public float maxMana = 100f;
+    public bool infiniteManaCheat = false; //If true, mana will constantly be reset to max
+    public float dustPileReward = 20f;
+    public float bleachBombCost = 50f;
+    public float dusterCost = 10f;
 
     private float dustPilesCleaned;
     private float dirtyingRate = 0.3f; // rate at which the room gets dirty
@@ -71,20 +81,27 @@ public class GameManager : MonoBehaviour{
     private float fogDensity;
 
     //setup singleton
-    private void Awake() {
+    private void Awake()
+    {
 
-        // if(instance != null){
-        //     Destroy(this.gameObject);
-        //     return;
-        // }
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
 
         instance = this;
-        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(gameObject);
     }
 
-    void Start() {
+    void Start()
+    {
         // Adds the pause button to the script
         pauseAction = playerInput.actions["Pause"];
+
+        // Locks the cursor into the gamescene so the mouse cannot go out of the window
+        UnityEngine.Cursor.lockState = CursorLockMode.Confined;
+        UnityEngine.Cursor.visible = false;
 
         timer = 0;
         levelLoader = FindObjectOfType(typeof(LevelLoader)) as LevelLoader;
@@ -94,34 +111,45 @@ public class GameManager : MonoBehaviour{
         gamePaused = false;
         currentGold = 0;
         numberOfDustPiles = maxDustPiles;
-        float spawnAreaY = spawnArea.transform.position.y;
-        //Dust Pile Spawn
-        if(!objectsInstantiated){
-            Bounds spawnBounds = spawnArea.GetComponent<MeshCollider>().bounds;
-            for (int i = 0; i < numberOfDustPiles; i++)
+        int randomIndex = UnityEngine.Random.Range(0, spawnAreas.Count);
+        GameObject selectedSpawnArea;
+
+        // Spawn Dust Piles and Enemies
+        if (!objectsInstantiated)
+        {
+            // Spawn dust piles
+            for (int i = 0; i < maxDustPiles; i++)
             {
+                randomIndex = UnityEngine.Random.Range(0, spawnAreas.Count);
+                selectedSpawnArea = spawnAreas[randomIndex];
+                Bounds spawnBounds = selectedSpawnArea.GetComponent<MeshCollider>().bounds;
                 Vector3 position = new Vector3(
                     UnityEngine.Random.Range(spawnBounds.min.x, spawnBounds.max.x),
-                    spawnAreaY,
+                    selectedSpawnArea.transform.position.y,
                     UnityEngine.Random.Range(spawnBounds.min.z, spawnBounds.max.z)
                 );
                 Instantiate(dustPilePrefab, position, Quaternion.identity);
             }
-            //
-            //create enemy copies at a location near the player
+
+            // Spawn enemies
             Vector3 playerPos = player.transform.position;
-            for(int i = 0; i < numberOfEnemies; i++){
+            for (int i = 0; i < numberOfEnemies; i++)
+            {
+                randomIndex = UnityEngine.Random.Range(0, spawnAreas.Count);
+                selectedSpawnArea = spawnAreas[randomIndex];
+                Bounds spawnBounds = selectedSpawnArea.GetComponent<MeshCollider>().bounds;
                 Vector3 position;
-                do {
+                do
+                {
                     position = new Vector3(
                         UnityEngine.Random.Range(spawnBounds.min.x, spawnBounds.max.x),
-                        spawnAreaY,
+                        selectedSpawnArea.transform.position.y,
                         UnityEngine.Random.Range(spawnBounds.min.z, spawnBounds.max.z)
                     );
                 } while (Vector3.Distance(playerPos, position) < 3);
                 GameObject enemy = Instantiate(enemyPrefab, position, Quaternion.identity);
             }
-            
+
             dustMaxHealth = dustPilePrefab.GetComponent<DustPile>().maxHealth;
 
             // Disable original objects
@@ -129,36 +157,39 @@ public class GameManager : MonoBehaviour{
             dustPilePrefab.SetActive(false);
 
             objectsInstantiated = true;
-            
+
         }
 
         // UI set up
-        var root = hud.rootVisualElement;
+        /*var root = hud.rootVisualElement;
         Debug.Log("root: " + root);
         cleaningbar = root.Q<CleaningBar>();
-        Debug.Log("cleaningbar: "+ cleaningbar);
+        Debug.Log("cleaningbar: "+ cleaningbar);*/
+        cleaningCircle = GetComponentInChildren<CleaningCircle>();
         totalHealth = maxDustPiles * dustPilePrefab.GetComponent<DustPile>().maxHealth;
-        cleaningbar.value = totalHealth * 0.5f / totalHealth;
+        cleaningPercent = totalHealth * 0.5f / totalHealth;
+        cleaningCircle.setCleaning(cleaningPercent);
 
         // fog
         RenderSettings.fog = true;
-        fogDensity = cleaningbar.value;
+        fogDensity = cleaningPercent;
 
         // Start executing function after 2.0f, and re-execute every 2.0f
         InvokeRepeating("DecreaseCleanliness", 2.0f, 2.0f);
 
     }
 
-    void Update(){
+    void Update()
+    {
         timer += Time.deltaTime;
         //Debug.Log("Time: " + timer.ToString("F2")); //timer displays in console for now
 
         HandleRoomTransition();
 
-        //Checks to see if enemies are still in arena
+        // Checks to see if enemies are still in arena
         Enemy[] enemies = FindObjectsOfType<Enemy>();
         DustPile[] dustPiles = FindObjectsOfType<DustPile>();
-        //deletes the enemy from the array if it has been destroyed
+        // Deletes the enemy from the array if it has been destroyed
         for (int i = 0; i < enemies.Length; i++)
         {
             if (enemies[i] == null)
@@ -166,32 +197,57 @@ public class GameManager : MonoBehaviour{
                 Array.Clear(enemies, i, 1);
             }
         }
-        if (!playerStats.alive && playerStats.lives == 1 ||
-        cleaningbar.value == 0){
+        // Are we dead?
+        if (!playerStats.alive && playerStats.lives == 1 || cleaningPercent == 0)
+        {
             playerStats.lives--;
             //Debug.Log("You're Dead, Loser");
-            //here we could insert a scene jump to a losing scene
             if (!disableLosing)
             {
-                levelLoader.LoadTargetLevel("Loss_scene");
+                mana = 0;
+                playercontroller.HandleDeath();
+
+                levelLoader.LoadTargetLevel("Loss_Scene");
             }
         }
-        if (enemies.Length == 0 && dustPiles.Length == 0 && !roomCleared){
+        // Is Room Cleared
+        if (enemies.Length == 0 && dustPiles.Length == 0 && !roomCleared)
+        {
             roomCleared = true;
             doorPortal.SetActive(true);
-            //Room clear condition successfully logged
+            // Room clear condition successfully logged
             Debug.Log("Room clear");
-            //Add some code to advance to next scene
+            mana = maxMana;//This number is a question mark at the moment
         }
         numberOfEnemies = enemies.Length;
-        numberOfDustPiles = dustPiles.Length;
-        //checks if there are no dustpiles and updates UI bar
-        if (numberOfDustPiles == 0) {
-            cleaningbar.value = 1;
+
+        // Increase mana by the dustPileReward after destroying a dust pile
+        if (dustPiles.Length < numberOfDustPiles)
+        {
+            float multiplier = numberOfDustPiles - dustPiles.Length;//in case you destroy multiple dust piles at once
+            if (multiplier * mana >= maxMana - (multiplier * dustPileReward))
+            {
+                mana = maxMana;
+            }
+            else
+            {
+                mana += multiplier * dustPileReward;
+            }
         }
+        numberOfDustPiles = dustPiles.Length;
+
+        // Checks if there are no dustpiles and updates UI bar
+        if (numberOfDustPiles == 0)
+        {
+            cleaningPercent = 1;
+            cleaningCircle.setCleaning(cleaningPercent);
+        }
+        
         var newPooledHealth = PoolDustHealth(dustPiles);
-        if (newPooledHealth < pooledHealth) {
-            cleaningbar.value += (pooledHealth - newPooledHealth) / totalHealth;
+        if (newPooledHealth < pooledHealth)
+        {
+            cleaningPercent += (pooledHealth - newPooledHealth) / totalHealth;
+            cleaningCircle.setCleaning(cleaningPercent);
         }
         pooledHealth = newPooledHealth; // get the current health pool of dustpiles.
 
@@ -199,51 +255,74 @@ public class GameManager : MonoBehaviour{
         RenderSettings.fogDensity = pooledHealth / (maxDustPiles * dustMaxHealth) * 0.2f;
 
         // Checks if player paused the game, if so stops time
-        if ((pauseUI) && pauseAction.triggered){
-            if (gamePaused) {
-                gamePaused = false;
-                pauseUI.SetActive(false);
-                Time.timeScale = 1;
-            } else {
-                gamePaused = true;
-                // pauseUI.GetComponent<Popup_Setup>().enabled = true;
-                pauseUI.SetActive(true);
-                Time.timeScale = 0;
-            }
-        }
-        if ((pauseUI) && (gamePaused == true && (pauseUI.activeSelf == false))){
-            gamePaused = false;
-        }
+        HandlePause();
+
+        if (infiniteManaCheat)
+            mana = maxMana;
     }
 
     /**
     * Check if we are next to the exit and we cleared the room
     * to advance to the next room.
     */
-    void HandleRoomTransition() {
-        if (isNextToExit) {
+    void HandleRoomTransition()
+    {
+        if (isNextToExit)
+        {
             isNextToExit = false;
             doorPortal.SetActive(false);
-            if (currentSceneIndex < lastRoomIndex) {
+            if (currentSceneIndex < lastRoomIndex)
+            {
                 //Debug.Log(currRoom);
+                Destroy(gameObject);
+                mana = 0;//reset mana for next room
                 levelLoader.LoadNextLevel();
-            } else {
+            }
+            else
+            {
                 // show end credits, player went through all rooms.
                 levelLoader.LoadTargetLevel("Win_scene");
             }
         }
     }
 
-    private float PoolDustHealth(DustPile[] dustPiles) {
+    private float PoolDustHealth(DustPile[] dustPiles)
+    {
         float pooledHealth = 0f;
-        foreach (DustPile dustPile in dustPiles) {
+        foreach (DustPile dustPile in dustPiles)
+        {
             pooledHealth += dustPile.GetComponent<DustPile>().health;
         }
         return pooledHealth;
     }
 
-    private void DecreaseCleanliness() {
-        cleaningbar.value -= dirtyingRate * numberOfDustPiles / totalHealth;
+    private void HandlePause()
+    {
+        if ((pauseUI) && pauseAction.triggered)
+        {
+            if (gamePaused)
+            {
+                gamePaused = false;
+                pauseUI.SetActive(false);
+                Time.timeScale = 1;
+            }
+            else
+            {
+                gamePaused = true;
+                // pauseUI.GetComponent<Popup_Setup>().enabled = true;
+                pauseUI.SetActive(true);
+                Time.timeScale = 0;
+            }
+        }
+        if ((pauseUI) && (gamePaused == true && (pauseUI.activeSelf == false)))
+        {
+            gamePaused = false;
+        }
+    }
+
+    private void DecreaseCleanliness()
+    {
+        cleaningPercent -= dirtyingRate * numberOfDustPiles / totalHealth;
     }
 
 }

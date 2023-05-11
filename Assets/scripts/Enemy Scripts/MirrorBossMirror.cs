@@ -45,7 +45,7 @@ public class MirrorBossMirror : Enemy
         
     }
 
-    public override void isHit(float damage)
+    public override void isHit(float damage, float staggerDamage)
     {
         if (entityPossessing)
         {

@@ -52,9 +52,11 @@ MonoBehaviour:
   speed: 18
   lifetime: 1
   damage: 5
+  stagger: 1
   spread: 22.5
   projectileCount: 3
   firerate: 0.05
+  cost: 10
   clip:
     animator: {fileID: 0}
     clip: {fileID: 7400000, guid: c8a6f60c66a8e3a4885d0efeca217917, type: 2}
@@ -67,3 +69,5 @@ MonoBehaviour:
     attackCancelFrameEnd: 0
     allCancelFrameStart: 0
     allCancelFrameEnd: 0
+  audioClip: {fileID: 8300000, guid: 2ccfae11b42b7c844bf0f5c2d5c810c4, type: 3}
+  audioLevel: 0.5

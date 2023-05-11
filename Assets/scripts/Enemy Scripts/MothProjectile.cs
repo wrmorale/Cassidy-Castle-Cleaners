@@ -18,6 +18,10 @@ public class MothProjectile : Projectile
             player.isHit(damage);
             Destroy(gameObject);
         }
+        //Can change to other tags like "Room" and such 
+        else if(other.tag == "Furniture"){
+            Destroy(gameObject);
+        }
     }
 
     private void OnDestroy()

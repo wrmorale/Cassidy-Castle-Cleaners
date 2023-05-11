@@ -19,7 +19,7 @@ public class PlayerInRangeOfAttack : ActionNode
     protected override State OnUpdate()
     {
         //If behaior trees use Update instead of FixedUpdate, sometimes reports back the incorrect Y value.
-        float distance = (context.enemy.playerBody.position - context.rigidbody.position).magnitude;
+        float distance = (context.enemy.playerBody.position - context.transform.position).magnitude;
 
         AttackData attack = context.attackManager.getAttack(attackName);
         if(attack != null && distance <= attack.range)

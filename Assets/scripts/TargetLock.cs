@@ -6,7 +6,7 @@ using Cinemachine;
 using UnityEngine.UI;
 
 /** This code is from https://github.com/DANCH0U/Unity3D-Target-Lock-System/blob/main/TargetLock.cs 
- *  and has been modified to fit our project 
+ *  and has been modified to fit our project
  **/
 
 public class TargetLock : MonoBehaviour
@@ -36,7 +36,10 @@ public class TargetLock : MonoBehaviour
     private int channeledAbility;
     
     private float maxAngle;
-    private Transform currentTarget;
+    [HideInInspector]
+    public Transform currentTarget;
+    public Transform healthBar;
+    public Vector3 targetColliderCenter;
     private float mouseX;
     private float mouseY;
 
@@ -65,8 +68,7 @@ public class TargetLock : MonoBehaviour
         else
         {
             // handles being locked on a target
-            // TODO: rename this function to something better
-            NewInputTarget(currentTarget); 
+            LookAtTarget(currentTarget); 
         }
 
         if (aimIcon) 
@@ -85,11 +87,7 @@ public class TargetLock : MonoBehaviour
         {
             isTargeting = false;
             targetGroup.RemoveMember(currentTarget);
-            Debug.Log("removed: " + currentTarget);
-            // cinemachineFreeLook.m_XAxis.m_MinValue = initMinRotation;
-            // cinemachineFreeLook.m_XAxis.m_MaxValue = initMaxRotation;
-            cinemachineFreeLook.m_YAxis.m_MaxSpeed = 1f;
-            cinemachineFreeLook.m_XAxis.m_MaxSpeed = 180f;
+            targetGroup.RemoveMember(healthBar);
             currentTarget = null;
             return;
         }
@@ -99,21 +97,49 @@ public class TargetLock : MonoBehaviour
         {
             isTargeting = true;
             currentTarget = closest.transform;
-            targetGroup.AddMember(currentTarget, 0.7f, 1f);
-            // cinemachineFreeLook.m_YAxis.m_MaxSpeed = 0f;
-            // cinemachineFreeLook.m_XAxis.m_MaxSpeed = 0f;
+            //Get's enemy model, which always has an animator attached
+            CharacterController enemyCollision = currentTarget.GetComponent<CharacterController>();
+            if (enemyCollision)
+            {
+                targetColliderCenter = enemyCollision.center * currentTarget.localScale.y;
+            }
+            else
+            {
+                /*If enemy does not have a BoxCollider, use this as aim adjustment instead.*/
+                targetColliderCenter = new Vector3(0, 0.2f, 0);
+                Debug.LogWarning(currentTarget + " does not have a CharacterController to use for lock-on targeting");
+            }
+            // Vec = AddOffset(currentTarget.position);
+            healthBar = currentTarget.transform.Find("UI Canvas").gameObject.transform;
+            targetGroup.AddMember(currentTarget, 0.3f, 1f);
+            targetGroup.AddMember(healthBar, 0.7f, 1f);
             Debug.Log("current target: "+ currentTarget);
         }
     }
 
-    private void NewInputTarget(Transform target) // sets new input value.
+    private void LookAtTarget(Transform target) // sets new input value.
     {
-        if (!currentTarget) return;
+        //If target is dead
+        if (!currentTarget || currentTarget.tag != "Enemy")
+        {
+            AssignTarget();
+            return;
+        }
 
-        //Vector3 viewPos = mainCamera.WorldToViewportPoint(target.position);
-        
+        BoxCollider enemyCollision = currentTarget.GetComponent<BoxCollider>();
+        if (enemyCollision)
+        {
+            targetColliderCenter = enemyCollision.center * currentTarget.localScale.y;
+        }
+        else
+        {
+            /*If enemy does not have a BoxCollider, use this as aim adjustment instead.*/
+            targetColliderCenter = new Vector3(0, 0.2f, 0);
+            Debug.LogWarning(currentTarget + " does not have a BoxCollider to use for lock-on targeting");
+        }
+
         if(aimIcon)
-            aimIcon.transform.position = mainCamera.WorldToScreenPoint(target.position);
+            aimIcon.transform.position = mainCamera.WorldToScreenPoint(target.position + targetColliderCenter);
 
         // if too far or too close to enemy, deselect them
         if ((target.position - transform.position).magnitude < minDistance ||
@@ -121,13 +147,21 @@ public class TargetLock : MonoBehaviour
             AssignTarget(); 
             return;
         }
+
         //Debug.Log(player.ParseAbilityInput());
         channeledAbility = player.ParseAbilityInput();
+        /*Weird that this doesn't seem to work for abilities*/
         if (player.attackAction.triggered ||
             channeledAbility != -1)
         {
             // turn player towards enemy when they attack.
-            controller.transform.LookAt(currentTarget); 
+            /*Probably why turning towards the enemy feels slightly janky, but it works*/
+            //Debug.Log("Redirected attack towards target");
+
+            Quaternion newRotation = Quaternion.LookRotation(player.toTargetPosition(), controller.transform.up);
+            newRotation = Quaternion.Euler(0, newRotation.eulerAngles.y, 0);
+            controller.transform.rotation = newRotation;
+            //controller.transform.LookAt(currentTarget); //Old rotate method if we want it
         }
     }
 
@@ -146,13 +180,13 @@ public class TargetLock : MonoBehaviour
             float curDistance = diff.magnitude;
             if (curDistance < distance)
             {
-                Debug.Log("In range.");
+                //Debug.Log("In range.");
                 Vector3 viewPos = mainCamera.WorldToViewportPoint(go.transform.position);
                 Vector2 newPos = new Vector3(viewPos.x - 0.5f, viewPos.y - 0.5f);
-                Debug.Log(Vector3.Angle(diff.normalized, mainCamera.transform.forward) < maxAngle);
+                //Debug.Log(Vector3.Angle(diff.normalized, mainCamera.transform.forward) < maxAngle);
                 if (Vector3.Angle(diff.normalized, mainCamera.transform.forward) < maxAngle)
                 {
-                    Debug.Log("in View");
+                    //Debug.Log("in View");
                     closest = go;
                     currAngle = Vector3.Angle(diff.normalized, mainCamera.transform.forward.normalized);
                     distance = curDistance;
@@ -161,6 +195,14 @@ public class TargetLock : MonoBehaviour
         }
         Debug.Log(closest);
         return closest;
+    }
+
+    private Vector3 AddOffset(Vector3 target)
+    {
+        Vector3 offset = targetLockOffset;
+        Debug.Log(offset);
+        offset = target + offset;
+        return offset;
     }
 
 

@@ -9,32 +9,16 @@ using States;
 [RequireComponent(typeof(CharacterController), typeof(PlayerInput))]
 public class playerController : MonoBehaviour, IFrameCheckHandler
 {
-    [SerializeField]
-    public float playerSpeed = 2.5f;
+    [SerializeField] public float playerSpeed = 2.5f;
+    [SerializeField] private float walkSpeed = 1.5f;
+    [SerializeField] private float walkThreshold = 0.5f;
+    [SerializeField] private float jumpHeight = 1.0f;
+    [SerializeField] private float gravityValue = -9.81f;
+    [SerializeField] public float turnSmoothTime = 0.0f;
+    [SerializeField] private FrameParser jumpClip;
+    [SerializeField] private FrameChecker jumpFrameChecker;
 
-    [SerializeField]
-    private float walkSpeed = 1.5f;
-
-    [SerializeField]
-    private float walkThreshold = 0.5f;
-
-    [SerializeField]
-    private float jumpHeight = 1.0f;
-
-    [SerializeField]
-    private float gravityValue = -9.81f;
-
-    [SerializeField]
-    public float turnSmoothTime = 0.0f;
-
-    [SerializeField]
-    private FrameParser jumpClip;
-
-    [SerializeField]
-    private FrameChecker jumpFrameChecker;
-
-    [SerializeField]
-    private PlayerAbility[] playerAbilities = new PlayerAbility[4];
+    [SerializeField] private PlayerAbility[] playerAbilities = new PlayerAbility[4];
 
     private float turnSmoothVelocity;
 
@@ -42,6 +26,8 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
     public CharacterController controller;
     private PlayerInput playerInput;
     private BroomAttackManager attackManager;
+    public TargetLock targetLock; /*Added for lock-on improvements*/
+    public Player playerStats;
 
     [HideInInspector]
     public PlayerAbility activeAbility;
@@ -58,14 +44,8 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
 
     [HideInInspector]
     public InputAction moveAction;
-
-    [HideInInspector]
     public InputAction walkAction;
-
-    [HideInInspector]
     public InputAction jumpAction;
-
-    [HideInInspector]
     public InputAction attackAction;
 
     [HideInInspector]
@@ -138,6 +118,9 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
         jumpClip.initialize();
         jumpFrameChecker.initialize(this, jumpClip);
         SetState(States.PlayerStates.Idle);
+
+        targetLock = gameObject.GetComponent<TargetLock>();
+        playerStats = gameObject.GetComponent<Player>();
     }
 
     void Update()
@@ -168,7 +151,7 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
             attackManager.updateMe(Time.deltaTime);
         }
 
-        if (state != States.PlayerStates.Attacking && state != States.PlayerStates.Ability)
+        if (state != States.PlayerStates.Attacking && state != States.PlayerStates.Ability && state != States.PlayerStates.Dead)
         {
             SetState(States.PlayerStates.Idle);
             model.transform.localPosition = Vector3.zero;
@@ -194,12 +177,19 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
             }
             else if (channeledAbility >= 0 && !inJumpsquat)
             {
-                ActivateAbility();
+                ActivateAbility(channeledAbility);
             }
         }
+        
 
         // cycle cooldowns
         ManageCooldowns(Time.deltaTime);
+    }
+    public void HandleDeath()
+    {
+        SetState(States.PlayerStates.Dead);
+        animator.SetTrigger("Death");
+
     }
 
     private void ApplyGravity()
@@ -232,6 +222,8 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
         if (input.x != 0 || input.y != 0)
         { // if there is movement input
             bool walking = false;
+
+
             Vector3 move = new Vector3(input.x, 0, input.y);
             if (move.magnitude < walkThreshold || walkAction.triggered)
             {
@@ -291,11 +283,30 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
         }
     }
 
-    public void ActivateAbility()
+    public void ActivateAbility(int idx)
     {
+        if (targetLock.currentTarget && channeledAbility != 1) //To Do: Make roll not an ability so that this exception doesn't cause problem
+        { //Face lock-on target if locked on
+
+            Quaternion newRotation = Quaternion.LookRotation(toTargetPosition(), controller.transform.up);
+            newRotation = Quaternion.Euler(0, newRotation.eulerAngles.y, 0);
+            controller.transform.rotation = newRotation;
+            
+            //Could also make it adjust to height as well...
+        }
+
         SetState(States.PlayerStates.Ability);
-        activeAbility = playerAbilities[channeledAbility];
+        activeAbility = playerAbilities[idx];
         activeAbility.Activate();
+    }
+
+    //Returns a vector from player to the current lock-on target
+    public Vector3 toTargetPosition()
+    {
+        if (targetLock.currentTarget)
+            return targetLock.currentTarget.position - transform.position; //Should replace transform with bullet spawn position
+        else
+            return Vector3.zero;
     }
 
     public Vector3 RotatePlayer(Vector2 input)

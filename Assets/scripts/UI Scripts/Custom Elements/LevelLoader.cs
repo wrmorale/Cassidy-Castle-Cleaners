@@ -29,10 +29,14 @@ public class LevelLoader : MonoBehaviour
 
     IEnumerator LoadLevel(string sceneName) 
     {
-        transition.SetTrigger("Start");
-
-        yield return new WaitForSeconds(transitionTime);
         
+        if(sceneName == "Loss_Scene"){
+
+            yield return new WaitForSeconds(3f);
+        }
+        
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(transitionTime);
         SceneManager.LoadScene(sceneName);
     }
 }

@@ -23,11 +23,12 @@ namespace TheKiwiCoder {
         //public SphereCollider sphereCollider;
         //public BoxCollider boxCollider;
         //public CapsuleCollider capsuleCollider;
-        public CharacterController characterController;
+        public CharacterController charController;
         // Add other game specific systems here
         public Enemy enemy;
         public AttackManager attackManager;
         public MirrorBossMain mirrorBossScript;
+        public Moth moth; 
 
         public static Context CreateFromGameObject(GameObject gameObject) {
             // Fetch all commonly used components
@@ -40,12 +41,13 @@ namespace TheKiwiCoder {
             //context.sphereCollider = gameObject.GetComponent<SphereCollider>();
             //context.boxCollider = gameObject.GetComponent<BoxCollider>();
             //context.capsuleCollider = gameObject.GetComponent<CapsuleCollider>();
-            context.characterController = gameObject.GetComponent<CharacterController>();
+            context.charController = gameObject.GetComponent<CharacterController>();
 
             // Add whatever else you need here...
             context.enemy = gameObject.GetComponent<Enemy>();
             context.attackManager = gameObject.GetComponent<AttackManager>();
             context.mirrorBossScript = gameObject.GetComponentInParent<MirrorBossMain>();
+            context.moth = gameObject.GetComponent<Moth>();
 
             return context;
         }
