@@ -11,7 +11,7 @@ public class ManaCounterText : MonoBehaviour
     private TextMeshProUGUI manaCounter;
 
     public void updateManaCounter(float mana){
-        manaCounter.text = "Mana: 100/ " + mana; 
+        manaCounter.text = mana.ToString(); 
     }
 
 
