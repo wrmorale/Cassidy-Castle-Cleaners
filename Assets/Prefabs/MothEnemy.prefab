@@ -5300,7 +5300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyName: Moth
-  maxHealth: 8
+  maxHealth: 15
   currentHealth: 0
   aggroRange: 6
   maxStaggerAmount: 0
@@ -5499,41 +5499,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4813893992773506146}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &4705825192163751628
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5624726301734332723}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 464637367d695734d9fa7e8a7c87144f, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
---- !u!114 &2611082940306881037
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5624726301734332723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6dd5c2075d76aa4f99b41c92aa3af11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackWindupsfx: {fileID: 8300000, guid: 2cf5790679a1e8842a3da1a46b77f614, type: 3}
-  attacksfx: {fileID: 8300000, guid: bbfaffa91a1d3484c86fd0130d498a71, type: 3}
-  audioLevel: 0.4
 --- !u!82 &6875828675275010662
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5630,6 +5595,41 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &4705825192163751628
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5624726301734332723}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 464637367d695734d9fa7e8a7c87144f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &2611082940306881037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5624726301734332723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6dd5c2075d76aa4f99b41c92aa3af11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackWindupsfx: {fileID: 8300000, guid: 2cf5790679a1e8842a3da1a46b77f614, type: 3}
+  attacksfx: {fileID: 8300000, guid: bbfaffa91a1d3484c86fd0130d498a71, type: 3}
+  audioLevel: 0.4
 --- !u!4 &6126996796478739473 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -7509448865721581453, guid: 3b9062af56bd41c4f90ccf843909cf4f,
