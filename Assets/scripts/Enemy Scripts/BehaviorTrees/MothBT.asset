@@ -47,13 +47,17 @@ MonoBehaviour:
   - rid: 4349734223735947269
   - rid: 4349734223735947270
   - rid: 4349734223735947271
+  - rid: 4349734223735947273
+  - rid: 4349734223735947274
+  - rid: 4349734223735947275
+  - rid: 4349734223735947277
   treeState: 0
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 0
     specialCooldownEnds: 0
-  viewPosition: {x: 298.5, y: 16.5, z: 0}
-  viewScale: {x: 0.375937, y: 0.375937, z: 1}
+  viewPosition: {x: 668, y: -44.5, z: 0}
+  viewScale: {x: 0.49717674, y: 0.49717674, z: 1}
   references:
     version: 2
     RefIds:
@@ -125,7 +129,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: b49ac20ce28841045b30f00b372369e7
-        position: {x: -1721.7681, y: 340.99997}
+        position: {x: -1217.84, y: 343}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -133,14 +137,14 @@ MonoBehaviour:
         description: 
         drawGizmos: 0
         child:
-          rid: 4349734178995568643
+          rid: 4349734223735947274
     - rid: 4349734178995568643
       type: {class: RemoveEnemy, ns: , asm: Assembly-CSharp}
       data:
         state: 0
         started: 0
         guid: c5bffd4f0e88f154ba45f77b1cad83d3
-        position: {x: -1721.7681, y: 462.49994}
+        position: {x: -951.5, y: 823.5}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -190,11 +194,11 @@ MonoBehaviour:
         description: 
         drawGizmos: 0
         children:
+        - rid: 4349734223735947270
         - rid: 4349734223735947271
         - rid: 4349734223735947266
         - rid: 4349734223735947268
         - rid: 4349734223735947269
-        - rid: 4349734223735947270
     - rid: 4349734223735947268
       type: {class: WaitForAnimation, ns: , asm: Assembly-CSharp}
       data:
@@ -252,6 +256,68 @@ MonoBehaviour:
         description: 
         drawGizmos: 0
         setTo: 1
+    - rid: 4349734223735947273
+      type: {class: RotateToMovement, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 366c7832e4c46b74099d3e31ebad9405
+        position: {x: -1407.5, y: 823.5}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: 
+        drawGizmos: 0
+        rotateTo: 1
+        speedMultiplier: 1
+        rotateInstantly: 0
+    - rid: 4349734223735947274
+      type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 8803d5c5e86f4a14a80bb880ff4ab0d3
+        position: {x: -1218, y: 683}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: 
+        drawGizmos: 0
+        children:
+        - rid: 4349734223735947273
+        - rid: 4349734223735947275
+        - rid: 4349734223735947277
+        - rid: 4349734178995568643
+    - rid: 4349734223735947275
+      type: {class: SetAnimatorTrigger, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 41ced83168da7a545a9cebc19fe6c8fa
+        position: {x: -1257.5, y: 823.5}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: 
+        drawGizmos: 0
+        triggerName: Death
+    - rid: 4349734223735947277
+      type: {class: Wait, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 18a8c0744e45d8342810534a8bd8d9f7
+        position: {x: -1101.5, y: 823.4999}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: 
+        drawGizmos: 0
+        duration: 2
     - rid: 9070050190289010688
       type: {class: RootNode, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:
