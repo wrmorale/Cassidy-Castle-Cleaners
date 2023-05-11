@@ -32,6 +32,7 @@ public class Player : MonoBehaviour
     [Range(0,1)]*/
     private PlayerHealthBar healthbar;
     public float healthPercent = 1;
+    private HealthCounterText healthCounter;
 
     private Animator animator;
 
@@ -49,8 +50,10 @@ public class Player : MonoBehaviour
         var root = hud.rootVisualElement;
         healthbar = root.Q<HealthBar>();*/
         healthbar = GetComponentInChildren<PlayerHealthBar>();
+        healthCounter = GetComponentInChildren<HealthCounterText>();
         animator = GetComponentInChildren<Animator>();
-        healthbar.setMaxHealth(healthPercent);
+        healthbar.setHealth(healthPercent);
+        healthCounter.setMaxHealth(maxHealth);
         
     }
 
@@ -73,6 +76,7 @@ public class Player : MonoBehaviour
             health = Mathf.Clamp(health, 0 , maxHealth);
             healthPercent = health / maxHealth;
             healthbar.setHealth(healthPercent);
+            healthCounter.updateHealthCounter(health);
             if(health >= 1){
                 //animator.SetTrigger("Damaged");
                 //animator.SetBool("Recovery", true);

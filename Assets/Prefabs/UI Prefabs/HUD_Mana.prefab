@@ -466,7 +466,7 @@ GameObject:
   - component: {fileID: 5669627651104517807}
   - component: {fileID: 339395471280699825}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: 'Mana Label '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
