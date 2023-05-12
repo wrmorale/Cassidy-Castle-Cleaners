@@ -49,7 +49,7 @@ public class MirrorBossMirror : Enemy
     {
         if (entityPossessing)
         {
-            mainScript.isHit(damage);
+            mainScript.isHit(damage, staggerDamage);
         }
         else
         {

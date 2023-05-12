@@ -215,7 +215,7 @@ BoxCollider:
   m_GameObject: {fileID: 3666671126868498160}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -235,11 +235,18 @@ MonoBehaviour:
   maxHealth: 10
   currentHealth: 0
   aggroRange: 0
+  maxStaggerAmount: 0
+  currentStaggerAmount: 0
+  isStaggered: 0
+  isDead: 0
   movementSpeed: 0
   rotationSpeed: 0
   idleMovementRange: 0
   movement: {x: 0, y: 0, z: 0}
-  enemyBody: {fileID: 0}
+  moveHistory: {x: 0, y: 0, z: 0}
+  gravityBuildup: {x: 0, y: 0, z: 0}
+  gravity: -9.81
+  enemyController: {fileID: 0}
   playerBody: {fileID: 0}
   detectionRange: 2
   healingSpeed: 0.1

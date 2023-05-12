@@ -17,7 +17,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
     [Header("Stats")]
     [SerializeField] public string enemyName;
     [SerializeField] public float maxHealth = 1.0f; //Shouldn't these be integers?
-    float currentHealth;
+    public float currentHealth;
     float healthPercent = 1.0f;
 
     [Header("Projectile Stats")]
@@ -42,13 +42,16 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
         phase = 1;
 
         //Remove later
+        canBeHarmed = true;
         currentHealth = maxHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(phase == 2){
+            phase2CompletionCheck();
+        }
     }
 
     //Before calling this function we will play an animation that makes the entity "vanish" from the current mirror
@@ -61,7 +64,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
         mirrors[mirrorIndex].SetPossessed(true);
         currPosessedMirror = mirrors[mirrorIndex];
         currMirrorIndex = mirrorIndex;
-        Debug.Log("Posessed mirror " + mirrorIndex);
+        //Debug.Log("Posessed mirror " + mirrorIndex);
 
         //Change the context?
         Context newContext = Context.CreateFromGameObject(currPosessedMirror.gameObject);
@@ -95,7 +98,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
     //Remove later
     //Mirrors count as enemies. When they are hit, instead of doing usual enemy stuff,
     //they call this method.
-    public void isHit(float damage)
+    public void isHit(float damage, float staggerDamage)
     {
         if (canBeHarmed)
         {
@@ -128,6 +131,15 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
         else
         {
             Debug.LogWarning("Boss cannot be hurt right now!");
+        }
+    }
+
+    public void phase2CompletionCheck(){
+        Enemy[] enemies = FindObjectsOfType<Enemy>();
+        if(enemies.Length < 5){ //since there are 4 mirrors it will check if all enemies but the mirrors are dead
+            btRunner.tree.rootNode.Abort();
+            canBeHarmed = true;
+            phase += 1;
         }
     }
     
@@ -171,5 +183,9 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
             return UnityEngine.Random.Range(-projectileMaxAngle, projectileMaxAngle);
         }
         return 0.0f;
+    }
+
+    public void spawnEnemies(){
+
     }
 }
