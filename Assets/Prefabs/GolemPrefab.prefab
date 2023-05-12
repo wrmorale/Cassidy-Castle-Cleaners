@@ -411,6 +411,9 @@ MonoBehaviour:
   maxStaggerAmount: 30
   currentStaggerAmount: 0
   isStaggered: 0
+  isDead: 0
+  onDeathPoof: {fileID: 2114917353029843427, guid: c77a3b4190b8f2c47b57e964ba69e97b,
+    type: 3}
   movementSpeed: 0.5
   rotationSpeed: 1
   idleMovementRange: 0
