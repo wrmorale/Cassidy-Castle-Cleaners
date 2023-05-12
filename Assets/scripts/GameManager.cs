@@ -65,6 +65,8 @@ public class GameManager : MonoBehaviour
     [Range(0,1)]*/
     private CleaningCircle cleaningCircle;
     private ManaCounterText manaCounter;
+    private DustPileCounterText dustPileCounter;
+    private EnemyCounterText enemyCounter;
     public float cleaningPercent = 0;
     public float mana = 0;//mana initiation
     public float maxMana = 100f;
@@ -112,7 +114,7 @@ public class GameManager : MonoBehaviour
         isNextToExit = false;
         gamePaused = false;
         currentGold = 0;
-        numberOfDustPiles = maxDustPiles;
+        numberOfDustPiles = maxDustPiles; 
         int randomIndex = UnityEngine.Random.Range(0, spawnAreas.Count);
         GameObject selectedSpawnArea;
 
@@ -174,6 +176,12 @@ public class GameManager : MonoBehaviour
         manaPercent = mana/maxMana;
         updateManaAmount(mana);
 
+        // ui counters for dust piles and enemies remaining
+        dustPileCounter = GetComponentInChildren<DustPileCounterText>();
+        enemyCounter = GetComponentInChildren<EnemyCounterText>();
+        updateDustPileAmount(numberOfDustPiles);
+        updateEnemiesAmount(numberOfEnemies);
+
 
         // fog
         RenderSettings.fog = true;
@@ -225,6 +233,7 @@ public class GameManager : MonoBehaviour
             //mana = maxMana;//This number is a question mark at the moment
         }
         numberOfEnemies = enemies.Length;
+        updateEnemiesAmount(numberOfEnemies);
 
         // Increase mana by the dustPileReward after destroying a dust pile
         if (dustPiles.Length < numberOfDustPiles)
@@ -242,6 +251,7 @@ public class GameManager : MonoBehaviour
             }
         }
         numberOfDustPiles = dustPiles.Length;
+        updateDustPileAmount(numberOfDustPiles);
 
         // Checks if there are no dustpiles and updates UI bar
         if (numberOfDustPiles == 0)
@@ -274,6 +284,13 @@ public class GameManager : MonoBehaviour
         manaCounter.updateManaCounter(Newmana);
     }
 
+    public void updateDustPileAmount(float NewdustPile){
+        dustPileCounter.updateDustPileCounter(NewdustPile);
+    }
+
+    public void updateEnemiesAmount(float NewEnemies){
+        enemyCounter.updateEnemyCounter(NewEnemies);
+    }
     /**
     * Check if we are next to the exit and we cleared the room
     * to advance to the next room.
