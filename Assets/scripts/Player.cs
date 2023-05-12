@@ -57,8 +57,8 @@ public class Player : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         playercontroller = GetComponent<playerController>();
         atkmanager = GetComponent<BroomAttackManager>();
-        healthbar.setMaxHealth(healthPercent);
-        
+        healthbar.setHealth(healthPercent);
+        healthCounter.setMaxHealth(maxHealth);
     }
 
     // Update is called once per frame
