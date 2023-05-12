@@ -13084,17 +13084,7 @@ MonoBehaviour:
   enemyPrefab: {fileID: 1142090133}
   player: {fileID: 795224103}
   doorPortal: {fileID: 1215839770}
-  enemySpawnAreas:
-  - {fileID: 501613309}
-  - {fileID: 1999839993}
-  - {fileID: 1620323811}
-  - {fileID: 1088976011}
-  - {fileID: 296510975}
-  - {fileID: 1558805291}
-  - {fileID: 448224616}
-  - {fileID: 1818734167}
-  - {fileID: 1549937988}
-  dustSpawnAreas:
+  spawnAreas:
   - {fileID: 501613309}
   - {fileID: 1999839993}
   - {fileID: 1620323811}
@@ -13107,7 +13097,7 @@ MonoBehaviour:
   dustPilePrefab: {fileID: 1142090133}
   pauseUI: {fileID: 1677883523}
   playerStats: {fileID: 795224107}
-  playercontroller: {fileID: 7428022770999317584}
+  playercontroller: {fileID: 0}
   playerInput: {fileID: 795224114}
   cleaningPercent: 0
   mana: 0
@@ -13848,12 +13838,12 @@ PrefabInstance:
     - target: {fileID: 6904719146668348922, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0000000084051575
+      value: 0.000000007361148
       objectReference: {fileID: 0}
     - target: {fileID: 6904719146668348922, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000018352693
+      value: -0.0000000016073093
       objectReference: {fileID: 0}
     - target: {fileID: 6904719147228723758, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
@@ -13893,12 +13883,12 @@ PrefabInstance:
     - target: {fileID: 6904719147742580994, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000023474579
+      value: 0.000000023473968
       objectReference: {fileID: 0}
     - target: {fileID: 6904719147742580994, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000064080625
+      value: -0.0000000064078955
       objectReference: {fileID: 0}
     - target: {fileID: 6904719148039652034, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
@@ -13923,12 +13913,12 @@ PrefabInstance:
     - target: {fileID: 6904719148039652034, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000023497828
+      value: 0.000000023490893
       objectReference: {fileID: 0}
     - target: {fileID: 6904719148039652034, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.00000000632227
+      value: -0.000000006320403
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe987c0be70e4764e92e8aff74c2356e, type: 3}
@@ -14126,16 +14116,6 @@ PrefabInstance:
       objectReference: {fileID: 330585545}
     - target: {fileID: 7428022771512999011, guid: 780a7481df1a48d4792aed7fd543ee02,
         type: 3}
-      propertyPath: targetLock
-      value: 
-      objectReference: {fileID: 795224112}
-    - target: {fileID: 7428022771512999011, guid: 780a7481df1a48d4792aed7fd543ee02,
-        type: 3}
-      propertyPath: playerStats
-      value: 
-      objectReference: {fileID: 795224107}
-    - target: {fileID: 7428022771512999011, guid: 780a7481df1a48d4792aed7fd543ee02,
-        type: 3}
       propertyPath: turnSmoothTime
       value: 0
       objectReference: {fileID: 0}
@@ -14311,18 +14291,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 780a7481df1a48d4792aed7fd543ee02, type: 3}
---- !u!114 &7428022770999317584 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7428022771512999011, guid: 780a7481df1a48d4792aed7fd543ee02,
-    type: 3}
-  m_PrefabInstance: {fileID: 7428022770999317583}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 795224103}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ff65f0c896144040af4a687c79f2030, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &7932447838660233072
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14383,12 +14351,12 @@ PrefabInstance:
     - target: {fileID: 7932447838902735546, guid: b16642e7513a80e4d83b1053c95e3d44,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000002347458
+      value: 0.000000023473968
       objectReference: {fileID: 0}
     - target: {fileID: 7932447838902735546, guid: b16642e7513a80e4d83b1053c95e3d44,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000064080634
+      value: -0.000000006407896
       objectReference: {fileID: 0}
     - target: {fileID: 7932447838902735546, guid: b16642e7513a80e4d83b1053c95e3d44,
         type: 3}
