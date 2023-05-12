@@ -151,7 +151,7 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
             attackManager.updateMe(Time.deltaTime);
         }
 
-        if (state != States.PlayerStates.Attacking && state != States.PlayerStates.Ability && state != States.PlayerStates.Dead)
+        if (state != States.PlayerStates.Attacking && state != States.PlayerStates.Ability && state != States.PlayerStates.Dead && state != States.PlayerStates.Damaged)
         {
             SetState(States.PlayerStates.Idle);
             model.transform.localPosition = Vector3.zero;
