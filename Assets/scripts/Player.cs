@@ -85,6 +85,7 @@ public class Player : MonoBehaviour
             health = Mathf.Clamp(health, 0 , maxHealth);
             healthPercent = health / maxHealth;
             healthbar.setHealth(healthPercent);
+            healthCounter.updateHealthCounter(health);
             //if(health >= 1){
                 //StartCoroutine(HandleDamage());
                 color = hurtpng.color;
