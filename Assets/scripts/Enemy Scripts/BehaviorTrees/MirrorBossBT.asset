@@ -36,7 +36,6 @@ MonoBehaviour:
   - rid: 2088461145881968642
   - rid: 2088461145881968643
   - rid: 2088461145881968644
-  - rid: 2088461145881968645
   - rid: 2088461145881968646
   - rid: 2088461145881968647
   - rid: 2088461147737948160
@@ -49,13 +48,14 @@ MonoBehaviour:
   - rid: 7060330863029649413
   - rid: 7060330880204275712
   - rid: 7060330928295116800
+  - rid: 2581180785908776961
   treeState: 0
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 1
     specialCooldownEnds: 0
-  viewPosition: {x: 635, y: -717, z: 0}
-  viewScale: {x: 0.65751624, y: 0.65751624, z: 1}
+  viewPosition: {x: 205, y: -30, z: 0}
+  viewScale: {x: 0.32690176, y: 0.32690176, z: 1}
   references:
     version: 2
     RefIds:
@@ -359,7 +359,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 5bfec67205a8b80499a0978160d2ca74
-        position: {x: 201.75668, y: 1116.5}
+        position: {x: 644.46545, y: 1126.9657}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -373,7 +373,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 99d60699127bbc740a4a405dc9e44bd0
-        position: {x: 283.99994, y: 961.1021}
+        position: {x: 644.21844, y: 976.7478}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -382,21 +382,6 @@ MonoBehaviour:
         drawGizmos: 0
         children:
         - rid: 2088461145881968643
-        - rid: 2088461145881968645
-    - rid: 2088461145881968645
-      type: {class: Wait, ns: TheKiwiCoder, asm: Assembly-CSharp}
-      data:
-        state: 0
-        started: 0
-        guid: a5f4d8edf41a5754d84f5b8c7c6a0067
-        position: {x: 399, y: 1116.5}
-        blackboard:
-          moveToPosition: {x: 0, y: 0, z: 0}
-          aggro: 0
-          specialCooldownEnds: 0
-        description: 
-        drawGizmos: 0
-        duration: 3
     - rid: 2088461145881968646
       type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:
@@ -433,7 +418,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: c317c6430dac7c249bfdf46d60cace02
-        position: {x: 283.99994, y: 833.9999}
+        position: {x: 644.21844, y: 849.7478}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -450,7 +435,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 6e461d6d6ddd8ee43af45cb75742534f
-        position: {x: 126.99985, y: 699.98846}
+        position: {x: 134, y: 700}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -459,6 +444,7 @@ MonoBehaviour:
         drawGizmos: 0
         children:
         - rid: 2088461147737948162
+        - rid: 2581180785908776961
         - rid: 2088461147737948164
         - rid: 2088461147737948160
     - rid: 2088461147737948162
@@ -467,7 +453,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 7c0d6231dfb88914ebceb89e2c5e15cb
-        position: {x: -96.51129, y: 833.9998}
+        position: {x: -198, y: 860}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -498,7 +484,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 9cfc9864773d38945960e1b51a639892
-        position: {x: 99.00007, y: 833.9999}
+        position: {x: 411.6262, y: 862.7478}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -513,6 +499,19 @@ MonoBehaviour:
         started: 0
         guid: 95ecee74dc0c9774caf8f033e173f0c9
         position: {x: -524.99976, y: 986.9999}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: 
+        drawGizmos: 0
+    - rid: 2581180785908776961
+      type: {class: MirrorEnemySpawn, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 6461f4b22e709694b8ab5c7645b44e34
+        position: {x: 45.87472, y: 859.64606}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0

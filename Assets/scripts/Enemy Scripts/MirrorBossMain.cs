@@ -25,6 +25,10 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
     [SerializeField] float projectilesPerSec = 3.0f;
     [SerializeField] float projectileMaxAngle = 25.0f;
 
+    [Header("Enemy Spawns")]
+    [SerializeField] GameObject spawnArea;
+    public GameObject enemyPrefab;
+
     /*I should probably experiment a bit with the golem before I give the others their tasks...*/
     [Header("Aggro Status")]
     public bool aggro = false;
@@ -136,10 +140,12 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
 
     public void phase2CompletionCheck(){
         Enemy[] enemies = FindObjectsOfType<Enemy>();
+        Debug.Log(enemies.Length);
         if(enemies.Length < 5){ //since there are 4 mirrors it will check if all enemies but the mirrors are dead
-            btRunner.tree.rootNode.Abort();
             canBeHarmed = true;
             phase += 1;
+            Debug.Log("Phase 2 complete");
+            btRunner.tree.rootNode.Abort();
         }
     }
     
@@ -186,6 +192,22 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
     }
 
     public void spawnEnemies(){
-
+        Vector3 playerPos = player.transform.position;
+        int numberOfEnemies = 2;
+        for (int i = 0; i < numberOfEnemies; i++)
+        {
+            Bounds spawnBounds = spawnArea.GetComponent<MeshCollider>().bounds;
+            Vector3 position;
+            do
+            {
+                position = new Vector3(
+                    UnityEngine.Random.Range(spawnBounds.min.x, spawnBounds.max.x),
+                    spawnArea.transform.position.y,
+                    UnityEngine.Random.Range(spawnBounds.min.z, spawnBounds.max.z)
+                );
+            } while (Vector3.Distance(playerPos, position) < 3);
+            GameObject enemy = Instantiate(enemyPrefab, position, Quaternion.identity);
+        }
+        enemyPrefab.SetActive(false);
     }
 }
