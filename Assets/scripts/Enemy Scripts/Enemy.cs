@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour
     [HideInInspector] public bool isStaggered = false;
     [HideInInspector] public bool isDead = false;
     public GameObject onDeathPoof;
+    public Transform poofSpawnTransform;
     private EnemyHealthBar enemyHealthBar;
     private float HealthPercent = 1;
 
@@ -147,9 +148,9 @@ public class Enemy : MonoBehaviour
     //Called by Behavior tree after the death animation
     public void RemoveEnemy()
     {
-        Vector3 poofSpawnPos = transform.position + (enemyController.center * transform.localScale.x);
+        Vector3 poofSpawnPos = transform.position + (Vector3.up * 0.1f);
         Destroy(gameObject);
-        if (onDeathPoof)
+        if (onDeathPoof && poofSpawnTransform)
         {
             GameObject deathPoof = Instantiate(onDeathPoof);
             deathPoof.transform.position = poofSpawnPos;

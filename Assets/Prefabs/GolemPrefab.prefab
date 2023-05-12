@@ -414,6 +414,7 @@ MonoBehaviour:
   isDead: 0
   onDeathPoof: {fileID: 2114917353029843427, guid: c77a3b4190b8f2c47b57e964ba69e97b,
     type: 3}
+  poofSpawnTransform: {fileID: 5598255633152663976}
   movementSpeed: 0.5
   rotationSpeed: 1
   idleMovementRange: 0
@@ -1217,3 +1218,9 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!4 &5598255633152663976 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8574115796961868028, guid: 057dfc13aad75d14c83a983e4cb0c5f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 4950125362691516076}
+  m_PrefabAsset: {fileID: 0}
