@@ -68,11 +68,18 @@ public class Enemy : MonoBehaviour
         /*BIG PROBLEM: Update stops working entirely if there are errors in the game manager*/
 
         // Check for nearby dust piles that need healing
-        foreach (DustPile dustPile in dustPiles) {
-            if (dustPile.health < dustPile.maxHealth) {
-                float distance = Vector3.Distance(transform.position, dustPile.transform.position);
-                if (distance <= detectionRange) {//check if dust pile doesn't have full health and is nearby
-                    dustPile.IncreaseHealth(healingSpeed * Time.deltaTime);
+        if (!isDead)
+        {
+            foreach (DustPile dustPile in dustPiles)
+            {
+                if (dustPile.health < dustPile.maxHealth)
+                {
+                    float distance = Vector3.Distance(transform.position, dustPile.transform.position);
+                    if (distance <= detectionRange)
+                    {//check if dust pile doesn't have full health and is nearby
+                        dustPile.IncreaseHealth(healingSpeed * Time.deltaTime);
+                        Debug.Log("Healing dust pile");
+                    }
                 }
             }
         }
@@ -83,6 +90,7 @@ public class Enemy : MonoBehaviour
             DustPile newDustPileScript = newDustPile.GetComponent<DustPile>();
             newDustPileScript.SetHealth(0.1f); // set a low starting health
             dustPiles.Add(newDustPileScript);
+            Debug.Log("Enemy created dust pile");
         }
     }
 
