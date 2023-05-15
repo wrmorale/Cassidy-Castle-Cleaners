@@ -10,10 +10,11 @@ public class BossPhase3Start : ActionNode
         MirrorBossMain mirrorBossRoot = context.mirrorBossScript;
         if(mirrorBossRoot.phase == 3){
             foreach (Transform child in mirrorBossRoot.transform){
-                // Set the child GameObject to active
-                child.gameObject.SetActive(true);
+                //add inactive mirrors into list and activate them
                 MirrorBossMirror mirror = child.GetComponent<MirrorBossMirror>();
-                if (mirror != null){
+                if (mirror != null && !child.gameObject.activeSelf){
+                    // Set the child GameObject to active
+                    child.gameObject.SetActive(true);
                     mirrorBossRoot.mirrors.Add(mirror);
                 }
             }

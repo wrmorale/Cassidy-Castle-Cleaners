@@ -33,7 +33,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
     [Header("Aggro Status")]
     public bool aggro = false;
     public Transform player;
-    [HideInInspector] public int phase; //1 = phase 1, 2 = spawn enemies, 3 = final phase, 4+ = defeated
+    public int phase; //1 = phase 1, 2 = spawn enemies, 3 = final phase, 4+ = defeated
 
     public bool isCoroutineRunning = false;
 
@@ -116,7 +116,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
             if(healthPercent <= 0.34 && phase == 1)
             {
                 Debug.Log("Proceeding to phase 2");
-                Debug.Log("Boss health: " + currentHealth);
+                //Debug.Log("Boss health: " + currentHealth);
                 btRunner.tree.rootNode.Abort();
                 canBeHarmed = false;
                 phase += 1;
@@ -140,7 +140,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
 
     public void phase2CompletionCheck(){
         Enemy[] enemies = FindObjectsOfType<Enemy>();
-        Debug.Log(enemies.Length);
+        //Debug.Log(enemies.Length);
         if(enemies.Length < 5){ //since there are 4 mirrors it will check if all enemies but the mirrors are dead
             canBeHarmed = true;
             phase += 1;
@@ -192,6 +192,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
     }
 
     public void spawnEnemies(){
+        //similar to how the game manager spawns enemies
         Vector3 playerPos = player.transform.position;
         int numberOfEnemies = 2;
         for (int i = 0; i < numberOfEnemies; i++)

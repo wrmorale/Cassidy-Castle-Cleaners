@@ -1488,7 +1488,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29398
+  m_Name: pb_Mesh97664
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7821,7 +7821,7 @@ MonoBehaviour:
   doorPortal: {fileID: 757472435}
   spawnAreas: []
   dustPilePrefab: {fileID: 846233651}
-  pauseUI: {fileID: 0}
+  pauseUI: {fileID: 5279415767739143560, guid: 68753f308bc43024ea0a493cf637379b, type: 3}
   playerStats: {fileID: 795224107}
   playercontroller: {fileID: 0}
   playerInput: {fileID: 0}
@@ -7912,6 +7912,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 453425135054561878, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
+        type: 3}
+      propertyPath: playerBody
+      value: 
+      objectReference: {fileID: 795224118}
+    - target: {fileID: 548558197993710726, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1108866297013288925, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
         type: 3}
       propertyPath: playerBody
@@ -8003,6 +8013,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 795224118}
     - target: {fileID: 6173591097381298724, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
+        type: 3}
+      propertyPath: playerBody
+      value: 
+      objectReference: {fileID: 795224118}
+    - target: {fileID: 6527280932713739772, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
+        type: 3}
+      propertyPath: playerBody
+      value: 
+      objectReference: {fileID: 795224118}
+    - target: {fileID: 6688137605808708068, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
+        type: 3}
+      propertyPath: playerBody
+      value: 
+      objectReference: {fileID: 795224118}
+    - target: {fileID: 7416771069845807875, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7438703012600587731, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
         type: 3}
       propertyPath: playerBody
       value: 
