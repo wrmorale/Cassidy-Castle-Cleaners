@@ -19,6 +19,7 @@ namespace States
         Talking,
         Unknown,
         Dead,
+        Damaged,
     }
 
     public enum ActionState

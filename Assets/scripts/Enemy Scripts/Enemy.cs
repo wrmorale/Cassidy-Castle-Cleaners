@@ -17,6 +17,8 @@ public class Enemy : MonoBehaviour
     [HideInInspector] public float currentStaggerAmount = 0;
     [HideInInspector] public bool isStaggered = false;
     [HideInInspector] public bool isDead = false;
+    public GameObject onDeathPoof;
+    public Transform poofSpawnTransform;
     private EnemyHealthBar enemyHealthBar;
     private float HealthPercent = 1;
 
@@ -66,11 +68,17 @@ public class Enemy : MonoBehaviour
         /*BIG PROBLEM: Update stops working entirely if there are errors in the game manager*/
 
         // Check for nearby dust piles that need healing
-        foreach (DustPile dustPile in dustPiles) {
-            if (dustPile.health < dustPile.maxHealth) {
-                float distance = Vector3.Distance(transform.position, dustPile.transform.position);
-                if (distance <= detectionRange) {//check if dust pile doesn't have full health and is nearby
-                    dustPile.IncreaseHealth(healingSpeed * Time.deltaTime);
+        if (!isDead)
+        {
+            foreach (DustPile dustPile in dustPiles)
+            {
+                if (dustPile.health < dustPile.maxHealth)
+                {
+                    float distance = Vector3.Distance(transform.position, dustPile.transform.position);
+                    if (distance <= detectionRange)
+                    {//check if dust pile doesn't have full health and is nearby
+                        dustPile.IncreaseHealth(healingSpeed * Time.deltaTime);
+                    }
                 }
             }
         }
@@ -81,6 +89,7 @@ public class Enemy : MonoBehaviour
             DustPile newDustPileScript = newDustPile.GetComponent<DustPile>();
             newDustPileScript.SetHealth(0.1f); // set a low starting health
             dustPiles.Add(newDustPileScript);
+            Debug.Log("Enemy created dust pile");
         }
     }
 
@@ -146,6 +155,12 @@ public class Enemy : MonoBehaviour
     //Called by Behavior tree after the death animation
     public void RemoveEnemy()
     {
+        Vector3 poofSpawnPos = transform.position + (Vector3.up * 0.1f);
         Destroy(gameObject);
+        if (onDeathPoof && poofSpawnTransform)
+        {
+            GameObject deathPoof = Instantiate(onDeathPoof);
+            deathPoof.transform.position = poofSpawnPos;
+        }
     }
 }
