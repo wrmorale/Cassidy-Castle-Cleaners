@@ -60,11 +60,11 @@ MonoBehaviour:
   currPosessedMirror: {fileID: 0}
   canBeHarmed: 1
   enemyName: The Entity
-  maxHealth: 15
+  maxHealth: 60
   currentHealth: 0
   projectileAttackDuration: 5
-  projectilesPerSec: 3
-  projectileMaxAngle: 25
+  projectilesPerSec: 1.5
+  projectileMaxAngle: 30
   spawnArea: {fileID: 0}
   enemyPrefab: {fileID: 0}
   aggro: 0

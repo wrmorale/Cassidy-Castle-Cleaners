@@ -113,7 +113,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
             //enemyHealthBar.setHealth(healthPercent);
 
             //Proceed to phase 1.5 at 2/3 health
-            if(healthPercent <= 0.34 && phase == 1)
+            if(healthPercent <= 0.66 && phase == 1)
             {
                 Debug.Log("Proceeding to phase 2");
                 //Debug.Log("Boss health: " + currentHealth);

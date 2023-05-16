@@ -38,8 +38,8 @@ public class collisionDetection : MonoBehaviour
                 furniture.isHit(player.basicDamage);
             }
         }
-
-        if (other.tag == "Player" && this.tag != "weapon")
+        
+        if (other.tag == "Player" && this.tag != "weapon" && this.tag != "Projectile")
         {
             Player playerEx = other.GetComponent<Player>();
             if (playerEx != null)
