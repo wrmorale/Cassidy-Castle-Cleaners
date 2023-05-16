@@ -98,6 +98,10 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         persistentGM = FindObjectOfType<PersistentGameManager>();
+        playerStats = FindObjectOfType<Player>();
+        playerStats.health = persistentGM.GetLastPlayerHealth();
+
+        SceneManager.sceneLoaded += OnSceneChanged;
     }
 
     void Start()
@@ -105,7 +109,7 @@ public class GameManager : MonoBehaviour
         // Adds the pause button to the script
         pauseAction = playerInput.actions["Pause"];
 
-        // Locks the cursor into the gamescene so the mouse cannot go out of the window
+        // Locks the cursor into the game scene so the mouse cannot go out of the window
         UnityEngine.Cursor.lockState = CursorLockMode.Confined;
         UnityEngine.Cursor.visible = false;
 
@@ -186,11 +190,18 @@ public class GameManager : MonoBehaviour
         // Start executing function after 2.0f, and re-execute every 2.0f
         InvokeRepeating("DecreaseCleanliness", 2.0f, 2.0f);
 
+        // Retrieve the PersistentGameManager instance
+        //PersistentGameManager persistentGM = FindObjectOfType<PersistentGameManager>();
+
+        // Update the playerStats.health with the health from the PersistentGameManager
+        //playerStats.health = persistentGM.GetLastPlayerHealth();
+        Debug.Log(persistentGM.GetLastPlayerHealth());
+
+        playerStats.isHit(playerStats.maxHealth-persistentGM.GetLastPlayerHealth());
     }
 
     void Update()
     {
-        playerStats.health = persistentGM.health;
         timer += Time.deltaTime;
         //Debug.Log("Time: " + timer.ToString("F2")); //timer displays in console for now
 
@@ -294,7 +305,7 @@ public class GameManager : MonoBehaviour
                 //Debug.Log(currRoom);
                 Destroy(gameObject);
                 //mana = 0;//reset mana for next room
-                persistentGM.health = playerStats.health;
+                persistentGM.PushLastPlayerHealth(playerStats.health);
                 levelLoader.LoadNextLevel();
             }
             else
@@ -344,19 +355,24 @@ public class GameManager : MonoBehaviour
         cleaningPercent -= dirtyingRate * numberOfDustPiles / totalHealth;
     }
 
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneChanged;
+    }
+
     private void OnSceneChanged(Scene scene, LoadSceneMode mode)
     {
         if (mode == LoadSceneMode.Single)
         {
-            // Retrieve the PersistentGameManager instance
-            PersistentGameManager persistentGM = FindObjectOfType<PersistentGameManager>();
-
-            // Update the playerStats.health with the health from the PersistentGameManager
-            if (persistentGM != null)
+            // Retrieve the player object in the new scene
+            Player[] players = FindObjectsOfType<Player>();
+            if (players.Length > 0)
             {
-                playerStats.health = persistentGM.health;
+                playerStats = players[0];
+                persistentGM.PushLastPlayerHealth(playerStats.health);
             }
         }
     }
+
 
 }

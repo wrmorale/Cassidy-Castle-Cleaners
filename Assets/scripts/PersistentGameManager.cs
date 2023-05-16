@@ -15,10 +15,7 @@ public class PersistentGameManager : MonoBehaviour
     public float bleachBombCost = 50f;
     public float dusterCost = 10f;
 
-    // Mana related variables
-    public float mana = 0;
-    public float maxMana = 100f;
-
+    private List<float> lastPlayerHealthValues = new List<float>();
     public float health;
 
     // Other persistent data or game settings can be added here
@@ -35,7 +32,6 @@ public class PersistentGameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         player = FindObjectOfType<Player>();
-        health = player.health;
 
         SceneManager.sceneLoaded += OnSceneChanged;
     }
@@ -65,10 +61,38 @@ public class PersistentGameManager : MonoBehaviour
             // Update the player's health with the value from the PersistentGameManager
             if (player != null)
             {
-                player.health = health;
+                if (lastPlayerHealthValues.Count > 0)
+                {
+                    int lastIndex = lastPlayerHealthValues.Count - 1;
+                    float lastHealth = lastPlayerHealthValues[lastIndex];
+                    player.health = lastHealth;
+                }
+                else
+                {
+                    player.health = 25f; // Default health value if the array is empty
+                }
             }
         }
     }
 
-    // Additional functions for PersistentGameManager can be added here
+    // Called by GameManager to push the current player's health to the array
+    public void PushLastPlayerHealth(float healthValue)
+    {
+        lastPlayerHealthValues.Add(healthValue);
+        Debug.Log(healthValue);
+    }
+
+    // Called by GameManager to get the last player's health from the array
+    public float GetLastPlayerHealth()
+    {
+        if (lastPlayerHealthValues.Count > 0)
+        {
+            int lastIndex = lastPlayerHealthValues.Count - 1;
+            return lastPlayerHealthValues[lastIndex];
+        }
+        else
+        {
+            return 25f; // Default health value if the array is empty
+        }
+    }
 }
