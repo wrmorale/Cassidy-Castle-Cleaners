@@ -276,7 +276,7 @@ MonoBehaviour:
   attacks:
   - name: Slam
     damage: 3
-    range: 20
+    range: 10
     hitbox: {fileID: 2913457003584489853}
     clip:
       animator: {fileID: 974190922841495079}
