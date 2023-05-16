@@ -196,8 +196,6 @@ public class GameManager : MonoBehaviour
         // Update the playerStats.health with the health from the PersistentGameManager
         //playerStats.health = persistentGM.GetLastPlayerHealth();
         Debug.Log(persistentGM.GetLastPlayerHealth());
-
-        playerStats.isHit(playerStats.maxHealth-persistentGM.GetLastPlayerHealth());
     }
 
     void Update()
@@ -369,10 +367,8 @@ public class GameManager : MonoBehaviour
             if (players.Length > 0)
             {
                 playerStats = players[0];
-                persistentGM.PushLastPlayerHealth(playerStats.health);
+                playerStats.health = persistentGM.GetLastPlayerHealth();
             }
         }
     }
-
-
 }
