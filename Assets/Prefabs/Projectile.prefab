@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f6a518d1aed97d4787ae90b00f68441, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dustPilePrefab: {fileID: 0}
 --- !u!114 &6384385673529106533
 MonoBehaviour:
   m_ObjectHideFlags: 0

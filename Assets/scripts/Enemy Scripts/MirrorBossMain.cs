@@ -18,7 +18,9 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
     [SerializeField] public string enemyName;
     [SerializeField] public float maxHealth = 1.0f; //Shouldn't these be integers?
     public float currentHealth;
-    float healthPercent = 1.0f;
+    private float healthPercent = 1.0f;
+    private EnemyHealthBar bossHealthBar;
+
 
     [Header("Projectile Stats")]
     [SerializeField] float projectileAttackDuration = 5.0f;
@@ -48,6 +50,9 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
         //Remove later
         canBeHarmed = true;
         currentHealth = maxHealth;
+
+        bossHealthBar = GetComponentInChildren<EnemyHealthBar>();
+        bossHealthBar.setMaxHealth(healthPercent);
     }
 
     // Update is called once per frame
@@ -110,7 +115,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
             //damageFlash.FlashStart();
             currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
             healthPercent = currentHealth / maxHealth;
-            //enemyHealthBar.setHealth(healthPercent);
+            bossHealthBar.setHealth(healthPercent);
 
             //Proceed to phase 1.5 at 2/3 health
             if(healthPercent <= 0.66 && phase == 1)
