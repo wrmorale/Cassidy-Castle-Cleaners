@@ -462,12 +462,11 @@ MonoBehaviour:
     hitbox: {fileID: 629870976696930832}
     clip:
       animator: {fileID: 2275572853724953662}
-      clip: {fileID: 4523782979721099966, guid: 79aa66d911f0d724dac97bc2fc806eef,
-        type: 3}
+      clip: {fileID: 7400000, guid: 004ff1c6fb69e5c42b2f530b3251c82f, type: 2}
       animatorStateName: light_1
       layerNumber: 0
     checker:
-      activeFrameStart: 18
+      activeFrameStart: 25
       activeFrameEnd: 30
       attackCancelFrameStart: 31
       attackCancelFrameEnd: 38
@@ -479,13 +478,12 @@ MonoBehaviour:
     hitbox: {fileID: 6355576061597113706}
     clip:
       animator: {fileID: 2275572853724953662}
-      clip: {fileID: 4270415319956280189, guid: 79aa66d911f0d724dac97bc2fc806eef,
-        type: 3}
+      clip: {fileID: 7400000, guid: 497a9b01298d04c4ba3348ecef06f46e, type: 2}
       animatorStateName: light_2
       layerNumber: 0
     checker:
-      activeFrameStart: 22
-      activeFrameEnd: 25
+      activeFrameStart: 18
+      activeFrameEnd: 22
       attackCancelFrameStart: 36
       attackCancelFrameEnd: 37
       allCancelFrameStart: 0
@@ -496,14 +494,13 @@ MonoBehaviour:
     hitbox: {fileID: 8750645048523731814}
     clip:
       animator: {fileID: 2275572853724953662}
-      clip: {fileID: -5055356247035031728, guid: 79aa66d911f0d724dac97bc2fc806eef,
-        type: 3}
+      clip: {fileID: 7400000, guid: a3b78feb2fa92cb4c9e8a987b2a691b8, type: 2}
       animatorStateName: spin
       layerNumber: 0
     checker:
-      activeFrameStart: 19
-      activeFrameEnd: 34
-      attackCancelFrameStart: 35
+      activeFrameStart: 28
+      activeFrameEnd: 36
+      attackCancelFrameStart: 37
       attackCancelFrameEnd: 49
       allCancelFrameStart: 0
       allCancelFrameEnd: 0
