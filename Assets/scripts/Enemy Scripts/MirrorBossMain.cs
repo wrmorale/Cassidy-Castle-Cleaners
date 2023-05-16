@@ -163,8 +163,12 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
                 Projectile projectileClone = Instantiate(projectile, spawnPosition, mirror.transform.rotation);
                 float angleStep = projectilePattern(patternChoice, elapsedTime); //gets the angle to shoot depending on pattern
                 Vector3 stepVector = Quaternion.AngleAxis(angleStep, Vector3.up) * mirror.transform.right; //calculates the angle to shoot
+
+                // Randomize the projectile lifetime within the range of current value +- 1
+                float randomizedLifetime = mirror.projectileLifetime + UnityEngine.Random.Range(-1.5f, 2.5f);
+
                 // Initialize and Activate the clone
-                projectileClone.Initialize(mirror.projectileSpeed, mirror.projectileLifetime, mirror.projectileDamage, 1f, stepVector);
+                projectileClone.Initialize(mirror.projectileSpeed, randomizedLifetime, mirror.projectileDamage, 1f, stepVector, mirror.trashSpawnChance);
                 projectileClone.gameObject.SetActive(true);
             }
             yield return new WaitForSeconds(secondsPerProjectile); // Waits until shooting next projectile

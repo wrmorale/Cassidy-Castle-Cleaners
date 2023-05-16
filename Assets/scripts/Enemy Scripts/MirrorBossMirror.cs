@@ -16,6 +16,7 @@ public class MirrorBossMirror : Enemy
     [SerializeField] public float projectileSpeed;
     [SerializeField] public float projectileLifetime;
     [SerializeField] public float projectileDamage;
+    [SerializeField] public float trashSpawnChance;
     public Transform bulletSpawn;
 
     // Start is called before the first frame update

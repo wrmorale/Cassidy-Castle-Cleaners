@@ -91,7 +91,7 @@ public class BleachBombTriggerable : PlayerAbility, IFrameCheckHandler
     public void SpawnProjectile(Vector3 heading) 
     {
         Bomb clone = Instantiate(projectile, bulletSpawn.position, Quaternion.LookRotation(heading));
-        clone.Initialize(speed, lifetime, damage, stagger, heading);
+        clone.Initialize(speed, lifetime, damage, stagger, heading, 0);
         clone.toTarget = player.toTargetPosition();
         clone.launch();
     }

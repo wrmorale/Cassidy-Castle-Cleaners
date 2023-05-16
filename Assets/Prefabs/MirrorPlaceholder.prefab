@@ -259,6 +259,7 @@ MonoBehaviour:
   projectileSpeed: 2.3
   projectileLifetime: 2
   projectileDamage: 1.5
+  trashSpawnChance: 0.1
   bulletSpawn: {fileID: 1581469713310629160}
 --- !u!114 &5616337374384034975
 MonoBehaviour:
@@ -506,6 +507,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Projectile
       objectReference: {fileID: 0}
+    - target: {fileID: 1976920101499496174, guid: 5a08fdb5a9c9d3c4c9f8f13ce3c6b979,
+        type: 3}
+      propertyPath: dustPilePrefab
+      value: 
+      objectReference: {fileID: 8537112314238840664, guid: 317d438b218bf6a49868b7486a4fe884,
+        type: 3}
     - target: {fileID: 6384385673529106533, guid: 5a08fdb5a9c9d3c4c9f8f13ce3c6b979,
         type: 3}
       propertyPath: enemy
@@ -591,6 +598,12 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1976920101499496174, guid: 5a08fdb5a9c9d3c4c9f8f13ce3c6b979,
+        type: 3}
+      propertyPath: dustPilePrefab
+      value: 
+      objectReference: {fileID: 8537112314238840664, guid: 317d438b218bf6a49868b7486a4fe884,
+        type: 3}
     - target: {fileID: 8732169454410375250, guid: 5a08fdb5a9c9d3c4c9f8f13ce3c6b979,
         type: 3}
       propertyPath: m_RootOrder

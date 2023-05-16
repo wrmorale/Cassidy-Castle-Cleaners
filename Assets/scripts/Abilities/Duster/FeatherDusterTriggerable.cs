@@ -107,7 +107,7 @@ public class FeatherDusterTriggerable : PlayerAbility, IFrameCheckHandler
     {
         Debug.Log("projectile spawned at " + bulletSpawn.position);
         Projectile clone = Instantiate(projectile, bulletSpawn.position, Quaternion.LookRotation(heading));
-        clone.Initialize(speed, lifetime, damage, stagger, heading);
+        clone.Initialize(speed, lifetime, damage, stagger, heading, 0);
     }
 
     public override void Initialize(playerController player, Animator animator) 
