@@ -30,7 +30,7 @@ public class MothProjectile : Projectile
     {
         if (UnityEngine.Random.value <= trashSpawnChance)
         {
-            float groundOffset = 1.0f; // Adjust this value to control the height offset from the ground
+            float groundOffset = 0.3f; // Adjust this value to control the height offset from the ground
             Vector3 groundPosition = new Vector3(transform.position.x, groundOffset, transform.position.z);
             GameObject dustPile = Instantiate(dustPilePrefab, groundPosition, Quaternion.identity);
             // Customize the dust pile prefab as needed

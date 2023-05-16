@@ -30,6 +30,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
     [SerializeField] public int numberOfEnemies;
     [SerializeField] GameObject spawnArea;
     public GameObject enemyPrefab;
+    private bool finishedSpawning = false;
 
     /*I should probably experiment a bit with the golem before I give the others their tasks...*/
     [Header("Aggro Status")]
@@ -146,7 +147,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
     public void phase2CompletionCheck(){
         Enemy[] enemies = FindObjectsOfType<Enemy>();
         //Debug.Log(enemies.Length);
-        if(enemies.Length < 5){ //since there are 4 mirrors it will check if all enemies but the mirrors are dead
+        if(enemies.Length < 5 && finishedSpawning){ //since there are 4 mirrors it will check if all enemies but the mirrors are dead
             canBeHarmed = true;
             phase += 1;
             Debug.Log("Phase 2 complete");
@@ -170,7 +171,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
                 Vector3 stepVector = Quaternion.AngleAxis(angleStep, Vector3.up) * mirror.transform.right; //calculates the angle to shoot
 
                 // Randomize the projectile lifetime within the range of current value +- 1
-                float randomizedLifetime = mirror.projectileLifetime + UnityEngine.Random.Range(-1.5f, 2.5f);
+                float randomizedLifetime = mirror.projectileLifetime + UnityEngine.Random.Range(-1.5f, 2.0f);
 
                 // Initialize and Activate the clone
                 projectileClone.Initialize(mirror.projectileSpeed, randomizedLifetime, mirror.projectileDamage, 1f, stepVector, mirror.trashSpawnChance);
@@ -216,7 +217,9 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
                 );
             } while (Vector3.Distance(playerPos, position) < 3);
             GameObject enemy = Instantiate(enemyPrefab, position, Quaternion.identity);
+            enemy.SetActive(true);
         }
         enemyPrefab.SetActive(false);
+        finishedSpawning = true;
     }
 }
