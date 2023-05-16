@@ -21,13 +21,13 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
     private float healthPercent = 1.0f;
     private EnemyHealthBar bossHealthBar;
 
-
     [Header("Projectile Stats")]
     [SerializeField] float projectileAttackDuration = 5.0f;
     [SerializeField] float projectilesPerSec = 3.0f;
     [SerializeField] float projectileMaxAngle = 25.0f;
 
     [Header("Enemy Spawns")]
+    [SerializeField] public int numberOfEnemies;
     [SerializeField] GameObject spawnArea;
     public GameObject enemyPrefab;
 
@@ -134,7 +134,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
                 //this should work for death animation but not all enemies have one so it gets errors
                 //animator.SetBool("Death", true);
                 //StartCoroutine(waitForAnimation("Death"));
-                //Destroy(gameObject);
+                Destroy(gameObject);
             }
         }
         else
@@ -203,7 +203,6 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
     public void spawnEnemies(){
         //similar to how the game manager spawns enemies
         Vector3 playerPos = player.transform.position;
-        int numberOfEnemies = 2;
         for (int i = 0; i < numberOfEnemies; i++)
         {
             Bounds spawnBounds = spawnArea.GetComponent<MeshCollider>().bounds;

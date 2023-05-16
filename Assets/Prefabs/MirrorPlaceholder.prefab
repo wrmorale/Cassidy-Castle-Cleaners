@@ -248,7 +248,7 @@ MonoBehaviour:
   gravity: -9.81
   enemyController: {fileID: 0}
   playerBody: {fileID: 0}
-  detectionRange: 2
+  detectionRange: 0
   healingSpeed: 0.1
   dustPilePrefab: {fileID: 0}
   maxDustPiles: 5
