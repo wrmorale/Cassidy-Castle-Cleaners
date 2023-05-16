@@ -403,6 +403,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MirrorPlaceholderMAIN
       objectReference: {fileID: 0}
+    - target: {fileID: 5928403739542624165, guid: 106251902e8168d4cb2bccef5ee43e87,
+        type: 3}
+      propertyPath: entityPossessing
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 106251902e8168d4cb2bccef5ee43e87, type: 3}
 --- !u!114 &3825817347597141074 stripped

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414736, b: 0.121078536, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -198,7 +198,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 128607680}
-  m_LocalRotation: {x: 0.3070544, y: -0.21140276, z: 0.070155635, w: 0.92525923}
+  m_LocalRotation: {x: 0.30705443, y: -0.21140279, z: 0.07015565, w: 0.92525923}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1230,7 +1230,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0.24568203, y: -0.21555036, z: 0.05613328, w: 0.94341266}
+  m_LocalRotation: {x: 0.24568203, y: -0.21555041, z: 0.056133293, w: 0.94341266}
   m_LocalPosition: {x: 4.2963705, y: 3.367744, z: -4.359776}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7013,12 +7013,6 @@ MonoBehaviour:
   currentTarget: {fileID: 0}
   healthBar: {fileID: 0}
   targetColliderCenter: {x: 0, y: 0, z: 0}
---- !u!54 &795224118 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 7428022771512999015, guid: 780a7481df1a48d4792aed7fd543ee02,
-    type: 3}
-  m_PrefabInstance: {fileID: 7428022770999317583}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &795224119 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7428022771512999011, guid: 780a7481df1a48d4792aed7fd543ee02,
@@ -7926,7 +7920,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1201922360}
-  m_LocalRotation: {x: 0.24568202, y: -0.21555036, z: 0.05613328, w: 0.94341266}
+  m_LocalRotation: {x: 0.245682, y: -0.2155504, z: 0.056133285, w: 0.9434127}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8847,10 +8841,7 @@ MonoBehaviour:
   enemyPrefab: {fileID: 2003156824}
   player: {fileID: 795224103}
   doorPortal: {fileID: 757472435}
-  enemySpawnAreas:
-  - {fileID: 1347738605}
-  dustSpawnAreas:
-  - {fileID: 1347738605}
+  spawnAreas: []
   dustPilePrefab: {fileID: 2003156824}
   pauseUI: {fileID: 0}
   playerStats: {fileID: 795224107}
@@ -8859,6 +8850,7 @@ MonoBehaviour:
   cleaningPercent: 0
   mana: 0
   maxMana: 100
+  manaPercent: 0
   infiniteManaCheat: 0
   dustPileReward: 20
   bleachBombCost: 50
@@ -9302,11 +9294,6 @@ PrefabInstance:
       propertyPath: dustPilePrefab
       value: 
       objectReference: {fileID: 568101659}
-    - target: {fileID: 3825817347597141074, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
-        type: 3}
-      propertyPath: entityPossessing
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5162906578704727440, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
         type: 3}
       propertyPath: m_Name
@@ -9332,31 +9319,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 795224107}
-    - target: {fileID: 5806063354098486109, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5972610662029407917, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
         type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 795224105}
-    - target: {fileID: 5972610662029407917, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
-        type: 3}
-      propertyPath: maxHealth
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 5972610662029407917, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
-        type: 3}
-      propertyPath: playerBody
-      value: 
-      objectReference: {fileID: 795224118}
-    - target: {fileID: 5972610662029407917, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
-        type: 3}
-      propertyPath: canBeHarmed
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6112376593408787560, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
         type: 3}
       propertyPath: dustPilePrefab
