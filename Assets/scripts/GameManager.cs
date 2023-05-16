@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance { get; private set; }
 
+    public PersistentGameManager persistentGM;
+
     public bool disableLosing = false;
     public float timer;
     public Text timerText;
@@ -94,6 +96,8 @@ public class GameManager : MonoBehaviour
 
         instance = this;
         DontDestroyOnLoad(gameObject);
+
+        persistentGM = FindObjectOfType<PersistentGameManager>();
     }
 
     void Start()
@@ -186,6 +190,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        playerStats.health = persistentGM.health;
         timer += Time.deltaTime;
         //Debug.Log("Time: " + timer.ToString("F2")); //timer displays in console for now
 
@@ -288,7 +293,8 @@ public class GameManager : MonoBehaviour
             {
                 //Debug.Log(currRoom);
                 Destroy(gameObject);
-                mana = 0;//reset mana for next room
+                //mana = 0;//reset mana for next room
+                persistentGM.health = playerStats.health;
                 levelLoader.LoadNextLevel();
             }
             else
@@ -336,6 +342,21 @@ public class GameManager : MonoBehaviour
     private void DecreaseCleanliness()
     {
         cleaningPercent -= dirtyingRate * numberOfDustPiles / totalHealth;
+    }
+
+    private void OnSceneChanged(Scene scene, LoadSceneMode mode)
+    {
+        if (mode == LoadSceneMode.Single)
+        {
+            // Retrieve the PersistentGameManager instance
+            PersistentGameManager persistentGM = FindObjectOfType<PersistentGameManager>();
+
+            // Update the playerStats.health with the health from the PersistentGameManager
+            if (persistentGM != null)
+            {
+                playerStats.health = persistentGM.health;
+            }
+        }
     }
 
 }
