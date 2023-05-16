@@ -466,6 +466,9 @@ MonoBehaviour:
   currentStaggerAmount: 0
   isStaggered: 0
   isDead: 0
+  onDeathPoof: {fileID: 2114917353029843427, guid: c77a3b4190b8f2c47b57e964ba69e97b,
+    type: 3}
+  poofSpawnTransform: {fileID: 3070220420872276994}
   movementSpeed: 0.4
   rotationSpeed: 3
   idleMovementRange: 2
