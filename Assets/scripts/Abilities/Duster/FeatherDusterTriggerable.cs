@@ -122,7 +122,7 @@ public class FeatherDusterTriggerable : PlayerAbility, IFrameCheckHandler
         // Set the cost based on the value of dusterCost in GameManager
         if (GameManager.instance != null)
         {
-            cost = GameManager.instance.dusterCost;
+            cost = PersistentGameManager.instance.dusterCost;
         }
     }
 

@@ -108,7 +108,7 @@ public class BleachBombTriggerable : PlayerAbility, IFrameCheckHandler
         // Set the cost based on the value of dusterCost in GameManager
         if (GameManager.instance != null)
         {
-            cost = GameManager.instance.bleachBombCost;
+            cost = PersistentGameManager.instance.bleachBombCost;
         }
     }
 }

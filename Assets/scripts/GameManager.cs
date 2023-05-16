@@ -68,13 +68,13 @@ public class GameManager : MonoBehaviour
     private CleaningCircle cleaningCircle;
     private ManaCounterText manaCounter;
     public float cleaningPercent = 0;
-    public float mana = 0;//mana initiation
+    public float mana;//mana initiation
     public float maxMana = 100f;
     public float manaPercent = 0;
     public bool infiniteManaCheat = false; //If true, mana will constantly be reset to max
-    public float dustPileReward = 20f;
-    public float bleachBombCost = 50f;
-    public float dusterCost = 10f;
+    public float dustPileReward;
+    public float bleachBombCost;
+    public float dusterCost;
 
     private float dustPilesCleaned;
     private float dirtyingRate = 0.3f; // rate at which the room gets dirty
@@ -100,12 +100,16 @@ public class GameManager : MonoBehaviour
         persistentGM = FindObjectOfType<PersistentGameManager>();
         playerStats = FindObjectOfType<Player>();
         playerStats.health = persistentGM.GetLastPlayerHealth();
-
+        mana = persistentGM.GetLastPlayerMana();
+        //
         SceneManager.sceneLoaded += OnSceneChanged;
     }
 
     void Start()
     {
+        dustPileReward = persistentGM.dustPileReward;
+        bleachBombCost = persistentGM.bleachBombCost;
+        dusterCost = persistentGM.dusterCost;
         // Adds the pause button to the script
         pauseAction = playerInput.actions["Pause"];
 
@@ -303,7 +307,7 @@ public class GameManager : MonoBehaviour
                 //Debug.Log(currRoom);
                 Destroy(gameObject);
                 //mana = 0;//reset mana for next room
-                persistentGM.PushLastPlayerHealth(playerStats.health);
+                persistentGM.PushLastPlayerHealth(playerStats.health, mana);
                 levelLoader.LoadNextLevel();
             }
             else
