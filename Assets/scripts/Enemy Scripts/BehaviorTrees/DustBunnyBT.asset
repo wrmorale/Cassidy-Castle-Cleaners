@@ -45,16 +45,13 @@ MonoBehaviour:
   - rid: 4349734173429727237
   - rid: 4349734178995568640
   - rid: 4349734178995568641
-  - rid: 4349734223735947272
-  - rid: 4349734223735947278
-  - rid: 4349734223735947280
   treeState: 0
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 0
     specialCooldownEnds: 0
-  viewPosition: {x: 289.5, y: -441.5, z: 0}
-  viewScale: {x: 0.7561437, y: 0.7561437, z: 1}
+  viewPosition: {x: 364.5, y: 239.5, z: 0}
+  viewScale: {x: 0.2842624, y: 0.2842624, z: 1}
   references:
     version: 2
     RefIds:
@@ -206,7 +203,6 @@ MonoBehaviour:
         description: 
         drawGizmos: 0
         children:
-        - rid: 4349734223735947272
         - rid: 4349734178995568640
         - rid: 4349734173429727237
         - rid: 4349734178995568641
@@ -251,52 +247,6 @@ MonoBehaviour:
           specialCooldownEnds: 0
         description: 
         drawGizmos: 0
-    - rid: 4349734223735947272
-      type: {class: RotateToMovement, ns: , asm: Assembly-CSharp}
-      data:
-        state: 0
-        started: 0
-        guid: a3e1bdff427f035429b53fb5d224cb4a
-        position: {x: -1172.8851, y: 421}
-        blackboard:
-          moveToPosition: {x: 0, y: 0, z: 0}
-          aggro: 0
-          specialCooldownEnds: 0
-        description: 
-        drawGizmos: 0
-        rotateTo: 0
-        speedMultiplier: 1
-        rotateInstantly: 1
-    - rid: 4349734223735947278
-      type: {class: Parallel, ns: TheKiwiCoder, asm: Assembly-CSharp}
-      data:
-        state: 0
-        started: 0
-        guid: 456fea298976fb94f9c51533d4b85fd7
-        position: {x: -120.000015, y: 951.49994}
-        blackboard:
-          moveToPosition: {x: 0, y: 0, z: 0}
-          aggro: 0
-          specialCooldownEnds: 0
-        description: 
-        drawGizmos: 0
-        children:
-        - rid: 9070050151572963341
-        - rid: 4349734223735947280
-    - rid: 4349734223735947280
-      type: {class: RotateWhileAttacking, ns: , asm: Assembly-CSharp}
-      data:
-        state: 0
-        started: 0
-        guid: 029cfdbfa549c8048bdbe1edb0f03d19
-        position: {x: -50.000023, y: 1107}
-        blackboard:
-          moveToPosition: {x: 0, y: 0, z: 0}
-          aggro: 0
-          specialCooldownEnds: 0
-        description: 
-        drawGizmos: 0
-        speedMultiplier: 1
     - rid: 9070050151572963328
       type: {class: RootNode, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:
@@ -455,7 +405,7 @@ MonoBehaviour:
         - rid: 4349734132135231497
         - rid: 9070050151572963339
         - rid: 9070050151572963340
-        - rid: 4349734223735947278
+        - rid: 9070050151572963341
     - rid: 9070050151572963339
       type: {class: PlayerInRangeOfAttack, ns: , asm: Assembly-CSharp}
       data:
@@ -491,7 +441,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 8c8914f2208ad964e8c39dff43f064dd
-        position: {x: -236.50005, y: 1106.9889}
+        position: {x: -86.71446, y: 896.49994}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0

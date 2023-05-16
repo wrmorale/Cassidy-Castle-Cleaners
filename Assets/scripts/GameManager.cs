@@ -49,7 +49,8 @@ public class GameManager : MonoBehaviour
     public GameObject enemyPrefab;
     public GameObject player;
     public GameObject doorPortal;
-    public List<GameObject> spawnAreas = new List<GameObject>();//changed to array to hold many spawn areas
+    public List<GameObject> enemySpawnAreas = new List<GameObject>();//changed to array to hold many spawn areas
+    public List<GameObject> dustSpawnAreas = new List<GameObject>();
     public GameObject dustPilePrefab;
     public GameObject pauseUI;
     public Player playerStats;
@@ -66,11 +67,9 @@ public class GameManager : MonoBehaviour
 
     [Range(0,1)]*/
     private CleaningCircle cleaningCircle;
-    private ManaCounterText manaCounter;
     public float cleaningPercent = 0;
     public float mana = 0;//mana initiation
     public float maxMana = 100f;
-    public float manaPercent = 0;
     public bool infiniteManaCheat = false; //If true, mana will constantly be reset to max
     public float dustPileReward = 20f;
     public float bleachBombCost = 50f;
@@ -121,7 +120,7 @@ public class GameManager : MonoBehaviour
         gamePaused = false;
         currentGold = 0;
         numberOfDustPiles = maxDustPiles;
-        int randomIndex = UnityEngine.Random.Range(0, spawnAreas.Count);
+        int randomIndex = UnityEngine.Random.Range(0, dustSpawnAreas.Count);
         GameObject selectedSpawnArea;
 
         // Spawn Dust Piles and Enemies
@@ -130,8 +129,8 @@ public class GameManager : MonoBehaviour
             // Spawn dust piles
             for (int i = 0; i < maxDustPiles; i++)
             {
-                randomIndex = UnityEngine.Random.Range(0, spawnAreas.Count);
-                selectedSpawnArea = spawnAreas[randomIndex];
+                randomIndex = UnityEngine.Random.Range(0, dustSpawnAreas.Count);
+                selectedSpawnArea = dustSpawnAreas[randomIndex];
                 Bounds spawnBounds = selectedSpawnArea.GetComponent<MeshCollider>().bounds;
                 Vector3 position = new Vector3(
                     UnityEngine.Random.Range(spawnBounds.min.x, spawnBounds.max.x),
@@ -145,8 +144,8 @@ public class GameManager : MonoBehaviour
             Vector3 playerPos = player.transform.position;
             for (int i = 0; i < numberOfEnemies; i++)
             {
-                randomIndex = UnityEngine.Random.Range(0, spawnAreas.Count);
-                selectedSpawnArea = spawnAreas[randomIndex];
+                randomIndex = UnityEngine.Random.Range(0, enemySpawnAreas.Count);
+                selectedSpawnArea = enemySpawnAreas[randomIndex];
                 Bounds spawnBounds = selectedSpawnArea.GetComponent<MeshCollider>().bounds;
                 Vector3 position;
                 do
@@ -176,12 +175,9 @@ public class GameManager : MonoBehaviour
         cleaningbar = root.Q<CleaningBar>();
         Debug.Log("cleaningbar: "+ cleaningbar);*/
         cleaningCircle = GetComponentInChildren<CleaningCircle>();
-        manaCounter = GetComponentInChildren<ManaCounterText>();
         totalHealth = maxDustPiles * dustPilePrefab.GetComponent<DustPile>().maxHealth;
         cleaningPercent = totalHealth * 0.5f / totalHealth;
-        manaPercent = mana/maxMana;
-        updateManaAmount(mana);
-
+        cleaningCircle.setCleaning(cleaningPercent);
 
         // fog
         RenderSettings.fog = true;
@@ -238,7 +234,7 @@ public class GameManager : MonoBehaviour
             doorPortal.SetActive(true);
             // Room clear condition successfully logged
             Debug.Log("Room clear");
-            //mana = maxMana;//This number is a question mark at the moment
+            mana = maxMana;//This number is a question mark at the moment
         }
         numberOfEnemies = enemies.Length;
 
@@ -249,12 +245,10 @@ public class GameManager : MonoBehaviour
             if (multiplier * mana >= maxMana - (multiplier * dustPileReward))
             {
                 mana = maxMana;
-                updateManaAmount(mana);
             }
             else
             {
                 mana += multiplier * dustPileReward;
-                updateManaAmount(mana);
             }
         }
         numberOfDustPiles = dustPiles.Length;
@@ -263,14 +257,14 @@ public class GameManager : MonoBehaviour
         if (numberOfDustPiles == 0)
         {
             cleaningPercent = 1;
-            //cleaningCircle.setCleaning(cleaningPercent);
+            cleaningCircle.setCleaning(cleaningPercent);
         }
         
         var newPooledHealth = PoolDustHealth(dustPiles);
         if (newPooledHealth < pooledHealth)
         {
             cleaningPercent += (pooledHealth - newPooledHealth) / totalHealth;
-            //cleaningCircle.setCleaning(cleaningPercent);
+            cleaningCircle.setCleaning(cleaningPercent);
         }
         pooledHealth = newPooledHealth; // get the current health pool of dustpiles.
 
@@ -282,12 +276,6 @@ public class GameManager : MonoBehaviour
 
         if (infiniteManaCheat)
             mana = maxMana;
-    }
-
-    public void updateManaAmount(float Newmana){
-        manaPercent = Newmana/maxMana;
-        cleaningCircle.setCleaning(manaPercent);
-        manaCounter.updateManaCounter(Newmana);
     }
 
     /**

@@ -670,6 +670,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2478977129624437700, guid: be38b0afef5afa646ae6a07f600dbae2,
+        type: 3}
+      propertyPath: pc
+      value: 
+      objectReference: {fileID: 1857691452}
+    - target: {fileID: 2478977129624437700, guid: be38b0afef5afa646ae6a07f600dbae2,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2029081638}
     - target: {fileID: 2606690603601728555, guid: be38b0afef5afa646ae6a07f600dbae2,
         type: 3}
       propertyPath: m_Name
@@ -681,6 +691,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1857691452}
     - target: {fileID: 2827942493548019015, guid: be38b0afef5afa646ae6a07f600dbae2,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2029081638}
+    - target: {fileID: 3797623945938121093, guid: be38b0afef5afa646ae6a07f600dbae2,
+        type: 3}
+      propertyPath: pc
+      value: 
+      objectReference: {fileID: 1857691452}
+    - target: {fileID: 3797623945938121093, guid: be38b0afef5afa646ae6a07f600dbae2,
         type: 3}
       propertyPath: player
       value: 
@@ -2252,12 +2272,12 @@ PrefabInstance:
     - target: {fileID: 6904719147742580994, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1e-45
+      value: 3e-45
       objectReference: {fileID: 0}
     - target: {fileID: 6904719147742580994, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -1e-45
       objectReference: {fileID: 0}
     - target: {fileID: 6904719148039652034, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
@@ -2277,12 +2297,12 @@ PrefabInstance:
     - target: {fileID: 6904719148039652034, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000016615479
+      value: -0.000000016615472
       objectReference: {fileID: 0}
     - target: {fileID: 6904719148039652034, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000044705195
+      value: 0.000000004470518
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe987c0be70e4764e92e8aff74c2356e, type: 3}
@@ -2540,7 +2560,17 @@ MonoBehaviour:
   enemyPrefab: {fileID: 1161768988}
   player: {fileID: 2029081637}
   doorPortal: {fileID: 1410187844}
-  spawnAreas:
+  enemySpawnAreas:
+  - {fileID: 318758362}
+  - {fileID: 1708592966}
+  - {fileID: 1782059238}
+  - {fileID: 1674660107}
+  - {fileID: 2018898265}
+  - {fileID: 1078539570}
+  - {fileID: 1515727088}
+  - {fileID: 1172741716}
+  - {fileID: 827265017}
+  dustSpawnAreas:
   - {fileID: 318758362}
   - {fileID: 1708592966}
   - {fileID: 1782059238}
@@ -8357,12 +8387,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 682495365}
     - target: {fileID: 7428022771512999011, guid: 780a7481df1a48d4792aed7fd543ee02,
         type: 3}
       propertyPath: targetLock
       value: 
       objectReference: {fileID: 2029081642}
+    - target: {fileID: 7428022771512999011, guid: 780a7481df1a48d4792aed7fd543ee02,
+        type: 3}
+      propertyPath: playerStats
+      value: 
+      objectReference: {fileID: 2029081638}
     - target: {fileID: 7428022771512999011, guid: 780a7481df1a48d4792aed7fd543ee02,
         type: 3}
       propertyPath: gravityValue
