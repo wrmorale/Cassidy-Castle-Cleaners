@@ -7917,11 +7917,6 @@ PrefabInstance:
       propertyPath: playerBody
       value: 
       objectReference: {fileID: 795224118}
-    - target: {fileID: 548558197993710726, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1108866297013288925, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
         type: 3}
       propertyPath: playerBody
@@ -7999,11 +7994,6 @@ PrefabInstance:
       objectReference: {fileID: 795224105}
     - target: {fileID: 5972610662029407917, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
         type: 3}
-      propertyPath: maxHealth
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 5972610662029407917, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
-        type: 3}
       propertyPath: spawnArea
       value: 
       objectReference: {fileID: 1029921342}
@@ -8032,11 +8022,6 @@ PrefabInstance:
       propertyPath: playerBody
       value: 
       objectReference: {fileID: 795224118}
-    - target: {fileID: 7416771069845807875, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7438703012600587731, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
         type: 3}
       propertyPath: playerBody
