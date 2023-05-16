@@ -35,12 +35,12 @@ public class AttackManager : MonoBehaviour, IFrameCheckHandler
     }
 
     public void onActiveFrameStart() {
-        //Debug.Log("Hitbox activated");
+        Debug.Log("Hitbox activated");
         currentAttack.hitbox.SetActive(true);
     }
 
     public void onActiveFrameEnd() {
-        //Debug.Log("Hitbox deactivated");
+        Debug.Log("Hitbox deactivated");
         currentAttack.hitbox.SetActive(false);
     }
     public void onAttackCancelFrameStart() {
@@ -55,7 +55,7 @@ public class AttackManager : MonoBehaviour, IFrameCheckHandler
     public void onAllCancelFrameEnd(){}
     public void onLastFrameStart(){}
     public void onLastFrameEnd(){
-        //Debug.Log("Current attack finished");
+        Debug.Log("Current attack finished");
         currentAttack.clip.animator.SetBool(currentAttack.name, false);
         attacking = false;
     }
@@ -108,6 +108,19 @@ public class AttackManager : MonoBehaviour, IFrameCheckHandler
             currentAttack.clip.animator.SetBool(currentAttack.name, false);
             attacking = false;
             Debug.Log("Current attack canceled");
+        }
+    }
+    public void handleRangedAttacks(string attackName)
+    {
+        actionState = ActionState.Inactionable;
+        currentAttack = getAttack(attackName);
+        if (currentAttack != null)
+        {
+            currentAttack.clip.animator.SetBool(currentAttack.name, true);
+            //currentAttack.clip.animator.Play(currentAttack.clip.animatorStateName, 0);
+            currentAttack.checker.initCheck();
+            currentAttack.checker.checkFrames();
+            attacking = true;
         }
     }
 }

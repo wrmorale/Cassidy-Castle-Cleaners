@@ -11,10 +11,18 @@ public class MirrorBossMirror : Enemy
     MeshRenderer mesh;
     MirrorBossMain mainScript;
 
+    [Header("Projectile Stats")]
+    [SerializeField] public Projectile projectilePrefab;
+    [SerializeField] public float projectileSpeed;
+    [SerializeField] public float projectileLifetime;
+    [SerializeField] public float projectileDamage;
+    [SerializeField] public float trashSpawnChance;
+    public Transform bulletSpawn;
+
     // Start is called before the first frame update
     void Start()
     {
-        mesh = GetComponent<MeshRenderer>();
+        mesh = GetComponentInChildren<MeshRenderer>();
         SetPossessed(entityPossessing);
         mainScript = GetComponentInParent<MirrorBossMain>();
     }
@@ -42,16 +50,12 @@ public class MirrorBossMirror : Enemy
     {
         if (entityPossessing)
         {
-            mainScript.isHit(damage);
+            mainScript.isHit(damage, staggerDamage);
         }
         else
         {
             Debug.LogWarning("This mirror is not posessed!");
         }
     }
-
-    public void slamTest(){
-        
-    }
-
+    
 }

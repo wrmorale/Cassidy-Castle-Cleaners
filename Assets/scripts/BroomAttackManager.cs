@@ -25,7 +25,7 @@ public class BroomAttackManager : MonoBehaviour, IFrameCheckHandler
     [SerializeField]
     private FrameChecker light3Checker;
 
-    public FrameParser activeClip;
+    private FrameParser activeClip;
     private FrameChecker activeChecker;
 
     private GameObject broom;
@@ -36,7 +36,7 @@ public class BroomAttackManager : MonoBehaviour, IFrameCheckHandler
     private playerController player;
     private Vector2 input = Vector2.zero;
 
-    public int combo = 0;
+    private int combo = 0;
     enum ActionState {Inactionable, AttackCancelable, AllCancelable}
     private ActionState actionState;
     private int bufferedAbility = -1;
@@ -219,7 +219,7 @@ public class BroomAttackManager : MonoBehaviour, IFrameCheckHandler
         }
     }
 
-    public void SetWeaponCollider(bool b)
+    private void SetWeaponCollider(bool b)
     {
         if (combo == 1){
             attack1_collider.SetActive(b);

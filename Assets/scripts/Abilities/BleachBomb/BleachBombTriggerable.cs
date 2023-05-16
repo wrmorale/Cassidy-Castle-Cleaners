@@ -28,7 +28,6 @@ public class BleachBombTriggerable : PlayerAbility, IFrameCheckHandler
     {
         if(GameManager.instance.mana >= cost){
             GameManager.instance.mana -= cost;//mana reduced when using ability
-            GameManager.instance.updateManaAmount(GameManager.instance.mana);
             SpawnProjectile(playerForward);
         }else{
             Debug.Log("Bleach Bomb: Not Enough Mana");
@@ -92,7 +91,7 @@ public class BleachBombTriggerable : PlayerAbility, IFrameCheckHandler
     public void SpawnProjectile(Vector3 heading) 
     {
         Bomb clone = Instantiate(projectile, bulletSpawn.position, Quaternion.LookRotation(heading));
-        clone.Initialize(speed, lifetime, damage, stagger, heading);
+        clone.Initialize(speed, lifetime, damage, stagger, heading, 0);
         clone.toTarget = player.toTargetPosition();
         clone.launch();
     }
