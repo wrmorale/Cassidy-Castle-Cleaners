@@ -21,8 +21,7 @@ public class MothProjectile : Projectile
             Destroy(gameObject);
         }
         //Can change to other tags like "Room" and such 
-        else{
-            Debug.Log("Projectile hit something");
+        else if(other.tag == "Furniture"){
             Destroy(gameObject);
         }
     }
