@@ -42,7 +42,6 @@ public class FeatherDusterTriggerable : PlayerAbility, IFrameCheckHandler
         }
         if(GameManager.instance.mana >= cost){
             GameManager.instance.mana -= cost;//mana reduced when using ability
-            GameManager.instance.updateManaAmount(GameManager.instance.mana);
             player.StartCoroutine(Fire());
         }else{
             Debug.Log("Feather Duster: Not Enough Mana");
