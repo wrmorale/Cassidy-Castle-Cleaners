@@ -67,7 +67,6 @@ public class DustPile : MonoBehaviour{
         health += amount;
         health = Mathf.Clamp(health, 0.0f, maxHealth);
         UpdateVisuals();
-        //Debug.Log("Dust pile healed itself");
     }
 
     private void UpdateVisuals() {
@@ -86,7 +85,7 @@ public class DustPile : MonoBehaviour{
 
         // Check if any of the enemies are within range
         foreach (Enemy enemy in enemies) {
-            if (Vector3.Distance(transform.position, enemy.transform.position) <= range && enemy.tag == "Enemy") {
+            if (Vector3.Distance(transform.position, enemy.transform.position) <= range) {
                 return true;
             }
         }
