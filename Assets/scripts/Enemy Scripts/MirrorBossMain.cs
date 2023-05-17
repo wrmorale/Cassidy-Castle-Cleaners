@@ -155,34 +155,43 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
         }
     }
     
-    public IEnumerator projectileAttack() {
-        Projectile projectile = currPosessedMirror.projectilePrefab;
-        float secondsPerProjectile = 1.0f / projectilesPerSec; // Calculate the time between each projectile
-        float elapsedTime = 0.0f; // Tracks time since the attack started
-        int patternChoice = (UnityEngine.Random.Range(0, 2)); //chooses random pattern
-        while (elapsedTime < projectileAttackDuration) {
-            setAllMirrorAnimations("Shooting", true);
-            foreach (MirrorBossMirror mirror in mirrors) {
-                Vector3 spawnPosition = mirror.transform.position;
-                //spawnPosition.y += 0.1f; //sets spawn position slightly lower than center of mirror
-                // Instantiate a clone of the projectile prefab at the mirror's position and rotation
-                Projectile projectileClone = Instantiate(projectile, spawnPosition, mirror.transform.rotation);
-                float angleStep = projectilePattern(patternChoice, elapsedTime); //gets the angle to shoot depending on pattern
-                Vector3 stepVector = Quaternion.AngleAxis(angleStep, Vector3.up) * mirror.transform.right; //calculates the angle to shoot
+    public IEnumerator projectileAttack()
+{
+    Projectile projectile = currPosessedMirror.projectilePrefab;
+    float secondsPerProjectile = 1.0f / projectilesPerSec; // Calculate the time between each projectile
+    float elapsedTime = 0.0f; // Tracks time since the attack started
+    int patternChoice = UnityEngine.Random.Range(0, 2); // Chooses random pattern
 
-                // Randomize the projectile lifetime within the range of current value +- 1
-                float randomizedLifetime = mirror.projectileLifetime + UnityEngine.Random.Range(-1.5f, 2.0f);
+    while (elapsedTime < projectileAttackDuration)
+    {
+        setAllMirrorAnimations("Shooting", true);
+        foreach (MirrorBossMirror mirror in mirrors)
+        {
+            Vector3 spawnPosition = mirror.transform.position;
+            //spawnPosition.y += 0.1f; // Sets spawn position slightly lower than the center of the mirror
 
-                // Initialize and Activate the clone
-                projectileClone.Initialize(mirror.projectileSpeed, randomizedLifetime, mirror.projectileDamage, 1f, stepVector, mirror.trashSpawnChance);
-                projectileClone.gameObject.SetActive(true);
-            }
-            yield return new WaitForSeconds(secondsPerProjectile); // Waits until shooting next projectile
-            elapsedTime += secondsPerProjectile; // Increment the elapsed time
+            // Instantiate a clone of the projectile prefab at the mirror's position and rotation
+            Projectile projectileClone = Instantiate(projectile, spawnPosition, mirror.transform.rotation);
+
+            float angleStep = projectilePattern(patternChoice, elapsedTime); // Gets the angle to shoot depending on the pattern
+            Vector3 stepVector = Quaternion.AngleAxis(angleStep, Vector3.up) * mirror.transform.right; // Calculates the angle to shoot
+
+            // Randomize the projectile lifetime within the range of the current value +- 1
+            float randomizedLifetime = mirror.projectileLifetime + UnityEngine.Random.Range(-1.5f, 2.0f);
+
+            // Initialize and activate the clone
+            projectileClone.Initialize(mirror.projectileSpeed, randomizedLifetime, mirror.projectileDamage, 1f, stepVector, mirror.trashSpawnChance);
+            projectileClone.gameObject.SetActive(true);
+
+            // Rotate the projectile to face its direction
+            projectileClone.transform.rotation = Quaternion.LookRotation(stepVector);
         }
-        isCoroutineRunning = false;
-        setAllMirrorAnimations("Shooting", false);
+        yield return new WaitForSeconds(secondsPerProjectile); // Waits until shooting the next projectile
+        elapsedTime += secondsPerProjectile; // Increment the elapsed time
     }
+    isCoroutineRunning = false;
+    setAllMirrorAnimations("Shooting", false);
+}
 
     public void setAllMirrorAnimations(string animName, bool setTo){
         foreach (MirrorBossMirror mirror in mirrors) {
