@@ -164,7 +164,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
             setAllMirrorAnimations("Shooting", true);
             foreach (MirrorBossMirror mirror in mirrors) {
                 Vector3 spawnPosition = mirror.transform.position;
-                spawnPosition.y -= 0.5f; //sets spawn position slightly lower than center of mirror
+                //spawnPosition.y += 0.1f; //sets spawn position slightly lower than center of mirror
                 // Instantiate a clone of the projectile prefab at the mirror's position and rotation
                 Projectile projectileClone = Instantiate(projectile, spawnPosition, mirror.transform.rotation);
                 float angleStep = projectilePattern(patternChoice, elapsedTime); //gets the angle to shoot depending on pattern

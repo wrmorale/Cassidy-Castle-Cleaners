@@ -31,12 +31,12 @@ public class MirrorBossMirror : Enemy
         if (makePosessed)
         {
             entityPossessing = true;
-            mesh.material = matPosessed;
+            //mesh.material = matPosessed;
         }
         else
         {
             entityPossessing = false;
-            mesh.material = matInactive;
+            //mesh.material = matInactive;
         }
     }
 

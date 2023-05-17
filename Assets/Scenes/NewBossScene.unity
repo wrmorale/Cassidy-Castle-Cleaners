@@ -591,18 +591,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1522122497}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &485352724 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7428022771512999011, guid: 780a7481df1a48d4792aed7fd543ee02,
-    type: 3}
-  m_PrefabInstance: {fileID: 1522122497}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 485352720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ff65f0c896144040af4a687c79f2030, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &485352725 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7428022771512999012, guid: 780a7481df1a48d4792aed7fd543ee02,
@@ -1324,7 +1312,7 @@ MonoBehaviour:
   dustPilePrefab: {fileID: 841771962}
   pauseUI: {fileID: 1704625586}
   playerStats: {fileID: 485352725}
-  playercontroller: {fileID: 485352724}
+  playercontroller: {fileID: 0}
   playerInput: {fileID: 485352721}
   cleaningPercent: 0
   mana: 0
@@ -3012,12 +3000,12 @@ PrefabInstance:
     - target: {fileID: 6904719148039652034, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000016615472
+      value: 0.000000016615479
       objectReference: {fileID: 0}
     - target: {fileID: 6904719148039652034, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000004470518
+      value: -0.0000000044705195
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe987c0be70e4764e92e8aff74c2356e, type: 3}
@@ -3329,7 +3317,7 @@ PrefabInstance:
     - target: {fileID: 3787061770945546188, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.5
+      value: 9.3
       objectReference: {fileID: 0}
     - target: {fileID: 3787061770945546188, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
         type: 3}
