@@ -16,7 +16,10 @@ public class DialogueManager : MonoBehaviour
     public GameManager roomCleared;
     public GameObject controls; 
 
+    // TODO: make this a list of tuples, where the first element is the speaker and the second element is the dialogue
 
+    // TODO: create list of images to display at different stages of dialouge  
+    
     private Dictionary<int, Tuple<string, string>> dialogueDatabase = new Dictionary<int, Tuple<string, string>>()
     {
         {
