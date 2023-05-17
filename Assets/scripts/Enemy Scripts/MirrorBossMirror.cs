@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MirrorBossMirror : Enemy
 {
@@ -10,6 +11,7 @@ public class MirrorBossMirror : Enemy
     public Material matPosessed;
     MeshRenderer mesh;
     MirrorBossMain mainScript;
+    public GameObject activeIndicator;
 
     [Header("Projectile Stats")]
     [SerializeField] public Projectile projectilePrefab;
@@ -30,12 +32,15 @@ public class MirrorBossMirror : Enemy
     public void SetPossessed(bool makePosessed) {
         if (makePosessed)
         {
+            Debug.Log("HERE");
             entityPossessing = true;
+            activeIndicator.gameObject.SetActive(true);
             //mesh.material = matPosessed;
         }
         else
         {
             entityPossessing = false;
+            activeIndicator.gameObject.SetActive(false);
             //mesh.material = matInactive;
         }
     }
