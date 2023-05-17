@@ -44,24 +44,35 @@ public class Player : MonoBehaviour
     [HideInInspector] public bool isInvulnerable; //This should be more clearly labeled as being i-frames for rolling
     public bool invincibleCheat = false;
 
+    void Awake(){
+        persistentGM = FindObjectOfType<PersistentGameManager>();
+        health = persistentGM.GetLastPlayerHealth();
+        healthbar = GetComponentInChildren<PlayerHealthBar>();
+        healthCounter = GetComponentInChildren<HealthCounterText>();
+        healthPercent = health / maxHealth;
+        healthbar.setHealth(healthPercent);
+        healthCounter.setMaxHealth(maxHealth);
+        healthCounter.updateHealthCounter(health);
+
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        persistentGM = FindObjectOfType<PersistentGameManager>();
-        health = persistentGM.GetLastPlayerHealth();
+        
         alive = true;
         isInvulnerable = false;
 
         /*
         var root = hud.rootVisualElement;
         healthbar = root.Q<HealthBar>();*/
-        healthbar = GetComponentInChildren<PlayerHealthBar>();
-        healthCounter = GetComponentInChildren<HealthCounterText>();
+        //healthbar = GetComponentInChildren<PlayerHealthBar>();
+        //healthCounter = GetComponentInChildren<HealthCounterText>();
         animator = GetComponentInChildren<Animator>();
         playercontroller = GetComponent<playerController>();
         atkmanager = GetComponent<BroomAttackManager>();
-        healthbar.setHealth(healthPercent);
-        healthCounter.setMaxHealth(maxHealth);
+        //healthbar.setHealth(healthPercent);
+        //healthCounter.setMaxHealth(maxHealth);
     }
 
     // Update is called once per frame
@@ -91,10 +102,13 @@ public class Player : MonoBehaviour
             healthbar.setHealth(healthPercent);
             healthCounter.updateHealthCounter(health);
             //if(health >= 1){
-                //StartCoroutine(HandleDamage());
+            
                 color = hurtpng.color;
                 color.a = 1f;
                 hurtpng.color = color;
+            
+                //StartCoroutine(HandleDamage());
+                
             //}
             if(health <= 0){
                 alive = false;
