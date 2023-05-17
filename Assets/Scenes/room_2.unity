@@ -455,17 +455,17 @@ PrefabInstance:
     - target: {fileID: 6904719146668348922, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.21332425
+      value: 0.21332423
       objectReference: {fileID: 0}
     - target: {fileID: 6904719146668348922, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000010620807
+      value: 0.000000004667122
       objectReference: {fileID: 0}
     - target: {fileID: 6904719146668348922, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000023190572
+      value: -0.000000001019067
       objectReference: {fileID: 0}
     - target: {fileID: 6904719147228723758, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
@@ -525,12 +525,12 @@ PrefabInstance:
     - target: {fileID: 6904719148039652034, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000016615472
+      value: -0.000000016615479
       objectReference: {fileID: 0}
     - target: {fileID: 6904719148039652034, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000004470518
+      value: 0.0000000044705195
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe987c0be70e4764e92e8aff74c2356e, type: 3}
@@ -671,6 +671,7 @@ MonoBehaviour:
   cleaningPercent: 0
   mana: 0
   maxMana: 100
+  manaPercent: 0
   infiniteManaCheat: 0
   dustPileReward: 20
   bleachBombCost: 50
@@ -1751,11 +1752,51 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2478977129624437700, guid: be38b0afef5afa646ae6a07f600dbae2,
+        type: 3}
+      propertyPath: pc
+      value: 
+      objectReference: {fileID: 1857691451}
+    - target: {fileID: 2478977129624437700, guid: be38b0afef5afa646ae6a07f600dbae2,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2029081638}
     - target: {fileID: 2606690603601728555, guid: be38b0afef5afa646ae6a07f600dbae2,
         type: 3}
       propertyPath: m_Name
       value: GolemPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 2827942493548019015, guid: be38b0afef5afa646ae6a07f600dbae2,
+        type: 3}
+      propertyPath: pc
+      value: 
+      objectReference: {fileID: 1857691451}
+    - target: {fileID: 2827942493548019015, guid: be38b0afef5afa646ae6a07f600dbae2,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2029081638}
+    - target: {fileID: 3797623945938121093, guid: be38b0afef5afa646ae6a07f600dbae2,
+        type: 3}
+      propertyPath: pc
+      value: 
+      objectReference: {fileID: 1857691451}
+    - target: {fileID: 3797623945938121093, guid: be38b0afef5afa646ae6a07f600dbae2,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2029081638}
+    - target: {fileID: 5836140605157870406, guid: be38b0afef5afa646ae6a07f600dbae2,
+        type: 3}
+      propertyPath: pc
+      value: 
+      objectReference: {fileID: 1857691451}
+    - target: {fileID: 5836140605157870406, guid: be38b0afef5afa646ae6a07f600dbae2,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2029081638}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be38b0afef5afa646ae6a07f600dbae2, type: 3}
 --- !u!1001 &636425212
@@ -1905,6 +1946,16 @@ PrefabInstance:
       propertyPath: abilities.Array.data[0].abilityChance
       value: 99
       objectReference: {fileID: 0}
+    - target: {fileID: 9094371390573252281, guid: 3fec4a32b1661b648bdcb0b9faccc35d,
+        type: 3}
+      propertyPath: pc
+      value: 
+      objectReference: {fileID: 1857691451}
+    - target: {fileID: 9094371390573252281, guid: 3fec4a32b1661b648bdcb0b9faccc35d,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2029081638}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fec4a32b1661b648bdcb0b9faccc35d, type: 3}
 --- !u!1 &652187862
@@ -2402,7 +2453,7 @@ PrefabInstance:
         type: 3}
       propertyPath: animator
       value: 
-      objectReference: {fileID: 1518428725}
+      objectReference: {fileID: 0}
     - target: {fileID: 8327740662560138382, guid: a3e774df6e3d732419c69b0540e06dd2,
         type: 3}
       propertyPath: movement
@@ -2422,7 +2473,7 @@ PrefabInstance:
         type: 3}
       propertyPath: damageFlash
       value: 
-      objectReference: {fileID: 875573172}
+      objectReference: {fileID: 0}
     - target: {fileID: 8327740662560138382, guid: a3e774df6e3d732419c69b0540e06dd2,
         type: 3}
       propertyPath: dustPilePrefab
@@ -2432,7 +2483,7 @@ PrefabInstance:
         type: 3}
       propertyPath: damageFlashPrefab
       value: 
-      objectReference: {fileID: 875573170}
+      objectReference: {fileID: 0}
     - target: {fileID: 8372967417428799471, guid: a3e774df6e3d732419c69b0540e06dd2,
         type: 3}
       propertyPath: player
@@ -2456,12 +2507,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 875573168}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &875573170 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4962231417127877380, guid: a3e774df6e3d732419c69b0540e06dd2,
-    type: 3}
-  m_PrefabInstance: {fileID: 875573168}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &875573171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2470,18 +2515,6 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 875573169}
   m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8473b334f435d2f4590aa29d1a6c8746, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &875573172
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 875573170}
-  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8473b334f435d2f4590aa29d1a6c8746, type: 3}
   m_Name: 
@@ -4883,12 +4916,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1517402259}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &1518428725 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 8446685595553216187, guid: a3e774df6e3d732419c69b0540e06dd2,
-    type: 3}
-  m_PrefabInstance: {fileID: 875573168}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1526749355
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5401,12 +5428,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1785644622}
     - target: {fileID: 7428022771512999011, guid: 780a7481df1a48d4792aed7fd543ee02,
         type: 3}
       propertyPath: targetLock
       value: 
       objectReference: {fileID: 2029081642}
+    - target: {fileID: 7428022771512999011, guid: 780a7481df1a48d4792aed7fd543ee02,
+        type: 3}
+      propertyPath: playerStats
+      value: 
+      objectReference: {fileID: 2029081638}
     - target: {fileID: 7428022771512999011, guid: 780a7481df1a48d4792aed7fd543ee02,
         type: 3}
       propertyPath: turnSmoothTime

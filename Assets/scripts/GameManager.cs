@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance { get; private set; }
 
+    public PersistentGameManager persistentGM;
+
     public bool disableLosing = false;
     public float timer;
     public Text timerText;
@@ -66,13 +68,13 @@ public class GameManager : MonoBehaviour
     private CleaningCircle cleaningCircle;
     private ManaCounterText manaCounter;
     public float cleaningPercent = 0;
-    public float mana = 0;//mana initiation
+    public float mana;//mana initiation
     public float maxMana = 100f;
     public float manaPercent = 0;
     public bool infiniteManaCheat = false; //If true, mana will constantly be reset to max
-    public float dustPileReward = 20f;
-    public float bleachBombCost = 50f;
-    public float dusterCost = 10f;
+    public float dustPileReward;
+    public float bleachBombCost;
+    public float dusterCost;
 
     private float dustPilesCleaned;
     private float dirtyingRate = 0.3f; // rate at which the room gets dirty
@@ -94,14 +96,24 @@ public class GameManager : MonoBehaviour
 
         instance = this;
         DontDestroyOnLoad(gameObject);
+
+        persistentGM = FindObjectOfType<PersistentGameManager>();
+        playerStats = FindObjectOfType<Player>();
+        playerStats.health = persistentGM.GetLastPlayerHealth();
+        mana = persistentGM.GetLastPlayerMana();
+        //
+        SceneManager.sceneLoaded += OnSceneChanged;
     }
 
     void Start()
     {
+        dustPileReward = persistentGM.dustPileReward;
+        bleachBombCost = persistentGM.bleachBombCost;
+        dusterCost = persistentGM.dusterCost;
         // Adds the pause button to the script
         pauseAction = playerInput.actions["Pause"];
 
-        // Locks the cursor into the gamescene so the mouse cannot go out of the window
+        // Locks the cursor into the game scene so the mouse cannot go out of the window
         UnityEngine.Cursor.lockState = CursorLockMode.Confined;
         UnityEngine.Cursor.visible = false;
 
@@ -182,6 +194,12 @@ public class GameManager : MonoBehaviour
         // Start executing function after 2.0f, and re-execute every 2.0f
         InvokeRepeating("DecreaseCleanliness", 2.0f, 2.0f);
 
+        // Retrieve the PersistentGameManager instance
+        //PersistentGameManager persistentGM = FindObjectOfType<PersistentGameManager>();
+
+        // Update the playerStats.health with the health from the PersistentGameManager
+        //playerStats.health = persistentGM.GetLastPlayerHealth();
+        Debug.Log(persistentGM.GetLastPlayerHealth());
     }
 
     void Update()
@@ -288,7 +306,8 @@ public class GameManager : MonoBehaviour
             {
                 //Debug.Log(currRoom);
                 Destroy(gameObject);
-                mana = 0;//reset mana for next room
+                //mana = 0;//reset mana for next room
+                persistentGM.PushLastPlayerHealth(playerStats.health, mana);
                 levelLoader.LoadNextLevel();
             }
             else
@@ -338,4 +357,22 @@ public class GameManager : MonoBehaviour
         cleaningPercent -= dirtyingRate * numberOfDustPiles / totalHealth;
     }
 
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneChanged;
+    }
+
+    private void OnSceneChanged(Scene scene, LoadSceneMode mode)
+    {
+        if (mode == LoadSceneMode.Single)
+        {
+            // Retrieve the player object in the new scene
+            Player[] players = FindObjectsOfType<Player>();
+            if (players.Length > 0)
+            {
+                playerStats = players[0];
+                playerStats.health = persistentGM.GetLastPlayerHealth();
+            }
+        }
+    }
 }

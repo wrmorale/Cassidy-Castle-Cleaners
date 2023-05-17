@@ -994,12 +994,12 @@ PrefabInstance:
     - target: {fileID: 7932447838902735546, guid: b16642e7513a80e4d83b1053c95e3d44,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000040659156
+      value: 0.000000040659156
       objectReference: {fileID: 0}
     - target: {fileID: 7932447838902735546, guid: b16642e7513a80e4d83b1053c95e3d44,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000011099089
+      value: -0.000000011099089
       objectReference: {fileID: 0}
     - target: {fileID: 7932447838902735546, guid: b16642e7513a80e4d83b1053c95e3d44,
         type: 3}
@@ -2019,6 +2019,7 @@ MonoBehaviour:
   cleaningPercent: 0
   mana: 0
   maxMana: 100
+  manaPercent: 0
   infiniteManaCheat: 0
   dustPileReward: 20
   bleachBombCost: 50
@@ -3396,7 +3397,7 @@ PrefabInstance:
         type: 3}
       propertyPath: dustPilePrefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1453081827}
     - target: {fileID: 4479651422631388256, guid: 3fec4a32b1661b648bdcb0b9faccc35d,
         type: 3}
       propertyPath: pounceCollider
@@ -3512,6 +3513,16 @@ PrefabInstance:
       propertyPath: abilities.Array.data[0].abilityChance
       value: 99
       objectReference: {fileID: 0}
+    - target: {fileID: 9094371390573252281, guid: 3fec4a32b1661b648bdcb0b9faccc35d,
+        type: 3}
+      propertyPath: pc
+      value: 
+      objectReference: {fileID: 1857691452}
+    - target: {fileID: 9094371390573252281, guid: 3fec4a32b1661b648bdcb0b9faccc35d,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2029081638}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fec4a32b1661b648bdcb0b9faccc35d, type: 3}
 --- !u!1 &639333493 stripped
@@ -3665,12 +3676,12 @@ PrefabInstance:
     - target: {fileID: 6904719146668348922, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -3.2821468e-15
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6904719146668348922, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 1.6597894e-15
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6904719147228723758, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
@@ -3705,12 +3716,12 @@ PrefabInstance:
     - target: {fileID: 6904719147742580994, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -3e-45
+      value: 1e-45
       objectReference: {fileID: 0}
     - target: {fileID: 6904719147742580994, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 1e-45
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6904719148039652034, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
@@ -3725,12 +3736,12 @@ PrefabInstance:
     - target: {fileID: 6904719148039652034, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -8.45487e-15
+      value: 8.45487e-15
       objectReference: {fileID: 0}
     - target: {fileID: 6904719148039652034, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 2.0099603e-15
+      value: -2.0099603e-15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe987c0be70e4764e92e8aff74c2356e, type: 3}
@@ -4960,7 +4971,7 @@ PrefabInstance:
         type: 3}
       propertyPath: animator
       value: 
-      objectReference: {fileID: 875573169}
+      objectReference: {fileID: 0}
     - target: {fileID: 8327740662560138382, guid: a3e774df6e3d732419c69b0540e06dd2,
         type: 3}
       propertyPath: movement
@@ -4980,7 +4991,7 @@ PrefabInstance:
         type: 3}
       propertyPath: damageFlash
       value: 
-      objectReference: {fileID: 875573173}
+      objectReference: {fileID: 0}
     - target: {fileID: 8327740662560138382, guid: a3e774df6e3d732419c69b0540e06dd2,
         type: 3}
       propertyPath: dustPilePrefab
@@ -4990,7 +5001,7 @@ PrefabInstance:
         type: 3}
       propertyPath: damageFlashPrefab
       value: 
-      objectReference: {fileID: 875573172}
+      objectReference: {fileID: 0}
     - target: {fileID: 8372967417428799471, guid: a3e774df6e3d732419c69b0540e06dd2,
         type: 3}
       propertyPath: player
@@ -5005,38 +5016,14 @@ PrefabInstance:
         type: 3}
       propertyPath: damageFlash
       value: 
-      objectReference: {fileID: 875573173}
+      objectReference: {fileID: 0}
     - target: {fileID: 8372967417428799471, guid: a3e774df6e3d732419c69b0540e06dd2,
         type: 3}
       propertyPath: dustPilePrefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1453081827}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3e774df6e3d732419c69b0540e06dd2, type: 3}
---- !u!95 &875573169 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 8446685595553216187, guid: a3e774df6e3d732419c69b0540e06dd2,
-    type: 3}
-  m_PrefabInstance: {fileID: 875573168}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &875573172 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4962231417127877380, guid: a3e774df6e3d732419c69b0540e06dd2,
-    type: 3}
-  m_PrefabInstance: {fileID: 875573168}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &875573173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 875573172}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8473b334f435d2f4590aa29d1a6c8746, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &919761431
 PrefabInstance:
   m_ObjectHideFlags: 0
