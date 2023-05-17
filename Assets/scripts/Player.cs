@@ -67,6 +67,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        persistentGM = FindObjectOfType<PersistentGameManager>();
         if (transform.position.y < platform.position.y + fallLimit){
             health = 0;
             alive = false;
