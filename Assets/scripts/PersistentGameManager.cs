@@ -54,8 +54,15 @@ public class PersistentGameManager : MonoBehaviour
 
     private void Update()
     {
-        health = player.health;
-        mana = gameManager.mana;
+        if (player != null)
+        {
+            health = player.health;
+        }
+        
+        if (gameManager != null)
+        {
+            mana = gameManager.mana;
+        }
     }
 
     private void OnSceneChanged(Scene scene, LoadSceneMode mode)

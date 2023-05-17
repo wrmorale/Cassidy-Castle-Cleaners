@@ -49,7 +49,8 @@ public class GameManager : MonoBehaviour
     public GameObject enemyPrefab;
     public GameObject player;
     public GameObject doorPortal;
-    public List<GameObject> spawnAreas = new List<GameObject>();//changed to array to hold many spawn areas
+    public List<GameObject> enemySpawnAreas = new List<GameObject>();//changed to array to hold many spawn areas
+    public List<GameObject> dustSpawnAreas = new List<GameObject>();
     public GameObject dustPilePrefab;
     public GameObject pauseUI;
     public Player playerStats;
@@ -127,7 +128,7 @@ public class GameManager : MonoBehaviour
         gamePaused = false;
         currentGold = 0;
         numberOfDustPiles = maxDustPiles; 
-        int randomIndex = UnityEngine.Random.Range(0, spawnAreas.Count);
+        int randomIndex = UnityEngine.Random.Range(0, dustSpawnAreas.Count);
         GameObject selectedSpawnArea;
 
         // Spawn Dust Piles and Enemies
@@ -136,8 +137,8 @@ public class GameManager : MonoBehaviour
             // Spawn dust piles
             for (int i = 0; i < maxDustPiles; i++)
             {
-                randomIndex = UnityEngine.Random.Range(0, spawnAreas.Count);
-                selectedSpawnArea = spawnAreas[randomIndex];
+                randomIndex = UnityEngine.Random.Range(0, dustSpawnAreas.Count);
+                selectedSpawnArea = dustSpawnAreas[randomIndex];
                 Bounds spawnBounds = selectedSpawnArea.GetComponent<MeshCollider>().bounds;
                 Vector3 position = new Vector3(
                     UnityEngine.Random.Range(spawnBounds.min.x, spawnBounds.max.x),
@@ -151,8 +152,8 @@ public class GameManager : MonoBehaviour
             Vector3 playerPos = player.transform.position;
             for (int i = 0; i < numberOfEnemies; i++)
             {
-                randomIndex = UnityEngine.Random.Range(0, spawnAreas.Count);
-                selectedSpawnArea = spawnAreas[randomIndex];
+                randomIndex = UnityEngine.Random.Range(0, enemySpawnAreas.Count);
+                selectedSpawnArea = enemySpawnAreas[randomIndex];
                 Bounds spawnBounds = selectedSpawnArea.GetComponent<MeshCollider>().bounds;
                 Vector3 position;
                 do
