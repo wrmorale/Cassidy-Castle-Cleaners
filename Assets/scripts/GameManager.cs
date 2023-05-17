@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance { get; private set; }
 
-    public PersistentGameManager persistentGM;
+    [HideInInspector]public PersistentGameManager persistentGM;
 
     public bool disableLosing = false;
     public float timer;
@@ -43,8 +43,8 @@ public class GameManager : MonoBehaviour
     public int currentGold;
     public List<String> availableAbilities = new List<String>(); //not sure how we will keep track of abilities yet but a list of strings to hold ablities that can be learned
     //
-    public int numberOfEnemies = 10;
-    public float maxDustPiles = 5;
+    public int numberOfEnemies;
+    public float maxDustPiles;
     private float numberOfDustPiles;
     public GameObject enemyPrefab;
     public GameObject player;
