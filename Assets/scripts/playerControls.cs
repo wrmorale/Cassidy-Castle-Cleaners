@@ -143,6 +143,24 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DpadLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""ba0d3dff-9e51-47cc-a5f2-3228a02593ef"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DpadRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""23ddd5c0-95a7-490d-aa3b-ea0a1cb26d4a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -451,6 +469,50 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f495dd70-20f6-4f34-b880-d06eb1ab314d"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DpadLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2c366697-fd14-4d37-b531-d134359301d8"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DpadLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""35c56d4e-dc1d-45c0-b805-bd7350b1e7d4"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DpadRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ee1cd9be-dbf3-44c4-b285-a572c34b898d"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DpadRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -990,6 +1052,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_CharacterControls_Roll = m_CharacterControls.FindAction("Roll", throwIfNotFound: true);
         m_CharacterControls_LockOn = m_CharacterControls.FindAction("LockOn", throwIfNotFound: true);
         m_CharacterControls_Pause = m_CharacterControls.FindAction("Pause", throwIfNotFound: true);
+        m_CharacterControls_DpadLeft = m_CharacterControls.FindAction("DpadLeft", throwIfNotFound: true);
+        m_CharacterControls_DpadRight = m_CharacterControls.FindAction("DpadRight", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1074,6 +1138,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_CharacterControls_Roll;
     private readonly InputAction m_CharacterControls_LockOn;
     private readonly InputAction m_CharacterControls_Pause;
+    private readonly InputAction m_CharacterControls_DpadLeft;
+    private readonly InputAction m_CharacterControls_DpadRight;
     public struct CharacterControlsActions
     {
         private @PlayerControls m_Wrapper;
@@ -1091,6 +1157,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Roll => m_Wrapper.m_CharacterControls_Roll;
         public InputAction @LockOn => m_Wrapper.m_CharacterControls_LockOn;
         public InputAction @Pause => m_Wrapper.m_CharacterControls_Pause;
+        public InputAction @DpadLeft => m_Wrapper.m_CharacterControls_DpadLeft;
+        public InputAction @DpadRight => m_Wrapper.m_CharacterControls_DpadRight;
         public InputActionMap Get() { return m_Wrapper.m_CharacterControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1139,6 +1207,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Pause.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnPause;
+                @DpadLeft.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnDpadLeft;
+                @DpadLeft.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnDpadLeft;
+                @DpadLeft.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnDpadLeft;
+                @DpadRight.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnDpadRight;
+                @DpadRight.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnDpadRight;
+                @DpadRight.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnDpadRight;
             }
             m_Wrapper.m_CharacterControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -1182,6 +1256,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
+                @DpadLeft.started += instance.OnDpadLeft;
+                @DpadLeft.performed += instance.OnDpadLeft;
+                @DpadLeft.canceled += instance.OnDpadLeft;
+                @DpadRight.started += instance.OnDpadRight;
+                @DpadRight.performed += instance.OnDpadRight;
+                @DpadRight.canceled += instance.OnDpadRight;
             }
         }
     }
@@ -1306,6 +1386,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnRoll(InputAction.CallbackContext context);
         void OnLockOn(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnDpadLeft(InputAction.CallbackContext context);
+        void OnDpadRight(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
