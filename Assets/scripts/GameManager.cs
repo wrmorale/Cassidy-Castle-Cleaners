@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
     //
     public int numberOfEnemies;
     public float maxDustPiles;
-    private float numberOfDustPiles;
+    [HideInInspector]public float numberOfDustPiles;
     public GameObject enemyPrefab;
     public GameObject player;
     public GameObject doorPortal;

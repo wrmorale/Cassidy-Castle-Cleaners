@@ -34,9 +34,9 @@ public class Player : MonoBehaviour
     public float healthPercent = 1;
     private HealthCounterText healthCounter;
 
-    private Animator animator;
+    public Animator animator;
     private playerController playercontroller;
-    private BroomAttackManager atkmanager;
+    public BroomAttackManager atkmanager;
     [SerializeField]
     private Image hurtpng;
     private Color color;

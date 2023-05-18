@@ -18,7 +18,7 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
     [SerializeField] private FrameParser jumpClip;
     [SerializeField] private FrameChecker jumpFrameChecker;
 
-    [SerializeField] private PlayerAbility[] playerAbilities = new PlayerAbility[4];
+    [SerializeField] public PlayerAbility[] playerAbilities = new PlayerAbility[4];
 
     private float turnSmoothVelocity;
 
@@ -151,7 +151,8 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
             attackManager.updateMe(Time.deltaTime);
         }
 
-        if (state != States.PlayerStates.Attacking && state != States.PlayerStates.Ability && state != States.PlayerStates.Dead && state != States.PlayerStates.Damaged)
+        if (state != States.PlayerStates.Attacking && state != States.PlayerStates.Ability && state 
+            != States.PlayerStates.Dead && state != States.PlayerStates.Damaged && state != States.PlayerStates.Talking)
         {
             SetState(States.PlayerStates.Idle);
             model.transform.localPosition = Vector3.zero;
