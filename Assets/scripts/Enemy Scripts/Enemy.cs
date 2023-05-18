@@ -78,7 +78,7 @@ public class Enemy : MonoBehaviour
                     if (distance <= detectionRange)
                     {//check if dust pile doesn't have full health and is nearby
                         dustPile.IncreaseHealth(healingSpeed * Time.deltaTime);
-                        Debug.Log("Healing dust pile");
+                        // Debug.Log("Healing dust pile");
                     }
                 }
             }
