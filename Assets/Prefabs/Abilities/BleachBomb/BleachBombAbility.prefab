@@ -52,7 +52,7 @@ MonoBehaviour:
   speed: 250
   lifetime: 1
   damage: 10
-  stagger: 20
+  stagger: 30
   cost: 20
   clip:
     animator: {fileID: 0}
