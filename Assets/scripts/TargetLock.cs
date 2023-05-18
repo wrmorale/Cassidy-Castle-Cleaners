@@ -9,6 +9,13 @@ using UnityEngine.UI;
  *  and has been modified to fit our project
  **/
 
+public enum TargetDirection
+{
+    None,
+    Left,
+    Right
+}
+
 public class TargetLock : MonoBehaviour
 { 
     [Header("Objects")]
@@ -33,10 +40,14 @@ public class TargetLock : MonoBehaviour
     private PlayerInput playerInput;
     private InputAction lockonAction;
     private InputAction cameraAction;
+    private InputAction DpadLeftAction;
+    private InputAction DpadRightAction;
+    
     private int channeledAbility;
     
     private float maxAngle;
     [HideInInspector]
+    private TargetDirection targetDirection = TargetDirection.None;
     public Transform currentTarget;
     public Transform healthBar;
     public Vector3 targetColliderCenter;
@@ -53,6 +64,9 @@ public class TargetLock : MonoBehaviour
 
         lockonAction = playerInput.actions["LockOn"];
         cameraAction = playerInput.actions["Camera"];
+        DpadLeftAction = playerInput.actions["DpadLeft"];
+        DpadRightAction = playerInput.actions["DpadRight"];
+
 
         isTargeting = false;
     }
@@ -76,25 +90,53 @@ public class TargetLock : MonoBehaviour
 
         if (lockonAction.triggered)
         {
-            Debug.Log("targeting");
+            if (isTargeting)
+            {
+                RemoveTarget();
+            }
+            else
+            { 
+                AssignTarget();
+            }
+        }
+        // Change target with Dpad
+        if (DpadLeftAction.triggered)
+        {
+            targetDirection = TargetDirection.Left;
+            AssignTarget();
+        }
+        if (DpadRightAction.triggered)
+        {
+            targetDirection = TargetDirection.Right;
             AssignTarget();
         }
     }
 
+    // Handles UN-locking from the current target
+    private void RemoveTarget()
+    {
+        isTargeting = false;
+        targetGroup.RemoveMember(currentTarget);
+        targetGroup.RemoveMember(healthBar);
+        currentTarget = null;
+        targetDirection = TargetDirection.None;
+    }
+
+    // Handles locking on to a new target
     private void AssignTarget()
     {
-        if (isTargeting)
-        {
-            isTargeting = false;
-            targetGroup.RemoveMember(currentTarget);
-            targetGroup.RemoveMember(healthBar);
-            currentTarget = null;
-            return;
-        }
 
         GameObject closest = ClosestTarget();
         if (closest)
         {
+            // If changing target from an existing one, 
+            // the camera stops locking on to the prev one
+            if (currentTarget)
+            {
+                targetGroup.RemoveMember(currentTarget);
+                targetGroup.RemoveMember(healthBar);
+            }
+
             isTargeting = true;
             currentTarget = closest.transform;
             //Get's enemy model, which always has an animator attached
@@ -113,7 +155,6 @@ public class TargetLock : MonoBehaviour
             healthBar = currentTarget.transform.Find("UI Canvas").gameObject.transform;
             targetGroup.AddMember(currentTarget, 0.3f, 1f);
             targetGroup.AddMember(healthBar, 0.7f, 1f);
-            Debug.Log("current target: "+ currentTarget);
         }
     }
 
@@ -122,7 +163,7 @@ public class TargetLock : MonoBehaviour
         //If target is dead
         if (!currentTarget || currentTarget.tag != "Enemy")
         {
-            AssignTarget();
+            RemoveTarget();
             return;
         }
 
@@ -144,7 +185,7 @@ public class TargetLock : MonoBehaviour
         // if too far or too close to enemy, deselect them
         if ((target.position - transform.position).magnitude < minDistance ||
             (target.position - transform.position).magnitude > maxDistance) { 
-            AssignTarget(); 
+            RemoveTarget(); 
             return;
         }
 
@@ -176,35 +217,59 @@ public class TargetLock : MonoBehaviour
         Vector3 position = transform.position;
         foreach (GameObject go in gos)
         {
-            Vector3 diff = go.transform.position - position;
-            float curDistance = diff.magnitude;
+            // Used if there are no existing targets and for cheking if the target is in view
+            Vector3 playerDiff = go.transform.position - transform.position;
+            // curDistance is the distance to the nearest enemy 
+            float curDistance = 0f;
+            
+            if (currentTarget)
+            {
+                Vector3 targetDiff = go.transform.position - currentTarget.position;
+                curDistance = targetDiff.magnitude;
+            }
+            else
+                curDistance = playerDiff.magnitude;
+            //Debug.Log("distance: " + curDistance);
+
             if (curDistance < distance)
             {
                 //Debug.Log("In range.");
                 Vector3 viewPos = mainCamera.WorldToViewportPoint(go.transform.position);
                 Vector2 newPos = new Vector3(viewPos.x - 0.5f, viewPos.y - 0.5f);
                 //Debug.Log(Vector3.Angle(diff.normalized, mainCamera.transform.forward) < maxAngle);
-                if (Vector3.Angle(diff.normalized, mainCamera.transform.forward) < maxAngle)
+                if (Vector3.Angle(playerDiff.normalized, mainCamera.transform.forward) < maxAngle)
                 {
-                    //Debug.Log("in View");
-                    closest = go;
-                    currAngle = Vector3.Angle(diff.normalized, mainCamera.transform.forward.normalized);
-                    distance = curDistance;
+                    Debug.Log("in View");
+                    if (currentTarget)
+                    {
+                        // get closest target to the right or left of the current one
+                        Vector3 cross = Vector3.Cross(mainCamera.transform.forward, go.transform.position - currentTarget.position);
+                        if (targetDirection == TargetDirection.Right && cross.y > 0f) // TODO: or instead of else if 
+                        {
+                            Debug.Log("Right closest");
+                            closest = go;
+                            distance = curDistance;
+                        }
+                        else if (targetDirection == TargetDirection.Left && cross.y < 0f)
+                        {
+                            Debug.Log("left closest");
+                            closest = go;
+                            distance = curDistance;
+                        }
+                    }
+                    else
+                    {
+                        // Get closest target 
+                        closest = go;
+                        currAngle = Vector3.Angle(playerDiff.normalized, mainCamera.transform.forward.normalized);
+                        distance = curDistance;
+                    }
                 }
             }
         }
         Debug.Log(closest);
         return closest;
     }
-
-    private Vector3 AddOffset(Vector3 target)
-    {
-        Vector3 offset = targetLockOffset;
-        Debug.Log(offset);
-        offset = target + offset;
-        return offset;
-    }
-
 
     private void OnDrawGizmos()
     {
