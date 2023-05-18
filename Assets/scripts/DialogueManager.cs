@@ -16,29 +16,50 @@ public class DialogueManager : MonoBehaviour
     public GameManager roomCleared;
     public GameObject controls; 
 
-    // TODO: make this a list of tuples, where the first element is the speaker and the second element is the dialogue
+    // dialogueDatabase has a key containing line index and current state, the value is current speaker and line
 
     // TODO: create list of images to display at different stages of dialouge  
     
-    private Dictionary<int, Tuple<string, string>> dialogueDatabase = new Dictionary<int, Tuple<string, string>>()
+    private Dictionary<Tuple<int, string>, Tuple<string, string>> dialogueDatabase = new Dictionary<Tuple<int,string>, Tuple<string, string>>()
     {
         {
-            0, Tuple.Create("Cassidy", "Listen, new hire. I know you want to jump right into things, but we should go ahead and teach you the basics. First, clean these dust piles. Look around if you don't see them right in front of you.")
+            Tuple.Create(0, "cleanPile"), Tuple.Create("Cassidy", "Listen, new hire. I know you want to jump right into things, but we should go ahead and teach you the basics. First, clean these dust piles. Look around if you don't see them right in front of you.")
         },
         {
-            1, Tuple.Create("The Maid", "I'm not that new to cleaning, you know ...")
+            Tuple.Create(1, "cleanPile"), Tuple.Create("The Maid", "I'm not that new to cleaning, you know ...")
         },
         {
-            2, Tuple.Create("Cassidy", "Good work. Make sure you move to the next room, and quickly.")
+            Tuple.Create(2, "cleanPile"), Tuple.Create("Cassidy","Cleaning up dust piles gives you mana. See that blue circle in the top-left?")
+        },
+         {
+            Tuple.Create(3, "teachMana"), Tuple.Create("Cassidy","Mana is needed to use your special cleaning abilities. Each require a different amount of mana. Give them a test.")
         },
         {
-            3, Tuple.Create("Cassidy", "Oh, we didn't tell you but I hope you know how to fight, because this castle is full of monsters. Good luck.")
+            Tuple.Create(4, "manaDone"), Tuple.Create("Cassidy", "By the way, this is important: When you enter a room, the sooner you clean a dust pile, the more mana you will receive. I’ll remind you again later.")
         },
         {
-            4, Tuple.Create("The Maid","Talk about a hostile work environment.")
+            Tuple.Create(5, "lockOn"), Tuple.Create("Cassidy", "Sometimes you’ll need to focus on a specific spot that needs cleaning. Try locking onto one of those dummies.")
         },
         {
-            5, Tuple.Create("Cassidy","Congratulations on not dying. Remember, you get paid to clean everything, not just the floors, so take out these monsters while you are at it.")
+            Tuple.Create(6, "lockOn"), Tuple.Create("The Maid","A training dummy? This is getting awfully suspicious…")
+        },
+        {
+            Tuple.Create(7, "lockedDummy"), Tuple.Create("Cassidy","While locked on, your broom swings and abilities will be automatically directed towards your target. This is useful for abilities, since they can be difficult to aim otherwise.")
+        },
+        {
+            Tuple.Create(8, "lockedDummy"), Tuple.Create("Cassidy","Try using abilities while locked-on.")
+        },
+        {
+            Tuple.Create(9, "dummyDone"), Tuple.Create("Cassidy","Ok looks like we’re done over here. Proceed to the other half of the room by climbing over those books")
+        },
+        {
+            Tuple.Create(10, "enemiesAppear"), Tuple.Create("Cassidy","Oh, I forgot to tell you, this magic in this place is causing some of the dust to turn into hostile monsters. Rolling can help you avoid dying; you can’t be hit for a brief time while rolling. Pretty much everything I told you about cleaning should apply to these guys too.")
+        },
+        {
+            Tuple.Create(11, "readytoFight"), Tuple.Create("The Maid","*Sigh*. Looks like I’ll be cleaning house in more ways than one today.")
+        },
+        {
+            Tuple.Create(12, "enemiesDefeated"), Tuple.Create("Cassidy","Excellent! This room is now clean. And you’re still alive, that’s good too. Proceed to the door to the next room, you're health will be replished at the start of each room.")
         }
 
     };
@@ -56,7 +77,9 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue ()
     {
         string speaker = (dialogueDatabase.ElementAt(dialogueIndex).Value).Item1;
+        string curState = (dialogueDatabase.ElementAt(dialogueIndex).Key).Item2;
         Debug.Log("Starting conversation with " + speaker);
+        Debug.Log("current key" + (dialogueDatabase.ElementAt(dialogueIndex).Key).Item2);
 
         nameText.text = speaker;
         
@@ -67,31 +90,21 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence() 
     {
-        if(dialogueIndex == 5){
+        if(dialogueIndex == 13){
             EndDialogue();
         }
 
         string speaker = (dialogueDatabase.ElementAt(dialogueIndex).Value).Item1;
-        //Debug.Log("Starting conversation with " + speaker);
         string speakerText = (dialogueDatabase.ElementAt(dialogueIndex).Value).Item2;
+        string curState = (dialogueDatabase.ElementAt(dialogueIndex).Key).Item2;
+        //Debug.Log("Starting conversation with " + speaker);
 
+        // setting the text in the dialogue box
         nameText.text = speaker;
         dialogueText.text = speakerText;
-        //Debug.Log("current line " + speakerText);
 
-       if (dialogueIndex == 2){
-            dialoguebox.SetActive(false);
-            controls.SetActive(true);
-            continueButton.SetActive(false);
-        }
-        else if (dialogueIndex >= 3){
-            //controls.SetActive(false); // when they continue again pop up should disappear
-            //dialoguebox.SetActive(true);
-            
-        }
-        
+        // move on to next line in dialogueDatabase
         dialogueIndex++;
-        //Debug.Log("current index: " + dialogueIndex);
     }
 
     void EndDialogue ()
@@ -99,5 +112,6 @@ public class DialogueManager : MonoBehaviour
         continueButton.SetActive(false);
         dialoguebox.SetActive(false);
         Debug.Log("End of conversation.");
+        dialogueIndex = 0;
     }
 }
