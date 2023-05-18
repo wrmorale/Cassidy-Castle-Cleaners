@@ -27,6 +27,7 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
     private PlayerInput playerInput;
     private BroomAttackManager attackManager;
     public TargetLock targetLock; /*Added for lock-on improvements*/
+    public bool alwaysFaceTarget = true;
     public Player playerStats;
 
     [HideInInspector]
@@ -274,8 +275,18 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
     {
         if (!inJumpsquat)
         {
+            //By calling this here, this will make player always face lock-on target when attacking, if we want them to
+            //Player can still rotate while attacking
+            if (targetLock.currentTarget && alwaysFaceTarget)
+            { //Face lock-on target if locked on
+                Quaternion newRotation = Quaternion.LookRotation(toTargetPosition(), controller.transform.up);
+                newRotation = Quaternion.Euler(0, newRotation.eulerAngles.y, 0);
+                controller.transform.rotation = newRotation;
+            }
+
             // log current root bone position
             lastRootY = hip.transform.localPosition.y;
+            Debug.Log("Last root Y: " + lastRootY); /*Ok so this has nothing to do with aiming attacks*/
             //set state to attacking
             SetState(States.PlayerStates.Attacking);
             // launch animations and attacks

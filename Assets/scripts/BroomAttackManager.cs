@@ -51,7 +51,7 @@ public class BroomAttackManager : MonoBehaviour, IFrameCheckHandler
     }
     public void onAttackCancelFrameStart() {
         actionState = ActionState.AttackCancelable;
-        RotateBetweenAttacks();
+        //RotateBetweenAttacks();
     }
     public void onAttackCancelFrameEnd() {
         if (actionState == ActionState.AttackCancelable) actionState = ActionState.Inactionable;
@@ -208,7 +208,9 @@ public class BroomAttackManager : MonoBehaviour, IFrameCheckHandler
 
     private void RotateBetweenAttacks() 
     {
+        Debug.Log("Rotate between attacks");
         // let the player move between attacks
+        // Seems to be called right when the attack starts too
         if (combo != 0){
             Vector2 input = player.moveAction.ReadValue<Vector2>();
             if (input.x != 0 || input.y != 0){
