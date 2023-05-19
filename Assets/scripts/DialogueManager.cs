@@ -23,7 +23,11 @@ public class DialogueManager : MonoBehaviour
     [SerializeField]private int abilitiesUsed = 0;
     [SerializeField]private bool targetLocked = false;
     [SerializeField]private int hitWhileLockedOn = 0;
-
+    [SerializeField]private float dummy1TopHealth = 0;
+    [SerializeField]private float dummy2TopHealth = 0;
+    [SerializeField]private float dummy1Health = 0;
+    [SerializeField]private float dummy2Health = 0;
+    [SerializeField]private int dummiesHit = 0; 
 
     // dialogueDatabase has a key containing line index and current state, the value is current speaker and line
 
@@ -79,9 +83,15 @@ public class DialogueManager : MonoBehaviour
         dialoguebox = GameObject.Find("DialogueBox");
         continueButton = GameObject.Find("ContinueButton");
         controls = GameObject.Find("Controls");
+        controls.SetActive(false);
         tutorialManager = gameObject.GetComponent<TutorialManager>();
         tutorialManager.stopActions();
-        controls.SetActive(false);
+        tutorialManager.disableBookstack();
+        tutorialManager.hideBunnies();
+        dummy1TopHealth = tutorialManager.dummy1.GetComponent<Enemy>().maxHealth;
+        dummy1Health = dummy1TopHealth;
+        dummy2TopHealth = tutorialManager.dummy2.GetComponent<Enemy>().maxHealth;
+        dummy2Health = dummy2TopHealth;
         StartDialogue();
     }
 
@@ -120,38 +130,56 @@ public class DialogueManager : MonoBehaviour
     void Update()
     {
 
-        if(curState == "cleanPile" &&  dialogueIndex == 3)
+        if(dialogueIndex == 3)
         {
             cleanPile();
         }
 
-        if(curState == "teachMana" && dialogueIndex == 5)
+        if(dialogueIndex == 5)
         {
             teachMana();  
         }
 
-        if(curState == "lockedDummy" && dialogueIndex == 8)
+        if(dialogueIndex == 8)
         {
             lockedDummy();
         }
 
-        if(curState == "dummyDone" && dialogueIndex == 10)
+        if(dialogueIndex == 10)
         {
+            dummyDone();    
+        }
+
+        if(dialogueIndex == 11)
+        {
+            part1Done();
+            startCombat();
+        }
+
+        if(dialogueIndex == 13){
             if(controlgiven == false)
             {
-                tutorialManager.resumeActions();                
+                tutorialManager.resumeActions();
+                tutorialManager.activateBunnies();               
                 controlgiven = true;
             }
             dialoguebox.SetActive(false);
             continueButton.SetActive(false);
-            gameManager.infiniteManaCheat = true;
-            //if(targetLocked && ) Find a way to check when the player has hit an enemy 
 
+            if(gameManager.numberOfEnemies == 2){
+                dialoguebox.SetActive(true);
+                continueButton.SetActive(true);
+                tutorialManager.stopActions();
+                controlgiven = false;
+            }
         }
 
+
+        
     }
 
-    void cleanPile(){
+    void cleanPile()
+    {
         if(controlgiven == false)
         {
             tutorialManager.resumeActions();                
@@ -169,7 +197,8 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    void teachMana(){
+    void teachMana()
+    {
         if(controlgiven == false)
         {
             tutorialManager.resumeActions();                
@@ -180,7 +209,9 @@ public class DialogueManager : MonoBehaviour
         if(abilitiesUsed < 3){
             for (int i = 0; i < tutorialManager.controller.playerAbilities.Length; i++)
             {
-                if (tutorialManager.controller.abilityActions[i].triggered && tutorialManager.controller.playerAbilities[i] != null)
+                if (tutorialManager.controller.abilityActions[i].triggered 
+                && tutorialManager.controller.playerAbilities[i] != null 
+                && tutorialManager.controller.channeledAbility != 1)
                 {
                     abilitiesUsed++;
                 }
@@ -210,8 +241,66 @@ public class DialogueManager : MonoBehaviour
             continueButton.SetActive(true);
             tutorialManager.stopActions();
             controlgiven = false;
+            targetLocked = false;
         }
     }
+
+    void dummyDone(){
+        if(controlgiven == false)
+        {
+            tutorialManager.resumeActions();                
+            tutorialManager.dummy1.GetComponent<Enemy>().currentHealth = dummy1TopHealth;
+            tutorialManager.dummy2.GetComponent<Enemy>().currentHealth = dummy2TopHealth;
+            controlgiven = true;
+        }
+        dialoguebox.SetActive(false);
+        continueButton.SetActive(false);
+        gameManager.infiniteManaCheat = true;
+        dummy1Health = tutorialManager.dummy1.GetComponent<Enemy>().currentHealth;
+        dummy2Health = tutorialManager.dummy2.GetComponent<Enemy>().currentHealth;
+        targetLocked = targetLock.isTargeting;
+        //if(targetLocked && ) Find a way to check when the player has hit an enemy 
+        if((dummy1Health < dummy1TopHealth || dummy2Health < dummy2TopHealth) && targetLocked)
+        {
+            dummiesHit++;
+            dummy1TopHealth = dummy1Health;
+            dummy2TopHealth = dummy2Health;
+        }
+
+        if(dummiesHit >= 10)
+        {
+            dialoguebox.SetActive(true);
+            continueButton.SetActive(true);
+            tutorialManager.stopActions();
+            gameManager.infiniteManaCheat = false;
+            controlgiven = false;
+        }
+    }
+
+    void part1Done()
+    {
+        if(controlgiven == false)
+        {
+            tutorialManager.resumeActions();                
+            tutorialManager.enableBookstack();
+            controlgiven = true;
+        }
+        dialoguebox.SetActive(false);
+        continueButton.SetActive(false);
+    }
+
+    void startCombat()
+    {
+        if(tutorialManager.CombatTrigger.triggered == true)
+        {
+            tutorialManager.showBunnies();
+            dialoguebox.SetActive(true);
+            continueButton.SetActive(true);
+            tutorialManager.stopActions();
+            controlgiven = false;
+        }
+    }
+    
 
     void EndDialogue ()
     {   
@@ -219,5 +308,7 @@ public class DialogueManager : MonoBehaviour
         dialoguebox.SetActive(false);
         Debug.Log("End of conversation.");
         dialogueIndex = 0;
+        tutorialManager.dummy1.SetActive(false);
+        tutorialManager.dummy2.SetActive(false);    
     }
 }
