@@ -21,7 +21,7 @@ public class ObjectFader : MonoBehaviour
     {
         if(doFade)
         {
-            FadeObject();   
+            FadeObject();
         }
         else
         {
@@ -32,7 +32,7 @@ public class ObjectFader : MonoBehaviour
     void FadeObject()
     {
         Color currentColor = mat.color;
-        Color transitionColor = new Color(currentColor.r, currentColor.g, currentColor.b, 
+        Color transitionColor = new Color(currentColor.r, currentColor.g, currentColor.b,
             Mathf.Lerp(currentColor.a, fadeAmount, fadeSpeed * Time.deltaTime));
         mat.color = transitionColor;
     }

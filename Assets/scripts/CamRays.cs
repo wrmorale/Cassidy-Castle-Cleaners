@@ -36,11 +36,11 @@ public class CamRays : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("fader on");
                     lastHit = hit.collider.gameObject;
                     fader = lastHit.GetComponent<ObjectFader>();
                     if (fader != null)
                     {
+                        Debug.Log("fader on");
                         fader.doFade = true;
                     }
                 }
