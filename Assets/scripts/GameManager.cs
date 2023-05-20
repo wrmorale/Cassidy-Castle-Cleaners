@@ -135,17 +135,20 @@ public class GameManager : MonoBehaviour
         if (!objectsInstantiated)
         {
             // Spawn dust piles
-            for (int i = 0; i < maxDustPiles; i++)
+            if(dustSpawnAreas.Count > 0) //Do not spawn any if no spawn areas (applies to final boss room)
             {
-                randomIndex = UnityEngine.Random.Range(0, dustSpawnAreas.Count);
-                selectedSpawnArea = dustSpawnAreas[randomIndex];
-                Bounds spawnBounds = selectedSpawnArea.GetComponent<MeshCollider>().bounds;
-                Vector3 position = new Vector3(
-                    UnityEngine.Random.Range(spawnBounds.min.x, spawnBounds.max.x),
-                    selectedSpawnArea.transform.position.y,
-                    UnityEngine.Random.Range(spawnBounds.min.z, spawnBounds.max.z)
-                );
-                Instantiate(dustPilePrefab, position, Quaternion.identity);
+                for (int i = 0; i < maxDustPiles; i++)
+                {
+                    randomIndex = UnityEngine.Random.Range(0, dustSpawnAreas.Count);
+                    selectedSpawnArea = dustSpawnAreas[randomIndex];
+                    Bounds spawnBounds = selectedSpawnArea.GetComponent<MeshCollider>().bounds;
+                    Vector3 position = new Vector3(
+                        UnityEngine.Random.Range(spawnBounds.min.x, spawnBounds.max.x),
+                        selectedSpawnArea.transform.position.y,
+                        UnityEngine.Random.Range(spawnBounds.min.z, spawnBounds.max.z)
+                    );
+                    Instantiate(dustPilePrefab, position, Quaternion.identity);
+                }
             }
 
             // Spawn enemies
