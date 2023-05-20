@@ -1033,6 +1033,11 @@ PrefabInstance:
       objectReference: {fileID: 485352723}
     - target: {fileID: 4479651422631388256, guid: 3fec4a32b1661b648bdcb0b9faccc35d,
         type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4479651422631388256, guid: 3fec4a32b1661b648bdcb0b9faccc35d,
+        type: 3}
       propertyPath: playerBody
       value: 
       objectReference: {fileID: 485352726}
@@ -1110,6 +1115,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DustBunnyEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8327740662560138380, guid: 3fec4a32b1661b648bdcb0b9faccc35d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8327740662560138382, guid: 3fec4a32b1661b648bdcb0b9faccc35d,
         type: 3}
@@ -1308,12 +1318,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8473b334f435d2f4590aa29d1a6c8746, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &853497538 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8327740662560138378, guid: 3fec4a32b1661b648bdcb0b9faccc35d,
-    type: 3}
-  m_PrefabInstance: {fileID: 658884243}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &897129748
 GameObject:
   m_ObjectHideFlags: 0
@@ -1458,6 +1462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 195ee0684370fd64785a4d7a6396deaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  persistentGM: {fileID: 0}
   disableLosing: 0
   timer: 0
   timerText: {fileID: 0}
@@ -1471,8 +1476,8 @@ MonoBehaviour:
   enemyPrefab: {fileID: 853497531}
   player: {fileID: 485352720}
   doorPortal: {fileID: 1862823173}
-  spawnAreas:
-  - {fileID: 1306330394}
+  enemySpawnAreas: []
+  dustSpawnAreas: []
   dustPilePrefab: {fileID: 841771962}
   pauseUI: {fileID: 1704625586}
   playerStats: {fileID: 485352725}
@@ -1481,6 +1486,7 @@ MonoBehaviour:
   cleaningPercent: 0
   mana: 0
   maxMana: 100
+  manaPercent: 0
   infiniteManaCheat: 0
   dustPileReward: 20
   bleachBombCost: 50
@@ -2965,12 +2971,12 @@ PrefabInstance:
     - target: {fileID: 7932447838902735546, guid: b16642e7513a80e4d83b1053c95e3d44,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000023474577
+      value: -0.00000002347458
       objectReference: {fileID: 0}
     - target: {fileID: 7932447838902735546, guid: b16642e7513a80e4d83b1053c95e3d44,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000064080625
+      value: 0.0000000064080634
       objectReference: {fileID: 0}
     - target: {fileID: 7932447838902735546, guid: b16642e7513a80e4d83b1053c95e3d44,
         type: 3}
@@ -3309,12 +3315,12 @@ PrefabInstance:
     - target: {fileID: 6904719146668348922, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000008405159
+      value: -0.0000000084051575
       objectReference: {fileID: 0}
     - target: {fileID: 6904719146668348922, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000001835269
+      value: 0.0000000018352687
       objectReference: {fileID: 0}
     - target: {fileID: 6904719147228723758, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
@@ -3349,12 +3355,12 @@ PrefabInstance:
     - target: {fileID: 6904719147742580994, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000023474575
+      value: -0.000000023474579
       objectReference: {fileID: 0}
     - target: {fileID: 6904719147742580994, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000006408061
+      value: 0.0000000064080625
       objectReference: {fileID: 0}
     - target: {fileID: 6904719148039652034, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
@@ -3374,12 +3380,12 @@ PrefabInstance:
     - target: {fileID: 6904719148039652034, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000016615472
+      value: 0.000000016615479
       objectReference: {fileID: 0}
     - target: {fileID: 6904719148039652034, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000004470518
+      value: -0.0000000044705195
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe987c0be70e4764e92e8aff74c2356e, type: 3}
@@ -3781,7 +3787,7 @@ PrefabInstance:
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 853497538}
+      objectReference: {fileID: 485352723}
     - target: {fileID: 5972610662029407917, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
         type: 3}
       propertyPath: spawnArea
