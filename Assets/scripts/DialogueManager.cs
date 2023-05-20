@@ -22,7 +22,6 @@ public class DialogueManager : MonoBehaviour
     [SerializeField]private bool controlgiven = false;
     [SerializeField]private int abilitiesUsed = 0;
     [SerializeField]private bool targetLocked = false;
-    [SerializeField]private int hitWhileLockedOn = 0;
     [SerializeField]private float dummy1TopHealth = 0;
     [SerializeField]private float dummy2TopHealth = 0;
     [SerializeField]private float dummy1Health = 0;
@@ -157,21 +156,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         if(dialogueIndex == 13){
-            if(controlgiven == false)
-            {
-                tutorialManager.resumeActions();
-                tutorialManager.activateBunnies();               
-                controlgiven = true;
-            }
-            dialoguebox.SetActive(false);
-            continueButton.SetActive(false);
-
-            if(gameManager.numberOfEnemies == 2){
-                dialoguebox.SetActive(true);
-                continueButton.SetActive(true);
-                tutorialManager.stopActions();
-                controlgiven = false;
-            }
+            roomCleared();
         }
 
 
@@ -245,7 +230,8 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    void dummyDone(){
+    void dummyDone()
+    {
         if(controlgiven == false)
         {
             tutorialManager.resumeActions();                
@@ -301,14 +287,34 @@ public class DialogueManager : MonoBehaviour
         }
     }
     
+    void roomCleared()
+    {
+        if(controlgiven == false)
+        {
+            tutorialManager.resumeActions();
+            tutorialManager.activateBunnies();               
+            controlgiven = true;
+        }
+        dialoguebox.SetActive(false);
+        continueButton.SetActive(false);
+
+        if(gameManager.numberOfEnemies == 2){
+            dialoguebox.SetActive(true);
+            continueButton.SetActive(true);
+            tutorialManager.stopActions();
+            controlgiven = false;
+        }
+
+    }
 
     void EndDialogue ()
     {   
+        dialogueIndex = 0;
         continueButton.SetActive(false);
         dialoguebox.SetActive(false);
         Debug.Log("End of conversation.");
-        dialogueIndex = 0;
         tutorialManager.dummy1.SetActive(false);
-        tutorialManager.dummy2.SetActive(false);    
+        tutorialManager.dummy2.SetActive(false);
+        gameManager.mana = 0;    
     }
 }
