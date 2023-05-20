@@ -17,7 +17,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
     [Header("Stats")]
     [SerializeField] public string enemyName;
     [SerializeField] public float maxHealth = 1.0f; //Shouldn't these be integers?
-    public float currentHealth;
+    [HideInInspector] public float currentHealth;
     private float healthPercent = 1.0f;
     private EnemyHealthBar bossHealthBar;
 
@@ -38,7 +38,10 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
     public Transform player;
     public int phase; //1 = phase 1, 2 = spawn enemies, 3 = final phase, 4+ = defeated
 
-    public bool isCoroutineRunning = false;
+    [HideInInspector] public bool isCoroutineRunning = false;
+
+    [Header("Other")]
+    public LevelLoader levelLoader;
 
     // Start is called before the first frame update
     void Start()
@@ -135,6 +138,12 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
                 //this should work for death animation but not all enemies have one so it gets errors
                 //animator.SetBool("Death", true);
                 //StartCoroutine(waitForAnimation("Death"));
+
+                if (levelLoader) //Load the ending scene
+                    levelLoader.LoadTargetLevel("Win_scene");
+                else
+                    Debug.LogError("[MirrorBossMain] Where's the level loader??");
+
                 Destroy(gameObject);
             }
         }
