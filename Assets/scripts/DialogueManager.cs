@@ -316,6 +316,8 @@ public class DialogueManager : MonoBehaviour
         tutorialManager.dummy1.SetActive(false);
         tutorialManager.dummy2.SetActive(false);
         gameManager.mana = 0;
-        tutorialManager.player.health = 25f;    
+        gameManager.updateManaAmount(gameManager.mana);
+        tutorialManager.player.health = 25f;
+        tutorialManager.player.updateHealthUI();    
     }
 }

@@ -98,9 +98,7 @@ public class Player : MonoBehaviour
             
             health -= damage;
             health = Mathf.Clamp(health, 0 , maxHealth);
-            healthPercent = health / maxHealth;
-            healthbar.setHealth(healthPercent);
-            healthCounter.updateHealthCounter(health);
+            updateHealthUI();
             //if(health >= 1){
             
                 color = hurtpng.color;
@@ -115,6 +113,12 @@ public class Player : MonoBehaviour
             }
         }
         
+    }
+
+    public void updateHealthUI(){
+        healthPercent = health / maxHealth;
+        healthbar.setHealth(healthPercent);
+        healthCounter.updateHealthCounter(health);
     }
 
     /*
