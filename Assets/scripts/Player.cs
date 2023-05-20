@@ -94,8 +94,6 @@ public class Player : MonoBehaviour
         //print("Player took " + damage + " damage");
         
         if(!isInvulnerable && !invincibleCheat){
-            
-            
             health -= damage;
             health = Mathf.Clamp(health, 0 , maxHealth);
             updateHealthUI();

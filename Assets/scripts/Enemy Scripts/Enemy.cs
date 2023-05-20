@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour
 
 
     [HideInInspector] public CharacterController enemyController;
-    [HideInInspector] public Rigidbody playerBody;
+    public Rigidbody playerBody;
 
     [Header("Animator info")]
     //public Animator animator;

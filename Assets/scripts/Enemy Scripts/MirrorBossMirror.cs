@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MirrorBossMirror : Enemy
 {
@@ -10,11 +11,20 @@ public class MirrorBossMirror : Enemy
     public Material matPosessed;
     MeshRenderer mesh;
     MirrorBossMain mainScript;
+    public GameObject activeIndicator;
+
+    [Header("Projectile Stats")]
+    [SerializeField] public Projectile projectilePrefab;
+    [SerializeField] public float projectileSpeed;
+    [SerializeField] public float projectileLifetime;
+    [SerializeField] public float projectileDamage;
+    [SerializeField] public float trashSpawnChance;
+    public Transform bulletSpawn;
 
     // Start is called before the first frame update
     void Start()
     {
-        mesh = GetComponent<MeshRenderer>();
+        mesh = GetComponentInChildren<MeshRenderer>();
         SetPossessed(entityPossessing);
         mainScript = GetComponentInParent<MirrorBossMain>();
     }
@@ -22,13 +32,16 @@ public class MirrorBossMirror : Enemy
     public void SetPossessed(bool makePosessed) {
         if (makePosessed)
         {
+            Debug.Log("HERE");
             entityPossessing = true;
-            mesh.material = matPosessed;
+            activeIndicator.gameObject.SetActive(true);
+            //mesh.material = matPosessed;
         }
         else
         {
             entityPossessing = false;
-            mesh.material = matInactive;
+            activeIndicator.gameObject.SetActive(false);
+            //mesh.material = matInactive;
         }
     }
 
@@ -42,16 +55,12 @@ public class MirrorBossMirror : Enemy
     {
         if (entityPossessing)
         {
-            mainScript.isHit(damage);
+            mainScript.isHit(damage, staggerDamage);
         }
         else
         {
             Debug.LogWarning("This mirror is not posessed!");
         }
     }
-
-    public void slamTest(){
-        
-    }
-
+    
 }

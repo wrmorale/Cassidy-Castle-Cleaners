@@ -10,27 +10,42 @@ public class collisionDetection : MonoBehaviour
     public Enemy enemy;
     [HideInInspector] public float damage = 1; //Set by enemys' attack manager
     
-    private void OnTriggerEnter(Collider other){
-        if(other.tag == "Enemy" && pc.state == States.PlayerStates.Attacking){
-            //applies to all with the enemy tag
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Enemy")
+        {
             Enemy enemyEx = other.GetComponent<Enemy>();
-            enemyEx.isHit(player.basicDamage, player.staggerDamage);
+            if (enemyEx != null && pc != null && pc.state == States.PlayerStates.Attacking)
+            {
+                enemyEx.isHit(player.basicDamage, player.staggerDamage);
+            }
         }
 
-        if(other.tag == "DustPile" && pc.state == States.PlayerStates.Attacking){
+        if (other.tag == "DustPile")
+        {
             DustPile dustPile = other.GetComponent<DustPile>();
-            dustPile.isHit(player.basicDamage);
+            if (dustPile != null && pc != null && pc.state == States.PlayerStates.Attacking)
+            {
+                dustPile.isHit(player.basicDamage);
+            }
         }
 
-        if(other.tag == "Furniture" && pc.state == States.PlayerStates.Attacking){
+        if (other.tag == "Furniture")
+        {
             Furniture furniture = other.GetComponent<Furniture>();
-            furniture.isHit(player.basicDamage);
+            if (furniture != null && pc != null && pc.state == States.PlayerStates.Attacking)
+            {
+                furniture.isHit(player.basicDamage);
+            }
         }
-
-        if(other.tag == "Player" && this.tag != "weapon"){
+        
+        if (other.tag == "Player" && this.tag != "weapon" && this.tag != "Projectile")
+        {
             Player playerEx = other.GetComponent<Player>();
-            //Debug.Log(enemy.basicAttackDamage);
-            playerEx.isHit(damage);
+            if (playerEx != null)
+            {
+                playerEx.isHit(damage);
+            }
         }
     }
 }
