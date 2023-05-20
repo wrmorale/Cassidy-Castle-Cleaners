@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayStart()
     {
-        SceneManager.LoadScene("TutorialScene");
+        SceneManager.LoadScene("SampleScene");
     }
 
     public void ToCredits()
@@ -18,5 +18,14 @@ public class MainMenu : MonoBehaviour
     public void ToControls()
     {
         SceneManager.LoadScene("Controls_Scene");
+    }
+
+    public void ToExit()
+    {
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #endif
+
+        Application.Quit();
     }
 }

@@ -114,8 +114,8 @@ MonoBehaviour:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 0
     specialCooldownEnds: 0
-  viewPosition: {x: 1105, y: -73.5, z: 0}
-  viewScale: {x: 0.49717674, y: 0.49717674, z: 1}
+  viewPosition: {x: 378.5, y: -479.5, z: 0}
+  viewScale: {x: 0.57175326, y: 0.57175326, z: 1}
   references:
     version: 2
     RefIds:
@@ -435,7 +435,6 @@ MonoBehaviour:
         children:
         - rid: 2088461236925366281
         - rid: 2088461255032963075
-        - rid: 4349734154652352522
     - rid: 2088461255032963075
       type: {class: RotateWhileAttacking, ns: , asm: Assembly-CSharp}
       data:
@@ -537,7 +536,6 @@ MonoBehaviour:
         children:
         - rid: 2088461284640817154
         - rid: 2088461284640817155
-        - rid: 4349734154652352512
     - rid: 2088461284640817154
       type: {class: DoAttack, ns: , asm: Assembly-CSharp}
       data:
@@ -694,7 +692,6 @@ MonoBehaviour:
         children:
         - rid: 2088461351394213890
         - rid: 2088461351394213891
-        - rid: 4349734154652352516
     - rid: 2088461351394213890
       type: {class: DoAttack, ns: , asm: Assembly-CSharp}
       data:
@@ -845,7 +842,6 @@ MonoBehaviour:
         children:
         - rid: 2088461351394213898
         - rid: 2088461351394213900
-        - rid: 4349734154652352527
     - rid: 2088461351394213900
       type: {class: RotateWhileAttacking, ns: , asm: Assembly-CSharp}
       data:

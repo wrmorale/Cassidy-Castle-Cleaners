@@ -5307,6 +5307,9 @@ MonoBehaviour:
   currentStaggerAmount: 0
   isStaggered: 0
   isDead: 0
+  onDeathPoof: {fileID: 2114917353029843427, guid: c77a3b4190b8f2c47b57e964ba69e97b,
+    type: 3}
+  poofSpawnTransform: {fileID: 4758370489669278475}
   movementSpeed: 0.5
   rotationSpeed: 3
   idleMovementRange: 2
@@ -5487,6 +5490,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b9062af56bd41c4f90ccf843909cf4f, type: 3}
+--- !u!4 &4758370489669278475 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -9167284114572275863, guid: 3b9062af56bd41c4f90ccf843909cf4f,
+    type: 3}
+  m_PrefabInstance: {fileID: 4813893992773506146}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4991354434477601673 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3b9062af56bd41c4f90ccf843909cf4f,

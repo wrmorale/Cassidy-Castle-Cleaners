@@ -28,6 +28,7 @@ public class BleachBombTriggerable : PlayerAbility, IFrameCheckHandler
     {
         if(GameManager.instance.mana >= cost){
             GameManager.instance.mana -= cost;//mana reduced when using ability
+            GameManager.instance.updateManaAmount(GameManager.instance.mana);
             SpawnProjectile(playerForward);
         }else{
             Debug.Log("Bleach Bomb: Not Enough Mana");
@@ -107,7 +108,7 @@ public class BleachBombTriggerable : PlayerAbility, IFrameCheckHandler
         // Set the cost based on the value of dusterCost in GameManager
         if (GameManager.instance != null)
         {
-            cost = GameManager.instance.bleachBombCost;
+            cost = PersistentGameManager.instance.bleachBombCost;
         }
     }
 }
