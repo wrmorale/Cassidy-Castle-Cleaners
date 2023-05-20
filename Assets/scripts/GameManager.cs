@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
     public bool gamePaused;
     public static int currentSceneIndex = 0;
     public static int currRoom = 0; // keeps track of the levels we beat
-    private int lastRoomIndex = 5; // 0 indexed so 4 total atm
+    private int lastRoomIndex = 6; // 0 indexed so 4 total atm
     private LevelLoader levelLoader;
     public int currentGold;
     public List<String> availableAbilities = new List<String>(); //not sure how we will keep track of abilities yet but a list of strings to hold ablities that can be learned
