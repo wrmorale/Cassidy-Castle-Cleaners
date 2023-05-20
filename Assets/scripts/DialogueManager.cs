@@ -71,7 +71,7 @@ public class DialogueManager : MonoBehaviour
             Tuple.Create(11, "readytoFight"), Tuple.Create("The Maid","*Sigh*. Looks like I’ll be cleaning house in more ways than one today.")
         },
         {
-            Tuple.Create(12, "enemiesDefeated"), Tuple.Create("Cassidy","Excellent! This room is now clean. And you’re still alive, that’s good too. Proceed to the door to the next room, you're health will be replished at the start of each room.")
+            Tuple.Create(12, "enemiesDefeated"), Tuple.Create("Cassidy","Excellent! This room is now clean. And you’re still alive, that’s good too. Proceed to the door to the next room.")
         }
 
     };
@@ -315,6 +315,7 @@ public class DialogueManager : MonoBehaviour
         Debug.Log("End of conversation.");
         tutorialManager.dummy1.SetActive(false);
         tutorialManager.dummy2.SetActive(false);
-        gameManager.mana = 0;    
+        gameManager.mana = 0;
+        tutorialManager.player.health = 25f;    
     }
 }
