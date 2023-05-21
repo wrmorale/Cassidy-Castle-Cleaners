@@ -112,7 +112,6 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence() 
     {
-
         if(dialogueIndex == 13){
             EndDialogue();
         }
