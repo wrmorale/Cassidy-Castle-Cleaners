@@ -96,7 +96,41 @@ public class DialogueManager : MonoBehaviour
         StartDialogue();
     }
 
-    public void StartDialogue ()
+    void Update()
+    {
+
+        if(dialogueIndex == 3)
+        {
+            cleanPile();
+        }
+
+        if(dialogueIndex == 5)
+        {
+            teachMana();  
+        }
+
+        if(dialogueIndex == 8)
+        {
+            lockedDummy();
+        }
+
+        if(dialogueIndex == 10)
+        {
+            dummyDone();    
+        }
+
+        if(dialogueIndex == 11)
+        {
+            part1Done();
+            startCombat();
+        }
+
+        if(dialogueIndex == 13){
+            roomCleared();
+        }
+    }
+
+     public void StartDialogue ()
     {
         string speaker = (dialogueDatabase.ElementAt(dialogueIndex).Value).Item1;
         curState = (dialogueDatabase.ElementAt(dialogueIndex).Key).Item2;
@@ -135,43 +169,6 @@ public class DialogueManager : MonoBehaviour
         }
         // move on to next line in dialogueDatabase
         dialogueIndex++;
-    }
-
-    void Update()
-    {
-
-        if(dialogueIndex == 3)
-        {
-            cleanPile();
-        }
-
-        if(dialogueIndex == 5)
-        {
-            teachMana();  
-        }
-
-        if(dialogueIndex == 8)
-        {
-            lockedDummy();
-        }
-
-        if(dialogueIndex == 10)
-        {
-            dummyDone();    
-        }
-
-        if(dialogueIndex == 11)
-        {
-            part1Done();
-            startCombat();
-        }
-
-        if(dialogueIndex == 13){
-            roomCleared();
-        }
-
-
-        
     }
 
     void cleanPile()
