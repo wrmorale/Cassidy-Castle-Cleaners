@@ -16,6 +16,7 @@ public class DialogueManager : MonoBehaviour
     public GameObject controls;
     public TargetLock targetLock;
     [HideInInspector]public TutorialManager tutorialManager;
+    public GameObject portrait;
     public int dialogueIndex;
     //Bools and other things for states of the Tutorial
     [SerializeField]private string curState; 
@@ -82,6 +83,7 @@ public class DialogueManager : MonoBehaviour
         dialoguebox = GameObject.Find("DialogueBox");
         continueButton = GameObject.Find("ContinueButton");
         controls = GameObject.Find("Controls");
+        portrait = GameObject.Find("Portrait");
         controls.SetActive(false);
         tutorialManager = gameObject.GetComponent<TutorialManager>();
         tutorialManager.stopActions();
@@ -99,7 +101,7 @@ public class DialogueManager : MonoBehaviour
         string speaker = (dialogueDatabase.ElementAt(dialogueIndex).Value).Item1;
         curState = (dialogueDatabase.ElementAt(dialogueIndex).Key).Item2;
         Debug.Log("Starting conversation with " + speaker);
-        Debug.Log("current key" + (dialogueDatabase.ElementAt(dialogueIndex).Key).Item2);
+        //Debug.Log("current key" + (dialogueDatabase.ElementAt(dialogueIndex).Key).Item2);
 
         nameText.text = speaker;
         
@@ -110,6 +112,7 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence() 
     {
+
         if(dialogueIndex == 13){
             EndDialogue();
         }
@@ -122,6 +125,15 @@ public class DialogueManager : MonoBehaviour
         // setting the text in the dialogue box
         nameText.text = speaker;
         dialogueText.text = speakerText;
+
+        // setting portrait 
+         if (string.Compare(speaker,"Cassidy") == 0){
+            portrait.SetActive(true);
+        }
+        else if (string.Compare(speaker, "The Maid") == 0){
+            Debug.Log("disappearPortrait: " + speaker);
+            portrait.SetActive(false);
+        }
         // move on to next line in dialogueDatabase
         dialogueIndex++;
     }
@@ -312,7 +324,7 @@ public class DialogueManager : MonoBehaviour
         dialogueIndex = 0;
         continueButton.SetActive(false);
         dialoguebox.SetActive(false);
-        Debug.Log("End of conversation.");
+        //Debug.Log("End of conversation.");
         tutorialManager.dummy1.SetActive(false);
         tutorialManager.dummy2.SetActive(false);
         gameManager.mana = 0;
