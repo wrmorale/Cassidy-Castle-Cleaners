@@ -169,36 +169,65 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
         Projectile projectile = currPosessedMirror.projectilePrefab;
         float secondsPerProjectile = 1.0f / projectilesPerSec; // Calculate the time between each projectile
         float elapsedTime = 0.0f; // Tracks time since the attack started
-        int patternChoice = UnityEngine.Random.Range(0, 2); // Chooses random pattern
+        int patternChoice = 1; // UnityEngine.Random.Range(0, 2); // Chooses random pattern
+        int cycle = 1;
 
         /*
          Santi's notes
          So it chooses a pattern once at the start of the attack cycle...
          Every mirror shoots a projectile at the same time, then waits before all shooting the next one
+
+        My pattern might not work well because the two unaimed-shots will not be spaced equally.
          */
 
         while (elapsedTime < projectileAttackDuration)
         {
             setAllMirrorAnimations("Shooting", true);
-            foreach (MirrorBossMirror mirror in mirrors)
+            for(int i = 0; i < mirrors.Count; i++)
             {
                 /*Could add a check here for the main mirror to shoot directly at the player
                  Wouldn't even be necessary if all mirrors EXCEPT the main one were always shooting*/
 
-                Vector3 spawnPosition = mirror.transform.position;
-                //spawnPosition.y += 0.1f; // Sets spawn position slightly lower than the center of the mirror
+                Vector3 spawnPosition = mirrors[i].transform.position;
 
                 // Instantiate a clone of the projectile prefab at the mirror's position and rotation
-                Projectile projectileClone = Instantiate(projectile, spawnPosition, mirror.transform.rotation);
+                Projectile projectileClone = Instantiate(projectile, spawnPosition, mirrors[i].transform.rotation);
 
-                float angleStep = projectilePattern(patternChoice, elapsedTime); // Gets the angle to shoot depending on the pattern
-                Vector3 stepVector = Quaternion.AngleAxis(angleStep, Vector3.up) * mirror.transform.right; // Calculates the angle to shoot
+                Vector3 stepVector;
+                int offset = 0;
+                if(phase < 2) //Phase 1
+                {   //Each pair of parallel mirrors
+                    if(i > 1)
+                        offset = 3;
+                }
+                else
+                {
+                    if (i > 3) //The newly spawned mirrors
+                        offset = 3;
+                }
+                if((cycle + offset) % 6 == 0)
+                {
+                    //Shoot projectile directly at the player's xz position
+                    Vector3 toPlayer = player.position - mirrors[i].transform.position;
+                    toPlayer.y = 0;
+                    stepVector = toPlayer.normalized;
+                    //Constrain to be within maxAngle?
+                }
+                else
+                {   //Follow the usual projectile pattern
+                    float angleStep = projectilePattern(patternChoice, elapsedTime); // Gets the angle to shoot depending on the pattern
+                    stepVector = Quaternion.AngleAxis(angleStep, Vector3.up) * mirrors[i].transform.right; // Calculates the angle to shoot
+                }
 
                 // Randomize the projectile lifetime within the range of the current value +- 1
-                float randomizedLifetime = mirror.projectileLifetime + UnityEngine.Random.Range(-1.5f, 2.0f);
+                float randomizedLifetime = mirrors[i].projectileLifetime + UnityEngine.Random.Range(-1.5f, 2.0f);
 
                 // Initialize and activate the clone
-                projectileClone.Initialize(mirror.projectileSpeed, randomizedLifetime, mirror.projectileDamage, 1f, stepVector, mirror.trashSpawnChance);
+                projectileClone.Initialize(mirrors[i].projectileSpeed, 5.0f, mirrors[i].projectileDamage, 1f, stepVector, mirrors[i].trashSpawnChance);
+                if ((cycle + offset) % 6 == 0)
+                {
+                    //projectileClone.transform.localScale = new Vector3(1, 5, 1); //Used to see which projectiles are shot directly at player
+                }
                 projectileClone.gameObject.SetActive(true);
 
                 // Rotate the projectile to face its direction
@@ -206,6 +235,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
             }
             yield return new WaitForSeconds(secondsPerProjectile); // Waits until shooting the next projectile
             elapsedTime += secondsPerProjectile; // Increment the elapsed time
+            cycle += 1;
         }
         isCoroutineRunning = false;
         setAllMirrorAnimations("Shooting", false);
@@ -219,6 +249,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
     }
 
     public float projectilePattern(int patternNum, float projectileCounter){
+        /*Returns a number ranging from projectileMaxAngle to -projectileMaxAngle*/
         if(patternNum == 0){ //shoots in a cos wave pattern
             return (float)Math.Cos(projectileCounter) * projectileMaxAngle;
         }

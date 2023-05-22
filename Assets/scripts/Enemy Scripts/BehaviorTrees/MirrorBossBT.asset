@@ -74,7 +74,7 @@ MonoBehaviour:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 1
     specialCooldownEnds: 0
-  viewPosition: {x: 535, y: -77, z: 0}
+  viewPosition: {x: -635, y: -368.5, z: 0}
   viewScale: {x: 0.7561437, y: 0.7561437, z: 1}
   references:
     version: 2
