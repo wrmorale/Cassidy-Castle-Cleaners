@@ -9,7 +9,6 @@ public class MirrorBossMirror : Enemy
     public bool entityPossessing = false;
     public GameObject faceRender;
     MirrorBossMain mainScript;
-    public GameObject activeIndicator;
 
     [Header("Projectile Stats")]
     [SerializeField] public Projectile projectilePrefab;
@@ -30,13 +29,11 @@ public class MirrorBossMirror : Enemy
         if (makePosessed)
         {
             entityPossessing = true;
-            activeIndicator.gameObject.SetActive(true);
             faceRender.SetActive(true);
         }
         else
         {
             entityPossessing = false;
-            activeIndicator.gameObject.SetActive(false);
             faceRender.SetActive(false);
         }
     }

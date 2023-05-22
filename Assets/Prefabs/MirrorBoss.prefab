@@ -406,7 +406,7 @@ MonoBehaviour:
   currPosessedMirror: {fileID: 0}
   canBeHarmed: 1
   enemyName: The Entity
-  maxHealth: 100
+  maxHealth: 300
   currentHealth: 0
   projectileAttackDuration: 5
   projectilesPerSec: 1.5

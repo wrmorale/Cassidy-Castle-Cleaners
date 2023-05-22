@@ -227,11 +227,10 @@ MonoBehaviour:
   maxDustPiles: 5
   entityPossessing: 0
   faceRender: {fileID: 8746870564427230249}
-  activeIndicator: {fileID: 8221481633115712227}
   projectilePrefab: {fileID: 8625248510964038548}
   projectileSpeed: 2.3
   projectileLifetime: 2
-  projectileDamage: 1.5
+  projectileDamage: 1
   trashSpawnChance: 0.02
   bulletSpawn: {fileID: 1581469713310629160}
 --- !u!114 &5616337374384034975
@@ -248,7 +247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attacks:
   - name: Slam
-    damage: 3
+    damage: 4
     range: 2
     hitbox: {fileID: 7503088313172013072}
     clip:
