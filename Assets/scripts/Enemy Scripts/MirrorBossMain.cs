@@ -49,7 +49,6 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
         currPosessedMirror = mirrors[0];
         currMirrorIndex = 0;
         btRunner = GetComponentInChildren<BehaviourTreeRunner>();
-        phase = 1;
 
         //Remove later
         canBeHarmed = true;
