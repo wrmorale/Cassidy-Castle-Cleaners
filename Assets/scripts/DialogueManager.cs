@@ -128,6 +128,16 @@ public class DialogueManager : MonoBehaviour
         if(dialogueIndex == 13){
             roomCleared();
         }
+
+        if(dialogueIndex == 14){
+            if(controlgiven == false)
+            {
+                tutorialManager.resumeActions();                
+                controlgiven = true;
+            }
+            dialoguebox.SetActive(false);
+            continueButton.SetActive(false);
+        }
     }
 
      public void StartDialogue ()
@@ -250,6 +260,7 @@ public class DialogueManager : MonoBehaviour
         dialoguebox.SetActive(false);
         continueButton.SetActive(false);
         gameManager.infiniteManaCheat = true;
+        gameManager.updateManaAmount(gameManager.mana);
         dummy1Health = tutorialManager.dummy1.GetComponent<Enemy>().currentHealth;
         dummy2Health = tutorialManager.dummy2.GetComponent<Enemy>().currentHealth;
         targetLocked = targetLock.isTargeting;
@@ -297,7 +308,7 @@ public class DialogueManager : MonoBehaviour
     
     void roomCleared()
     {
-        if(controlgiven == false)
+        if(controlgiven == false && gameManager.numberOfEnemies != 2) 
         {
             tutorialManager.resumeActions();
             tutorialManager.activateBunnies();               
@@ -317,9 +328,9 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue ()
     {   
-        dialogueIndex = 0;
-        continueButton.SetActive(false);
-        dialoguebox.SetActive(false);
+        dialogueIndex = 14;
+        //continueButton.SetActive(false);
+        //dialoguebox.SetActive(false);
         //Debug.Log("End of conversation.");
         tutorialManager.dummy1.SetActive(false);
         tutorialManager.dummy2.SetActive(false);
