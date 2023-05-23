@@ -378,10 +378,10 @@ Transform:
   - {fileID: 2260512304577147200}
   - {fileID: 2170864429785044748}
   - {fileID: 5012664266914032825}
-  - {fileID: 5528467953566904626}
   - {fileID: 3299000424915990199}
-  - {fileID: 1595112257488784000}
   - {fileID: 1181769386231359128}
+  - {fileID: 1595112257488784000}
+  - {fileID: 5528467953566904626}
   - {fileID: 894966831}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -406,7 +406,7 @@ MonoBehaviour:
   currPosessedMirror: {fileID: 0}
   canBeHarmed: 1
   enemyName: The Entity
-  maxHealth: 100
+  maxHealth: 300
   currentHealth: 0
   projectileAttackDuration: 5
   projectilesPerSec: 1.5
@@ -418,6 +418,7 @@ MonoBehaviour:
   player: {fileID: 0}
   phase: 0
   isCoroutineRunning: 0
+  levelLoader: {fileID: 0}
 --- !u!1001 &474687666735158221
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -612,7 +613,7 @@ PrefabInstance:
     - target: {fileID: 1780637471120049345, guid: 106251902e8168d4cb2bccef5ee43e87,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1780637471120049345, guid: 106251902e8168d4cb2bccef5ee43e87,
         type: 3}
@@ -672,7 +673,7 @@ PrefabInstance:
     - target: {fileID: 3666671126868498160, guid: 106251902e8168d4cb2bccef5ee43e87,
         type: 3}
       propertyPath: m_Name
-      value: MirrorPlaceholder (7)
+      value: MirrorPlaceholder (5)
       objectReference: {fileID: 0}
     - target: {fileID: 3666671126868498160, guid: 106251902e8168d4cb2bccef5ee43e87,
         type: 3}
@@ -782,7 +783,7 @@ PrefabInstance:
     - target: {fileID: 1780637471120049345, guid: 106251902e8168d4cb2bccef5ee43e87,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1780637471120049345, guid: 106251902e8168d4cb2bccef5ee43e87,
         type: 3}
@@ -842,7 +843,7 @@ PrefabInstance:
     - target: {fileID: 3666671126868498160, guid: 106251902e8168d4cb2bccef5ee43e87,
         type: 3}
       propertyPath: m_Name
-      value: MirrorPlaceholder (5)
+      value: MirrorPlaceholder (4)
       objectReference: {fileID: 0}
     - target: {fileID: 3666671126868498160, guid: 106251902e8168d4cb2bccef5ee43e87,
         type: 3}
@@ -867,7 +868,7 @@ PrefabInstance:
     - target: {fileID: 1780637471120049345, guid: 106251902e8168d4cb2bccef5ee43e87,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1780637471120049345, guid: 106251902e8168d4cb2bccef5ee43e87,
         type: 3}
@@ -927,7 +928,7 @@ PrefabInstance:
     - target: {fileID: 3666671126868498160, guid: 106251902e8168d4cb2bccef5ee43e87,
         type: 3}
       propertyPath: m_Name
-      value: MirrorPlaceholder (4)
+      value: MirrorPlaceholder (7)
       objectReference: {fileID: 0}
     - target: {fileID: 3666671126868498160, guid: 106251902e8168d4cb2bccef5ee43e87,
         type: 3}

@@ -32,7 +32,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1780637471120049345}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -171,8 +171,8 @@ Transform:
   - {fileID: 1298486549437012011}
   - {fileID: 1581469713310629160}
   - {fileID: 6971622479437174300}
-  - {fileID: 6099278054749802703}
   - {fileID: 8346774896177300874}
+  - {fileID: 6099278054749802703}
   - {fileID: 3221587495976844198}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -226,13 +226,12 @@ MonoBehaviour:
   dustPilePrefab: {fileID: 0}
   maxDustPiles: 5
   entityPossessing: 0
-  matInactive: {fileID: 2100000, guid: 8b0c50355814bb64191ae6c59e49cc6a, type: 2}
-  matPosessed: {fileID: 2100000, guid: a964d1fcb50248643a1290f32ccccd25, type: 2}
-  activeIndicator: {fileID: 8221481633115712227}
+  faceRender: {fileID: 8746870564427230249}
+  tempProjectileWarning: {fileID: 8221481633115712227}
   projectilePrefab: {fileID: 8625248510964038548}
   projectileSpeed: 2.3
   projectileLifetime: 2
-  projectileDamage: 1.5
+  projectileDamage: 1
   trashSpawnChance: 0.02
   bulletSpawn: {fileID: 1581469713310629160}
 --- !u!114 &5616337374384034975
@@ -249,7 +248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attacks:
   - name: Slam
-    damage: 3
+    damage: 4
     range: 2
     hitbox: {fileID: 7503088313172013072}
     clip:
@@ -609,17 +608,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8221481633115712227}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -0.124}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.5}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: -0.22399998}
+  m_LocalScale: {x: 0.10000002, y: 0.1, z: 0.10000002}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1780637471120049345}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.182, y: 1.346}
+  m_AnchoredPosition: {x: 0.117, y: 0.007999748}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &8760486113417545687
@@ -684,7 +683,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Active Mirror
+  m_text: '!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -693,8 +692,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190335
+  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -718,7 +717,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -910,10 +909,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -891658111615932199, guid: fc9fa15a5f300c34298ffd5608792c08,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: fc9fa15a5f300c34298ffd5608792c08,
         type: 3}
       propertyPath: m_Name
       value: FinalBoss14
+      objectReference: {fileID: 0}
+    - target: {fileID: 2173466925429366238, guid: fc9fa15a5f300c34298ffd5608792c08,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc9fa15a5f300c34298ffd5608792c08, type: 3}
@@ -955,6 +964,12 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!1 &8746870564427230249 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2173466925429366238, guid: fc9fa15a5f300c34298ffd5608792c08,
+    type: 3}
+  m_PrefabInstance: {fileID: 7442924922177221111}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7844258492642663802
 PrefabInstance:
   m_ObjectHideFlags: 0
