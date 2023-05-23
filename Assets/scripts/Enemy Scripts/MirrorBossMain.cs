@@ -193,7 +193,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
                 // Instantiate a clone of the projectile prefab at the mirror's position and rotation
                 Projectile projectileClone = Instantiate(projectile, spawnPosition, mirrors[i].transform.rotation);
 
-                Vector3 stepVector;
+                float angleStep = 0;
                 int offset = 0;
                 if(phase < 2) //Phase 1
                 {   //Each pair of parallel mirrors
@@ -208,16 +208,14 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
                 if((cycle + offset) % 6 == 0)
                 {
                     //Shoot projectile directly at the player's xz position
-                    Vector3 toPlayer = player.position - mirrors[i].transform.position;
-                    toPlayer.y = 0;
-                    stepVector = toPlayer.normalized;
-                    //Constrain to be within maxAngle?
+                    angleStep = getAngleToPlayer(i);
                 }
                 else
                 {   //Follow the usual projectile pattern
-                    float angleStep = projectilePattern(patternChoice, elapsedTime); // Gets the angle to shoot depending on the pattern
-                    stepVector = Quaternion.AngleAxis(angleStep, Vector3.up) * mirrors[i].transform.right; // Calculates the angle to shoot
+                    angleStep = projectilePattern(patternChoice, elapsedTime); // Gets the angle to shoot depending on the pattern
+                    
                 }
+                Vector3 stepVector = Quaternion.AngleAxis(angleStep, Vector3.up) * mirrors[i].transform.right; // Calculates the angle to shoot
 
                 // Randomize the projectile lifetime within the range of the current value +- 1
                 float randomizedLifetime = mirrors[i].projectileLifetime + UnityEngine.Random.Range(-1.5f, 2.0f);
@@ -257,6 +255,27 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
             return UnityEngine.Random.Range(-projectileMaxAngle, projectileMaxAngle);
         }
         return 0.0f;
+    }
+
+    //Returns an angle from the mirror's x-axis to the player's position (used for projectile aiming)
+    float getAngleToPlayer(int mirrorIndex)
+    {
+        Vector3 toPlayer = player.position - mirrors[mirrorIndex].transform.position;
+        toPlayer.y = 0;
+        Quaternion newRotation = Quaternion.LookRotation(toPlayer, mirrors[mirrorIndex].transform.up);
+        //Z-axis is forward
+        Debug.Log(mirrorIndex + " " + newRotation.eulerAngles);
+        //Mirror 2: toPlayer angle is like 340 degrees. But the rotation of the actual mirror is only -90 (which I guess could also be considered 270 degrees)
+        //270 - 340 would be -70 degrees, the right amount for the projectile coming from mirror 2.
+
+        //The z and x of the toPlayer angle...
+        //And the z and x of the mirror's forward...(Note: mirror's forward is actually its side)
+        Vector2 toPlayerZX = new Vector2(toPlayer.z, toPlayer.x);
+        Vector3 mirrorForward = mirrors[mirrorIndex].transform.forward;
+        Vector2 mirrorForwardZX = new Vector2(mirrorForward.z, mirrorForward.x);
+
+        //Constrain to be within maxAngle?
+        return Vector2.SignedAngle(mirrorForwardZX, toPlayerZX) - 90;
     }
 
     public void spawnEnemies(){
