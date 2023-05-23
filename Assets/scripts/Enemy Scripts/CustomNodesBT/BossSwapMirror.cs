@@ -6,6 +6,9 @@ using TheKiwiCoder;
 [System.Serializable]
 public class BossSwapMirror : ActionNode
 {
+    public int mirrorIndexToPosess = 0; //If -1, will posess no mirror
+    public bool posessRandomMirror = true;
+
     protected override void OnStart() {
     }
 
@@ -13,7 +16,12 @@ public class BossSwapMirror : ActionNode
     }
 
     protected override State OnUpdate() {
-        context.mirrorBossScript.PosessMirrorRandom();
+        if (posessRandomMirror)
+            context.mirrorBossScript.PosessMirrorRandom();
+        else if (mirrorIndexToPosess < 0)
+            context.mirrorBossScript.StopPosessingMirrors();
+        else
+            context.mirrorBossScript.PosessMirror(mirrorIndexToPosess);
         return State.Success;
     }
 }

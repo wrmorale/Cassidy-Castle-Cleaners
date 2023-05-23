@@ -3376,7 +3376,7 @@ PrefabInstance:
         type: 3}
       propertyPath: dustPilePrefab
       value: 
-      objectReference: {fileID: 1453081827}
+      objectReference: {fileID: 0}
     - target: {fileID: 4479651422631388256, guid: 3fec4a32b1661b648bdcb0b9faccc35d,
         type: 3}
       propertyPath: pounceCollider
@@ -3492,16 +3492,6 @@ PrefabInstance:
       propertyPath: abilities.Array.data[0].abilityChance
       value: 99
       objectReference: {fileID: 0}
-    - target: {fileID: 9094371390573252281, guid: 3fec4a32b1661b648bdcb0b9faccc35d,
-        type: 3}
-      propertyPath: pc
-      value: 
-      objectReference: {fileID: 1857691452}
-    - target: {fileID: 9094371390573252281, guid: 3fec4a32b1661b648bdcb0b9faccc35d,
-        type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 2029081638}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fec4a32b1661b648bdcb0b9faccc35d, type: 3}
 --- !u!1 &639333493 stripped
@@ -5000,7 +4990,7 @@ PrefabInstance:
         type: 3}
       propertyPath: dustPilePrefab
       value: 
-      objectReference: {fileID: 1453081827}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3e774df6e3d732419c69b0540e06dd2, type: 3}
 --- !u!1001 &919761431

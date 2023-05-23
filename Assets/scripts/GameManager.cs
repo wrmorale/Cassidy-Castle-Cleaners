@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance { get; private set; }
 
-    public PersistentGameManager persistentGM;
+    [HideInInspector]public PersistentGameManager persistentGM;
 
     public bool disableLosing = false;
     public float timer;
@@ -38,14 +38,14 @@ public class GameManager : MonoBehaviour
     public bool gamePaused;
     public static int currentSceneIndex = 0;
     public static int currRoom = 0; // keeps track of the levels we beat
-    private int lastRoomIndex = 5; // 0 indexed so 4 total atm
+    private int lastRoomIndex = 6; // 0 indexed so 4 total atm
     private LevelLoader levelLoader;
     public int currentGold;
     public List<String> availableAbilities = new List<String>(); //not sure how we will keep track of abilities yet but a list of strings to hold ablities that can be learned
     //
-    public int numberOfEnemies = 10;
-    public float maxDustPiles = 5;
-    private float numberOfDustPiles;
+    public int numberOfEnemies;
+    public float maxDustPiles;
+    [HideInInspector]public float numberOfDustPiles;
     public GameObject enemyPrefab;
     public GameObject player;
     public GameObject doorPortal;
@@ -135,17 +135,20 @@ public class GameManager : MonoBehaviour
         if (!objectsInstantiated)
         {
             // Spawn dust piles
-            for (int i = 0; i < maxDustPiles; i++)
+            if(dustSpawnAreas.Count > 0) //Do not spawn any if no spawn areas (applies to final boss room)
             {
-                randomIndex = UnityEngine.Random.Range(0, dustSpawnAreas.Count);
-                selectedSpawnArea = dustSpawnAreas[randomIndex];
-                Bounds spawnBounds = selectedSpawnArea.GetComponent<MeshCollider>().bounds;
-                Vector3 position = new Vector3(
-                    UnityEngine.Random.Range(spawnBounds.min.x, spawnBounds.max.x),
-                    selectedSpawnArea.transform.position.y,
-                    UnityEngine.Random.Range(spawnBounds.min.z, spawnBounds.max.z)
-                );
-                Instantiate(dustPilePrefab, position, Quaternion.identity);
+                for (int i = 0; i < maxDustPiles; i++)
+                {
+                    randomIndex = UnityEngine.Random.Range(0, dustSpawnAreas.Count);
+                    selectedSpawnArea = dustSpawnAreas[randomIndex];
+                    Bounds spawnBounds = selectedSpawnArea.GetComponent<MeshCollider>().bounds;
+                    Vector3 position = new Vector3(
+                        UnityEngine.Random.Range(spawnBounds.min.x, spawnBounds.max.x),
+                        selectedSpawnArea.transform.position.y,
+                        UnityEngine.Random.Range(spawnBounds.min.z, spawnBounds.max.z)
+                    );
+                    Instantiate(dustPilePrefab, position, Quaternion.identity);
+                }
             }
 
             // Spawn enemies

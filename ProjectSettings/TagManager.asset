@@ -11,6 +11,8 @@ TagManager:
   - Furniture
   - weapon
   - GameManager
+  - TutorialTrigger
+  - Projectile
   layers:
   - Default
   - TransparentFX

@@ -22,8 +22,8 @@ public class Player : MonoBehaviour
     public int lives;
     
     public List<Ability> abilities; 
-    public Transform platform;
-    public float fallLimit = -10; 
+    //public Transform platform;
+    // float fallLimit = -10; 
     
     //UI stuff
     /*public UIDocument hud;
@@ -34,9 +34,9 @@ public class Player : MonoBehaviour
     public float healthPercent = 1;
     private HealthCounterText healthCounter;
 
-    private Animator animator;
+    public Animator animator;
     private playerController playercontroller;
-    private BroomAttackManager atkmanager;
+    public BroomAttackManager atkmanager;
     [SerializeField]
     private Image hurtpng;
     private Color color;
@@ -79,10 +79,10 @@ public class Player : MonoBehaviour
     void Update()
     {
         persistentGM = FindObjectOfType<PersistentGameManager>();
-        if (transform.position.y < platform.position.y + fallLimit){
+        /*if (transform.position.y < platform.position.y + fallLimit){
             health = 0;
             alive = false;
-        }
+        }*/
         if(hurtpng.color.a > 0){
             color = hurtpng.color;
             color.a -= 0.01f;
@@ -94,13 +94,9 @@ public class Player : MonoBehaviour
         //print("Player took " + damage + " damage");
         
         if(!isInvulnerable && !invincibleCheat){
-            
-            
             health -= damage;
             health = Mathf.Clamp(health, 0 , maxHealth);
-            healthPercent = health / maxHealth;
-            healthbar.setHealth(healthPercent);
-            healthCounter.updateHealthCounter(health);
+            updateHealthUI();
             //if(health >= 1){
             
                 color = hurtpng.color;
@@ -115,6 +111,12 @@ public class Player : MonoBehaviour
             }
         }
         
+    }
+
+    public void updateHealthUI(){
+        healthPercent = health / maxHealth;
+        healthbar.setHealth(healthPercent);
+        healthCounter.updateHealthCounter(health);
     }
 
     /*

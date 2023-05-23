@@ -28,8 +28,8 @@ public class BroomAttackManager : MonoBehaviour, IFrameCheckHandler
     public FrameParser activeClip;
     private FrameChecker activeChecker;
 
-    private GameObject broom;
-    private GameObject pan;
+    public GameObject broom;
+    public GameObject pan;
     private Animator broomAnimator;
     private Animator[] trailAnimators = new Animator[3];
 
