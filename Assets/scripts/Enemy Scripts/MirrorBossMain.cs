@@ -195,17 +195,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
 
                 float angleStep = 0;
                 int offset = 0;
-                if(phase < 2) //Phase 1
-                {   //Each pair of parallel mirrors
-                    if(i > 1)
-                        offset = 3;
-                }
-                else
-                {
-                    if (i > 3) //The newly spawned mirrors
-                        offset = 3;
-                }
-                if((cycle + offset) % 6 == 0)
+                if((cycle + offset) % 3 == 0)
                 {
                     //Shoot projectile directly at the player's xz position
                     angleStep = getAngleToPlayer(i);
@@ -274,8 +264,11 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
         Vector3 mirrorForward = mirrors[mirrorIndex].transform.forward;
         Vector2 mirrorForwardZX = new Vector2(mirrorForward.z, mirrorForward.x);
 
+        
+        float toPlayerAngle = Vector2.SignedAngle(mirrorForwardZX, toPlayerZX) - 90;
+
         //Constrain to be within maxAngle?
-        return Vector2.SignedAngle(mirrorForwardZX, toPlayerZX) - 90;
+        return Mathf.Clamp(toPlayerAngle, -projectileMaxAngle, projectileMaxAngle); ;
     }
 
     public void spawnEnemies(){
