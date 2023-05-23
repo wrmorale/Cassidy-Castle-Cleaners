@@ -16,6 +16,8 @@ public class DialogueManager : MonoBehaviour
     public GameObject controls;
     public TargetLock targetLock;
     [HideInInspector]public TutorialManager tutorialManager;
+    public GameObject wall;
+    public GameObject portrait;
     public int dialogueIndex;
     //Bools and other things for states of the Tutorial
     [SerializeField]private string curState; 
@@ -82,48 +84,18 @@ public class DialogueManager : MonoBehaviour
         dialoguebox = GameObject.Find("DialogueBox");
         continueButton = GameObject.Find("ContinueButton");
         controls = GameObject.Find("Controls");
+        portrait = GameObject.Find("Portrait");
         controls.SetActive(false);
         tutorialManager = gameObject.GetComponent<TutorialManager>();
         tutorialManager.stopActions();
         tutorialManager.disableBookstack();
         tutorialManager.hideBunnies();
+        wall = GameObject.Find("InvisibleWall");
         dummy1TopHealth = tutorialManager.dummy1.GetComponent<Enemy>().maxHealth;
         dummy1Health = dummy1TopHealth;
         dummy2TopHealth = tutorialManager.dummy2.GetComponent<Enemy>().maxHealth;
         dummy2Health = dummy2TopHealth;
         StartDialogue();
-    }
-
-    public void StartDialogue ()
-    {
-        string speaker = (dialogueDatabase.ElementAt(dialogueIndex).Value).Item1;
-        curState = (dialogueDatabase.ElementAt(dialogueIndex).Key).Item2;
-        Debug.Log("Starting conversation with " + speaker);
-        Debug.Log("current key" + (dialogueDatabase.ElementAt(dialogueIndex).Key).Item2);
-
-        nameText.text = speaker;
-        
-        dialogueIndex = 0;
-        
-        DisplayNextSentence();
-    }
-
-    public void DisplayNextSentence() 
-    {
-        if(dialogueIndex == 13){
-            EndDialogue();
-        }
-
-        string speaker = (dialogueDatabase.ElementAt(dialogueIndex).Value).Item1;
-        string speakerText = (dialogueDatabase.ElementAt(dialogueIndex).Value).Item2;
-        curState = (dialogueDatabase.ElementAt(dialogueIndex).Key).Item2;
-        //Debug.Log("Starting conversation with " + speaker);
-
-        // setting the text in the dialogue box
-        nameText.text = speaker;
-        dialogueText.text = speakerText;
-        // move on to next line in dialogueDatabase
-        dialogueIndex++;
     }
 
     void Update()
@@ -159,8 +131,57 @@ public class DialogueManager : MonoBehaviour
             roomCleared();
         }
 
+        if(dialogueIndex == 14){
+            if(controlgiven == false)
+            {
+                tutorialManager.resumeActions();                
+                controlgiven = true;
+            }
+            dialoguebox.SetActive(false);
+            continueButton.SetActive(false);
+            dialogueIndex = 0;
+        }
+    }
 
+     public void StartDialogue ()
+    {
+        string speaker = (dialogueDatabase.ElementAt(dialogueIndex).Value).Item1;
+        curState = (dialogueDatabase.ElementAt(dialogueIndex).Key).Item2;
+        Debug.Log("Starting conversation with " + speaker);
+        //Debug.Log("current key" + (dialogueDatabase.ElementAt(dialogueIndex).Key).Item2);
+
+        nameText.text = speaker;
         
+        dialogueIndex = 0;
+        
+        DisplayNextSentence();
+    }
+
+    public void DisplayNextSentence() 
+    {
+        if(dialogueIndex == 13){
+            EndDialogue();
+        }
+
+        string speaker = (dialogueDatabase.ElementAt(dialogueIndex).Value).Item1;
+        string speakerText = (dialogueDatabase.ElementAt(dialogueIndex).Value).Item2;
+        curState = (dialogueDatabase.ElementAt(dialogueIndex).Key).Item2;
+        //Debug.Log("Starting conversation with " + speaker);
+
+        // setting the text in the dialogue box
+        nameText.text = speaker;
+        dialogueText.text = speakerText;
+
+        // setting portrait 
+         if (string.Compare(speaker,"Cassidy") == 0){
+            portrait.SetActive(true);
+        }
+        else if (string.Compare(speaker, "The Maid") == 0){
+            Debug.Log("disappearPortrait: " + speaker);
+            portrait.SetActive(false);
+        }
+        // move on to next line in dialogueDatabase
+        dialogueIndex++;
     }
 
     void cleanPile()
@@ -242,6 +263,7 @@ public class DialogueManager : MonoBehaviour
         dialoguebox.SetActive(false);
         continueButton.SetActive(false);
         gameManager.infiniteManaCheat = true;
+        gameManager.updateManaAmount(gameManager.mana);
         dummy1Health = tutorialManager.dummy1.GetComponent<Enemy>().currentHealth;
         dummy2Health = tutorialManager.dummy2.GetComponent<Enemy>().currentHealth;
         targetLocked = targetLock.isTargeting;
@@ -273,6 +295,7 @@ public class DialogueManager : MonoBehaviour
         }
         dialoguebox.SetActive(false);
         continueButton.SetActive(false);
+        wall.SetActive(false);
     }
 
     void startCombat()
@@ -284,12 +307,13 @@ public class DialogueManager : MonoBehaviour
             continueButton.SetActive(true);
             tutorialManager.stopActions();
             controlgiven = false;
+            wall.SetActive(true);
         }
     }
     
     void roomCleared()
     {
-        if(controlgiven == false)
+        if(controlgiven == false && gameManager.numberOfEnemies != 2) 
         {
             tutorialManager.resumeActions();
             tutorialManager.activateBunnies();               
@@ -309,10 +333,10 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue ()
     {   
-        dialogueIndex = 0;
-        continueButton.SetActive(false);
-        dialoguebox.SetActive(false);
-        Debug.Log("End of conversation.");
+        dialogueIndex = 14;
+        //continueButton.SetActive(false);
+        //dialoguebox.SetActive(false);
+        //Debug.Log("End of conversation.");
         tutorialManager.dummy1.SetActive(false);
         tutorialManager.dummy2.SetActive(false);
         gameManager.mana = 0;
