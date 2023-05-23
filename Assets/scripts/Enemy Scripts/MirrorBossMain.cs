@@ -128,6 +128,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
                 btRunner.tree.rootNode.Abort();
                 canBeHarmed = false;
                 phase += 1;
+                setShootingWarning(false); //Remove later
             }
 
             if (currentHealth <= 0)
@@ -278,5 +279,15 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
         }
         enemyPrefab.SetActive(false);
         finishedSpawning = true;
+    }
+
+    //Can be removed after shooting animation is added
+    public void setShootingWarning(bool setTo)
+    {
+        foreach (MirrorBossMirror mirror in mirrors)
+        {
+            Debug.Log("Displaying warning");
+            mirror.tempProjectileWarning.SetActive(setTo);
+        }
     }
 }

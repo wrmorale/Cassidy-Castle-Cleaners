@@ -9,6 +9,7 @@ public class MirrorBossMirror : Enemy
     public bool entityPossessing = false;
     public GameObject faceRender;
     MirrorBossMain mainScript;
+    public GameObject tempProjectileWarning;
 
     [Header("Projectile Stats")]
     [SerializeField] public Projectile projectilePrefab;
