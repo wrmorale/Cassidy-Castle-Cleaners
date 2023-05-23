@@ -49,12 +49,10 @@ MonoBehaviour:
   projectile: {fileID: -8514899613013735874, guid: 922072f5ced2b6849bb333a8dae23c7e,
     type: 3}
   bulletSpawn: {fileID: 0}
-  speed: 10
-  lifetime: 20
-  damage: 7
+  speed: 7
+  lifetime: 1000
+  damage: 2
   stagger: 1
-  spread: 120
-  projectileCount: 1
   firerate: 0.1
   cost: 10
   clip:

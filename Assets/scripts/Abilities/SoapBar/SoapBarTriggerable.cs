@@ -11,10 +11,8 @@ public class SoapBarTriggerable : PlayerAbility, IFrameCheckHandler
     [HideInInspector] public Transform bulletSpawn;
     [SerializeField] private float speed = 0.1f;
     [SerializeField] private float lifetime = 1f;
-    [SerializeField] private float damage = 7f;
+    [SerializeField] public float damage = 7f;
     [SerializeField] private float stagger = 1f;
-    [SerializeField] private float spread = 120f;
-    [SerializeField] private int projectileCount = 1;
     [SerializeField] private float firerate = .1f;
     [SerializeField] public float cost;
     [SerializeField] private FrameParser clip;
@@ -29,19 +27,10 @@ public class SoapBarTriggerable : PlayerAbility, IFrameCheckHandler
     private AudioSource audioSource;
     public void onActiveFrameStart()
     {
-        /*Adjust throw direction according to the locked target's current position.
-         Done here so that the projectile aim can be adjusted right as they spawn, rather
-        than when the animation starts.*/
-        if (player.toTargetPosition() != Vector3.zero)
-        {
-            //Best point to target is probably the enemy's model
-            //Apparently this IS the world space of the transform, so why is it below the map and not where the model actually is?
-            //Transform of enemy = bottom of their collision box. Model position is somehow the same despite what the Unity editor shows
-            playerForward = ((player.targetLock.currentTarget.position + player.targetLock.targetColliderCenter) - bulletSpawn.position).normalized;
-            Debug.DrawLine(bulletSpawn.position, (player.targetLock.currentTarget.position + player.targetLock.targetColliderCenter), Color.white, 3.0f); //Only visible with Gizmos >:(
-        }
+        playerForward = player.transform.forward; // Set playerForward to player's forward direction
+
         if(GameManager.instance.mana >= cost){
-            GameManager.instance.mana -= cost;//mana reduced when using ability
+            GameManager.instance.mana -= cost;
             GameManager.instance.updateManaAmount(GameManager.instance.mana);
             player.StartCoroutine(Fire());
         }else{
