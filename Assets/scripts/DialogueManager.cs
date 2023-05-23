@@ -16,6 +16,7 @@ public class DialogueManager : MonoBehaviour
     public GameObject controls;
     public TargetLock targetLock;
     [HideInInspector]public TutorialManager tutorialManager;
+    public GameObject wall;
     public GameObject portrait;
     public int dialogueIndex;
     //Bools and other things for states of the Tutorial
@@ -89,6 +90,7 @@ public class DialogueManager : MonoBehaviour
         tutorialManager.stopActions();
         tutorialManager.disableBookstack();
         tutorialManager.hideBunnies();
+        wall = GameObject.Find("InvisibleWall");
         dummy1TopHealth = tutorialManager.dummy1.GetComponent<Enemy>().maxHealth;
         dummy1Health = dummy1TopHealth;
         dummy2TopHealth = tutorialManager.dummy2.GetComponent<Enemy>().maxHealth;
@@ -137,6 +139,7 @@ public class DialogueManager : MonoBehaviour
             }
             dialoguebox.SetActive(false);
             continueButton.SetActive(false);
+            dialogueIndex = 0;
         }
     }
 
@@ -292,6 +295,7 @@ public class DialogueManager : MonoBehaviour
         }
         dialoguebox.SetActive(false);
         continueButton.SetActive(false);
+        wall.SetActive(false);
     }
 
     void startCombat()
@@ -303,6 +307,7 @@ public class DialogueManager : MonoBehaviour
             continueButton.SetActive(true);
             tutorialManager.stopActions();
             controlgiven = false;
+            wall.SetActive(true);
         }
     }
     
