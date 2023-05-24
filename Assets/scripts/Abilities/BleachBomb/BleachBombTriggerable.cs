@@ -31,7 +31,7 @@ public class BleachBombTriggerable : PlayerAbility, IFrameCheckHandler
             GameManager.instance.updateManaAmount(GameManager.instance.mana);
             SpawnProjectile(playerForward);
         }else{
-            Debug.Log("Bleach Bomb: Not Enough Mana");
+            
         }
     }
     public void onActiveFrameEnd()

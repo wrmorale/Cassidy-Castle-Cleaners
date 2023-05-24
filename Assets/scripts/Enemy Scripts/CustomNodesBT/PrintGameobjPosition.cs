@@ -13,7 +13,6 @@ public class PrintGameobjPosition : ActionNode
     }
 
     protected override State OnUpdate() {
-        Debug.Log("New Mirror: " + context.transform);
         return State.Success;
     }
 }

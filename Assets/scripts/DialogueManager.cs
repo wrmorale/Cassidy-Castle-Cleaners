@@ -147,9 +147,7 @@ public class DialogueManager : MonoBehaviour
     {
         string speaker = (dialogueDatabase.ElementAt(dialogueIndex).Value).Item1;
         curState = (dialogueDatabase.ElementAt(dialogueIndex).Key).Item2;
-        Debug.Log("Starting conversation with " + speaker);
-        //Debug.Log("current key" + (dialogueDatabase.ElementAt(dialogueIndex).Key).Item2);
-
+        
         nameText.text = speaker;
         
         dialogueIndex = 0;
@@ -166,7 +164,6 @@ public class DialogueManager : MonoBehaviour
         string speaker = (dialogueDatabase.ElementAt(dialogueIndex).Value).Item1;
         string speakerText = (dialogueDatabase.ElementAt(dialogueIndex).Value).Item2;
         curState = (dialogueDatabase.ElementAt(dialogueIndex).Key).Item2;
-        //Debug.Log("Starting conversation with " + speaker);
 
         // setting the text in the dialogue box
         nameText.text = speaker;
@@ -177,7 +174,6 @@ public class DialogueManager : MonoBehaviour
             portrait.SetActive(true);
         }
         else if (string.Compare(speaker, "The Maid") == 0){
-            Debug.Log("disappearPortrait: " + speaker);
             portrait.SetActive(false);
         }
         // move on to next line in dialogueDatabase
@@ -336,7 +332,6 @@ public class DialogueManager : MonoBehaviour
         dialogueIndex = 14;
         //continueButton.SetActive(false);
         //dialoguebox.SetActive(false);
-        //Debug.Log("End of conversation.");
         tutorialManager.dummy1.SetActive(false);
         tutorialManager.dummy2.SetActive(false);
         gameManager.mana = 0;

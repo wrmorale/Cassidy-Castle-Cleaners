@@ -35,6 +35,5 @@ public class MothProjectile : Projectile
             GameObject dustPile = Instantiate(dustPilePrefab, groundPosition, Quaternion.identity);
             // Customize the dust pile prefab as needed
         }
-        //Debug.Log("projectile destroyed");
     }
 }

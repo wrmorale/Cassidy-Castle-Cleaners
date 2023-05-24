@@ -45,7 +45,7 @@ public class FeatherDusterTriggerable : PlayerAbility, IFrameCheckHandler
             GameManager.instance.updateManaAmount(GameManager.instance.mana);
             player.StartCoroutine(Fire());
         }else{
-            Debug.Log("Feather Duster: Not Enough Mana");
+
         }
     }
     public void onActiveFrameEnd()
@@ -106,7 +106,6 @@ public class FeatherDusterTriggerable : PlayerAbility, IFrameCheckHandler
 
     public void SpawnProjectile(Vector3 heading) 
     {
-        Debug.Log("projectile spawned at " + bulletSpawn.position);
         Projectile clone = Instantiate(projectile, bulletSpawn.position, Quaternion.LookRotation(heading));
         clone.Initialize(speed, lifetime, damage, stagger, heading, 0);
     }
@@ -131,7 +130,6 @@ public class FeatherDusterTriggerable : PlayerAbility, IFrameCheckHandler
         
         for (int i = 0; i < projectileCount; i++)
         {
-            //Debug.Log("we in");
             float theta = ((float)i).map(0, projectileCount - 1, -(spread / 2), spread / 2);
             Vector3 heading = Quaternion.Euler(0, -theta, 0) * playerForward;
             SpawnProjectile(heading);

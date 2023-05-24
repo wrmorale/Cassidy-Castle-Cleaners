@@ -181,10 +181,6 @@ public class GameManager : MonoBehaviour
         }
 
         // UI set up
-        /*var root = hud.rootVisualElement;
-        Debug.Log("root: " + root);
-        cleaningbar = root.Q<CleaningBar>();
-        Debug.Log("cleaningbar: "+ cleaningbar);*/
         cleaningCircle = GetComponentInChildren<CleaningCircle>();
         manaCounter = GetComponentInChildren<ManaCounterText>();
         totalHealth = maxDustPiles * dustPilePrefab.GetComponent<DustPile>().maxHealth;
@@ -211,13 +207,11 @@ public class GameManager : MonoBehaviour
 
         // Update the playerStats.health with the health from the PersistentGameManager
         //playerStats.health = persistentGM.GetLastPlayerHealth();
-        Debug.Log(persistentGM.GetLastPlayerHealth());
     }
 
     void Update()
     {
         timer += Time.deltaTime;
-        //Debug.Log("Time: " + timer.ToString("F2")); //timer displays in console for now
 
         HandleRoomTransition();
 
@@ -236,7 +230,6 @@ public class GameManager : MonoBehaviour
         if (!playerStats.alive && playerStats.lives == 1 || cleaningPercent == 0)
         {
             playerStats.lives--;
-            //Debug.Log("You're Dead, Loser");
             if (!disableLosing)
             {
                 mana = 0;
@@ -251,7 +244,6 @@ public class GameManager : MonoBehaviour
             roomCleared = true;
             doorPortal.SetActive(true);
             // Room clear condition successfully logged
-            Debug.Log("Room clear");
             //mana = maxMana;//This number is a question mark at the moment
         }
         numberOfEnemies = enemies.Length;
@@ -325,7 +317,6 @@ public class GameManager : MonoBehaviour
             doorPortal.SetActive(false);
             if (currentSceneIndex < lastRoomIndex)
             {
-                //Debug.Log(currRoom);
                 Destroy(gameObject);
                 //mana = 0;//reset mana for next room
                 persistentGM.PushLastPlayerHealth(playerStats.health, mana);

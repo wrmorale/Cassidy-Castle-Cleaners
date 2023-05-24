@@ -47,7 +47,6 @@ public class PersistentGameManager : MonoBehaviour
 
     private void Start()
     {
-        //Debug.Log(health);
         player = FindObjectOfType<Player>();
         gameManager = FindObjectOfType<GameManager>();
     }

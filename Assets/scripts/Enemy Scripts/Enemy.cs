@@ -78,7 +78,6 @@ public class Enemy : MonoBehaviour
                     if (distance <= detectionRange)
                     {//check if dust pile doesn't have full health and is nearby
                         dustPile.IncreaseHealth(healingSpeed * Time.deltaTime);
-                        // Debug.Log("Healing dust pile");
                     }
                 }
             }
@@ -90,7 +89,6 @@ public class Enemy : MonoBehaviour
             DustPile newDustPileScript = newDustPile.GetComponent<DustPile>();
             newDustPileScript.SetHealth(0.1f); // set a low starting health
             dustPiles.Add(newDustPileScript);
-            //Debug.Log("Enemy created dust pile");
         }
     }
 
@@ -138,7 +136,6 @@ public class Enemy : MonoBehaviour
                 currentStaggerAmount += staggerDamage;
                 if (currentStaggerAmount >= maxStaggerAmount && isStaggered == false)
                 {
-                    //Debug.Log("Enemy staggered!");
                     isStaggered = true;
                     //do the BT interupt
                     BTrunner.tree.rootNode.Abort();

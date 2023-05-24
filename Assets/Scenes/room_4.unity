@@ -670,6 +670,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2478977129624437700, guid: be38b0afef5afa646ae6a07f600dbae2,
+        type: 3}
+      propertyPath: pc
+      value: 
+      objectReference: {fileID: 1857691452}
+    - target: {fileID: 2478977129624437700, guid: be38b0afef5afa646ae6a07f600dbae2,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2029081638}
     - target: {fileID: 2606690603601728555, guid: be38b0afef5afa646ae6a07f600dbae2,
         type: 3}
       propertyPath: m_Name
@@ -681,6 +691,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1857691452}
     - target: {fileID: 2827942493548019015, guid: be38b0afef5afa646ae6a07f600dbae2,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2029081638}
+    - target: {fileID: 3797623945938121093, guid: be38b0afef5afa646ae6a07f600dbae2,
+        type: 3}
+      propertyPath: pc
+      value: 
+      objectReference: {fileID: 1857691452}
+    - target: {fileID: 3797623945938121093, guid: be38b0afef5afa646ae6a07f600dbae2,
         type: 3}
       propertyPath: player
       value: 
@@ -1999,6 +2019,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.361
       objectReference: {fileID: 0}
+    - target: {fileID: 2758012890476290084, guid: a3e774df6e3d732419c69b0540e06dd2,
+        type: 3}
+      propertyPath: dustPilePrefab
+      value: 
+      objectReference: {fileID: 1007121373}
     - target: {fileID: 8327740662560138378, guid: a3e774df6e3d732419c69b0540e06dd2,
         type: 3}
       propertyPath: m_RootOrder
@@ -4447,6 +4472,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.361
       objectReference: {fileID: 0}
+    - target: {fileID: 2758012890476290084, guid: a3e774df6e3d732419c69b0540e06dd2,
+        type: 3}
+      propertyPath: dustPilePrefab
+      value: 
+      objectReference: {fileID: 1007121373}
     - target: {fileID: 8327740662560138378, guid: a3e774df6e3d732419c69b0540e06dd2,
         type: 3}
       propertyPath: m_RootOrder
