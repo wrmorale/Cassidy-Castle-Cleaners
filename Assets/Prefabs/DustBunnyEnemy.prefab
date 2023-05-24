@@ -482,6 +482,8 @@ MonoBehaviour:
   healingSpeed: 0.1
   dustPilePrefab: {fileID: 0}
   maxDustPiles: 5
+  audioPlayer: {fileID: 1134672525361886588}
+  isHitsfx: {fileID: 8300000, guid: e88c3fdd90e13004289ecaec18134c50, type: 3}
 --- !u!114 &1133196839942710766
 MonoBehaviour:
   m_ObjectHideFlags: 0

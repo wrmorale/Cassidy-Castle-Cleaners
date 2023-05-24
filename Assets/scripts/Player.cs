@@ -37,9 +37,13 @@ public class Player : MonoBehaviour
     public Animator animator;
     private playerController playercontroller;
     public BroomAttackManager atkmanager;
-    [SerializeField]
-    private Image hurtpng;
+    
+    private AudioSource audioPlayer;
+    [SerializeField] private AudioClip isHitsfx;
+
+    [SerializeField] private Image hurtpng;
     private Color color;
+
 
     [HideInInspector] public bool isInvulnerable; //This should be more clearly labeled as being i-frames for rolling
     public bool invincibleCheat = false;
@@ -53,7 +57,7 @@ public class Player : MonoBehaviour
         healthbar.setHealth(healthPercent);
         healthCounter.setMaxHealth(maxHealth);
         healthCounter.updateHealthCounter(health);
-
+        audioPlayer = GetComponentInChildren<AudioSource>();
     }
 
     // Start is called before the first frame update
@@ -94,6 +98,7 @@ public class Player : MonoBehaviour
         //print("Player took " + damage + " damage");
         
         if(!isInvulnerable && !invincibleCheat){
+            audioPlayer.PlayOneShot(isHitsfx, 0.7F);
             health -= damage;
             health = Mathf.Clamp(health, 0 , maxHealth);
             updateHealthUI();

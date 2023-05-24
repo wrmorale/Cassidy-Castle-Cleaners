@@ -261,7 +261,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1584986930366633569}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -396,7 +396,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1584986930366633569}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1254,12 +1254,14 @@ MonoBehaviour:
   staggerDamage: 5
   attackSpeed: 1
   cooldownReduction: 1
+  persistentGM: {fileID: 0}
   alive: 1
   lives: 1
   abilities: []
-  platform: {fileID: 0}
-  fallLimit: -10
   healthPercent: 1
+  animator: {fileID: 0}
+  atkmanager: {fileID: 0}
+  isHitsfx: {fileID: 8300000, guid: 16ad2656108cbbd48971e77740b6ed8c, type: 3}
   hurtpng: {fileID: 7742943364791398018}
   isInvulnerable: 0
   invincibleCheat: 0
@@ -1319,6 +1321,8 @@ MonoBehaviour:
     clip: {fileID: 0}
     animatorStateName: 
     layerNumber: 0
+  broom: {fileID: 0}
+  pan: {fileID: 0}
   combo: 0
 --- !u!1001 &463506593754139484
 PrefabInstance:

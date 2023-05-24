@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f6a518d1aed97d4787ae90b00f68441, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dustPilePrefab: {fileID: 0}
 --- !u!198 &8861936568344469936
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -5323,6 +5324,8 @@ MonoBehaviour:
   healingSpeed: 0.1
   dustPilePrefab: {fileID: 0}
   maxDustPiles: 5
+  audioPlayer: {fileID: 6875828675275010662}
+  isHitsfx: {fileID: 8300000, guid: e88c3fdd90e13004289ecaec18134c50, type: 3}
   projectilePrefab: {fileID: 2758012890476290084}
   projectileSpeed: 3
   projectileLifetime: 2

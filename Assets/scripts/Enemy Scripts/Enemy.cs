@@ -51,6 +51,10 @@ public class Enemy : MonoBehaviour
     [Header("Behaviour Tree info")]
     BehaviourTreeRunner BTrunner;
 
+    [Header("Audio Info")]
+    [SerializeField] private AudioSource audioPlayer;
+    [SerializeField] private AudioClip isHitsfx;
+
     //GameObject damageFlashObject;
     void Start(){
         enemyController = GetComponent<CharacterController>();
@@ -60,6 +64,7 @@ public class Enemy : MonoBehaviour
         enemyHealthBar.setMaxHealth(HealthPercent);
         BTrunner = GetComponent<BehaviourTreeRunner>();
         gravityBuildup = Vector3.zero;
+        AudioSource audioPlayer = GetComponentInChildren<AudioSource>();
         //damageFlashObject = Instantiate(damageFlashPrefab, transform.position, Quaternion.identity);
         //damageFlash = damageFlashObject.GetComponent<DamageFlash>();
     }
@@ -119,6 +124,9 @@ public class Enemy : MonoBehaviour
         //Update health bar
         HealthPercent = currentHealth / maxHealth;
         enemyHealthBar.setHealth(HealthPercent);
+
+        //hit sfx
+        audioPlayer.PlayOneShot(isHitsfx, 1.0F);
 
         //Died?
         if (!isDead)
