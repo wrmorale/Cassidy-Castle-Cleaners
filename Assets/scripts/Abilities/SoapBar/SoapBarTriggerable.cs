@@ -34,7 +34,7 @@ public class SoapBarTriggerable : PlayerAbility, IFrameCheckHandler
             GameManager.instance.updateManaAmount(GameManager.instance.mana);
             player.StartCoroutine(Fire());
         }else{
-            Debug.Log("Feather Duster: Not Enough Mana");
+            
         }
     }
     public void onActiveFrameEnd()
@@ -95,7 +95,6 @@ public class SoapBarTriggerable : PlayerAbility, IFrameCheckHandler
 
     public void SpawnProjectile(Vector3 heading) 
     {
-        Debug.Log("projectile spawned at " + bulletSpawn.position);
         Projectile clone = Instantiate(projectile, bulletSpawn.position, Quaternion.LookRotation(heading));
         clone.Initialize(speed, lifetime, damage, stagger, heading, 0);
 

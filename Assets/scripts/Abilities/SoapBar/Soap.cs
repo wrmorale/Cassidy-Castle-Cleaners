@@ -27,13 +27,11 @@ public class Soap : Projectile
             // If the projectile hit an enemy, damage the enemy and destroy the projectile
             if (hit.collider.tag == "Enemy")
             {
-                Debug.Log("projectile hit");
                 Enemy enemy = hit.collider.GetComponent<Enemy>();
                 enemy.isHit(damage, stagger);
             }
             else if(hit.collider.tag == "DustPile")
             {
-                Debug.Log("projectile hit");
                 DustPile dustPile = hit.collider.GetComponent<DustPile>();
                 dustPile.isHit(damage);
             }
@@ -89,6 +87,5 @@ public class Soap : Projectile
 
     private void OnDestroy()
     {
-        Debug.Log("projectile destroyed");
     }
 }
