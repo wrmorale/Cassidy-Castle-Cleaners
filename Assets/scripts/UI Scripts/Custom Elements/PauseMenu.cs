@@ -11,7 +11,7 @@ public class PauseMenu : MonoBehaviour
     public PlayerInput playerInput;
     public InputAction pauseAction;
     public GameObject PauseMenuCanvas;
-    EventSystem eventSystem;
+    public EventSystem eventSystem;
     public GameObject resumeButton;
     public GameObject controlsButton;
     public GameObject controlButton;
@@ -42,7 +42,7 @@ public class PauseMenu : MonoBehaviour
             }
         }
         
-        
+        Debug.Log(eventSystem.currentSelectedGameObject);
     }
 
     public void ResumeGame()
