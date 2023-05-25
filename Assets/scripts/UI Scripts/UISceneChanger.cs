@@ -11,6 +11,5 @@ public class UISceneChanger : MonoBehaviour
 
     public void EndGame(){
         Application.Quit();
-        Debug.Log("Game over man, game over");
     }
 }

@@ -149,7 +149,6 @@ public class TargetLock : MonoBehaviour
             {
                 /*If enemy does not have a BoxCollider, use this as aim adjustment instead.*/
                 targetColliderCenter = new Vector3(0, 0.2f, 0);
-                Debug.LogWarning(currentTarget + " does not have a CharacterController to use for lock-on targeting");
             }
             // Vec = AddOffset(currentTarget.position);
             healthBar = currentTarget.transform.Find("UI Canvas").gameObject.transform;
@@ -176,7 +175,6 @@ public class TargetLock : MonoBehaviour
         {
             /*If enemy does not have a BoxCollider, use this as aim adjustment instead.*/
             targetColliderCenter = new Vector3(0, 0.2f, 0);
-            Debug.LogWarning(currentTarget + " does not have a BoxCollider to use for lock-on targeting");
         }
 
         if(aimIcon)
@@ -189,7 +187,6 @@ public class TargetLock : MonoBehaviour
             return;
         }
 
-        //Debug.Log(player.ParseAbilityInput());
         channeledAbility = player.ParseAbilityInput();
         /*Weird that this doesn't seem to work for abilities*/
         if (player.attackAction.triggered ||
@@ -197,7 +194,6 @@ public class TargetLock : MonoBehaviour
         {
             // turn player towards enemy when they attack.
             /*Probably why turning towards the enemy feels slightly janky, but it works*/
-            //Debug.Log("Redirected attack towards target");
 
             Quaternion newRotation = Quaternion.LookRotation(player.toTargetPosition(), controller.transform.up);
             newRotation = Quaternion.Euler(0, newRotation.eulerAngles.y, 0);
@@ -229,30 +225,24 @@ public class TargetLock : MonoBehaviour
             }
             else
                 curDistance = playerDiff.magnitude;
-            //Debug.Log("distance: " + curDistance);
 
             if (curDistance < distance)
             {
-                //Debug.Log("In range.");
                 Vector3 viewPos = mainCamera.WorldToViewportPoint(go.transform.position);
                 Vector2 newPos = new Vector3(viewPos.x - 0.5f, viewPos.y - 0.5f);
-                //Debug.Log(Vector3.Angle(diff.normalized, mainCamera.transform.forward) < maxAngle);
                 if (Vector3.Angle(playerDiff.normalized, mainCamera.transform.forward) < maxAngle)
                 {
-                    Debug.Log("in View");
                     if (currentTarget)
                     {
                         // get closest target to the right or left of the current one
                         Vector3 cross = Vector3.Cross(mainCamera.transform.forward, go.transform.position - currentTarget.position);
                         if (targetDirection == TargetDirection.Right && cross.y > 0f) // TODO: or instead of else if 
                         {
-                            Debug.Log("Right closest");
                             closest = go;
                             distance = curDistance;
                         }
                         else if (targetDirection == TargetDirection.Left && cross.y < 0f)
                         {
-                            Debug.Log("left closest");
                             closest = go;
                             distance = curDistance;
                         }
@@ -267,7 +257,6 @@ public class TargetLock : MonoBehaviour
                 }
             }
         }
-        Debug.Log(closest);
         return closest;
     }
 

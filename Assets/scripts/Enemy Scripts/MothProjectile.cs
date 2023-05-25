@@ -37,6 +37,5 @@ public class MothProjectile : Projectile
             }
             // Customize the dust pile prefab as needed
         }
-        //Debug.Log("projectile destroyed");
     }
 }

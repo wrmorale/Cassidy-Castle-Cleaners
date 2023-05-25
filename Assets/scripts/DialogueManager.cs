@@ -16,9 +16,12 @@ public class DialogueManager : MonoBehaviour
     public GameObject controls;
     public TargetLock targetLock;
     [HideInInspector]public TutorialManager tutorialManager;
+    public PauseMenu pauseMenu;
     public GameObject wall;
     public GameObject portrait;
     public int dialogueIndex;
+    private bool alreadyPaused = false;
+    private bool inDialogue = true;
     //Bools and other things for states of the Tutorial
     [SerializeField]private string curState; 
     [SerializeField]private bool controlgiven = false;
@@ -136,20 +139,22 @@ public class DialogueManager : MonoBehaviour
             {
                 tutorialManager.resumeActions();                
                 controlgiven = true;
+                inDialogue = false;
             }
             dialoguebox.SetActive(false);
             continueButton.SetActive(false);
             dialogueIndex = 0;
         }
+
+        HandlePauseInTutorial();
+
     }
 
      public void StartDialogue ()
     {
         string speaker = (dialogueDatabase.ElementAt(dialogueIndex).Value).Item1;
         curState = (dialogueDatabase.ElementAt(dialogueIndex).Key).Item2;
-        Debug.Log("Starting conversation with " + speaker);
-        //Debug.Log("current key" + (dialogueDatabase.ElementAt(dialogueIndex).Key).Item2);
-
+        
         nameText.text = speaker;
         
         dialogueIndex = 0;
@@ -166,7 +171,6 @@ public class DialogueManager : MonoBehaviour
         string speaker = (dialogueDatabase.ElementAt(dialogueIndex).Value).Item1;
         string speakerText = (dialogueDatabase.ElementAt(dialogueIndex).Value).Item2;
         curState = (dialogueDatabase.ElementAt(dialogueIndex).Key).Item2;
-        //Debug.Log("Starting conversation with " + speaker);
 
         // setting the text in the dialogue box
         nameText.text = speaker;
@@ -177,7 +181,6 @@ public class DialogueManager : MonoBehaviour
             portrait.SetActive(true);
         }
         else if (string.Compare(speaker, "The Maid") == 0){
-            Debug.Log("disappearPortrait: " + speaker);
             portrait.SetActive(false);
         }
         // move on to next line in dialogueDatabase
@@ -190,6 +193,7 @@ public class DialogueManager : MonoBehaviour
         {
             tutorialManager.resumeActions();                
             controlgiven = true;
+            inDialogue = false;
         }
         dialoguebox.SetActive(false);
         continueButton.SetActive(false);
@@ -200,6 +204,7 @@ public class DialogueManager : MonoBehaviour
             continueButton.SetActive(true);
             tutorialManager.stopActions();
             controlgiven = false;
+            inDialogue = true;
         }
     }
 
@@ -209,6 +214,7 @@ public class DialogueManager : MonoBehaviour
         {
             tutorialManager.resumeActions();                
             controlgiven = true;
+            inDialogue = false;
         }
         dialoguebox.SetActive(false);
         continueButton.SetActive(false);
@@ -228,6 +234,7 @@ public class DialogueManager : MonoBehaviour
             continueButton.SetActive(true);
             tutorialManager.stopActions();
             controlgiven = false;
+            inDialogue = true;
         }        
     }
 
@@ -237,6 +244,7 @@ public class DialogueManager : MonoBehaviour
         {
             tutorialManager.resumeActions();                
             controlgiven = true;
+            inDialogue = false;
         }
         dialoguebox.SetActive(false);
         continueButton.SetActive(false);
@@ -248,6 +256,7 @@ public class DialogueManager : MonoBehaviour
             tutorialManager.stopActions();
             controlgiven = false;
             targetLocked = false;
+            inDialogue = true;
         }
     }
 
@@ -259,6 +268,7 @@ public class DialogueManager : MonoBehaviour
             tutorialManager.dummy1.GetComponent<Enemy>().currentHealth = dummy1TopHealth;
             tutorialManager.dummy2.GetComponent<Enemy>().currentHealth = dummy2TopHealth;
             controlgiven = true;
+            inDialogue = false;
         }
         dialoguebox.SetActive(false);
         continueButton.SetActive(false);
@@ -282,6 +292,7 @@ public class DialogueManager : MonoBehaviour
             tutorialManager.stopActions();
             gameManager.infiniteManaCheat = false;
             controlgiven = false;
+            inDialogue = true;
         }
     }
 
@@ -292,6 +303,7 @@ public class DialogueManager : MonoBehaviour
             tutorialManager.resumeActions();                
             tutorialManager.enableBookstack();
             controlgiven = true;
+            inDialogue = false;
         }
         dialoguebox.SetActive(false);
         continueButton.SetActive(false);
@@ -308,6 +320,7 @@ public class DialogueManager : MonoBehaviour
             tutorialManager.stopActions();
             controlgiven = false;
             wall.SetActive(true);
+            inDialogue = true;
         }
     }
     
@@ -318,6 +331,7 @@ public class DialogueManager : MonoBehaviour
             tutorialManager.resumeActions();
             tutorialManager.activateBunnies();               
             controlgiven = true;
+            inDialogue = false;
         }
         dialoguebox.SetActive(false);
         continueButton.SetActive(false);
@@ -327,6 +341,7 @@ public class DialogueManager : MonoBehaviour
             continueButton.SetActive(true);
             tutorialManager.stopActions();
             controlgiven = false;
+            inDialogue = true;
         }
 
     }
@@ -336,12 +351,40 @@ public class DialogueManager : MonoBehaviour
         dialogueIndex = 14;
         //continueButton.SetActive(false);
         //dialoguebox.SetActive(false);
-        //Debug.Log("End of conversation.");
         tutorialManager.dummy1.SetActive(false);
         tutorialManager.dummy2.SetActive(false);
         gameManager.mana = 0;
         gameManager.updateManaAmount(gameManager.mana);
         tutorialManager.player.health = 25f;
         tutorialManager.player.updateHealthUI();    
+    }
+
+    void HandlePauseInTutorial()
+    {
+        if(pauseMenu.isPaused)
+        {
+            dialoguebox.SetActive(false);
+            continueButton.SetActive(false);
+            portrait.SetActive(false);
+            if(!alreadyPaused)
+            {
+                pauseMenu.eventSystem.SetSelectedGameObject(pauseMenu.resumeButton);
+                alreadyPaused = true;
+            }
+            
+            
+        }
+        else if(!pauseMenu.isPaused)
+        {
+            if(inDialogue)
+            {
+                dialoguebox.SetActive(true);
+                continueButton.SetActive(true);
+                portrait.SetActive(true);
+            }
+            
+            pauseMenu.eventSystem.SetSelectedGameObject(continueButton);
+            alreadyPaused = false;
+        }
     }
 }

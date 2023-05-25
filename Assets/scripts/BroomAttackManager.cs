@@ -107,7 +107,6 @@ public class BroomAttackManager : MonoBehaviour, IFrameCheckHandler
         if (idx >= 0)
         {
             bufferedAbility = idx;
-            Debug.Log("stored ability: " + bufferedAbility);
         }
 
         if (actionState == ActionState.Inactionable)

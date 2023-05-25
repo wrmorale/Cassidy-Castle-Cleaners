@@ -52,14 +52,14 @@ public class GameManager : MonoBehaviour
     public List<GameObject> enemySpawnAreas = new List<GameObject>();//changed to array to hold many spawn areas
     public List<GameObject> dustSpawnAreas = new List<GameObject>();
     public GameObject dustPilePrefab;
-    public GameObject pauseUI;
+    //public GameObject pauseUI;
     public Player playerStats;
     public playerController playercontroller;
 
     private bool objectsInstantiated = false;
 
-    [SerializeField] private PlayerInput playerInput;
-    private InputAction pauseAction;
+    //[SerializeField] private PlayerInput playerInput;
+    //private InputAction pauseAction;
 
     //UI stuff
     /*public UIDocument hud;
@@ -114,7 +114,7 @@ public class GameManager : MonoBehaviour
         bleachBombCost = persistentGM.bleachBombCost;
         dusterCost = persistentGM.dusterCost;
         // Adds the pause button to the script
-        pauseAction = playerInput.actions["Pause"];
+        //pauseAction = playerInput.actions["Pause"];
 
         // Locks the cursor into the game scene so the mouse cannot go out of the window
         UnityEngine.Cursor.lockState = CursorLockMode.Confined;
@@ -181,10 +181,6 @@ public class GameManager : MonoBehaviour
         }
 
         // UI set up
-        /*var root = hud.rootVisualElement;
-        Debug.Log("root: " + root);
-        cleaningbar = root.Q<CleaningBar>();
-        Debug.Log("cleaningbar: "+ cleaningbar);*/
         cleaningCircle = GetComponentInChildren<CleaningCircle>();
         manaCounter = GetComponentInChildren<ManaCounterText>();
         totalHealth = maxDustPiles * dustPilePrefab.GetComponent<DustPile>().maxHealth;
@@ -211,13 +207,11 @@ public class GameManager : MonoBehaviour
 
         // Update the playerStats.health with the health from the PersistentGameManager
         //playerStats.health = persistentGM.GetLastPlayerHealth();
-        Debug.Log(persistentGM.GetLastPlayerHealth());
     }
 
     void Update()
     {
         timer += Time.deltaTime;
-        //Debug.Log("Time: " + timer.ToString("F2")); //timer displays in console for now
 
         HandleRoomTransition();
 
@@ -236,7 +230,6 @@ public class GameManager : MonoBehaviour
         if (!playerStats.alive && playerStats.lives == 1 || cleaningPercent == 0)
         {
             playerStats.lives--;
-            //Debug.Log("You're Dead, Loser");
             if (!disableLosing)
             {
                 mana = 0;
@@ -251,7 +244,6 @@ public class GameManager : MonoBehaviour
             roomCleared = true;
             doorPortal.SetActive(true);
             // Room clear condition successfully logged
-            Debug.Log("Room clear");
             //mana = maxMana;//This number is a question mark at the moment
         }
         numberOfEnemies = enemies.Length;
@@ -294,7 +286,7 @@ public class GameManager : MonoBehaviour
         RenderSettings.fogDensity = pooledHealth / (maxDustPiles * dustMaxHealth) * 0.2f;
 
         // Checks if player paused the game, if so stops time
-        HandlePause();
+        //HandlePause();
 
         if (infiniteManaCheat)
             mana = maxMana;
@@ -325,7 +317,6 @@ public class GameManager : MonoBehaviour
             doorPortal.SetActive(false);
             if (currentSceneIndex < lastRoomIndex)
             {
-                //Debug.Log(currRoom);
                 Destroy(gameObject);
                 //mana = 0;//reset mana for next room
                 persistentGM.PushLastPlayerHealth(playerStats.health, mana);
@@ -349,7 +340,7 @@ public class GameManager : MonoBehaviour
         return pooledHealth;
     }
 
-    private void HandlePause()
+    /*private void HandlePause()
     {
         if ((pauseUI) && pauseAction.triggered)
         {
@@ -371,7 +362,7 @@ public class GameManager : MonoBehaviour
         {
             gamePaused = false;
         }
-    }
+    }*/
 
     private void DecreaseCleanliness()
     {

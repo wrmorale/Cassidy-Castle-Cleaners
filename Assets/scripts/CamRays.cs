@@ -24,8 +24,6 @@ public class CamRays : MonoBehaviour
                 if (hit.collider == null)
                     return;
 
-                Debug.Log(hit.collider.gameObject);
-
                 if (hit.collider.gameObject == player || (lastHit != null && hit.collider.gameObject != lastHit))
                 {
                     lastHit = null;
@@ -40,7 +38,6 @@ public class CamRays : MonoBehaviour
                     fader = lastHit.GetComponent<ObjectFader>();
                     if (fader != null)
                     {
-                        Debug.Log("fader on");
                         fader.doFade = true;
                     }
                 }

@@ -77,7 +77,6 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
         currPosessedMirror = mirrors[mirrorIndex];
         currPosessedMirror.mirrorAudioManager.playTeleportsfx();
         currMirrorIndex = mirrorIndex;
-        //Debug.Log("Posessed mirror " + mirrorIndex);
 
         //Change the context?
         Context newContext = Context.CreateFromGameObject(currPosessedMirror.gameObject);
@@ -125,8 +124,6 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
             //Proceed to phase 1.5 at 1/3 health
             if(healthPercent <= 0.33 && phase == 1)
             {
-                Debug.Log("Proceeding to phase 2");
-                //Debug.Log("Boss health: " + currentHealth);
                 btRunner.tree.rootNode.Abort();
                 canBeHarmed = false;
                 phase += 1;
@@ -135,8 +132,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
 
             if (currentHealth <= 0)
             {
-                Debug.Log("Boss defeated??");
-                //Destroy the cube when it has no health left
+                // Destroy the cube when it has no health left
                 //this should work for death animation but not all enemies have one so it gets errors
                 //animator.SetBool("Death", true);
                 currPosessedMirror.mirrorAudioManager.playDeathsfx();
@@ -165,11 +161,9 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
 
     public void phase2CompletionCheck(){
         Enemy[] enemies = FindObjectsOfType<Enemy>();
-        //Debug.Log(enemies.Length);
         if(enemies.Length < 5 && finishedSpawning){ //since there are 4 mirrors it will check if all enemies but the mirrors are dead
             canBeHarmed = true;
             phase += 1;
-            Debug.Log("Phase 2 complete");
             btRunner.tree.rootNode.Abort();
         }
     }
@@ -264,7 +258,6 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
         toPlayer.y = 0;
         Quaternion newRotation = Quaternion.LookRotation(toPlayer, mirrors[mirrorIndex].transform.up);
         //Z-axis is forward
-        Debug.Log(mirrorIndex + " " + newRotation.eulerAngles);
         //Mirror 2: toPlayer angle is like 340 degrees. But the rotation of the actual mirror is only -90 (which I guess could also be considered 270 degrees)
         //270 - 340 would be -70 degrees, the right amount for the projectile coming from mirror 2.
 
@@ -308,7 +301,6 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
     {
         foreach (MirrorBossMirror mirror in mirrors)
         {
-            Debug.Log("Displaying warning");
             mirror.tempProjectileWarning.SetActive(setTo);
         }
     }

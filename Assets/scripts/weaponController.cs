@@ -20,7 +20,6 @@ public class weaponController : MonoBehaviour
     void Update()
     {
         if(pc.state == States.PlayerStates.Attacking){
-            Debug.Log("showing weapon");
             weapon1.SetActive(true);
         }
         else{
