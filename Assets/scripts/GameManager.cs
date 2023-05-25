@@ -52,14 +52,14 @@ public class GameManager : MonoBehaviour
     public List<GameObject> enemySpawnAreas = new List<GameObject>();//changed to array to hold many spawn areas
     public List<GameObject> dustSpawnAreas = new List<GameObject>();
     public GameObject dustPilePrefab;
-    public GameObject pauseUI;
+    //public GameObject pauseUI;
     public Player playerStats;
     public playerController playercontroller;
 
     private bool objectsInstantiated = false;
 
-    [SerializeField] private PlayerInput playerInput;
-    private InputAction pauseAction;
+    //[SerializeField] private PlayerInput playerInput;
+    //private InputAction pauseAction;
 
     //UI stuff
     /*public UIDocument hud;
@@ -114,7 +114,7 @@ public class GameManager : MonoBehaviour
         bleachBombCost = persistentGM.bleachBombCost;
         dusterCost = persistentGM.dusterCost;
         // Adds the pause button to the script
-        pauseAction = playerInput.actions["Pause"];
+        //pauseAction = playerInput.actions["Pause"];
 
         // Locks the cursor into the game scene so the mouse cannot go out of the window
         UnityEngine.Cursor.lockState = CursorLockMode.Confined;
@@ -286,7 +286,7 @@ public class GameManager : MonoBehaviour
         RenderSettings.fogDensity = pooledHealth / (maxDustPiles * dustMaxHealth) * 0.2f;
 
         // Checks if player paused the game, if so stops time
-        HandlePause();
+        //HandlePause();
 
         if (infiniteManaCheat)
             mana = maxMana;
@@ -340,7 +340,7 @@ public class GameManager : MonoBehaviour
         return pooledHealth;
     }
 
-    private void HandlePause()
+    /*private void HandlePause()
     {
         if ((pauseUI) && pauseAction.triggered)
         {
@@ -362,7 +362,7 @@ public class GameManager : MonoBehaviour
         {
             gamePaused = false;
         }
-    }
+    }*/
 
     private void DecreaseCleanliness()
     {
