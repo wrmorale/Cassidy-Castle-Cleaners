@@ -3290,6 +3290,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: PersistentGameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 645019847372038786, guid: bb629258a41104144bd9d9157cede8ce,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 485352725}
+    - target: {fileID: 645019847372038786, guid: bb629258a41104144bd9d9157cede8ce,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1083392575}
     - target: {fileID: 645019847372038845, guid: bb629258a41104144bd9d9157cede8ce,
         type: 3}
       propertyPath: m_RootOrder
@@ -3816,22 +3826,22 @@ PrefabInstance:
     - target: {fileID: 6904719148039652034, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.44244915
+      value: -0.4424492
       objectReference: {fileID: 0}
     - target: {fileID: 6904719148039652034, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.119044274
+      value: -0.11904428
       objectReference: {fileID: 0}
     - target: {fileID: 6904719148039652034, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.8583319
+      value: 0.85833186
       objectReference: {fileID: 0}
     - target: {fileID: 6904719148039652034, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.23094065
+      value: -0.23094064
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe987c0be70e4764e92e8aff74c2356e, type: 3}
