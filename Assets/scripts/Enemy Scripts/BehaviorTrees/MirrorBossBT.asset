@@ -76,13 +76,14 @@ MonoBehaviour:
   - rid: 4349734493023633413
   - rid: 4349734493023633414
   - rid: 4349734493023633415
+  - rid: 2581181084654108672
   treeState: 0
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 0
     specialCooldownEnds: 0
-  viewPosition: {x: 558, y: -365, z: 0}
-  viewScale: {x: 0.49717674, y: 0.49717674, z: 1}
+  viewPosition: {x: 1141, y: -563, z: 0}
+  viewScale: {x: 0.7561437, y: 0.7561437, z: 1}
   references:
     version: 2
     RefIds:
@@ -188,7 +189,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: cf6af824c595e9c4987c251732a584f6
-        position: {x: -696, y: 1368}
+        position: {x: -578.29767, y: 1368}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -197,6 +198,7 @@ MonoBehaviour:
         drawGizmos: 0
         children:
         - rid: 4349734493023633408
+        - rid: 2581181084654108672
         - rid: 4349734493023633409
         - rid: 7060330928295116800
         - rid: 4349734493023633413
@@ -221,7 +223,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 5083f2efbeea26445bd1c65504527e7c
-        position: {x: -304, y: 1513.0002}
+        position: {x: -177.2575, y: 1511.065}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -739,6 +741,19 @@ MonoBehaviour:
         child:
           rid: 2088461145881968646
         phase: 0
+    - rid: 2581181084654108672
+      type: {class: BossPlaySFX, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: b69d6fddefaa9ae438421ee2ff27702d
+        position: {x: -822.2576, y: 1512.065}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: 
+        drawGizmos: 0
     - rid: 3223507958315089920
       type: {class: Selector, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:
@@ -893,7 +908,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 03dc039afde470e4da22d4ff200f6657
-        position: {x: -979.5626, y: 1513}
+        position: {x: -997.2576, y: 1510.065}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -907,7 +922,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 90f9e8a9ed165c143818dcd8c89f8aaa
-        position: {x: -795.3339, y: 1513}
+        position: {x: -659.2577, y: 1511.065}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -935,7 +950,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: f2f29ca1416de6f4c845dba7a38b0d38
-        position: {x: -469.5001, y: 1513.0002}
+        position: {x: -342.25763, y: 1511.065}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -1005,7 +1020,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 21c51dcbd1126b14f977f8c927995147
-        position: {x: -626.9998, y: 1513.0001}
+        position: {x: -500.25763, y: 1511.065}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0

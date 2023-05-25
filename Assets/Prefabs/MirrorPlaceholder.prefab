@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 5928403739542624165}
   - component: {fileID: 5616337374384034975}
   - component: {fileID: 4140267508094637913}
+  - component: {fileID: 863786983169766583}
   m_Layer: 0
   m_Name: MirrorPlaceholder
   m_TagString: Enemy
@@ -236,6 +237,7 @@ MonoBehaviour:
   projectileDamage: 1
   trashSpawnChance: 0.02
   bulletSpawn: {fileID: 1581469713310629160}
+  mirrorAudioManager: {fileID: 863786983169766583}
 --- !u!114 &5616337374384034975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,6 +301,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &863786983169766583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3666671126868498160}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c12a811feaa4c094b9b7b8937041e036, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationSoundPlayer: {fileID: 6766287342617687851}
+  teleportSfx: {fileID: 8300000, guid: 84054f659a0f1a140a55058c6e8f95f0, type: 3}
+  teleportVolume: 0.5
+  isHitSfx: {fileID: 8300000, guid: 2339665efa5fe694f93a20c71c558d61, type: 3}
+  isHitVolume: 0.3
+  slamSfx: {fileID: 8300000, guid: d4225159076612541966dd22e83a207d, type: 3}
+  slamVolume: 0.6
+  deathSfx: {fileID: 8300000, guid: 0251dd9af897c724286faaefdf31fdc5, type: 3}
+  deathVolume: 1
+  laughSfx: {fileID: 8300000, guid: 19903024ebdeec249b35a6687948dece, type: 3}
+  laughVolume: 0.3
 --- !u!1 &4817280267641702473
 GameObject:
   m_ObjectHideFlags: 0
@@ -1062,6 +1087,29 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &4581968296615553220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7749565870460587174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c12a811feaa4c094b9b7b8937041e036, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationSoundPlayer: {fileID: 6766287342617687851}
+  teleportSfx: {fileID: 8300000, guid: 84054f659a0f1a140a55058c6e8f95f0, type: 3}
+  teleportVolume: 0.5
+  isHitSfx: {fileID: 8300000, guid: 2339665efa5fe694f93a20c71c558d61, type: 3}
+  isHitVolume: 0.5
+  slamSfx: {fileID: 8300000, guid: d4225159076612541966dd22e83a207d, type: 3}
+  slamVolume: 0.5
+  deathSfx: {fileID: 8300000, guid: 0251dd9af897c724286faaefdf31fdc5, type: 3}
+  deathVolume: 2
+  laughSfx: {fileID: 8300000, guid: 19903024ebdeec249b35a6687948dece, type: 3}
+  laughVolume: 0.1
 --- !u!1 &8746870564427230249 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2173466925429366238, guid: fc9fa15a5f300c34298ffd5608792c08,

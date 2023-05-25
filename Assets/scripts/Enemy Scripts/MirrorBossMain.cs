@@ -75,6 +75,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
         }
         mirrors[mirrorIndex].SetPossessed(true);
         currPosessedMirror = mirrors[mirrorIndex];
+        currPosessedMirror.mirrorAudioManager.playTeleportsfx();
         currMirrorIndex = mirrorIndex;
         //Debug.Log("Posessed mirror " + mirrorIndex);
 
@@ -115,6 +116,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
         if (canBeHarmed)
         {
             currentHealth -= damage;
+            currPosessedMirror.mirrorAudioManager.playIsHitsfx();
             //damageFlash.FlashStart();
             currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
             healthPercent = currentHealth / maxHealth;
@@ -134,9 +136,10 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
             if (currentHealth <= 0)
             {
                 Debug.Log("Boss defeated??");
-                // Destroy the cube when it has no health left
+                //Destroy the cube when it has no health left
                 //this should work for death animation but not all enemies have one so it gets errors
                 //animator.SetBool("Death", true);
+                currPosessedMirror.mirrorAudioManager.playDeathsfx();
                 //StartCoroutine(waitForAnimation("Death"));
 
                 if (levelLoader) //Load the ending scene
@@ -144,13 +147,20 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
                 else
                     Debug.LogError("[MirrorBossMain] Where's the level loader??");
 
-                Destroy(gameObject);
+                //Destroy(gameObject);
+                StartCoroutine(DelayedDestroy());
             }
         }
         else
         {
             Debug.LogWarning("Boss cannot be hurt right now!");
         }
+    }
+
+    // Coroutine for delayed destruction
+    IEnumerator DelayedDestroy(){
+        yield return new WaitForSeconds(1f); // Wait for 1 second
+        Destroy(gameObject); // Destroy the object after the delay
     }
 
     public void phase2CompletionCheck(){

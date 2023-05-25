@@ -19,6 +19,8 @@ public class MirrorBossMirror : Enemy
     [SerializeField] public float trashSpawnChance;
     public Transform bulletSpawn;
 
+    public MirrorBossSoundManager mirrorAudioManager;
+
     // Start is called before the first frame update
     void Start()
     {

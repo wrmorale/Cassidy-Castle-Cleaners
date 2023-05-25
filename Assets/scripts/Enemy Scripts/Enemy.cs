@@ -52,8 +52,8 @@ public class Enemy : MonoBehaviour
     BehaviourTreeRunner BTrunner;
 
     [Header("Audio Info")]
-    [SerializeField] private AudioSource audioPlayer;
-    [SerializeField] private AudioClip isHitsfx;
+    [SerializeField] public AudioSource audioPlayer;
+    [SerializeField] public AudioClip isHitsfx;
 
     //GameObject damageFlashObject;
     void Start(){
