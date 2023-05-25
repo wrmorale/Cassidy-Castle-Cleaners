@@ -67,7 +67,6 @@ public class DustPile : MonoBehaviour{
         health += amount;
         health = Mathf.Clamp(health, 0.0f, maxHealth);
         UpdateVisuals();
-        //Debug.Log("Dust pile healed itself");
     }
 
     private void UpdateVisuals() {

@@ -40,7 +40,6 @@ public class RotateToMovement : ActionNode
             if (rotateInstantly)
             {
                 context.charController.transform.rotation = newRotation; //Instantly changes transform to new desired rotation
-                Debug.Log("Rotating to player instantly");
             }
             else
                 context.charController.transform.rotation = Quaternion.Slerp(context.charController.transform.rotation, newRotation, Time.fixedDeltaTime * context.enemy.rotationSpeed * speedMultiplier);

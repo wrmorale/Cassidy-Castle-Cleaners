@@ -21,7 +21,6 @@ public class SetSpecialCooldown : ActionNode
         {
             blackboard.specialCooldownEnds = Time.time + xSecondsInFuture;
         }
-        //Debug.Log("Special will go off cooldown at " + blackboard.specialCooldownEnds);
         return State.Success;
     }
 }

@@ -76,7 +76,6 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
         mirrors[mirrorIndex].SetPossessed(true);
         currPosessedMirror = mirrors[mirrorIndex];
         currMirrorIndex = mirrorIndex;
-        //Debug.Log("Posessed mirror " + mirrorIndex);
 
         //Change the context?
         Context newContext = Context.CreateFromGameObject(currPosessedMirror.gameObject);
@@ -123,8 +122,6 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
             //Proceed to phase 1.5 at 1/3 health
             if(healthPercent <= 0.33 && phase == 1)
             {
-                Debug.Log("Proceeding to phase 2");
-                //Debug.Log("Boss health: " + currentHealth);
                 btRunner.tree.rootNode.Abort();
                 canBeHarmed = false;
                 phase += 1;
@@ -133,7 +130,6 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
 
             if (currentHealth <= 0)
             {
-                Debug.Log("Boss defeated??");
                 // Destroy the cube when it has no health left
                 //this should work for death animation but not all enemies have one so it gets errors
                 //animator.SetBool("Death", true);
@@ -155,11 +151,9 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
 
     public void phase2CompletionCheck(){
         Enemy[] enemies = FindObjectsOfType<Enemy>();
-        //Debug.Log(enemies.Length);
         if(enemies.Length < 5 && finishedSpawning){ //since there are 4 mirrors it will check if all enemies but the mirrors are dead
             canBeHarmed = true;
             phase += 1;
-            Debug.Log("Phase 2 complete");
             btRunner.tree.rootNode.Abort();
         }
     }
@@ -193,31 +187,19 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
                 // Instantiate a clone of the projectile prefab at the mirror's position and rotation
                 Projectile projectileClone = Instantiate(projectile, spawnPosition, mirrors[i].transform.rotation);
 
-                Vector3 stepVector;
+                float angleStep = 0;
                 int offset = 0;
-                if(phase < 2) //Phase 1
-                {   //Each pair of parallel mirrors
-                    if(i > 1)
-                        offset = 3;
-                }
-                else
-                {
-                    if (i > 3) //The newly spawned mirrors
-                        offset = 3;
-                }
-                if((cycle + offset) % 6 == 0)
+                if((cycle + offset) % 3 == 0)
                 {
                     //Shoot projectile directly at the player's xz position
-                    Vector3 toPlayer = player.position - mirrors[i].transform.position;
-                    toPlayer.y = 0;
-                    stepVector = toPlayer.normalized;
-                    //Constrain to be within maxAngle?
+                    angleStep = getAngleToPlayer(i);
                 }
                 else
                 {   //Follow the usual projectile pattern
-                    float angleStep = projectilePattern(patternChoice, elapsedTime); // Gets the angle to shoot depending on the pattern
-                    stepVector = Quaternion.AngleAxis(angleStep, Vector3.up) * mirrors[i].transform.right; // Calculates the angle to shoot
+                    angleStep = projectilePattern(patternChoice, elapsedTime); // Gets the angle to shoot depending on the pattern
+                    
                 }
+                Vector3 stepVector = Quaternion.AngleAxis(angleStep, Vector3.up) * mirrors[i].transform.right; // Calculates the angle to shoot
 
                 // Randomize the projectile lifetime within the range of the current value +- 1
                 float randomizedLifetime = mirrors[i].projectileLifetime + UnityEngine.Random.Range(-1.5f, 2.0f);
@@ -259,6 +241,29 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
         return 0.0f;
     }
 
+    //Returns an angle from the mirror's x-axis to the player's position (used for projectile aiming)
+    float getAngleToPlayer(int mirrorIndex)
+    {
+        Vector3 toPlayer = player.position - mirrors[mirrorIndex].transform.position;
+        toPlayer.y = 0;
+        Quaternion newRotation = Quaternion.LookRotation(toPlayer, mirrors[mirrorIndex].transform.up);
+        //Z-axis is forward
+        //Mirror 2: toPlayer angle is like 340 degrees. But the rotation of the actual mirror is only -90 (which I guess could also be considered 270 degrees)
+        //270 - 340 would be -70 degrees, the right amount for the projectile coming from mirror 2.
+
+        //The z and x of the toPlayer angle...
+        //And the z and x of the mirror's forward...(Note: mirror's forward is actually its side)
+        Vector2 toPlayerZX = new Vector2(toPlayer.z, toPlayer.x);
+        Vector3 mirrorForward = mirrors[mirrorIndex].transform.forward;
+        Vector2 mirrorForwardZX = new Vector2(mirrorForward.z, mirrorForward.x);
+
+        
+        float toPlayerAngle = Vector2.SignedAngle(mirrorForwardZX, toPlayerZX) - 90;
+
+        //Constrain to be within maxAngle?
+        return Mathf.Clamp(toPlayerAngle, -projectileMaxAngle, projectileMaxAngle); ;
+    }
+
     public void spawnEnemies(){
         //similar to how the game manager spawns enemies
         Vector3 playerPos = player.transform.position;
@@ -286,7 +291,6 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
     {
         foreach (MirrorBossMirror mirror in mirrors)
         {
-            Debug.Log("Displaying warning");
             mirror.tempProjectileWarning.SetActive(setTo);
         }
     }

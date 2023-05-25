@@ -13,7 +13,6 @@ public class RollManager : MonoBehaviour, IFrameCheckHandler
     private Player playerManager;
 
     public void onActiveFrameStart() {
-        Debug.Log("Rolling now");
         // set roll speed
     }
     public void onActiveFrameEnd() {
@@ -31,7 +30,6 @@ public class RollManager : MonoBehaviour, IFrameCheckHandler
     {
         rollClip.animator.SetBool("Rolling", false);
         player.SetState(States.PlayerStates.Idle);
-        Debug.Log("rolling ended");
     }
 
     // Start is called before the first frame update
