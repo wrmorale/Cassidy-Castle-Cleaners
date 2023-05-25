@@ -16,11 +16,6 @@ public class MirrorBossSoundManager : MonoBehaviour
     public AudioClip laughSfx;
     public float laughVolume;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
     public void playTeleportsfx(){
         animationSoundPlayer.PlayOneShot(teleportSfx, teleportVolume);
     }
