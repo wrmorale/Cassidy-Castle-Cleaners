@@ -1313,6 +1313,31 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &7583692284322310913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5220526407723785213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2037b83e145c3094a90d02a97c1545b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationSoundPlayer: {fileID: 4795087871336487200}
+  stepSfx: {fileID: 8300000, guid: 7ff17d6f86041394e921de4361b7cbf6, type: 3}
+  stepVolume: 1
+  light1Sfx: {fileID: 0}
+  light1Volume: 0
+  light2Sfx: {fileID: 0}
+  light2Volume: 0
+  spinSfx: {fileID: 0}
+  spinVolume: 0
+  dashSfx: {fileID: 0}
+  dashVolume: 0
+  deathSfx: {fileID: 0}
+  deathVolume: 0
 --- !u!4 &5598255633152663976 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8574115796961868028, guid: 057dfc13aad75d14c83a983e4cb0c5f1,
