@@ -28,8 +28,8 @@ public class BroomAttackManager : MonoBehaviour, IFrameCheckHandler
     public FrameParser activeClip;
     private FrameChecker activeChecker;
 
-    private GameObject broom;
-    private GameObject pan;
+    public GameObject broom;
+    public GameObject pan;
     private Animator broomAnimator;
     private Animator[] trailAnimators = new Animator[3];
 
@@ -107,7 +107,6 @@ public class BroomAttackManager : MonoBehaviour, IFrameCheckHandler
         if (idx >= 0)
         {
             bufferedAbility = idx;
-            Debug.Log("stored ability: " + bufferedAbility);
         }
 
         if (actionState == ActionState.Inactionable)

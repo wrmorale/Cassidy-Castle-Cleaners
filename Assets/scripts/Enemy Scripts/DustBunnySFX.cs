@@ -7,9 +7,11 @@ public class DustBunnySFX : MonoBehaviour
     [Header("Audio Files")]
     AudioSource animationSoundPlayer;
     public AudioClip hopsfx;
+    public float hopLevel;
     public AudioClip chargesfx;
+    public float chargeLevel;
     public AudioClip pouncesfx;
-    public float audioLevel;
+    public float pounceLevel;
 
     void Start()
     {
@@ -17,14 +19,14 @@ public class DustBunnySFX : MonoBehaviour
     }
 
     private void playHopsfx(){
-        animationSoundPlayer.PlayOneShot(hopsfx, audioLevel * 0.4f);
+        animationSoundPlayer.PlayOneShot(hopsfx, hopLevel);
     }
 
     private void playChargesfx(){
-        animationSoundPlayer.PlayOneShot(chargesfx, audioLevel);
+        animationSoundPlayer.PlayOneShot(chargesfx, chargeLevel);
     }
 
     private void playPouncesfx(){
-        animationSoundPlayer.PlayOneShot(pouncesfx, audioLevel);
+        animationSoundPlayer.PlayOneShot(pouncesfx, pounceLevel);
     }
 }

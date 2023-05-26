@@ -6,8 +6,9 @@ public class MothSFX : MonoBehaviour
 {
     AudioSource animationSoundPlayer;
     public AudioClip attackWindupsfx;
+    public float attackWindupLevel;
     public AudioClip attacksfx;
-    public float audioLevel;
+    public float attackLevel;
 
     void Start()
     {
@@ -15,10 +16,10 @@ public class MothSFX : MonoBehaviour
     }
 
     private void playWindUpsfx(){
-        animationSoundPlayer.PlayOneShot(attackWindupsfx, audioLevel);
+        animationSoundPlayer.PlayOneShot(attackWindupsfx, attackWindupLevel);
     }
 
     private void playAttacksfx(){
-        animationSoundPlayer.PlayOneShot(attacksfx, audioLevel);
+        animationSoundPlayer.PlayOneShot(attacksfx, attackLevel);
     }
 }

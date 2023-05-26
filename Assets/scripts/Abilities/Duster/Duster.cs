@@ -14,7 +14,6 @@ public class Duster : Projectile
     {
         if (other.tag == "Enemy") 
         {
-            Debug.Log("projectile hit");
             Enemy enemy = other.GetComponent<Enemy>();
             enemy.isHit(damage, stagger);
             Destroy(gameObject);
@@ -23,6 +22,6 @@ public class Duster : Projectile
 
     private void OnDestroy()
     {
-        Debug.Log("projectile destroyed");
+        
     }
 }

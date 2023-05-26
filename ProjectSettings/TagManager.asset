@@ -11,6 +11,8 @@ TagManager:
   - Furniture
   - weapon
   - GameManager
+  - TutorialTrigger
+  - Projectile
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - Water
   - UI
   - Enemy
-  - EnemyProjectile
+  - 
   - 
   - 
   - 

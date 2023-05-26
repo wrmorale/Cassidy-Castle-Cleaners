@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance { get; private set; }
 
+    [HideInInspector]public PersistentGameManager persistentGM;
+
     public bool disableLosing = false;
     public float timer;
     public Text timerText;
@@ -36,27 +38,28 @@ public class GameManager : MonoBehaviour
     public bool gamePaused;
     public static int currentSceneIndex = 0;
     public static int currRoom = 0; // keeps track of the levels we beat
-    private int lastRoomIndex = 5; // 0 indexed so 4 total atm
+    private int lastRoomIndex = 6; // 0 indexed so 4 total atm
     private LevelLoader levelLoader;
     public int currentGold;
     public List<String> availableAbilities = new List<String>(); //not sure how we will keep track of abilities yet but a list of strings to hold ablities that can be learned
     //
-    public int numberOfEnemies = 10;
-    public float maxDustPiles = 5;
-    private float numberOfDustPiles;
+    public int numberOfEnemies;
+    public float maxDustPiles;
+    [HideInInspector]public float numberOfDustPiles;
     public GameObject enemyPrefab;
     public GameObject player;
     public GameObject doorPortal;
-    public List<GameObject> spawnAreas = new List<GameObject>();//changed to array to hold many spawn areas
+    public List<GameObject> enemySpawnAreas = new List<GameObject>();//changed to array to hold many spawn areas
+    public List<GameObject> dustSpawnAreas = new List<GameObject>();
     public GameObject dustPilePrefab;
-    public GameObject pauseUI;
+    //public GameObject pauseUI;
     public Player playerStats;
     public playerController playercontroller;
 
     private bool objectsInstantiated = false;
 
-    [SerializeField] private PlayerInput playerInput;
-    private InputAction pauseAction;
+    //[SerializeField] private PlayerInput playerInput;
+    //private InputAction pauseAction;
 
     //UI stuff
     /*public UIDocument hud;
@@ -65,14 +68,16 @@ public class GameManager : MonoBehaviour
     [Range(0,1)]*/
     private CleaningCircle cleaningCircle;
     private ManaCounterText manaCounter;
+    private DustPileCounterText dustPileCounter;
+    private EnemyCounterText enemyCounter;
     public float cleaningPercent = 0;
-    public float mana = 0;//mana initiation
+    public float mana;//mana initiation
     public float maxMana = 100f;
     public float manaPercent = 0;
     public bool infiniteManaCheat = false; //If true, mana will constantly be reset to max
-    public float dustPileReward = 20f;
-    public float bleachBombCost = 50f;
-    public float dusterCost = 10f;
+    public float dustPileReward;
+    public float bleachBombCost;
+    public float dusterCost;
 
     private float dustPilesCleaned;
     private float dirtyingRate = 0.3f; // rate at which the room gets dirty
@@ -94,14 +99,24 @@ public class GameManager : MonoBehaviour
 
         instance = this;
         DontDestroyOnLoad(gameObject);
+
+        persistentGM = FindObjectOfType<PersistentGameManager>();
+        playerStats = FindObjectOfType<Player>();
+        playerStats.health = persistentGM.GetLastPlayerHealth();
+        mana = persistentGM.GetLastPlayerMana();
+        //
+        SceneManager.sceneLoaded += OnSceneChanged;
     }
 
     void Start()
     {
+        dustPileReward = persistentGM.dustPileReward;
+        bleachBombCost = persistentGM.bleachBombCost;
+        dusterCost = persistentGM.dusterCost;
         // Adds the pause button to the script
-        pauseAction = playerInput.actions["Pause"];
+        //pauseAction = playerInput.actions["Pause"];
 
-        // Locks the cursor into the gamescene so the mouse cannot go out of the window
+        // Locks the cursor into the game scene so the mouse cannot go out of the window
         UnityEngine.Cursor.lockState = CursorLockMode.Confined;
         UnityEngine.Cursor.visible = false;
 
@@ -112,33 +127,36 @@ public class GameManager : MonoBehaviour
         isNextToExit = false;
         gamePaused = false;
         currentGold = 0;
-        numberOfDustPiles = maxDustPiles;
-        int randomIndex = UnityEngine.Random.Range(0, spawnAreas.Count);
+        numberOfDustPiles = maxDustPiles; 
+        int randomIndex = UnityEngine.Random.Range(0, dustSpawnAreas.Count);
         GameObject selectedSpawnArea;
 
         // Spawn Dust Piles and Enemies
         if (!objectsInstantiated)
         {
             // Spawn dust piles
-            for (int i = 0; i < maxDustPiles; i++)
+            if(dustSpawnAreas.Count > 0) //Do not spawn any if no spawn areas (applies to final boss room)
             {
-                randomIndex = UnityEngine.Random.Range(0, spawnAreas.Count);
-                selectedSpawnArea = spawnAreas[randomIndex];
-                Bounds spawnBounds = selectedSpawnArea.GetComponent<MeshCollider>().bounds;
-                Vector3 position = new Vector3(
-                    UnityEngine.Random.Range(spawnBounds.min.x, spawnBounds.max.x),
-                    selectedSpawnArea.transform.position.y,
-                    UnityEngine.Random.Range(spawnBounds.min.z, spawnBounds.max.z)
-                );
-                Instantiate(dustPilePrefab, position, Quaternion.identity);
+                for (int i = 0; i < maxDustPiles; i++)
+                {
+                    randomIndex = UnityEngine.Random.Range(0, dustSpawnAreas.Count);
+                    selectedSpawnArea = dustSpawnAreas[randomIndex];
+                    Bounds spawnBounds = selectedSpawnArea.GetComponent<MeshCollider>().bounds;
+                    Vector3 position = new Vector3(
+                        UnityEngine.Random.Range(spawnBounds.min.x, spawnBounds.max.x),
+                        selectedSpawnArea.transform.position.y,
+                        UnityEngine.Random.Range(spawnBounds.min.z, spawnBounds.max.z)
+                    );
+                    Instantiate(dustPilePrefab, position, Quaternion.identity);
+                }
             }
 
             // Spawn enemies
             Vector3 playerPos = player.transform.position;
             for (int i = 0; i < numberOfEnemies; i++)
             {
-                randomIndex = UnityEngine.Random.Range(0, spawnAreas.Count);
-                selectedSpawnArea = spawnAreas[randomIndex];
+                randomIndex = UnityEngine.Random.Range(0, enemySpawnAreas.Count);
+                selectedSpawnArea = enemySpawnAreas[randomIndex];
                 Bounds spawnBounds = selectedSpawnArea.GetComponent<MeshCollider>().bounds;
                 Vector3 position;
                 do
@@ -163,16 +181,18 @@ public class GameManager : MonoBehaviour
         }
 
         // UI set up
-        /*var root = hud.rootVisualElement;
-        Debug.Log("root: " + root);
-        cleaningbar = root.Q<CleaningBar>();
-        Debug.Log("cleaningbar: "+ cleaningbar);*/
         cleaningCircle = GetComponentInChildren<CleaningCircle>();
         manaCounter = GetComponentInChildren<ManaCounterText>();
         totalHealth = maxDustPiles * dustPilePrefab.GetComponent<DustPile>().maxHealth;
         cleaningPercent = totalHealth * 0.5f / totalHealth;
         manaPercent = mana/maxMana;
         updateManaAmount(mana);
+
+        // ui counters for dust piles and enemies remaining
+        dustPileCounter = GetComponentInChildren<DustPileCounterText>();
+        enemyCounter = GetComponentInChildren<EnemyCounterText>();
+        updateDustPileAmount(numberOfDustPiles);
+        updateEnemiesAmount(numberOfEnemies);
 
 
         // fog
@@ -182,12 +202,16 @@ public class GameManager : MonoBehaviour
         // Start executing function after 2.0f, and re-execute every 2.0f
         InvokeRepeating("DecreaseCleanliness", 2.0f, 2.0f);
 
+        // Retrieve the PersistentGameManager instance
+        //PersistentGameManager persistentGM = FindObjectOfType<PersistentGameManager>();
+
+        // Update the playerStats.health with the health from the PersistentGameManager
+        //playerStats.health = persistentGM.GetLastPlayerHealth();
     }
 
     void Update()
     {
         timer += Time.deltaTime;
-        //Debug.Log("Time: " + timer.ToString("F2")); //timer displays in console for now
 
         HandleRoomTransition();
 
@@ -206,7 +230,6 @@ public class GameManager : MonoBehaviour
         if (!playerStats.alive && playerStats.lives == 1 || cleaningPercent == 0)
         {
             playerStats.lives--;
-            //Debug.Log("You're Dead, Loser");
             if (!disableLosing)
             {
                 mana = 0;
@@ -221,10 +244,10 @@ public class GameManager : MonoBehaviour
             roomCleared = true;
             doorPortal.SetActive(true);
             // Room clear condition successfully logged
-            Debug.Log("Room clear");
             //mana = maxMana;//This number is a question mark at the moment
         }
         numberOfEnemies = enemies.Length;
+        updateEnemiesAmount(numberOfEnemies);
 
         // Increase mana by the dustPileReward after destroying a dust pile
         if (dustPiles.Length < numberOfDustPiles)
@@ -242,6 +265,7 @@ public class GameManager : MonoBehaviour
             }
         }
         numberOfDustPiles = dustPiles.Length;
+        updateDustPileAmount(numberOfDustPiles);
 
         // Checks if there are no dustpiles and updates UI bar
         if (numberOfDustPiles == 0)
@@ -262,7 +286,7 @@ public class GameManager : MonoBehaviour
         RenderSettings.fogDensity = pooledHealth / (maxDustPiles * dustMaxHealth) * 0.2f;
 
         // Checks if player paused the game, if so stops time
-        HandlePause();
+        //HandlePause();
 
         if (infiniteManaCheat)
             mana = maxMana;
@@ -274,6 +298,13 @@ public class GameManager : MonoBehaviour
         manaCounter.updateManaCounter(Newmana);
     }
 
+    public void updateDustPileAmount(float NewdustPile){
+        dustPileCounter.updateDustPileCounter(NewdustPile);
+    }
+
+    public void updateEnemiesAmount(float NewEnemies){
+        enemyCounter.updateEnemyCounter(NewEnemies);
+    }
     /**
     * Check if we are next to the exit and we cleared the room
     * to advance to the next room.
@@ -286,9 +317,9 @@ public class GameManager : MonoBehaviour
             doorPortal.SetActive(false);
             if (currentSceneIndex < lastRoomIndex)
             {
-                //Debug.Log(currRoom);
                 Destroy(gameObject);
-                mana = 0;//reset mana for next room
+                //mana = 0;//reset mana for next room
+                persistentGM.PushLastPlayerHealth(playerStats.health, mana);
                 levelLoader.LoadNextLevel();
             }
             else
@@ -309,7 +340,7 @@ public class GameManager : MonoBehaviour
         return pooledHealth;
     }
 
-    private void HandlePause()
+    /*private void HandlePause()
     {
         if ((pauseUI) && pauseAction.triggered)
         {
@@ -331,11 +362,29 @@ public class GameManager : MonoBehaviour
         {
             gamePaused = false;
         }
-    }
+    }*/
 
     private void DecreaseCleanliness()
     {
         cleaningPercent -= dirtyingRate * numberOfDustPiles / totalHealth;
     }
 
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneChanged;
+    }
+
+    private void OnSceneChanged(Scene scene, LoadSceneMode mode)
+    {
+        if (mode == LoadSceneMode.Single)
+        {
+            // Retrieve the player object in the new scene
+            Player[] players = FindObjectsOfType<Player>();
+            if (players.Length > 0)
+            {
+                playerStats = players[0];
+                playerStats.health = persistentGM.GetLastPlayerHealth();
+            }
+        }
+    }
 }

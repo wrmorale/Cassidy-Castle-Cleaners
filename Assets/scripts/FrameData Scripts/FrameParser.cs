@@ -19,8 +19,11 @@ public class FrameParser
     public void initialize()
     {
         //Is the problem that it thinks the clip only has 1 frame?
-        _totalFrames = Mathf.RoundToInt(clip.length * 24); //Changed: clip.frameRate -> 24
-        //Debug.Log(clip.name + " has " + _totalFrames + "frames.");
+        float frameRate = clip.frameRate;
+        if (frameRate < 2)
+            frameRate = 24;
+        _totalFrames = Mathf.RoundToInt(clip.length * frameRate); //Changed: clip.frameRate -> 24
+        //_totalFrames = Mathf.RoundToInt(clip.length * clip.frameRate);
         //Yes it is...
         //If Light1 is 1.5 sec and it says it has 46 frames, then that means the intended fps is 30
 

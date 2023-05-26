@@ -428,7 +428,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8327740662560138378
 Transform:
   m_ObjectHideFlags: 0
@@ -482,6 +482,8 @@ MonoBehaviour:
   healingSpeed: 0.1
   dustPilePrefab: {fileID: 0}
   maxDustPiles: 5
+  audioPlayer: {fileID: 1134672525361886588}
+  isHitsfx: {fileID: 8300000, guid: e88c3fdd90e13004289ecaec18134c50, type: 3}
 --- !u!114 &1133196839942710766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -771,6 +773,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hopsfx: {fileID: 8300000, guid: cf877fdff9408214aa98924b04258963, type: 3}
+  hopLevel: 0.1
   chargesfx: {fileID: 8300000, guid: 6aae3f6b90c9a29438f87fbcfe6adf75, type: 3}
+  chargeLevel: 0.4
   pouncesfx: {fileID: 8300000, guid: b1d25552a878d7044abb785859ea7bde, type: 3}
-  audioLevel: 0.5
+  pounceLevel: 0.4

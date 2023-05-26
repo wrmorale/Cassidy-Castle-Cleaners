@@ -51,6 +51,10 @@ public class Enemy : MonoBehaviour
     [Header("Behaviour Tree info")]
     BehaviourTreeRunner BTrunner;
 
+    [Header("Audio Info")]
+    [SerializeField] public AudioSource audioPlayer;
+    [SerializeField] public AudioClip isHitsfx;
+
     //GameObject damageFlashObject;
     void Start(){
         enemyController = GetComponent<CharacterController>();
@@ -60,6 +64,7 @@ public class Enemy : MonoBehaviour
         enemyHealthBar.setMaxHealth(HealthPercent);
         BTrunner = GetComponent<BehaviourTreeRunner>();
         gravityBuildup = Vector3.zero;
+        AudioSource audioPlayer = GetComponentInChildren<AudioSource>();
         //damageFlashObject = Instantiate(damageFlashPrefab, transform.position, Quaternion.identity);
         //damageFlash = damageFlashObject.GetComponent<DamageFlash>();
     }
@@ -89,20 +94,22 @@ public class Enemy : MonoBehaviour
             DustPile newDustPileScript = newDustPile.GetComponent<DustPile>();
             newDustPileScript.SetHealth(0.1f); // set a low starting health
             dustPiles.Add(newDustPileScript);
-            Debug.Log("Enemy created dust pile");
         }
     }
 
     private void FixedUpdate()
     {
-        if (!enemyController.isGrounded)
-            gravityBuildup.y += gravity * Time.fixedDeltaTime;
-        else
-            gravityBuildup = Vector3.zero;
-        //Remember to NOT use Time.fixedDeltatime in functions that affect movement
-        enemyController.Move((movement + gravityBuildup) * Time.fixedDeltaTime);
-        moveHistory = movement;
-        movement = Vector3.zero;
+        if (enemyController)
+        {
+            if (!enemyController.isGrounded)
+                gravityBuildup.y += gravity * Time.fixedDeltaTime;
+            else
+                gravityBuildup = Vector3.zero;
+            //Remember to NOT use Time.fixedDeltatime in functions that affect movement
+            enemyController.Move((movement + gravityBuildup) * Time.fixedDeltaTime);
+            moveHistory = movement;
+            movement = Vector3.zero;
+        }
     }
 
     //Changed to virtual so that boss mirrors can override this
@@ -115,6 +122,9 @@ public class Enemy : MonoBehaviour
         //Update health bar
         HealthPercent = currentHealth / maxHealth;
         enemyHealthBar.setHealth(HealthPercent);
+
+        //hit sfx
+        audioPlayer.PlayOneShot(isHitsfx, 1.0F);
 
         //Died?
         if (!isDead)
@@ -134,7 +144,6 @@ public class Enemy : MonoBehaviour
                 currentStaggerAmount += staggerDamage;
                 if (currentStaggerAmount >= maxStaggerAmount && isStaggered == false)
                 {
-                    Debug.Log("Enemy staggered!");
                     isStaggered = true;
                     //do the BT interupt
                     BTrunner.tree.rootNode.Abort();

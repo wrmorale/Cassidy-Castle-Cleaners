@@ -15,13 +15,15 @@ public class Player : MonoBehaviour
     [SerializeField]public float staggerDamage;
     [SerializeField]public float attackSpeed;
     [SerializeField]public float cooldownReduction;
+
+    public PersistentGameManager persistentGM;
     
     public bool alive;
     public int lives;
     
     public List<Ability> abilities; 
-    public Transform platform;
-    public float fallLimit = -10; 
+    //public Transform platform;
+    // float fallLimit = -10; 
     
     //UI stuff
     /*public UIDocument hud;
@@ -32,42 +34,59 @@ public class Player : MonoBehaviour
     public float healthPercent = 1;
     private HealthCounterText healthCounter;
 
-    private Animator animator;
+    public Animator animator;
     private playerController playercontroller;
-    private BroomAttackManager atkmanager;
-    [SerializeField]
-    private Image hurtpng;
+    public BroomAttackManager atkmanager;
+    
+    private AudioSource audioPlayer;
+    [SerializeField] private AudioClip isHitsfx;
+
+    [SerializeField] private Image hurtpng;
     private Color color;
+
 
     [HideInInspector] public bool isInvulnerable; //This should be more clearly labeled as being i-frames for rolling
     public bool invincibleCheat = false;
 
+    void Awake(){
+        persistentGM = FindObjectOfType<PersistentGameManager>();
+        health = persistentGM.GetLastPlayerHealth();
+        healthbar = GetComponentInChildren<PlayerHealthBar>();
+        healthCounter = GetComponentInChildren<HealthCounterText>();
+        healthPercent = health / maxHealth;
+        healthbar.setHealth(healthPercent);
+        healthCounter.setMaxHealth(maxHealth);
+        healthCounter.updateHealthCounter(health);
+        audioPlayer = GetComponentInChildren<AudioSource>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        health = maxHealth;
+        
         alive = true;
         isInvulnerable = false;
 
         /*
         var root = hud.rootVisualElement;
         healthbar = root.Q<HealthBar>();*/
-        healthbar = GetComponentInChildren<PlayerHealthBar>();
-        healthCounter = GetComponentInChildren<HealthCounterText>();
+        //healthbar = GetComponentInChildren<PlayerHealthBar>();
+        //healthCounter = GetComponentInChildren<HealthCounterText>();
         animator = GetComponentInChildren<Animator>();
         playercontroller = GetComponent<playerController>();
         atkmanager = GetComponent<BroomAttackManager>();
-        healthbar.setHealth(healthPercent);
-        healthCounter.setMaxHealth(maxHealth);
+        //healthbar.setHealth(healthPercent);
+        //healthCounter.setMaxHealth(maxHealth);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.y < platform.position.y + fallLimit){
+        persistentGM = FindObjectOfType<PersistentGameManager>();
+        /*if (transform.position.y < platform.position.y + fallLimit){
             health = 0;
             alive = false;
-        }
+        }*/
         if(hurtpng.color.a > 0){
             color = hurtpng.color;
             color.a -= 0.01f;
@@ -79,24 +98,30 @@ public class Player : MonoBehaviour
         //print("Player took " + damage + " damage");
         
         if(!isInvulnerable && !invincibleCheat){
-            
-            
+            audioPlayer.PlayOneShot(isHitsfx, 0.7F);
             health -= damage;
             health = Mathf.Clamp(health, 0 , maxHealth);
-            healthPercent = health / maxHealth;
-            healthbar.setHealth(healthPercent);
-            healthCounter.updateHealthCounter(health);
+            updateHealthUI();
             //if(health >= 1){
-                //StartCoroutine(HandleDamage());
+            
                 color = hurtpng.color;
                 color.a = 1f;
                 hurtpng.color = color;
+            
+                //StartCoroutine(HandleDamage());
+                
             //}
             if(health <= 0){
                 alive = false;
             }
         }
         
+    }
+
+    public void updateHealthUI(){
+        healthPercent = health / maxHealth;
+        healthbar.setHealth(healthPercent);
+        healthCounter.updateHealthCounter(health);
     }
 
     /*

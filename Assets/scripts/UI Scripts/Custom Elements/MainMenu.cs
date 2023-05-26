@@ -19,4 +19,13 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Controls_Scene");
     }
+
+    public void ToExit()
+    {
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #endif
+
+        Application.Quit();
+    }
 }

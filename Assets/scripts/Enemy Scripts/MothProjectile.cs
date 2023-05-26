@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MothProjectile : Projectile
 {
+    public GameObject dustPilePrefab;
+
     protected override void Update()
     {
         base.Update();
@@ -19,14 +21,21 @@ public class MothProjectile : Projectile
             Destroy(gameObject);
         }
         //Can change to other tags like "Room" and such 
-        else{
-            Debug.Log("Projectile hit something");
+        else if(other.tag == "Furniture"){
             Destroy(gameObject);
         }
     }
 
     private void OnDestroy()
     {
-        //Debug.Log("projectile destroyed");
+        if (UnityEngine.Random.value <= trashSpawnChance)
+        {
+            float groundOffset = 0.3f; // Adjust this value to control the height offset from the ground
+            Vector3 groundPosition = new Vector3(transform.position.x, groundOffset, transform.position.z);
+            if(dustPilePrefab != null){
+                GameObject dustPile = Instantiate(dustPilePrefab, groundPosition, Quaternion.identity);
+            }
+            // Customize the dust pile prefab as needed
+        }
     }
 }

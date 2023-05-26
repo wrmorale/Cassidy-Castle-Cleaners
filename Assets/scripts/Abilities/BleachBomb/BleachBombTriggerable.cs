@@ -31,7 +31,7 @@ public class BleachBombTriggerable : PlayerAbility, IFrameCheckHandler
             GameManager.instance.updateManaAmount(GameManager.instance.mana);
             SpawnProjectile(playerForward);
         }else{
-            Debug.Log("Bleach Bomb: Not Enough Mana");
+            
         }
     }
     public void onActiveFrameEnd()
@@ -92,7 +92,7 @@ public class BleachBombTriggerable : PlayerAbility, IFrameCheckHandler
     public void SpawnProjectile(Vector3 heading) 
     {
         Bomb clone = Instantiate(projectile, bulletSpawn.position, Quaternion.LookRotation(heading));
-        clone.Initialize(speed, lifetime, damage, stagger, heading);
+        clone.Initialize(speed, lifetime, damage, stagger, heading, 0);
         clone.toTarget = player.toTargetPosition();
         clone.launch();
     }
@@ -108,7 +108,7 @@ public class BleachBombTriggerable : PlayerAbility, IFrameCheckHandler
         // Set the cost based on the value of dusterCost in GameManager
         if (GameManager.instance != null)
         {
-            cost = GameManager.instance.bleachBombCost;
+            cost = PersistentGameManager.instance.bleachBombCost;
         }
     }
 }
