@@ -235,7 +235,7 @@ MonoBehaviour:
   projectileSpeed: 2.3
   projectileLifetime: 2
   projectileDamage: 1
-  trashSpawnChance: 0.02
+  trashSpawnChance: 0.5
   bulletSpawn: {fileID: 1581469713310629160}
   mirrorAudioManager: {fileID: 863786983169766583}
 --- !u!114 &5616337374384034975

@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class MothProjectile : Projectile
 {
+    private GameObject spawnPlane; // Reference to the spawn plane object
     public GameObject dustPilePrefab;
+
+    private void Start(){
+        GameObject[] taggedObjects = GameObject.FindGameObjectsWithTag("spawnPlane");
+        spawnPlane = taggedObjects[0];
+    }
 
     protected override void Update()
     {
@@ -32,10 +38,15 @@ public class MothProjectile : Projectile
         {
             float groundOffset = 0.3f; // Adjust this value to control the height offset from the ground
             Vector3 groundPosition = new Vector3(transform.position.x, groundOffset, transform.position.z);
-            if(dustPilePrefab != null){
+            if (IsWithinBounds(groundPosition) && dustPilePrefab != null)
+            {
                 GameObject dustPile = Instantiate(dustPilePrefab, groundPosition, Quaternion.identity);
+                dustPile.SetActive(true);
             }
-            // Customize the dust pile prefab as needed
         }
+    }
+    private bool IsWithinBounds(Vector3 position)
+    {
+        
     }
 }
