@@ -93,9 +93,12 @@ public class SoapBarTriggerable : PlayerAbility, IFrameCheckHandler
         audioSource = playerObj.GetComponentInChildren<AudioSource>();
     }
 
-    public void SpawnProjectile(Vector3 heading) 
+    public void SpawnProjectile(Vector3 heading)
     {
-        Projectile clone = Instantiate(projectile, bulletSpawn.position, Quaternion.LookRotation(heading));
+        float yOffset = 0.22f; // Adjust this value to control the vertical offset
+        Vector3 spawnPosition = bulletSpawn.position + new Vector3(0f, -yOffset, 0f);
+
+        Projectile clone = Instantiate(projectile, spawnPosition, Quaternion.LookRotation(heading));
         clone.Initialize(speed, lifetime, damage, stagger, heading, 0);
 
         // Disable gravity for the projectile

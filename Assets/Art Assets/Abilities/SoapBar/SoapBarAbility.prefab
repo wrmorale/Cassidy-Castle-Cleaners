@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <baseCooldown>k__BackingField: 1
   cooldownTimer: 0
-  projectile: {fileID: -8514899613013735874, guid: 922072f5ced2b6849bb333a8dae23c7e,
+  projectile: {fileID: 9081877298954366921, guid: 742de4e1faf7d374abbad81df37137c2,
     type: 3}
   bulletSpawn: {fileID: 0}
   speed: 7
