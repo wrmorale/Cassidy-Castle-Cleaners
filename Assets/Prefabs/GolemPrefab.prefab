@@ -164,7 +164,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1250803297610215111}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -468,10 +468,10 @@ MonoBehaviour:
       animatorStateName: light_1
       layerNumber: 0
     checker:
-      activeFrameStart: 25
-      activeFrameEnd: 30
-      attackCancelFrameStart: 31
-      attackCancelFrameEnd: 38
+      activeFrameStart: 32
+      activeFrameEnd: 37
+      attackCancelFrameStart: 38
+      attackCancelFrameEnd: 49
       allCancelFrameStart: 0
       allCancelFrameEnd: 0
   - name: Light2
@@ -484,10 +484,10 @@ MonoBehaviour:
       animatorStateName: light_2
       layerNumber: 0
     checker:
-      activeFrameStart: 18
-      activeFrameEnd: 22
-      attackCancelFrameStart: 36
-      attackCancelFrameEnd: 37
+      activeFrameStart: 22
+      activeFrameEnd: 26
+      attackCancelFrameStart: 27
+      attackCancelFrameEnd: 38
       allCancelFrameStart: 0
       allCancelFrameEnd: 0
   - name: SpinAttack
@@ -500,10 +500,10 @@ MonoBehaviour:
       animatorStateName: spin
       layerNumber: 0
     checker:
-      activeFrameStart: 28
-      activeFrameEnd: 36
-      attackCancelFrameStart: 37
-      attackCancelFrameEnd: 49
+      activeFrameStart: 38
+      activeFrameEnd: 69
+      attackCancelFrameStart: 95
+      attackCancelFrameEnd: 99
       allCancelFrameStart: 0
       allCancelFrameEnd: 0
   - name: Dash
@@ -517,8 +517,8 @@ MonoBehaviour:
       animatorStateName: dash
       layerNumber: 0
     checker:
-      activeFrameStart: 15
-      activeFrameEnd: 19
+      activeFrameStart: 51
+      activeFrameEnd: 62
       attackCancelFrameStart: 0
       attackCancelFrameEnd: 0
       allCancelFrameStart: 0
