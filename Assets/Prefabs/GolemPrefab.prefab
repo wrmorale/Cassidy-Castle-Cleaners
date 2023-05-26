@@ -1327,7 +1327,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationSoundPlayer: {fileID: 4795087871336487200}
   stepSfx: {fileID: 8300000, guid: 7ff17d6f86041394e921de4361b7cbf6, type: 3}
-  stepVolume: 1
+  stepVolume: 0.5
   light1Sfx: {fileID: 0}
   light1Volume: 0
   light2Sfx: {fileID: 0}
