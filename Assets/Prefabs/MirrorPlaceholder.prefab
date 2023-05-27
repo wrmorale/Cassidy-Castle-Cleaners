@@ -232,9 +232,9 @@ MonoBehaviour:
   faceRender: {fileID: 8746870564427230249}
   tempProjectileWarning: {fileID: 8221481633115712227}
   projectilePrefab: {fileID: 8625248510964038548}
-  projectileSpeed: 2.3
+  projectileSpeed: 2.5
   projectileLifetime: 2
-  projectileDamage: 1
+  projectileDamage: 3
   trashSpawnChance: 0.02
   bulletSpawn: {fileID: 1581469713310629160}
   mirrorAudioManager: {fileID: 863786983169766583}
@@ -252,7 +252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attacks:
   - name: Slam
-    damage: 4
+    damage: 5
     range: 2
     hitbox: {fileID: 7503088313172013072}
     clip:
