@@ -19,6 +19,14 @@ public class MirrorBossMirror : Enemy
     [SerializeField] public float trashSpawnChance;
     public Transform bulletSpawn;
 
+    [Header("Shockwave")]
+    public MirrorSlamShockwave shockwave;
+    [SerializeField] float shockwaveDamage = 4.0f;
+    [SerializeField] float shockwaveStartScale = 0.75f;
+    [SerializeField] float shockwaveEndScale = 4.0f;
+    [SerializeField] float shockwaveDuration = 0.5f;
+    [SerializeField] Transform shockwaveSpawnPoint;
+
     public MirrorBossSoundManager mirrorAudioManager;
 
     // Start is called before the first frame update
@@ -59,4 +67,18 @@ public class MirrorBossMirror : Enemy
         }
     }
     
+    public void spawnShockwave()
+    {
+        if(shockwaveSpawnPoint && shockwave)
+        {
+            MirrorSlamShockwave shockwaveInstance = Instantiate(shockwave, shockwaveSpawnPoint.transform);
+            shockwaveInstance.Initialize(shockwaveStartScale, shockwaveEndScale, shockwaveDuration);
+            shockwaveInstance.gameObject.GetComponent<collisionDetection>().damage = shockwaveDamage;
+            shockwave.gameObject.SetActive(true);
+        }
+        else
+        {
+            Debug.LogError("One of the shock wave prefabs is missing.");
+        }
+    }
 }

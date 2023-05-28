@@ -175,6 +175,7 @@ Transform:
   - {fileID: 8346774896177300874}
   - {fileID: 6099278054749802703}
   - {fileID: 3221587495976844198}
+  - {fileID: 4943009027781030738}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -237,6 +238,13 @@ MonoBehaviour:
   projectileDamage: 3
   trashSpawnChance: 0.02
   bulletSpawn: {fileID: 1581469713310629160}
+  shockwave: {fileID: 7315639735787658616, guid: 4a632efe5b1ac8f44b67d2cb43fe9922,
+    type: 3}
+  shockwaveDamage: 4
+  shockwaveStartScale: 0.75
+  shockwaveEndScale: 5
+  shockwaveDuration: 0.5
+  shockwaveSpawnPoint: {fileID: 4943009027781030738}
   mirrorAudioManager: {fileID: 863786983169766583}
 --- !u!114 &5616337374384034975
 MonoBehaviour:
@@ -782,6 +790,37 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 8760486113417545687}
   m_maskType: 0
+--- !u!1 &8798173203345129257
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4943009027781030738}
+  m_Layer: 0
+  m_Name: ShockwaveSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4943009027781030738
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8798173203345129257}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.71799994, y: -0.40200043, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1780637471120049345}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9128835123470882456
 GameObject:
   m_ObjectHideFlags: 0
