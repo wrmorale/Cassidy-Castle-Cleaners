@@ -75,6 +75,7 @@ public class MirrorBossMirror : Enemy
             shockwaveInstance.Initialize(shockwaveStartScale, shockwaveEndScale, shockwaveDuration);
             shockwaveInstance.gameObject.GetComponent<collisionDetection>().damage = shockwaveDamage;
             shockwave.gameObject.SetActive(true);
+            shockwaveSpawnPoint.gameObject.GetComponent<ParticleSystem>().Play();
         }
         else
         {
