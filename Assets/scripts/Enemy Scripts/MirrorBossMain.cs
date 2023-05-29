@@ -296,6 +296,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
     public void spawnEnemies(){
         //similar to how the game manager spawns enemies
         Vector3 playerPos = player.transform.position;
+        GameObject[] enemies = new GameObject[numberOfEnemies];
         for (int i = 0; i < numberOfEnemies; i++)
         {
             Bounds spawnBounds = spawnArea.GetComponent<MeshCollider>().bounds;
@@ -309,10 +310,17 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
                 );
             } while (Vector3.Distance(playerPos, position) < 3);
             GameObject enemy = Instantiate(enemyPrefab, position, Quaternion.identity);
+            enemies[i] = enemy;
             enemy.SetActive(true);
         }
         enemyPrefab.SetActive(false);
         finishedSpawning = true;
+
+        //Make all enemies aggro
+        /*foreach (GameObject e in enemies)
+        {
+            e.GetComponent<Enemy>().setAggro(true);
+        }*/
     }
 
     //Can be removed after shooting animation is added

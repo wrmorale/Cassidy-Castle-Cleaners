@@ -161,6 +161,11 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void setAggro(bool setTo)
+    {
+        BTrunner.tree.blackboard.aggro = setTo;
+    }
+
     //Called by Behavior tree after the death animation
     public void RemoveEnemy()
     {
