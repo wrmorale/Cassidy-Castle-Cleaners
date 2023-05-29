@@ -90,8 +90,8 @@ MonoBehaviour:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 0
     specialCooldownEnds: 0
-  viewPosition: {x: 1266, y: -1125.5, z: 0}
-  viewScale: {x: 0.8695652, y: 0.8695652, z: 1}
+  viewPosition: {x: 437, y: -79.5, z: 0}
+  viewScale: {x: 0.43232757, y: 0.43232757, z: 1}
   references:
     version: 2
     RefIds:
@@ -261,7 +261,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 4737b8a972f0045429650acc172b0103
-        position: {x: -621, y: 762}
+        position: {x: -621, y: 763.3225}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -307,7 +307,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: daa4449eb1f20c542b5cb7b177ba2213
-        position: {x: -505, y: 626}
+        position: {x: -504.99997, y: 624.6775}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -612,7 +612,7 @@ MonoBehaviour:
         drawGizmos: 0
         child:
           rid: 4349734427453816832
-        timesToRepeat: 2
+        timesToRepeat: 3
     - rid: 2581180847576842247
       type: {class: BossSwapMirror, ns: , asm: Assembly-CSharp}
       data:
