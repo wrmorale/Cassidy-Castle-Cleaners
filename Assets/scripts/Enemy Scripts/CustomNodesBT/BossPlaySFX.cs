@@ -8,9 +8,7 @@ public class BossPlaySFX : ActionNode
 {
     protected override void OnStart() {
         MirrorBossMain mirrorBoss = context.mirrorBossScript;
-        foreach(MirrorBossMirror mirror in mirrorBoss.mirrors){ //can be changed to only the main one but does all mirrors for now
-            mirror.mirrorAudioManager.playLaughsfx();
-        }
+        mirrorBoss.currPosessedMirror.mirrorAudioManager.playLaughsfx(); //Should only play laugh once so that phase 2 isn't louder
     }
 
     protected override void OnStop() {

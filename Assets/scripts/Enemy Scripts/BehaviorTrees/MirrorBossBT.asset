@@ -85,13 +85,14 @@ MonoBehaviour:
   - rid: 4349734606885617669
   - rid: 4349734606885617670
   - rid: 4349734606885617671
+  - rid: 4349734645403222016
   treeState: 0
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 0
     specialCooldownEnds: 0
-  viewPosition: {x: 437, y: -79.5, z: 0}
-  viewScale: {x: 0.43232757, y: 0.43232757, z: 1}
+  viewPosition: {x: -993.5, y: -923, z: 0}
+  viewScale: {x: 0.8695652, y: 0.8695652, z: 1}
   references:
     version: 2
     RefIds:
@@ -674,6 +675,7 @@ MonoBehaviour:
         drawGizmos: 0
         children:
         - rid: 4349734493023633410
+        - rid: 4349734645403222016
         - rid: 4349734493023633414
         - rid: 2581180847576842255
         - rid: 4349734493023633415
@@ -944,7 +946,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: ebdfa53d4eb23da49a3a1484fc738f26
-        position: {x: 1313.5, y: 1647.5}
+        position: {x: 1177.9001, y: 1647.5002}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -1106,6 +1108,19 @@ MonoBehaviour:
         started: 0
         guid: 8a5d78a542378174b810ce64a40f76ae
         position: {x: 926.5, y: 1988.5}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: 
+        drawGizmos: 0
+    - rid: 4349734645403222016
+      type: {class: BossPlaySFX, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 24a9e6a0936335140864e1140ca64410
+        position: {x: 1329.0002, y: 1647.5002}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0

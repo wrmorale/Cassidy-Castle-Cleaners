@@ -331,7 +331,7 @@ MonoBehaviour:
   deathSfx: {fileID: 8300000, guid: 0251dd9af897c724286faaefdf31fdc5, type: 3}
   deathVolume: 1
   laughSfx: {fileID: 8300000, guid: 19903024ebdeec249b35a6687948dece, type: 3}
-  laughVolume: 0.3
+  laughVolume: 1
 --- !u!1 &4817280267641702473
 GameObject:
   m_ObjectHideFlags: 0
