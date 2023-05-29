@@ -29,6 +29,7 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
     public TargetLock targetLock; /*Added for lock-on improvements*/
     public Player playerStats;
 
+
     [HideInInspector]
     public PlayerAbility activeAbility;
     private GameObject model;
@@ -39,6 +40,7 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
     private float lastRootY;
     private bool groundedPlayer;
     private bool inJumpsquat = false;
+    public bool castingAllowed = true;
 
     private Transform cam;
 
@@ -176,7 +178,7 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
             {
                 Attack();
             }
-            else if (channeledAbility >= 0 && !inJumpsquat)
+            else if (channeledAbility >= 0 && !inJumpsquat && castingAllowed)
             {
                 ActivateAbility(channeledAbility);
             }

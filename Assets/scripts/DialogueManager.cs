@@ -99,6 +99,8 @@ public class DialogueManager : MonoBehaviour
         dummy2TopHealth = tutorialManager.dummy2.GetComponent<Enemy>().maxHealth;
         dummy2Health = dummy2TopHealth;
         StartDialogue();
+        tutorialManager.dummy1.SetActive(false);
+        tutorialManager.dummy2.SetActive(false);
     }
 
     void Update()
@@ -130,12 +132,23 @@ public class DialogueManager : MonoBehaviour
             startCombat();
         }
 
-        if(dialogueIndex == 13){
+        if(dialogueIndex == 13)
+        {
             roomCleared();
         }
 
-        if(dialogueIndex == 14){
-            if(controlgiven == false)
+        if(dialogueIndex == 14)
+        {
+            FinishTutorial();
+        }
+
+        HandlePauseInTutorial();
+
+    }
+
+    public void FinishTutorial()
+    {
+        if(controlgiven == false)
             {
                 tutorialManager.resumeActions();                
                 controlgiven = true;
@@ -144,10 +157,6 @@ public class DialogueManager : MonoBehaviour
             dialoguebox.SetActive(false);
             continueButton.SetActive(false);
             dialogueIndex = 0;
-        }
-
-        HandlePauseInTutorial();
-
     }
 
      public void StartDialogue ()
@@ -215,6 +224,7 @@ public class DialogueManager : MonoBehaviour
             tutorialManager.resumeActions();                
             controlgiven = true;
             inDialogue = false;
+            tutorialManager.controller.castingAllowed = true;
         }
         dialoguebox.SetActive(false);
         continueButton.SetActive(false);
@@ -245,6 +255,8 @@ public class DialogueManager : MonoBehaviour
             tutorialManager.resumeActions();                
             controlgiven = true;
             inDialogue = false;
+            tutorialManager.dummy1.SetActive(true);
+            tutorialManager.dummy2.SetActive(true);
         }
         dialoguebox.SetActive(false);
         continueButton.SetActive(false);
@@ -336,7 +348,7 @@ public class DialogueManager : MonoBehaviour
         dialoguebox.SetActive(false);
         continueButton.SetActive(false);
 
-        if(gameManager.numberOfEnemies == 2){
+        if(gameManager.numberOfEnemies == 3){
             dialoguebox.SetActive(true);
             continueButton.SetActive(true);
             tutorialManager.stopActions();
@@ -353,6 +365,7 @@ public class DialogueManager : MonoBehaviour
         //dialoguebox.SetActive(false);
         tutorialManager.dummy1.SetActive(false);
         tutorialManager.dummy2.SetActive(false);
+        tutorialManager.tempDummy.SetActive(false);
         gameManager.mana = 0;
         gameManager.updateManaAmount(gameManager.mana);
         tutorialManager.player.health = 25f;
@@ -370,9 +383,7 @@ public class DialogueManager : MonoBehaviour
             {
                 pauseMenu.eventSystem.SetSelectedGameObject(pauseMenu.resumeButton);
                 alreadyPaused = true;
-            }
-            
-            
+            }   
         }
         else if(!pauseMenu.isPaused)
         {
