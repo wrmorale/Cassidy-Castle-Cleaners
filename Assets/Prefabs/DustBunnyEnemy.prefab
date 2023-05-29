@@ -511,7 +511,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attacks:
   - name: Headbutt
-    damage: 1
+    damage: 2
     range: 0.5
     hitbox: {fileID: 1670567562144362016}
     clip:
