@@ -98,20 +98,26 @@ public class Player : MonoBehaviour
         //print("Player took " + damage + " damage");
         
         if(!isInvulnerable && !invincibleCheat){
-            audioPlayer.PlayOneShot(isHitsfx, 0.7F);
+            
+            
             health -= damage;
             health = Mathf.Clamp(health, 0 , maxHealth);
-            updateHealthUI();
+            
             //if(health >= 1){
             
+                
+
+            //StartCoroutine(HandleDamage());
+            if (alive)
+            {
+                audioPlayer.PlayOneShot(isHitsfx, 0.7F);
+                updateHealthUI();
                 color = hurtpng.color;
                 color.a = 1f;
                 hurtpng.color = color;
-            
-                //StartCoroutine(HandleDamage());
-                
+            }
             //}
-            if(health <= 0){
+            if (health <= 0){
                 alive = false;
             }
         }

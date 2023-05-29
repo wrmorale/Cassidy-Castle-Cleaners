@@ -25,6 +25,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
     [SerializeField] float projectileAttackDuration = 5.0f;
     [SerializeField] float projectilesPerSec = 3.0f;
     [SerializeField] float projectileMaxAngle = 25.0f;
+    [SerializeField] int aimOnCycle = 3; //Which projectile cycle to shoot at the player on
 
     [Header("Enemy Spawns")]
     [SerializeField] public int numberOfEnemies;
@@ -199,15 +200,33 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
 
                 float angleStep = 0;
                 int offset = 0;
-                if((cycle + offset) % 3 == 0)
+                if(phase == 1)
                 {
-                    //Shoot projectile directly at the player's xz position
-                    angleStep = getAngleToPlayer(i);
+                    if ((cycle + offset) % aimOnCycle == 0)
+                    {
+                        //Shoot projectile directly at the player's xz position
+                        angleStep = getAngleToPlayer(i);
+                    }
+                    else
+                    {   //Follow the usual projectile pattern
+                        angleStep = projectilePattern(patternChoice, elapsedTime); // Gets the angle to shoot depending on the pattern
+
+                    }
                 }
-                else
-                {   //Follow the usual projectile pattern
-                    angleStep = projectilePattern(patternChoice, elapsedTime); // Gets the angle to shoot depending on the pattern
-                    
+                else //In phase 2, alternate shooting the tracking ones from the new and old mirrors
+                {
+                    if (i > 3)
+                        offset = aimOnCycle / 2;
+                    if ((cycle + offset) % aimOnCycle == 0)
+                    {
+                        //Shoot projectile directly at the player's xz position
+                        angleStep = getAngleToPlayer(i);
+                    }
+                    else
+                    {   //Follow the usual projectile pattern
+                        angleStep = projectilePattern(patternChoice, elapsedTime); // Gets the angle to shoot depending on the pattern
+
+                    }
                 }
                 Vector3 stepVector = Quaternion.AngleAxis(angleStep, Vector3.up) * mirrors[i].transform.right; // Calculates the angle to shoot
 
@@ -216,7 +235,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
 
                 // Initialize and activate the clone
                 projectileClone.Initialize(mirrors[i].projectileSpeed, 5.0f, mirrors[i].projectileDamage, 1f, stepVector, mirrors[i].trashSpawnChance);
-                if ((cycle + offset) % 6 == 0)
+                if ((cycle + offset) % 3 == 0)
                 {
                     //projectileClone.transform.localScale = new Vector3(1, 5, 1); //Used to see which projectiles are shot directly at player
                 }
@@ -277,6 +296,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
     public void spawnEnemies(){
         //similar to how the game manager spawns enemies
         Vector3 playerPos = player.transform.position;
+        GameObject[] enemies = new GameObject[numberOfEnemies];
         for (int i = 0; i < numberOfEnemies; i++)
         {
             Bounds spawnBounds = spawnArea.GetComponent<MeshCollider>().bounds;
@@ -290,10 +310,17 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
                 );
             } while (Vector3.Distance(playerPos, position) < 3);
             GameObject enemy = Instantiate(enemyPrefab, position, Quaternion.identity);
+            enemies[i] = enemy;
             enemy.SetActive(true);
         }
         enemyPrefab.SetActive(false);
         finishedSpawning = true;
+
+        //Make all enemies aggro
+        /*foreach (GameObject e in enemies)
+        {
+            e.GetComponent<Enemy>().setAggro(true);
+        }*/
     }
 
     //Can be removed after shooting animation is added
