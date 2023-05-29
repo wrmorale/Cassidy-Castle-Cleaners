@@ -55,6 +55,10 @@ public class Soap : Projectile
 
                     // Update the heading
                     heading = newHeading;
+
+                    // Rotate the Soap object to the new direction
+                    Quaternion newRotation = Quaternion.LookRotation(newHeading);
+                    transform.rotation = newRotation;
                 }
             }
         }
