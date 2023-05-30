@@ -9,7 +9,7 @@ public class Projectile : MonoBehaviour
     protected float damage = 1f;
     protected float stagger = 1f;
     protected Vector3 heading = Vector3.forward;
-    public float trashSpawnChance = 0f;
+    protected float trashSpawnChance = 0f;
     public void Initialize(float speed, float lifetime, float damage, float stagger, Vector3 heading, float trashSpawnChance)
     {
         this.speed = speed;

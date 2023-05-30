@@ -197,7 +197,6 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
 
                 // Instantiate a clone of the projectile prefab at the mirror's position and rotation
                 Projectile projectileClone = Instantiate(projectile, spawnPosition, mirrors[i].transform.rotation);
-                float currentProjectileLifetime = mirrors[i].projectileLifetime;
 
                 float angleStep = 0;
                 int offset = 0;
@@ -232,24 +231,10 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
                 Vector3 stepVector = Quaternion.AngleAxis(angleStep, Vector3.up) * mirrors[i].transform.right; // Calculates the angle to shoot
 
                 // Randomize the projectile lifetime within the range of the current value +- 1
-                //float randomizedLifetime = mirrors[i].projectileLifetime + UnityEngine.Random.Range(-1.5f, 2.0f);
+                float randomizedLifetime = mirrors[i].projectileLifetime + UnityEngine.Random.Range(-1.5f, 2.0f);
 
-                if (UnityEngine.Random.value  <= projectileClone.trashSpawnChance)
-                {
-                    MothProjectile mothProjectile = GetComponentInChildren<MothProjectile>();
-                    if(mothProjectile.dustPilePrefab != null){
-                        float groundOffset = 0.3f; // Adjust this value to control the height offset from the ground
-                        Vector3 groundPosition = new Vector3(transform.position.x, groundOffset, transform.position.z);
-                        currentProjectileLifetime = 3.0f;
-                        GameObject dustPile = Instantiate(mothProjectile.dustPilePrefab, groundPosition, Quaternion.identity);
-                        dustPile.SetActive(true);
-                    }
-                    // Customize the dust pile prefab as needed
-                }
-
-                
                 // Initialize and activate the clone
-                projectileClone.Initialize(mirrors[i].projectileSpeed, currentProjectileLifetime, mirrors[i].projectileDamage, 1f, stepVector, mirrors[i].trashSpawnChance);
+                projectileClone.Initialize(mirrors[i].projectileSpeed, 5.0f, mirrors[i].projectileDamage, 1f, stepVector, mirrors[i].trashSpawnChance);
                 if ((cycle + offset) % 3 == 0)
                 {
                     //projectileClone.transform.localScale = new Vector3(1, 5, 1); //Used to see which projectiles are shot directly at player
