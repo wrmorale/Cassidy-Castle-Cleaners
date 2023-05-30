@@ -501,7 +501,7 @@ MonoBehaviour:
       layerNumber: 0
     checker:
       activeFrameStart: 38
-      activeFrameEnd: 69
+      activeFrameEnd: 54
       attackCancelFrameStart: 95
       attackCancelFrameEnd: 99
       allCancelFrameStart: 0
