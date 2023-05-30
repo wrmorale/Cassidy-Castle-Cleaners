@@ -14,6 +14,10 @@ public class DialogueManager : MonoBehaviour
     public GameObject continueButton;
     public GameManager gameManager;
     public GameObject controls;
+    public GameObject controlone;
+    public GameObject controltwo;
+    public GameObject controlthree;
+    public GameObject controlfour;
     public TargetLock targetLock;
     [HideInInspector]public TutorialManager tutorialManager;
     public ObjectiveManager objectiveManager;
@@ -94,6 +98,14 @@ public class DialogueManager : MonoBehaviour
         // controls
         controls = GameObject.Find("Controls");
         controls.SetActive(false);
+        controlone = GameObject.Find("ControlOne");
+        controlone.SetActive(true);    
+        controltwo = GameObject.Find("ControlTwo");
+        controltwo.SetActive(false);   
+        controlthree = GameObject.Find("ControlThree");
+        controlthree.SetActive(false);
+        controlfour = GameObject.Find("ControlFour");
+        controlfour.SetActive(false);
 
         // tutorial Manager
         tutorialManager = gameObject.GetComponent<TutorialManager>();
@@ -128,16 +140,22 @@ public class DialogueManager : MonoBehaviour
 
         if(dialogueIndex == 5)
         {
+            controlone.SetActive(false);
+            controltwo.SetActive(true);
             teachMana();  
         }
 
         if(dialogueIndex == 8)
         {
+            controltwo.SetActive(false);
+            controlthree.SetActive(true);
             lockedDummy();
         }
 
         if(dialogueIndex == 10)
         {
+            controlthree.SetActive(false);  
+            controlfour.SetActive(true);
             dummyDone();    
         }
 
@@ -363,6 +381,7 @@ public class DialogueManager : MonoBehaviour
             inDialogue = true;
             objectiveManager.reappearBox();
             objectiveManager.displayNextObjective(curState);
+            //tutorialControls.NextImage();
         }
     }
     
