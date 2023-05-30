@@ -310,17 +310,18 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
                 );
             } while (Vector3.Distance(playerPos, position) < 3);
             GameObject enemy = Instantiate(enemyPrefab, position, Quaternion.identity);
-            enemies[i] = enemy;
             enemy.SetActive(true);
+            enemy.GetComponent<Enemy>().startAggro = true;
+            Debug.Log("Spawned enemy");
         }
         enemyPrefab.SetActive(false);
         finishedSpawning = true;
 
         //Make all enemies aggro
-        /*foreach (GameObject e in enemies)
+        foreach (GameObject e in enemies)
         {
-            e.GetComponent<Enemy>().setAggro(true);
-        }*/
+            //e.GetComponent<Enemy>().stateInfo = true
+        }
     }
 
     //Can be removed after shooting animation is added
