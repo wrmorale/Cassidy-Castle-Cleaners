@@ -15,7 +15,8 @@ GameObject:
   - component: {fileID: 2758012890476290084}
   - component: {fileID: 8861936568344469936}
   - component: {fileID: 2611525816116175740}
-  m_Layer: 0
+  - component: {fileID: 8294706140180225348}
+  m_Layer: 7
   m_Name: mothProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4892,6 +4893,22 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!54 &8294706140180225348
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2189304485348443954}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &4820427691773397322
 GameObject:
   m_ObjectHideFlags: 0
@@ -5245,7 +5262,7 @@ GameObject:
   - component: {fileID: 3038296913795440695}
   - component: {fileID: 7420708766062261213}
   - component: {fileID: 1880317074292139392}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MothEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -5307,6 +5324,7 @@ MonoBehaviour:
   healingSpeed: 0.1
   dustPilePrefab: {fileID: 0}
   maxDustPiles: 5
+  startAggro: 0
   audioPlayer: {fileID: 6875828675275010662}
   isHitsfx: {fileID: 8300000, guid: e88c3fdd90e13004289ecaec18134c50, type: 3}
   projectilePrefab: {fileID: 2758012890476290084}
