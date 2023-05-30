@@ -21,10 +21,10 @@ TagManager:
   - Water
   - UI
   - Enemy
-  - 
-  - 
-  - 
-  - 
+  - EnemyProjectile
+  - DustPile
+  - BossProjectile
+  - PlayerMelee
   - 
   - 
   - 

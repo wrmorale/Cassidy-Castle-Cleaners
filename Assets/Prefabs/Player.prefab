@@ -721,7 +721,7 @@ GameObject:
   - component: {fileID: 7428022769836866488}
   - component: {fileID: 7428022769836866489}
   - component: {fileID: 7428022769836866490}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: weapon3
   m_TagString: weapon
   m_Icon: {fileID: 0}
@@ -835,7 +835,7 @@ GameObject:
   - component: {fileID: 7428022770733803840}
   - component: {fileID: 7428022770733803841}
   - component: {fileID: 7428022770733803870}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: weapon1
   m_TagString: weapon
   m_Icon: {fileID: 0}
@@ -949,7 +949,7 @@ GameObject:
   - component: {fileID: 7428022771009043259}
   - component: {fileID: 7428022771009043260}
   - component: {fileID: 7428022771009043261}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: weapon2
   m_TagString: weapon
   m_Icon: {fileID: 0}
@@ -1196,6 +1196,7 @@ MonoBehaviour:
   targetLock: {fileID: 0}
   playerStats: {fileID: 0}
   activeAbility: {fileID: 0}
+  castingAllowed: 1
   moveAction:
     m_Name: Move
     m_Type: 0
