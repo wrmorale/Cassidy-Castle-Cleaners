@@ -12,12 +12,17 @@ public class GolemDash : ActionNode
     public float duration = 1.0f;
     public float dashSpeed = 5.0f;
     float endOn = 0.0f;
+    Vector3 moveDirection;
+    float startTime;
 
     /*Called the first time this node is ran on a tick.
     If a node returns RUNNING it will not call OnStart()
     on the next tick*/
     protected override void OnStart() {
         endOn = Time.time + duration;
+        moveDirection = blackboard.moveToPosition - context.transform.position;
+        moveDirection.y = 0;
+        startTime = Time.time;
     }
 
     /*Called after OnUpdate if the node returns SUCCESS or 
@@ -28,12 +33,12 @@ public class GolemDash : ActionNode
 
     /*Called every tick that this node is executed*/
     protected override State OnUpdate() {
-        Vector3 moveDirection = blackboard.moveToPosition - context.transform.position;
+        //dashSpeed = Mathf.Lerp(dashSpeed, 0, (Time.time - startTime)/duration);
         context.enemy.movement += moveDirection.normalized * dashSpeed;
 
         if (Time.time >= endOn)
         {
-            //context.rigidbody.velocity = Vector3.zero; //Wouldn't need this if it was a character controller
+            context.enemy.movement = Vector3.zero;
             return State.Success;
         }
         else
