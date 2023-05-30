@@ -31,8 +31,6 @@ MonoBehaviour:
   - rid: 2088461145881968640
   - rid: 2088461145881968641
   - rid: 2088461145881968642
-  - rid: 2088461145881968643
-  - rid: 2088461145881968644
   - rid: 2088461145881968646
   - rid: 2088461145881968647
   - rid: 2088461147737948160
@@ -86,12 +84,13 @@ MonoBehaviour:
   - rid: 4349734606885617670
   - rid: 4349734606885617671
   - rid: 4349734645403222016
+  - rid: 4349734651819720704
   treeState: 0
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 0
     specialCooldownEnds: 0
-  viewPosition: {x: -993.5, y: -923, z: 0}
+  viewPosition: {x: -892, y: -93, z: 0}
   viewScale: {x: 0.8695652, y: 0.8695652, z: 1}
   references:
     version: 2
@@ -351,35 +350,6 @@ MonoBehaviour:
         child:
           rid: 2088461147737948161
         phase: 2
-    - rid: 2088461145881968643
-      type: {class: Log, ns: TheKiwiCoder, asm: Assembly-CSharp}
-      data:
-        state: 0
-        started: 0
-        guid: 5bfec67205a8b80499a0978160d2ca74
-        position: {x: 405.49902, y: 1244}
-        blackboard:
-          moveToPosition: {x: 0, y: 0, z: 0}
-          aggro: 0
-          specialCooldownEnds: 0
-        description: 
-        drawGizmos: 0
-        message: Boss is idle Phase 2
-    - rid: 2088461145881968644
-      type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
-      data:
-        state: 0
-        started: 0
-        guid: 99d60699127bbc740a4a405dc9e44bd0
-        position: {x: 405.49902, y: 1094}
-        blackboard:
-          moveToPosition: {x: 0, y: 0, z: 0}
-          aggro: 0
-          specialCooldownEnds: 0
-        description: 
-        drawGizmos: 0
-        children:
-        - rid: 2088461145881968643
     - rid: 2088461145881968646
       type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:
@@ -403,7 +373,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 6e10775885e456f4f9860a760065de12
-        position: {x: 1024.4791, y: 608}
+        position: {x: 1024.5004, y: 608.00006}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -425,7 +395,7 @@ MonoBehaviour:
         description: 
         drawGizmos: 0
         child:
-          rid: 2088461145881968644
+          rid: 4349734651819720704
         restartOnSuccess: 1
         restartOnFailure: 1
     - rid: 2088461147737948161
@@ -888,7 +858,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: ec5cc642a3d51124298d406832ecec60
-        position: {x: 1374.7485, y: 608}
+        position: {x: 1374.5004, y: 608.00006}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -1127,6 +1097,20 @@ MonoBehaviour:
           specialCooldownEnds: 0
         description: 
         drawGizmos: 0
+    - rid: 4349734651819720704
+      type: {class: Wait, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: d29fcf8eeb4a4804493bb651ae47f34e
+        position: {x: 405.5, y: 1136.46}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: 
+        drawGizmos: 0
+        duration: 1
     - rid: 7060330863029649409
       type: {class: PlayerInRangeOfAttack, ns: , asm: Assembly-CSharp}
       data:

@@ -15,6 +15,10 @@ public class MirrorBossSoundManager : MonoBehaviour
     public float deathVolume;
     public AudioClip laughSfx;
     public float laughVolume;
+    public AudioClip shootShardSfx;
+    public float shootShardVolume;
+    public AudioClip spawnEnemySfx;
+    public float spawnEnemyVolume;
 
     public void playTeleportsfx(){
         animationSoundPlayer.PlayOneShot(teleportSfx, teleportVolume);
@@ -36,4 +40,11 @@ public class MirrorBossSoundManager : MonoBehaviour
         animationSoundPlayer.PlayOneShot(laughSfx, laughVolume);
     }
 
+    public void playShootShardSfx(){
+        animationSoundPlayer.PlayOneShot(shootShardSfx, shootShardVolume);
+    }
+
+    public void playSpawnEnemySfx(){
+        animationSoundPlayer.PlayOneShot(spawnEnemySfx, spawnEnemyVolume);
+    }
 }
