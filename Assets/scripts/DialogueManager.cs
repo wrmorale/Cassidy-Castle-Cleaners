@@ -361,7 +361,7 @@ public class DialogueManager : MonoBehaviour
             controlgiven = false;
             wall.SetActive(true);
             inDialogue = true;
-            objectiveManager.checkObjective();
+            objectiveManager.displayNextObjective();
         }
     }
     
