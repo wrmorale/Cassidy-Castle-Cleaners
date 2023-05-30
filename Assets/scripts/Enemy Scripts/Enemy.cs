@@ -50,6 +50,7 @@ public class Enemy : MonoBehaviour
 
     [Header("Behaviour Tree info")]
     BehaviourTreeRunner BTrunner;
+    public bool startAggro = false; //Determines if behavior tree blackboard should start aggro or not
 
     [Header("Audio Info")]
     [SerializeField] public AudioSource audioPlayer;
@@ -63,6 +64,7 @@ public class Enemy : MonoBehaviour
         currentHealth = maxHealth;
         enemyHealthBar.setMaxHealth(HealthPercent);
         BTrunner = GetComponent<BehaviourTreeRunner>();
+        BTrunner.tree.blackboard.aggro = startAggro;
         gravityBuildup = Vector3.zero;
         AudioSource audioPlayer = GetComponentInChildren<AudioSource>();
         //damageFlashObject = Instantiate(damageFlashPrefab, transform.position, Quaternion.identity);
@@ -159,11 +161,6 @@ public class Enemy : MonoBehaviour
                 //(As long as the attack actually does stagger damage
             }
         }
-    }
-
-    public void setAggro(bool setTo)
-    {
-        BTrunner.tree.blackboard.aggro = setTo;
     }
 
     //Called by Behavior tree after the death animation

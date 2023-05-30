@@ -227,6 +227,7 @@ MonoBehaviour:
   healingSpeed: 0.1
   dustPilePrefab: {fileID: 0}
   maxDustPiles: 5
+  startAggro: 0
   audioPlayer: {fileID: 6766287342617687851}
   isHitsfx: {fileID: 8300000, guid: e88c3fdd90e13004289ecaec18134c50, type: 3}
   entityPossessing: 0
@@ -332,6 +333,10 @@ MonoBehaviour:
   deathVolume: 1
   laughSfx: {fileID: 8300000, guid: 19903024ebdeec249b35a6687948dece, type: 3}
   laughVolume: 1
+  shootShardSfx: {fileID: 8300000, guid: 8d9f783c07d727a4199eec8c38a31675, type: 3}
+  shootShardVolume: 0.2
+  spawnEnemySfx: {fileID: 8300000, guid: 8a809c20f625ed7469025ed345775782, type: 3}
+  spawnEnemyVolume: 0.15
 --- !u!1 &4817280267641702473
 GameObject:
   m_ObjectHideFlags: 0
@@ -5997,6 +6002,10 @@ MonoBehaviour:
   deathVolume: 2
   laughSfx: {fileID: 8300000, guid: 19903024ebdeec249b35a6687948dece, type: 3}
   laughVolume: 0.1
+  shootShardSfx: {fileID: 0}
+  shootShardVolume: 0
+  spawnEnemySfx: {fileID: 0}
+  spawnEnemyVolume: 0
 --- !u!1 &8746870564427230249 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2173466925429366238, guid: fc9fa15a5f300c34298ffd5608792c08,

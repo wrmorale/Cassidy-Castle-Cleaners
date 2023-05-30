@@ -243,6 +243,10 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
 
                 // Rotate the projectile to face its direction
                 projectileClone.transform.rotation = Quaternion.LookRotation(stepVector);
+
+                //Play sound
+                if(i < 4) //Avoid getting too loud...
+                    mirrors[i].mirrorAudioManager.playShootShardSfx();
             }
             yield return new WaitForSeconds(secondsPerProjectile); // Waits until shooting the next projectile
             elapsedTime += secondsPerProjectile; // Increment the elapsed time
@@ -310,17 +314,17 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
                 );
             } while (Vector3.Distance(playerPos, position) < 3);
             GameObject enemy = Instantiate(enemyPrefab, position, Quaternion.identity);
-            enemies[i] = enemy;
             enemy.SetActive(true);
+            enemy.GetComponent<Enemy>().startAggro = true;
+            Debug.Log("Spawned enemy");
         }
         enemyPrefab.SetActive(false);
         finishedSpawning = true;
 
-        //Make all enemies aggro
-        /*foreach (GameObject e in enemies)
+        foreach(MirrorBossMirror mirror in mirrors)
         {
-            e.GetComponent<Enemy>().setAggro(true);
-        }*/
+            mirror.mirrorAudioManager.playSpawnEnemySfx();
+        }
     }
 
     //Can be removed after shooting animation is added
