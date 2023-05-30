@@ -14,14 +14,16 @@ public class MothProjectile : Projectile
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player") 
+        if (other.tag == "Player")
         {
             Player player = other.GetComponent<Player>();
             player.isHit(damage);
             Destroy(gameObject);
         }
         //Can change to other tags like "Room" and such 
-        else if(other.tag == "Furniture"){
+        else
+        {
+            Debug.Log("Projectile hit something");
             Destroy(gameObject);
         }
     }
