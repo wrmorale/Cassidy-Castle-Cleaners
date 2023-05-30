@@ -57,8 +57,13 @@ public class ObjectiveManager : MonoBehaviour
         checkbox.enabled = false;
     }
 
-    public void reappearObjective() {
-        objectivePanel.SetActive(true);
+    public void transitionObjective() {
+        checkbox.enabled = false;
+        check.enabled = false;
+        objectiveText.text = objectiveList["dummyDone"];
+    }
+
+    public void reappearBox() {
         checkbox.enabled = true;
     }
 }

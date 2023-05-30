@@ -343,8 +343,7 @@ public class DialogueManager : MonoBehaviour
             tutorialManager.enableBookstack();
             controlgiven = true;
             inDialogue = false;
-            //objectiveManager.displayNextObjective("dummyDone");
-            objectiveManager.endObjective();
+            objectiveManager.transitionObjective();
         }
         dialoguebox.SetActive(false);
         continueButton.SetActive(false);
@@ -355,8 +354,6 @@ public class DialogueManager : MonoBehaviour
     {
         if(tutorialManager.CombatTrigger.triggered == true)
         {
-            objectiveManager.reappearObjective();
-            objectiveManager.checkObjective();
             tutorialManager.showBunnies();
             dialoguebox.SetActive(true);
             continueButton.SetActive(true);
@@ -364,6 +361,7 @@ public class DialogueManager : MonoBehaviour
             controlgiven = false;
             wall.SetActive(true);
             inDialogue = true;
+            objectiveManager.reappearBox();
             objectiveManager.displayNextObjective(curState);
         }
     }
