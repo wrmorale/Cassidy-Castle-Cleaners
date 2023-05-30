@@ -22,9 +22,9 @@ TagManager:
   - UI
   - Enemy
   - EnemyProjectile
-  - 
-  - 
-  - 
+  - DustPile
+  - BossProjectile
+  - PlayerMelee
   - 
   - 
   - 

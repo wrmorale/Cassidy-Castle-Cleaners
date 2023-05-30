@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8537112314238840663}
   - component: {fileID: 8537112314238840662}
   - component: {fileID: 8537112314238840665}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: dust_pile
   m_TagString: DustPile
   m_Icon: {fileID: 0}
