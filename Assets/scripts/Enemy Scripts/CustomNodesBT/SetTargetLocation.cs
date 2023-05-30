@@ -23,7 +23,6 @@ public class SetTargetLocation : ActionNode
     /*Called every tick that this node is executed*/
     protected override State OnUpdate() {
         Vector3 playerCurrLocation = context.enemy.playerBody.position;
-        playerCurrLocation.y = 0;
         blackboard.moveToPosition = playerCurrLocation;
         return State.Success;
     }
