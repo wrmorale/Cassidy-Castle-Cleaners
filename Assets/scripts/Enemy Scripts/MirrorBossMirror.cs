@@ -10,6 +10,7 @@ public class MirrorBossMirror : Enemy
     public GameObject faceRender;
     MirrorBossMain mainScript;
     public GameObject tempProjectileWarning;
+    public ParticleSystem glassShardPortal;
 
     [Header("Projectile Stats")]
     [SerializeField] public Projectile projectilePrefab;

@@ -332,7 +332,14 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
     {
         foreach (MirrorBossMirror mirror in mirrors)
         {
-            mirror.tempProjectileWarning.SetActive(setTo);
+            if(setTo == true)
+            {
+                mirror.glassShardPortal.Play();
+            }
+            else
+            {
+                mirror.glassShardPortal.Stop();
+            }
         }
     }
 }
