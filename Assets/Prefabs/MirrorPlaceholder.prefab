@@ -235,7 +235,7 @@ MonoBehaviour:
   faceRender: {fileID: 8746870564427230249}
   tempProjectileWarning: {fileID: 8221481633115712227}
   glassShardPortal: {fileID: 264791422197378446}
-  projectilePrefab: {fileID: 8625248510964038548}
+  projectilePrefab: {fileID: 8995539546555610048}
   projectileSpeed: 2.5
   projectileLifetime: 2
   projectileDamage: 2
@@ -6206,16 +6206,16 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7844258492642663802}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8625248510964038548 stripped
+--- !u!114 &8995539546555610048 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1976920101499496174, guid: 5a08fdb5a9c9d3c4c9f8f13ce3c6b979,
+  m_CorrespondingSourceObject: {fileID: 1156004567274647226, guid: 5a08fdb5a9c9d3c4c9f8f13ce3c6b979,
     type: 3}
   m_PrefabInstance: {fileID: 7844258492642663802}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9011499548496211635}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f6a518d1aed97d4787ae90b00f68441, type: 3}
+  m_Script: {fileID: 11500000, guid: aa95874f0bfdd084d937809a8e1ebc8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &9011499548496211635 stripped
