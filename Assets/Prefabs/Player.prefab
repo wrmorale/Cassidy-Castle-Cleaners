@@ -1065,6 +1065,7 @@ GameObject:
   - component: {fileID: 7428022771512999011}
   - component: {fileID: 7428022771512999012}
   - component: {fileID: 7428022771512999013}
+  - component: {fileID: 3614798318404187607}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1325,6 +1326,33 @@ MonoBehaviour:
   broom: {fileID: 0}
   pan: {fileID: 0}
   combo: 0
+--- !u!114 &3614798318404187607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7428022771512999016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4af90ed6526906b4cac73d90cb1c581e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 0}
+  cinemachineFreeLook: {fileID: 0}
+  targetGroup: {fileID: 0}
+  aimIcon: {fileID: 0}
+  enemyTag: Enemy
+  transparentObjects:
+    serializedVersion: 2
+    m_Bits: 2
+  cameraHeight: 0.5
+  minDistance: 0
+  maxDistance: 3
+  isTargeting: 0
+  currentTarget: {fileID: 0}
+  healthBar: {fileID: 0}
+  targetColliderCenter: {x: 0, y: 0, z: 0}
 --- !u!1001 &463506593754139484
 PrefabInstance:
   m_ObjectHideFlags: 0
