@@ -284,6 +284,8 @@ public class GameManager : MonoBehaviour
 
         // Adjust Fog based on dustpile health values.
         RenderSettings.fogDensity = pooledHealth / (maxDustPiles * dustMaxHealth) * 0.2f;
+        //print(RenderSettings.fogDensity);
+        RenderSettings.fogDensity = Mathf.Clamp(RenderSettings.fogDensity, 0f, 0.12f); // Limit the fog density
 
         // Checks if player paused the game, if so stops time
         //HandlePause();

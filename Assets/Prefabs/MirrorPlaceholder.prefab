@@ -239,14 +239,14 @@ MonoBehaviour:
   projectileSpeed: 2.5
   projectileLifetime: 2
   projectileDamage: 2
-  trashSpawnChance: 0.02
+  trashSpawnChance: 0.055
   bulletSpawn: {fileID: 1581469713310629160}
   shockwave: {fileID: 5918913100410013975, guid: 5a5b27b9d4fc44449a6561c17d626306,
     type: 3}
   shockwaveDamage: 4
   shockwaveStartScale: 0.75
   shockwaveEndScale: 5
-  shockwaveDuration: 0.4
+  shockwaveDuration: 0.05
   shockwaveSpawnPoint: {fileID: 4943009027781030738}
   mirrorAudioManager: {fileID: 863786983169766583}
 --- !u!114 &5616337374384034975
@@ -6132,17 +6132,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Projectile
       objectReference: {fileID: 0}
-    - target: {fileID: 1284406130134168521, guid: 5a08fdb5a9c9d3c4c9f8f13ce3c6b979,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1976920101499496174, guid: 5a08fdb5a9c9d3c4c9f8f13ce3c6b979,
-        type: 3}
-      propertyPath: dustPilePrefab
-      value: 
-      objectReference: {fileID: 2492833140639110676, guid: da732805af83de34681303afb72e41e3,
-        type: 3}
     - target: {fileID: 8732169454410375250, guid: 5a08fdb5a9c9d3c4c9f8f13ce3c6b979,
         type: 3}
       propertyPath: m_RootOrder
