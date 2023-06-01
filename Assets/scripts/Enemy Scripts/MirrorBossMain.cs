@@ -76,7 +76,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
         }
         mirrors[mirrorIndex].SetPossessed(true);
         currPosessedMirror = mirrors[mirrorIndex];
-        currPosessedMirror.mirrorAudioManager.playTeleportsfx();
+        //currPosessedMirror.mirrorAudioManager.playTeleportsfx();
         currMirrorIndex = mirrorIndex;
 
         //Change the context?

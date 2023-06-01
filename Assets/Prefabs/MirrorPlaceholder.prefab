@@ -325,7 +325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c12a811feaa4c094b9b7b8937041e036, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationSoundPlayer: {fileID: 6766287342617687851}
+  animationSoundPlayer: {fileID: 4463541036941009171}
   teleportSfx: {fileID: 8300000, guid: 84054f659a0f1a140a55058c6e8f95f0, type: 3}
   teleportVolume: 0.5
   isHitSfx: {fileID: 8300000, guid: 2339665efa5fe694f93a20c71c558d61, type: 3}
@@ -5945,26 +5945,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5458173840886286603}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &7739766939873168309
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5151623062085858394}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6358257e7f669b04dbc8b235176cc446, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
 --- !u!82 &4463541036941009171
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6061,6 +6041,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &7739766939873168309
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5151623062085858394}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6358257e7f669b04dbc8b235176cc446, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!114 &2650217017237112080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6073,7 +6073,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c12a811feaa4c094b9b7b8937041e036, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationSoundPlayer: {fileID: 6766287342617687851}
+  animationSoundPlayer: {fileID: 4463541036941009171}
   teleportSfx: {fileID: 8300000, guid: 84054f659a0f1a140a55058c6e8f95f0, type: 3}
   teleportVolume: 0.5
   isHitSfx: {fileID: 8300000, guid: 2339665efa5fe694f93a20c71c558d61, type: 3}
