@@ -4200,12 +4200,12 @@ PrefabInstance:
     - target: {fileID: 6904719146668348922, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -1e-45
+      value: -3.450925e-38
       objectReference: {fileID: 0}
     - target: {fileID: 6904719146668348922, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 3.4532613e-38
       objectReference: {fileID: 0}
     - target: {fileID: 6904719147228723758, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
@@ -4255,17 +4255,17 @@ PrefabInstance:
     - target: {fileID: 6904719148039652034, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.25981748
+      value: 0.2598175
       objectReference: {fileID: 0}
     - target: {fileID: 6904719148039652034, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000040699422
+      value: 8.45487e-15
       objectReference: {fileID: 0}
     - target: {fileID: 6904719148039652034, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000010950485
+      value: -2.0099603e-15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe987c0be70e4764e92e8aff74c2356e, type: 3}
@@ -4739,6 +4739,7 @@ MonoBehaviour:
   bleachBombCost: 20
   dusterCost: 10
   soapBarCost: 10
+  mopCost: 20
   health: 0
   mana: 0
 --- !u!4 &713285107
@@ -9640,6 +9641,12 @@ PrefabInstance:
       propertyPath: turnSmoothTime
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7428022771512999011, guid: 780a7481df1a48d4792aed7fd543ee02,
+        type: 3}
+      propertyPath: playerAbilities.Array.data[1]
+      value: 
+      objectReference: {fileID: -4346639447019972719, guid: 485d0bf496e9b6a428f5bd5db89e3fea,
+        type: 3}
     - target: {fileID: 7428022771512999011, guid: 780a7481df1a48d4792aed7fd543ee02,
         type: 3}
       propertyPath: playerAbilities.Array.data[2]

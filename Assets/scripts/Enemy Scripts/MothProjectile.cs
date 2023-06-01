@@ -23,7 +23,6 @@ public class MothProjectile : Projectile
         //Can change to other tags like "Room" and such 
         else
         {
-            Debug.Log("Projectile hit something");
             Destroy(gameObject);
         }
     }

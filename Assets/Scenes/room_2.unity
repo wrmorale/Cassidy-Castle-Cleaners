@@ -470,12 +470,12 @@ PrefabInstance:
     - target: {fileID: 6904719146668348922, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.0000000259191
+      value: -0.00000005972796
       objectReference: {fileID: 0}
     - target: {fileID: 6904719146668348922, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.000000005659446
+      value: -0.000000013041624
       objectReference: {fileID: 0}
     - target: {fileID: 6904719146668348922, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
@@ -485,7 +485,7 @@ PrefabInstance:
     - target: {fileID: 6904719146668348922, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.2133243
+      value: -0.21332428
       objectReference: {fileID: 0}
     - target: {fileID: 6904719147228723758, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
@@ -1375,6 +1375,7 @@ MonoBehaviour:
   bleachBombCost: 20
   dusterCost: 10
   soapBarCost: 10
+  mopCost: 20
   health: 0
   mana: 0
 --- !u!4 &433048836
@@ -6611,6 +6612,12 @@ PrefabInstance:
       propertyPath: turnSmoothTime
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7428022771512999011, guid: 780a7481df1a48d4792aed7fd543ee02,
+        type: 3}
+      propertyPath: playerAbilities.Array.data[1]
+      value: 
+      objectReference: {fileID: -4346639447019972719, guid: 485d0bf496e9b6a428f5bd5db89e3fea,
+        type: 3}
     - target: {fileID: 7428022771512999011, guid: 780a7481df1a48d4792aed7fd543ee02,
         type: 3}
       propertyPath: playerAbilities.Array.data[2]

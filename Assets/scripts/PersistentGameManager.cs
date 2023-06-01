@@ -16,6 +16,7 @@ public class PersistentGameManager : MonoBehaviour
     public float bleachBombCost = 20f;
     public float dusterCost = 10f;
     public float soapBarCost = 10f;
+    public float mopCost = 20f;
 
     private List<float> lastPlayerHealthValues = new List<float>();
     private List<float> lastPlayerManaValues = new List<float>();
