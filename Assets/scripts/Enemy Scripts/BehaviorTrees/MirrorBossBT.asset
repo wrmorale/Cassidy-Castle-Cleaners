@@ -90,8 +90,8 @@ MonoBehaviour:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 0
     specialCooldownEnds: 0
-  viewPosition: {x: -892, y: -93, z: 0}
-  viewScale: {x: 0.8695652, y: 0.8695652, z: 1}
+  viewPosition: {x: -572.5, y: -416.5, z: 0}
+  viewScale: {x: 0.49717674, y: 0.49717674, z: 1}
   references:
     version: 2
     RefIds:
@@ -893,7 +893,7 @@ MonoBehaviour:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
           specialCooldownEnds: 0
-        description: Replace with actual projectile attack anim later
+        description: 
         drawGizmos: 0
         setTo: 1
     - rid: 4349734493023633409
@@ -921,7 +921,7 @@ MonoBehaviour:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
           specialCooldownEnds: 0
-        description: Replace with actual projectile attack anim later
+        description: 
         drawGizmos: 0
         setTo: 1
     - rid: 4349734493023633413
@@ -958,7 +958,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 280c20cd29f25bf4aa2743a78a7458e9
-        position: {x: 1709, y: 1647.5002}
+        position: {x: 1708.9999, y: 1647.4998}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0

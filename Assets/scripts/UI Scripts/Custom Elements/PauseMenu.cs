@@ -42,7 +42,6 @@ public class PauseMenu : MonoBehaviour
             }
         }
         
-        //Debug.Log(eventSystem.currentSelectedGameObject);
     }
 
     public void ResumeGame()

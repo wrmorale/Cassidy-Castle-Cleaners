@@ -721,7 +721,7 @@ GameObject:
   - component: {fileID: 7428022769836866488}
   - component: {fileID: 7428022769836866489}
   - component: {fileID: 7428022769836866490}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: weapon3
   m_TagString: weapon
   m_Icon: {fileID: 0}
@@ -736,7 +736,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7428022769836866492}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.15199995, z: 0.44599998}
+  m_LocalPosition: {x: 0, y: 0.15199995, z: 0.303}
   m_LocalScale: {x: 0.12006, y: 0.5843251, z: 0.203105}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -804,8 +804,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.3771923, y: 1.299482, z: 1}
-  m_Center: {x: -0.038686022, y: -0.14974062, z: -6.0063996e-16}
+  m_Size: {x: 0.89, y: 0.54, z: 0.84}
+  m_Center: {x: -0.038686022, y: -0.26, z: 0.06}
 --- !u!114 &7428022769836866490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -835,7 +835,7 @@ GameObject:
   - component: {fileID: 7428022770733803840}
   - component: {fileID: 7428022770733803841}
   - component: {fileID: 7428022770733803870}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: weapon1
   m_TagString: weapon
   m_Icon: {fileID: 0}
@@ -918,8 +918,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1.8971434}
-  m_Center: {x: 0, y: 0, z: -0.44857177}
+  m_Size: {x: 1.48, y: 0.68, z: 1.3}
+  m_Center: {x: 0, y: -0.21, z: -0.76}
 --- !u!114 &7428022770733803870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -949,7 +949,7 @@ GameObject:
   - component: {fileID: 7428022771009043259}
   - component: {fileID: 7428022771009043260}
   - component: {fileID: 7428022771009043261}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: weapon2
   m_TagString: weapon
   m_Icon: {fileID: 0}
@@ -964,8 +964,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7428022771009043263}
   m_LocalRotation: {x: -0, y: -0, z: 0.7137705, w: 0.7003797}
-  m_LocalPosition: {x: 0.007600069, y: 0.12399995, z: 0.24119997}
-  m_LocalScale: {x: 0.17438498, y: 0.6495416, z: 0.24216768}
+  m_LocalPosition: {x: 0.007600069, y: 0.12399995, z: 0.181}
+  m_LocalScale: {x: 0.17438498, y: 0.41, z: 0.23}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7428022771512999014}
@@ -1032,7 +1032,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1.5709931}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: -0.28549647}
 --- !u!114 &7428022771009043261
 MonoBehaviour:
@@ -1196,6 +1196,7 @@ MonoBehaviour:
   targetLock: {fileID: 0}
   playerStats: {fileID: 0}
   activeAbility: {fileID: 0}
+  castingAllowed: 1
   moveAction:
     m_Name: Move
     m_Type: 0

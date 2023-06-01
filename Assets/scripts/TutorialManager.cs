@@ -10,6 +10,7 @@ public class TutorialManager : MonoBehaviour
     public Player player;
     public GameObject dummy1;
     public GameObject dummy2;
+    public GameObject tempDummy;
     public GameObject bookstack;
     public TutorialTrigger CombatTrigger;
     public GameObject DustBunny1;
@@ -18,13 +19,7 @@ public class TutorialManager : MonoBehaviour
 
     void Start()
     {
-        //gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        //controller = GameObject.Find("Player").GetComponent<playerController>();
-        //bookstack = GameObject.Find("Bookstack_med");
-        //CombatTrigger = GameObject.Find("CombatTrigger").GetComponent<TutorialTrigger>();
-        //player = GameObject.Find("Player").GetComponent<Player>();
-        //dummy1 = GameObject.Find("Dummy1").GetComponent<Enemy>();
-        //dummy2 = GameObject.Find("Dummy2").GetComponent<Enemy>();
+        controller.castingAllowed = false;
     }
 
     public void showBunnies()
@@ -32,16 +27,16 @@ public class TutorialManager : MonoBehaviour
         DustBunny1.SetActive(true);
         DustBunny2.SetActive(true);
         DustBunny3.SetActive(true);
-        DustBunny1.GetComponent<DustBunny>().enabled = false;
-        DustBunny2.GetComponent<DustBunny>().enabled = false;
-        DustBunny3.GetComponent<DustBunny>().enabled = false;
+        DustBunny1.GetComponent<Enemy>().aggroRange = 0;
+        DustBunny2.GetComponent<Enemy>().aggroRange = 0;
+        DustBunny3.GetComponent<Enemy>().aggroRange = 0;
     }
 
     public void activateBunnies()
     {
-        DustBunny1.GetComponent<DustBunny>().enabled = true;
-        DustBunny2.GetComponent<DustBunny>().enabled = true;
-        DustBunny3.GetComponent<DustBunny>().enabled = true;
+        DustBunny1.GetComponent<Enemy>().aggroRange = 4;
+        DustBunny2.GetComponent<Enemy>().aggroRange = 4;
+        DustBunny3.GetComponent<Enemy>().aggroRange = 4;
     }
 
     public void hideBunnies()

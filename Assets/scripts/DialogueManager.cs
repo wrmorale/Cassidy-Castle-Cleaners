@@ -14,8 +14,13 @@ public class DialogueManager : MonoBehaviour
     public GameObject continueButton;
     public GameManager gameManager;
     public GameObject controls;
+    public GameObject controlone;
+    public GameObject controltwo;
+    public GameObject controlthree;
+    public GameObject controlfour;
     public TargetLock targetLock;
     [HideInInspector]public TutorialManager tutorialManager;
+    public ObjectiveManager objectiveManager;
     public PauseMenu pauseMenu;
     public GameObject wall;
     public GameObject portrait;
@@ -81,29 +86,53 @@ public class DialogueManager : MonoBehaviour
 
     };
 
+
     // Start is called before the first frame update
     void Start()
     {
+        // dialogue 
         dialoguebox = GameObject.Find("DialogueBox");
         continueButton = GameObject.Find("ContinueButton");
-        controls = GameObject.Find("Controls");
         portrait = GameObject.Find("Portrait");
+        
+        // controls
+        controls = GameObject.Find("Controls");
         controls.SetActive(false);
+        controlone = GameObject.Find("ControlOne");
+        controlone.SetActive(true);    
+        controltwo = GameObject.Find("ControlTwo");
+        controltwo.SetActive(false);   
+        controlthree = GameObject.Find("ControlThree");
+        controlthree.SetActive(false);
+        controlfour = GameObject.Find("ControlFour");
+        controlfour.SetActive(false);
+
+        // tutorial Manager
         tutorialManager = gameObject.GetComponent<TutorialManager>();
         tutorialManager.stopActions();
         tutorialManager.disableBookstack();
         tutorialManager.hideBunnies();
+
+        // env objects
         wall = GameObject.Find("InvisibleWall");
         dummy1TopHealth = tutorialManager.dummy1.GetComponent<Enemy>().maxHealth;
         dummy1Health = dummy1TopHealth;
         dummy2TopHealth = tutorialManager.dummy2.GetComponent<Enemy>().maxHealth;
         dummy2Health = dummy2TopHealth;
         StartDialogue();
+        tutorialManager.dummy1.SetActive(false);
+        tutorialManager.dummy2.SetActive(false);
+
+        // objective list
+        objectiveManager = gameObject.GetComponent<ObjectiveManager>();
+        
     }
 
+    // dictionary for objectives
+    
+    
     void Update()
     {
-
         if(dialogueIndex == 3)
         {
             cleanPile();
@@ -111,16 +140,22 @@ public class DialogueManager : MonoBehaviour
 
         if(dialogueIndex == 5)
         {
+            controlone.SetActive(false);
+            controltwo.SetActive(true);
             teachMana();  
         }
 
         if(dialogueIndex == 8)
         {
+            controltwo.SetActive(false);
+            controlthree.SetActive(true);
             lockedDummy();
         }
 
         if(dialogueIndex == 10)
         {
+            controlthree.SetActive(false);  
+            controlfour.SetActive(true);
             dummyDone();    
         }
 
@@ -130,12 +165,24 @@ public class DialogueManager : MonoBehaviour
             startCombat();
         }
 
-        if(dialogueIndex == 13){
+        if(dialogueIndex == 13)
+        {
             roomCleared();
+
         }
 
-        if(dialogueIndex == 14){
-            if(controlgiven == false)
+        if(dialogueIndex == 14)
+        {
+            FinishTutorial();
+        }
+
+        HandlePauseInTutorial();
+
+    }
+
+    public void FinishTutorial()
+    {
+        if(controlgiven == false)
             {
                 tutorialManager.resumeActions();                
                 controlgiven = true;
@@ -144,10 +191,6 @@ public class DialogueManager : MonoBehaviour
             dialoguebox.SetActive(false);
             continueButton.SetActive(false);
             dialogueIndex = 0;
-        }
-
-        HandlePauseInTutorial();
-
     }
 
      public void StartDialogue ()
@@ -197,6 +240,7 @@ public class DialogueManager : MonoBehaviour
         }
         dialoguebox.SetActive(false);
         continueButton.SetActive(false);
+        objectiveManager.startObjective(curState);
 
         if(gameManager.numberOfDustPiles == 0 && curState == "cleanPile")
         {
@@ -205,6 +249,7 @@ public class DialogueManager : MonoBehaviour
             tutorialManager.stopActions();
             controlgiven = false;
             inDialogue = true;
+            objectiveManager.checkObjective();
         }
     }
 
@@ -215,9 +260,13 @@ public class DialogueManager : MonoBehaviour
             tutorialManager.resumeActions();                
             controlgiven = true;
             inDialogue = false;
+            tutorialManager.controller.castingAllowed = true;
         }
+
         dialoguebox.SetActive(false);
         continueButton.SetActive(false);
+        objectiveManager.displayNextObjective(curState);
+
         if(abilitiesUsed < 3){
             for (int i = 0; i < tutorialManager.controller.playerAbilities.Length; i++)
             {
@@ -235,6 +284,7 @@ public class DialogueManager : MonoBehaviour
             tutorialManager.stopActions();
             controlgiven = false;
             inDialogue = true;
+            objectiveManager.checkObjective();
         }        
     }
 
@@ -245,6 +295,9 @@ public class DialogueManager : MonoBehaviour
             tutorialManager.resumeActions();                
             controlgiven = true;
             inDialogue = false;
+            tutorialManager.dummy1.SetActive(true);
+            tutorialManager.dummy2.SetActive(true);
+            objectiveManager.displayNextObjective(curState);
         }
         dialoguebox.SetActive(false);
         continueButton.SetActive(false);
@@ -257,6 +310,7 @@ public class DialogueManager : MonoBehaviour
             controlgiven = false;
             targetLocked = false;
             inDialogue = true;
+            //objectiveManager.checkObjective();
         }
     }
 
@@ -269,9 +323,11 @@ public class DialogueManager : MonoBehaviour
             tutorialManager.dummy2.GetComponent<Enemy>().currentHealth = dummy2TopHealth;
             controlgiven = true;
             inDialogue = false;
+            //objectiveManager.displayNextObjective(curState);
         }
         dialoguebox.SetActive(false);
         continueButton.SetActive(false);
+        //objectiveManager.displayNextObjective(curState);
         gameManager.infiniteManaCheat = true;
         gameManager.updateManaAmount(gameManager.mana);
         dummy1Health = tutorialManager.dummy1.GetComponent<Enemy>().currentHealth;
@@ -293,6 +349,7 @@ public class DialogueManager : MonoBehaviour
             gameManager.infiniteManaCheat = false;
             controlgiven = false;
             inDialogue = true;
+            objectiveManager.checkObjective();
         }
     }
 
@@ -304,6 +361,7 @@ public class DialogueManager : MonoBehaviour
             tutorialManager.enableBookstack();
             controlgiven = true;
             inDialogue = false;
+            objectiveManager.transitionObjective();
         }
         dialoguebox.SetActive(false);
         continueButton.SetActive(false);
@@ -321,6 +379,9 @@ public class DialogueManager : MonoBehaviour
             controlgiven = false;
             wall.SetActive(true);
             inDialogue = true;
+            objectiveManager.reappearBox();
+            objectiveManager.displayNextObjective(curState);
+            //tutorialControls.NextImage();
         }
     }
     
@@ -332,16 +393,18 @@ public class DialogueManager : MonoBehaviour
             tutorialManager.activateBunnies();               
             controlgiven = true;
             inDialogue = false;
+            
         }
         dialoguebox.SetActive(false);
         continueButton.SetActive(false);
 
-        if(gameManager.numberOfEnemies == 2){
+        if(gameManager.numberOfEnemies == 3){
             dialoguebox.SetActive(true);
             continueButton.SetActive(true);
             tutorialManager.stopActions();
             controlgiven = false;
             inDialogue = true;
+            objectiveManager.checkObjective();
         }
 
     }
@@ -353,10 +416,12 @@ public class DialogueManager : MonoBehaviour
         //dialoguebox.SetActive(false);
         tutorialManager.dummy1.SetActive(false);
         tutorialManager.dummy2.SetActive(false);
+        tutorialManager.tempDummy.SetActive(false);
         gameManager.mana = 0;
         gameManager.updateManaAmount(gameManager.mana);
         tutorialManager.player.health = 25f;
-        tutorialManager.player.updateHealthUI();    
+        tutorialManager.player.updateHealthUI();
+        objectiveManager.endObjective();    
     }
 
     void HandlePauseInTutorial()
@@ -370,9 +435,7 @@ public class DialogueManager : MonoBehaviour
             {
                 pauseMenu.eventSystem.SetSelectedGameObject(pauseMenu.resumeButton);
                 alreadyPaused = true;
-            }
-            
-            
+            }   
         }
         else if(!pauseMenu.isPaused)
         {

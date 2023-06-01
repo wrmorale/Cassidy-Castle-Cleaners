@@ -243,6 +243,10 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
 
                 // Rotate the projectile to face its direction
                 projectileClone.transform.rotation = Quaternion.LookRotation(stepVector);
+
+                //Play sound
+                if(i < 4) //Avoid getting too loud...
+                    mirrors[i].mirrorAudioManager.playShootShardSfx();
             }
             yield return new WaitForSeconds(secondsPerProjectile); // Waits until shooting the next projectile
             elapsedTime += secondsPerProjectile; // Increment the elapsed time
@@ -317,10 +321,9 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
         enemyPrefab.SetActive(false);
         finishedSpawning = true;
 
-        //Make all enemies aggro
-        foreach (GameObject e in enemies)
+        foreach(MirrorBossMirror mirror in mirrors)
         {
-            //e.GetComponent<Enemy>().stateInfo = true
+            mirror.mirrorAudioManager.playSpawnEnemySfx();
         }
     }
 
@@ -329,7 +332,14 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
     {
         foreach (MirrorBossMirror mirror in mirrors)
         {
-            mirror.tempProjectileWarning.SetActive(setTo);
+            if(setTo == true)
+            {
+                mirror.glassShardPortal.Play();
+            }
+            else
+            {
+                mirror.glassShardPortal.Stop();
+            }
         }
     }
 }
