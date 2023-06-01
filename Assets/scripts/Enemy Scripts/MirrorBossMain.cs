@@ -37,7 +37,8 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
     [Header("Aggro Status")]
     public bool aggro = false;
     public Transform player;
-    public int phase; //1 = phase 1, 2 = spawn enemies, 3 = final phase, 4+ = defeated
+    public int phase; //1 = phase 1, 2 = spawn enemies, 3 = final phase
+    public bool setupPhase3 = false;
 
     [HideInInspector] public bool isCoroutineRunning = false;
 
@@ -341,5 +342,10 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
                 mirror.glassShardPortal.Stop();
             }
         }
+    }
+
+    public void abortBT()
+    {
+        btRunner.tree.rootNode.Abort();
     }
 }
