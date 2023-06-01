@@ -30,7 +30,8 @@ public class TargetLock : MonoBehaviour
     [Header("Settings")]
     [Space]
     [SerializeField] private string enemyTag; // the enemies tag.
-    [SerializeField] private float cameraHeight;
+    [SerializeField] private LayerMask transparentObjects; // objects that should not block raycast.
+    [SerializeField] private float cameraHeight = 0.5f; // height the camera moves to when locking on
     [SerializeField] private float minDistance; // minimum distance to stop rotation if you get close to target
     [SerializeField] private float maxDistance;
 
@@ -146,7 +147,7 @@ public class TargetLock : MonoBehaviour
             targetGroup.AddMember(currentTarget, 0.3f, 1f);
             targetGroup.AddMember(healthBar, 0.7f, 1f);
 
-            cinemachineFreeLook.m_YAxis.Value = 0.5f;
+            cinemachineFreeLook.m_YAxis.Value = cameraHeight;
         }
     }
 
@@ -272,7 +273,7 @@ public class TargetLock : MonoBehaviour
         Vector3 dir = ((go.transform.position + goColliderCenter) - mainCamera.transform.position).normalized;
         Ray ray = new Ray(mainCamera.transform.position, dir);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit, 1000f, ~transparentObjects))
             return hit.collider.gameObject == go;
 
         return false;
