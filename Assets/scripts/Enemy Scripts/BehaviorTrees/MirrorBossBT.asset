@@ -98,13 +98,20 @@ MonoBehaviour:
   - rid: 1283210377912123393
   - rid: 1283210377912123394
   - rid: 1283210377912123395
+  - rid: 1283210377912123396
+  - rid: 1283210377912123397
+  - rid: 1283210377912123398
+  - rid: 1283210377912123399
+  - rid: 1283210377912123400
+  - rid: 1283210377912123401
+  - rid: 1283210377912123402
   treeState: 0
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 0
     specialCooldownEnds: 0
-  viewPosition: {x: 366.5, y: 206, z: 0}
-  viewScale: {x: 0.25, y: 0.25, z: 1}
+  viewPosition: {x: 896.5, y: -238, z: 0}
+  viewScale: {x: 0.57175326, y: 0.57175326, z: 1}
   references:
     version: 2
     RefIds:
@@ -316,7 +323,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 527b8a74b1d5004429307b884714597e
-        position: {x: -1092.5, y: 747}
+        position: {x: -832.75, y: 746.99994}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -331,7 +338,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 954e04f716283394696bab513c60e6ff
-        position: {x: -966, y: 1241.5}
+        position: {x: -706.25006, y: 1241.4999}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -344,7 +351,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: e4f8a39d7dd32d943b9ae02cf9cc617f
-        position: {x: -1112, y: 888}
+        position: {x: -852.2501, y: 887.9999}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -354,6 +361,110 @@ MonoBehaviour:
         child:
           rid: 2581180847576842243
         phases: 03000000
+    - rid: 1283210377912123396
+      type: {class: SetAnimatorTrigger, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 579a71e73bb5ea14d9230f970028088b
+        position: {x: -1014.75, y: 1241.4999}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: 
+        drawGizmos: 0
+        triggerName: Enter
+    - rid: 1283210377912123397
+      type: {class: CheckBossPhase, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: fb7a0a8de3d09724a98b428fca6816d5
+        position: {x: -1271.7173, y: 702.99994}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: Dead
+        drawGizmos: 0
+        child:
+          rid: 1283210377912123398
+        phases: 04000000
+    - rid: 1283210377912123398
+      type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 71f7efb50d15f21439f3b64ef974f0bc
+        position: {x: -1446.0002, y: 835}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: 
+        drawGizmos: 0
+        children:
+        - rid: 1283210377912123399
+        - rid: 1283210377912123400
+        - rid: 1283210377912123401
+        - rid: 1283210377912123402
+    - rid: 1283210377912123399
+      type: {class: SetAnimatorTrigger, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 8f4951c5186928b489d66c51cc27e71e
+        position: {x: -1693.249, y: 976}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: 
+        drawGizmos: 0
+        triggerName: Death
+    - rid: 1283210377912123400
+      type: {class: Wait, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 4850405773ac1874aa4d113e02866679
+        position: {x: -1521.0001, y: 976}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: 
+        drawGizmos: 0
+        duration: 2
+    - rid: 1283210377912123401
+      type: {class: BossNextScene, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: ec2b6306f99b4b044b139ec1a249f47e
+        position: {x: -1346.5002, y: 976}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: Would prob be nice if we had a node that can just call any single
+          function on the boss script
+        drawGizmos: 0
+    - rid: 1283210377912123402
+      type: {class: Wait, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 676a9dda0562d8b41b6017007fc5ec20
+        position: {x: -1178.7229, y: 976}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: Make sure scene loads before this sequence restarts
+        drawGizmos: 0
+        duration: 20
     - rid: 2088461107814203392
       type: {class: RootNode, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:
@@ -582,6 +693,7 @@ MonoBehaviour:
         description: 
         drawGizmos: 0
         children:
+        - rid: 1283210377912123397
         - rid: 1283210377912123393
         - rid: 2088461145881968640
         - rid: 2088461145881968642
@@ -720,7 +832,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: a8ed526c508c89749bbd58e5546caf48
-        position: {x: -1656.5, y: 1247}
+        position: {x: -1464.75, y: 1241.4999}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -734,12 +846,12 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 83e0c817458d9cb4085595ace58af698
-        position: {x: -1322.5, y: 1247}
+        position: {x: -1314.4998, y: 1241.4999}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
           specialCooldownEnds: 0
-        description: 
+        description: This also plays sound effect
         drawGizmos: 0
     - rid: 2581180847576842243
       type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
@@ -747,7 +859,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 4d2536ef115b33746bcf81cf2c053e72
-        position: {x: -1172.5, y: 1020}
+        position: {x: -912.7501, y: 1019.99994}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -756,8 +868,9 @@ MonoBehaviour:
         drawGizmos: 0
         children:
         - rid: 2581180847576842241
-        - rid: 4349734489436979203
         - rid: 2581180847576842242
+        - rid: 4349734489436979203
+        - rid: 1283210377912123396
         - rid: 4349734489436979201
         - rid: 1283210377912123394
     - rid: 2581180847576842244
@@ -1027,14 +1140,14 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: fe0b056903920ea428f3c956c5710efc
-        position: {x: -1153.5, y: 1247}
+        position: {x: -864.7501, y: 1241.4999}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
           specialCooldownEnds: 0
         description: 
         drawGizmos: 0
-        duration: 4.5
+        duration: 3
     - rid: 4349734489436979202
       type: {class: BossSwapMirror, ns: , asm: Assembly-CSharp}
       data:
@@ -1056,7 +1169,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: e05761572a0acc84885747f26a2e5c99
-        position: {x: -1490, y: 1247}
+        position: {x: -1164.75, y: 1241.4999}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -1101,7 +1214,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 03dc039afde470e4da22d4ff200f6657
-        position: {x: -512.5, y: 1629.5}
+        position: {x: -512.49976, y: 1629.5001}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0

@@ -37,7 +37,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
     [Header("Aggro Status")]
     public bool aggro = false;
     public Transform player;
-    public int phase; //1 = phase 1, 2 = spawn enemies, 3 = final phase
+    public int phase; //1 = phase 1, 2 = spawn enemies, 3 = final phase, 4 = dead
     public bool setupPhase3 = false;
 
     [HideInInspector] public bool isCoroutineRunning = false;
@@ -132,21 +132,12 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
                 setShootingWarning(false); //Remove later
             }
 
-            if (currentHealth <= 0)
+            if (currentHealth <= 0) //Dead now
             {
-                // Destroy the cube when it has no health left
-                //this should work for death animation but not all enemies have one so it gets errors
-                //animator.SetBool("Death", true);
+                canBeHarmed = false; //Prevent from taking further damage now that it's dead
+                phase = 4;
                 currPosessedMirror.mirrorAudioManager.playDeathsfx();
-                //StartCoroutine(waitForAnimation("Death"));
-
-                if (levelLoader) //Load the ending scene
-                    levelLoader.LoadTargetLevel("Win_scene");
-                else
-                    Debug.LogError("[MirrorBossMain] Where's the level loader??");
-
-                //Destroy(gameObject);
-                StartCoroutine(DelayedDestroy());
+                abortBT();
             }
         }
         else
@@ -155,10 +146,13 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
         }
     }
 
-    // Coroutine for delayed destruction
-    IEnumerator DelayedDestroy(){
-        yield return new WaitForSeconds(1f); // Wait for 1 second
-        Destroy(gameObject); // Destroy the object after the delay
+    public void loadEndingScene()
+    {
+        if (levelLoader) //Load the ending scene
+            levelLoader.LoadTargetLevel("Win_scene");
+        else
+            Debug.LogError("[MirrorBossMain] Where's the level loader??");
+        Destroy(gameObject, 1f); // Destroy the object after the delay
     }
 
     public void phase2CompletionCheck(){
