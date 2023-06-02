@@ -226,10 +226,14 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
                 Vector3 stepVector = Quaternion.AngleAxis(angleStep, Vector3.up) * mirrors[i].transform.right; // Calculates the angle to shoot
 
                 // Randomize the projectile lifetime within the range of the current value +- 1
-                float randomizedLifetime = mirrors[i].projectileLifetime + UnityEngine.Random.Range(-1.5f, 2.0f);
+                //float randomizedLifetime = mirrors[i].projectileLifetime + UnityEngine.Random.Range(-1.5f, 2.0f);
 
                 // Initialize and activate the clone
-                projectileClone.Initialize(mirrors[i].projectileSpeed, 5.0f, mirrors[i].projectileDamage, 1f, stepVector, mirrors[i].trashSpawnChance);
+                float shardPileSpawnChance = mirrors[i].trashSpawnChance;
+                if(phase > 1){
+                    shardPileSpawnChance = shardPileSpawnChance/2;
+                }
+                projectileClone.Initialize(mirrors[i].projectileSpeed, 5.0f, mirrors[i].projectileDamage, 1f, stepVector, shardPileSpawnChance);
                 if ((cycle + offset) % 3 == 0)
                 {
                     //projectileClone.transform.localScale = new Vector3(1, 5, 1); //Used to see which projectiles are shot directly at player
