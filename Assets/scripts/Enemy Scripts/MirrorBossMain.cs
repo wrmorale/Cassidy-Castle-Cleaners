@@ -238,7 +238,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
                 if(phase > 1){
                     shardPileSpawnChance = shardPileSpawnChance/2;
                 }
-                projectileClone.Initialize(mirrors[i].projectileSpeed, 5.0f, mirrors[i].projectileDamage, 1f, stepVector, mirrors[i].trashSpawnChance);
+                projectileClone.Initialize(mirrors[i].projectileSpeed, 5.0f, mirrors[i].projectileDamage, 1f, stepVector, shardPileSpawnChance);
                 if ((cycle + offset) % 3 == 0)
                 {
                     //projectileClone.transform.localScale = new Vector3(1, 5, 1); //Used to see which projectiles are shot directly at player

@@ -106,7 +106,7 @@ MonoBehaviour:
   maxScale: 0
   healingSpeed: 0.2
   audioClip: {fileID: 8300000, guid: f9c93f90c4931cf42a2dc2116c8d8f5d, type: 3}
-  audioLevel: 0
+  audioLevel: 0.5
 --- !u!65 &6676146505331243454
 BoxCollider:
   m_ObjectHideFlags: 0
