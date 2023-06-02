@@ -234,7 +234,7 @@ public class GameManager : MonoBehaviour
             {
                 mana = 0;
                 playercontroller.HandleDeath();
-
+                ResetPlayerStats();
                 levelLoader.LoadTargetLevel("Loss_Scene");
             }
         }
@@ -327,6 +327,7 @@ public class GameManager : MonoBehaviour
             else
             {
                 // show end credits, player went through all rooms.
+                ResetPlayerStats();
                 levelLoader.LoadTargetLevel("Win_scene");
             }
         }
@@ -387,6 +388,15 @@ public class GameManager : MonoBehaviour
                 playerStats = players[0];
                 playerStats.health = persistentGM.GetLastPlayerHealth();
             }
+        }
+    }
+
+    private void ResetPlayerStats()
+    {
+        if (playerStats != null)
+        {
+            playerStats.health = 25f; // Reset health to default value
+            mana = 0f; // Reset mana to default value
         }
     }
 }

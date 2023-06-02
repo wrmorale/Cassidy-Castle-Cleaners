@@ -1335,6 +1335,16 @@ PrefabInstance:
       propertyPath: abilities.Array.data[0].abilityChance
       value: 99
       objectReference: {fileID: 0}
+    - target: {fileID: 9094371390573252281, guid: 3fec4a32b1661b648bdcb0b9faccc35d,
+        type: 3}
+      propertyPath: pc
+      value: 
+      objectReference: {fileID: 485352727}
+    - target: {fileID: 9094371390573252281, guid: 3fec4a32b1661b648bdcb0b9faccc35d,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 485352725}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fec4a32b1661b648bdcb0b9faccc35d, type: 3}
 --- !u!1 &245130090 stripped
@@ -6425,12 +6435,12 @@ PrefabInstance:
     - target: {fileID: 6904719146668348922, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.44763756
+      value: -0.44763762
       objectReference: {fileID: 0}
     - target: {fileID: 6904719146668348922, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.09774178
+      value: -0.0977418
       objectReference: {fileID: 0}
     - target: {fileID: 6904719146668348922, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
@@ -6500,17 +6510,17 @@ PrefabInstance:
     - target: {fileID: 6904719148039652034, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.44244924
+      value: -0.44244915
       objectReference: {fileID: 0}
     - target: {fileID: 6904719148039652034, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.119044304
+      value: -0.119044274
       objectReference: {fileID: 0}
     - target: {fileID: 6904719148039652034, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.85833186
+      value: 0.8583319
       objectReference: {fileID: 0}
     - target: {fileID: 6904719148039652034, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
@@ -7248,6 +7258,11 @@ PrefabInstance:
       propertyPath: playerBody
       value: 
       objectReference: {fileID: 485352726}
+    - target: {fileID: 453425135054561878, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
+        type: 3}
+      propertyPath: dustPilePrefab
+      value: 
+      objectReference: {fileID: 109516314}
     - target: {fileID: 498730841795429420, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
         type: 3}
       propertyPath: m_Mesh
@@ -7278,6 +7293,11 @@ PrefabInstance:
       propertyPath: playerBody
       value: 
       objectReference: {fileID: 485352726}
+    - target: {fileID: 1108866297013288925, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
+        type: 3}
+      propertyPath: dustPilePrefab
+      value: 
+      objectReference: {fileID: 109516314}
     - target: {fileID: 1116242073033876455, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
         type: 3}
       propertyPath: m_IsActive
@@ -7603,6 +7623,11 @@ PrefabInstance:
       objectReference: {fileID: 485352726}
     - target: {fileID: 3825817347597141074, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
         type: 3}
+      propertyPath: dustPilePrefab
+      value: 
+      objectReference: {fileID: 109516314}
+    - target: {fileID: 3825817347597141074, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
+        type: 3}
       propertyPath: shockwaveDuration
       value: 0.5
       objectReference: {fileID: 0}
@@ -7812,21 +7837,41 @@ PrefabInstance:
       propertyPath: playerBody
       value: 
       objectReference: {fileID: 485352726}
+    - target: {fileID: 6112376593408787560, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
+        type: 3}
+      propertyPath: dustPilePrefab
+      value: 
+      objectReference: {fileID: 109516314}
     - target: {fileID: 6173591097381298724, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
+        type: 3}
+      propertyPath: playerBody
+      value: 
+      objectReference: {fileID: 485352726}
+    - target: {fileID: 6173591097381298724, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
+        type: 3}
+      propertyPath: dustPilePrefab
+      value: 
+      objectReference: {fileID: 109516314}
+    - target: {fileID: 6527280932713739772, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
         type: 3}
       propertyPath: playerBody
       value: 
       objectReference: {fileID: 485352726}
     - target: {fileID: 6527280932713739772, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
         type: 3}
-      propertyPath: playerBody
+      propertyPath: dustPilePrefab
       value: 
-      objectReference: {fileID: 485352726}
+      objectReference: {fileID: 109516314}
     - target: {fileID: 6688137605808708068, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
         type: 3}
       propertyPath: playerBody
       value: 
       objectReference: {fileID: 485352726}
+    - target: {fileID: 6688137605808708068, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
+        type: 3}
+      propertyPath: dustPilePrefab
+      value: 
+      objectReference: {fileID: 109516314}
     - target: {fileID: 6727009136817848217, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
         type: 3}
       propertyPath: m_Mesh
@@ -7852,6 +7897,11 @@ PrefabInstance:
       propertyPath: playerBody
       value: 
       objectReference: {fileID: 485352726}
+    - target: {fileID: 7438703012600587731, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
+        type: 3}
+      propertyPath: dustPilePrefab
+      value: 
+      objectReference: {fileID: 109516314}
     - target: {fileID: 7446839719566062442, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
         type: 3}
       propertyPath: m_Mesh
