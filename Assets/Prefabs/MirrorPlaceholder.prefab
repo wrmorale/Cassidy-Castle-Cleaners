@@ -240,7 +240,7 @@ MonoBehaviour:
   projectileLifetime: 2
   projectileDamage: 2
   trashSpawnChance: 0.02
-  bulletSpawn: {fileID: 1581469713310629160}
+  bulletSpawn: {fileID: 2402459199188912920}
   shockwave: {fileID: 5918913100410013975, guid: 5a5b27b9d4fc44449a6561c17d626306,
     type: 3}
   shockwaveDamage: 4
@@ -625,6 +625,37 @@ MonoBehaviour:
   player: {fileID: 0}
   enemy: {fileID: 0}
   damage: 1
+--- !u!1 &7641919313744157429
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2402459199188912920}
+  m_Layer: 6
+  m_Name: ShardSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2402459199188912920
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7641919313744157429}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0.072629176}
+  m_LocalScale: {x: 1.1528437, y: 1.152844, z: 1.1528437}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 264791422197378447}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8221481633115712227
 GameObject:
   m_ObjectHideFlags: 0
@@ -5778,12 +5809,12 @@ PrefabInstance:
     - target: {fileID: 19349154321326439, guid: b0a79a5fd22def84dab09b59945f39a2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.063
+      value: 0.098
       objectReference: {fileID: 0}
     - target: {fileID: 19349154321326439, guid: b0a79a5fd22def84dab09b59945f39a2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 19349154321326439, guid: b0a79a5fd22def84dab09b59945f39a2,
         type: 3}

@@ -105,16 +105,46 @@ MonoBehaviour:
   - rid: 1283210377912123400
   - rid: 1283210377912123401
   - rid: 1283210377912123402
+  - rid: 909933899730386944
+  - rid: 909933899730386945
   treeState: 0
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 0
     specialCooldownEnds: 0
-  viewPosition: {x: 896.5, y: -238, z: 0}
-  viewScale: {x: 0.57175326, y: 0.57175326, z: 1}
+  viewPosition: {x: 452.8, y: -490.4, z: 0}
+  viewScale: {x: 0.49717674, y: 0.49717674, z: 1}
   references:
     version: 2
     RefIds:
+    - rid: 909933899730386944
+      type: {class: BossProjectileWarning, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: ea2470097d0eddd458a55c6064b1dd3e
+        position: {x: 382.00003, y: 1134.4}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: 
+        drawGizmos: 0
+        setTo: 0
+    - rid: 909933899730386945
+      type: {class: BossProjectileWarning, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 7fb080d37a263b14e892cf6ed9dc098a
+        position: {x: -1876.1973, y: 976.0001}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          aggro: 0
+          specialCooldownEnds: 0
+        description: 
+        drawGizmos: 0
+        setTo: 0
     - rid: 1283210374019022848
       type: {class: SetAnimatorBool, ns: , asm: Assembly-CSharp}
       data:
@@ -251,7 +281,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: f2a59039991907246b2cbe562f8c6f3d
-        position: {x: 518.43994, y: 1150}
+        position: {x: 518.4, y: 1174.4}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -265,7 +295,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 29059a0b1db410844a248a93b3fc0c91
-        position: {x: 424.43994, y: 1086}
+        position: {x: 314.41666, y: 1078.4001}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -409,6 +439,7 @@ MonoBehaviour:
         - rid: 1283210377912123400
         - rid: 1283210377912123401
         - rid: 1283210377912123402
+        - rid: 909933899730386945
     - rid: 1283210377912123399
       type: {class: SetAnimatorTrigger, ns: , asm: Assembly-CSharp}
       data:
@@ -777,6 +808,7 @@ MonoBehaviour:
         children:
         - rid: 2088461147737948162
         - rid: 1283210374019022861
+        - rid: 909933899730386944
         - rid: 1283210374019022860
         - rid: 1283210374019022862
         - rid: 2088461147737948164
@@ -791,7 +823,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 7c0d6231dfb88914ebceb89e2c5e15cb
-        position: {x: 366.93994, y: 1022}
+        position: {x: 256.81668, y: 1014.4001}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0

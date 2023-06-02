@@ -126,7 +126,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
             //Proceed to phase 1.5 at 1/3 health
             if(healthPercent <= 0.33 && phase == 1)
             {
-                btRunner.tree.rootNode.Abort();
+                abortBT();
                 canBeHarmed = false;
                 phase += 1;
                 setShootingWarning(false); //Remove later
@@ -188,7 +188,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
                 /*Could add a check here for the main mirror to shoot directly at the player
                  Wouldn't even be necessary if all mirrors EXCEPT the main one were always shooting*/
 
-                Vector3 spawnPosition = mirrors[i].transform.position;
+                Vector3 spawnPosition = mirrors[i].bulletSpawn.position;
 
                 // Instantiate a clone of the projectile prefab at the mirror's position and rotation
                 Projectile projectileClone = Instantiate(projectile, spawnPosition, mirrors[i].transform.rotation);
@@ -341,5 +341,6 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
     public void abortBT()
     {
         btRunner.tree.rootNode.Abort();
+        StopAllCoroutines();
     }
 }
