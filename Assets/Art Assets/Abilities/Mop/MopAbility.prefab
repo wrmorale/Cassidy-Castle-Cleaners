@@ -46,10 +46,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <baseCooldown>k__BackingField: 0
   cooldownTimer: 0
-  mop: {fileID: -8570416101037914633, guid: c8ab73b6389ab704b87a13187d1dbe4d, type: 3}
+  mop: {fileID: 5642783332024597092, guid: 63c6ff235a922b94f89992363968613b, type: 3}
   damage: 10
   stagger: 1
-  radius: 1
+  radius: 0.65
+  mopRotationSpeed: 360
   cost: 20
   clip:
     animator: {fileID: 0}

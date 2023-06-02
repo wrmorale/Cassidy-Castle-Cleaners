@@ -10,7 +10,6 @@ public class Mop : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Mop.OnTriggerEnter()");
         if (other.CompareTag("Enemy"))
         {
             Enemy enemy = other.GetComponent<Enemy>();
@@ -31,7 +30,6 @@ public class Mop : MonoBehaviour
 
     public void Initialize(float damage, float stagger, float radius)
     {
-        Debug.Log("Mop.Initialize()");
         this.damage = damage;
         this.stagger = stagger;
         this.radius = radius;
