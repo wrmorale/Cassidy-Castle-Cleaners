@@ -19,7 +19,6 @@ public class BossPhase3Start : ActionNode
                 }
             }
         }
-        mirrorBossRoot.mirrors[0].mirrorAudioManager.playTeleportsfx();
     }
 
     protected override void OnStop() {

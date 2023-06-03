@@ -45,6 +45,7 @@ public class WaitForAnimation : ActionNode
             }
             else if (Time.time >= timeOnWrongAnim + 2.0f)
             {
+                Debug.LogError("WaitForAnimation on wrong animation for more than 2 seconds!");
                 return State.Success;
             }
         }

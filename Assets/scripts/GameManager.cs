@@ -234,7 +234,7 @@ public class GameManager : MonoBehaviour
             {
                 mana = 0;
                 playercontroller.HandleDeath();
-                ResetPlayerStats();
+
                 levelLoader.LoadTargetLevel("Loss_Scene");
             }
         }
@@ -284,8 +284,6 @@ public class GameManager : MonoBehaviour
 
         // Adjust Fog based on dustpile health values.
         RenderSettings.fogDensity = pooledHealth / (maxDustPiles * dustMaxHealth) * 0.2f;
-        //print(RenderSettings.fogDensity);
-        RenderSettings.fogDensity = Mathf.Clamp(RenderSettings.fogDensity, 0f, 0.12f); // Limit the fog density
 
         // Checks if player paused the game, if so stops time
         //HandlePause();
@@ -327,7 +325,6 @@ public class GameManager : MonoBehaviour
             else
             {
                 // show end credits, player went through all rooms.
-                ResetPlayerStats();
                 levelLoader.LoadTargetLevel("Win_scene");
             }
         }
@@ -388,16 +385,6 @@ public class GameManager : MonoBehaviour
                 playerStats = players[0];
                 playerStats.health = persistentGM.GetLastPlayerHealth();
             }
-        }
-    }
-
-    private void ResetPlayerStats()
-    {
-        if (playerStats != null)
-        {
-            playerStats.health = 25f; // Reset health to default value
-            mana = 0f; // Reset mana to default value
-            updateManaAmount(mana);
         }
     }
 }
