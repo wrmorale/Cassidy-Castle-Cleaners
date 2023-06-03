@@ -397,6 +397,7 @@ public class GameManager : MonoBehaviour
         {
             playerStats.health = 25f; // Reset health to default value
             mana = 0f; // Reset mana to default value
+            updateManaAmount(mana);
         }
     }
 }
