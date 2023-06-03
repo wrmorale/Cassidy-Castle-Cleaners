@@ -5197,6 +5197,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2758012890476290084, guid: a3e774df6e3d732419c69b0540e06dd2,
+        type: 3}
+      propertyPath: dustPilePrefab
+      value: 
+      objectReference: {fileID: 1007121373}
     - target: {fileID: 8327740662560138378, guid: a3e774df6e3d732419c69b0540e06dd2,
         type: 3}
       propertyPath: m_RootOrder
@@ -5257,6 +5262,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MothEnemy (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 8372967417428799471, guid: a3e774df6e3d732419c69b0540e06dd2,
+        type: 3}
+      propertyPath: dustPilePrefab
+      value: 
+      objectReference: {fileID: 1007121373}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3e774df6e3d732419c69b0540e06dd2, type: 3}
 --- !u!4 &1069852862 stripped
@@ -10373,6 +10383,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2758012890476290084, guid: a3e774df6e3d732419c69b0540e06dd2,
+        type: 3}
+      propertyPath: dustPilePrefab
+      value: 
+      objectReference: {fileID: 1007121373}
     - target: {fileID: 8327740662560138378, guid: a3e774df6e3d732419c69b0540e06dd2,
         type: 3}
       propertyPath: m_RootOrder
@@ -10433,6 +10448,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MothEnemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8372967417428799471, guid: a3e774df6e3d732419c69b0540e06dd2,
+        type: 3}
+      propertyPath: dustPilePrefab
+      value: 
+      objectReference: {fileID: 1007121373}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3e774df6e3d732419c69b0540e06dd2, type: 3}
 --- !u!4 &1949135622 stripped
