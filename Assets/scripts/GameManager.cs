@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
     //setup singleton
     private void Awake()
     {
-
+        
         if (instance != null && instance != this)
         {
             Destroy(gameObject);
@@ -106,10 +106,16 @@ public class GameManager : MonoBehaviour
         mana = persistentGM.GetLastPlayerMana();
         //
         SceneManager.sceneLoaded += OnSceneChanged;
+        Debug.LogWarning("Game manager awake!");
+        /*So the game manager destroys itself when transitioning to a new scene, so that the game manager
+         in the next scene can replace it? Why not just have the game manager not per persistent?
+         I guess this is so the script can still be used as a singleton.
+         Clearly then, the game manager needs to be destroyed when going to the main menu in any way*/
     }
 
     void Start()
     {
+        Debug.LogWarning("Game manager start!");
         dustPileReward = persistentGM.dustPileReward;
         bleachBombCost = persistentGM.bleachBombCost;
         dusterCost = persistentGM.dusterCost;
