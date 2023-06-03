@@ -28,9 +28,13 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
     [SerializeField] int aimOnCycle = 3; //Which projectile cycle to shoot at the player on
 
     [Header("Enemy Spawns")]
-    [SerializeField] public int numberOfEnemies;
     [SerializeField] GameObject spawnArea;
-    public GameObject enemyPrefab;
+    public GameObject bunnyPrefab;
+    public int bunnyAmount;
+    public GameObject mothPrefab;
+    public int mothAmount;
+    public GameObject golemPrefab;
+    public int golemAmount;
     private bool finishedSpawning = false;
 
     /*I should probably experiment a bit with the golem before I give the others their tasks...*/
@@ -296,35 +300,59 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
         return Mathf.Clamp(toPlayerAngle, -projectileMaxAngle, projectileMaxAngle); ;
     }
 
-    public void spawnEnemies(){
-        //similar to how the game manager spawns enemies
+    public void spawnEnemies()
+    {
         Vector3 playerPos = player.transform.position;
-        GameObject[] enemies = new GameObject[numberOfEnemies];
-        for (int i = 0; i < numberOfEnemies; i++)
+
+        // Spawn bunny enemies
+        for (int i = 0; i < bunnyAmount; i++)
         {
-            Bounds spawnBounds = spawnArea.GetComponent<MeshCollider>().bounds;
-            Vector3 position;
-            do
-            {
-                position = new Vector3(
-                    UnityEngine.Random.Range(spawnBounds.min.x, spawnBounds.max.x),
-                    spawnArea.transform.position.y,
-                    UnityEngine.Random.Range(spawnBounds.min.z, spawnBounds.max.z)
-                );
-            } while (Vector3.Distance(playerPos, position) < 3);
-            GameObject enemy = Instantiate(enemyPrefab, position, Quaternion.identity);
-            enemy.SetActive(true);
-            enemy.GetComponent<Enemy>().startAggro = true;
-            Debug.Log("Spawned enemy");
+            SpawnEnemy(bunnyPrefab, playerPos);
         }
-        enemyPrefab.SetActive(false);
+
+        // Spawn moth enemies
+        for (int i = 0; i < mothAmount; i++)
+        {
+            SpawnEnemy(mothPrefab, playerPos);
+        }
+
+        // Spawn golem enemies
+        for (int i = 0; i < golemAmount; i++)
+        {
+            SpawnEnemy(golemPrefab, playerPos);
+        }
+
+        // Deactivate enemyPrefab
+        //enemyPrefab.SetActive(false);
+
         finishedSpawning = true;
 
-        foreach(MirrorBossMirror mirror in mirrors)
+        foreach (MirrorBossMirror mirror in mirrors)
         {
             mirror.mirrorAudioManager.playSpawnEnemySfx();
         }
     }
+
+    private void SpawnEnemy(GameObject enemyPrefab, Vector3 playerPos)
+    {
+        Bounds spawnBounds = spawnArea.GetComponent<MeshCollider>().bounds;
+        Vector3 position;
+
+        do
+        {
+            position = new Vector3(
+                UnityEngine.Random.Range(spawnBounds.min.x, spawnBounds.max.x),
+                spawnArea.transform.position.y,
+                UnityEngine.Random.Range(spawnBounds.min.z, spawnBounds.max.z)
+            );
+        } while (Vector3.Distance(playerPos, position) < 3);
+
+        GameObject enemy = Instantiate(enemyPrefab, position, Quaternion.identity);
+        enemy.SetActive(true);
+        enemy.GetComponent<Enemy>().startAggro = true;
+        //Debug.Log("Spawned enemy");
+    }
+
 
     //Can be removed after shooting animation is added
     public void setShootingWarning(bool setTo)
