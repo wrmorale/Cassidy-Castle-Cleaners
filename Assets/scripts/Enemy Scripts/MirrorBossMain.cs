@@ -37,7 +37,8 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
     [Header("Aggro Status")]
     public bool aggro = false;
     public Transform player;
-    public int phase; //1 = phase 1, 2 = spawn enemies, 3 = final phase, 4+ = defeated
+    public int phase; //1 = phase 1, 2 = spawn enemies, 3 = final phase, 4 = dead
+    public bool setupPhase3 = false;
 
     [HideInInspector] public bool isCoroutineRunning = false;
 
@@ -76,7 +77,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
         }
         mirrors[mirrorIndex].SetPossessed(true);
         currPosessedMirror = mirrors[mirrorIndex];
-        currPosessedMirror.mirrorAudioManager.playTeleportsfx();
+        //currPosessedMirror.mirrorAudioManager.playTeleportsfx();
         currMirrorIndex = mirrorIndex;
 
         //Change the context?
@@ -125,27 +126,18 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
             //Proceed to phase 1.5 at 1/3 health
             if(healthPercent <= 0.33 && phase == 1)
             {
-                btRunner.tree.rootNode.Abort();
+                abortBT();
                 canBeHarmed = false;
                 phase += 1;
                 setShootingWarning(false); //Remove later
             }
 
-            if (currentHealth <= 0)
+            if (currentHealth <= 0) //Dead now
             {
-                // Destroy the cube when it has no health left
-                //this should work for death animation but not all enemies have one so it gets errors
-                //animator.SetBool("Death", true);
+                canBeHarmed = false; //Prevent from taking further damage now that it's dead
+                phase = 4;
                 currPosessedMirror.mirrorAudioManager.playDeathsfx();
-                //StartCoroutine(waitForAnimation("Death"));
-
-                if (levelLoader) //Load the ending scene
-                    levelLoader.LoadTargetLevel("Win_scene");
-                else
-                    Debug.LogError("[MirrorBossMain] Where's the level loader??");
-
-                //Destroy(gameObject);
-                StartCoroutine(DelayedDestroy());
+                abortBT();
             }
         }
         else
@@ -154,10 +146,13 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
         }
     }
 
-    // Coroutine for delayed destruction
-    IEnumerator DelayedDestroy(){
-        yield return new WaitForSeconds(1f); // Wait for 1 second
-        Destroy(gameObject); // Destroy the object after the delay
+    public void loadEndingScene()
+    {
+        if (levelLoader) //Load the ending scene
+            levelLoader.LoadTargetLevel("Win_scene");
+        else
+            Debug.LogError("[MirrorBossMain] Where's the level loader??");
+        Destroy(gameObject, 1f); // Destroy the object after the delay
     }
 
     public void phase2CompletionCheck(){
@@ -193,7 +188,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
                 /*Could add a check here for the main mirror to shoot directly at the player
                  Wouldn't even be necessary if all mirrors EXCEPT the main one were always shooting*/
 
-                Vector3 spawnPosition = mirrors[i].transform.position;
+                Vector3 spawnPosition = mirrors[i].bulletSpawn.position;
 
                 // Instantiate a clone of the projectile prefab at the mirror's position and rotation
                 Projectile projectileClone = Instantiate(projectile, spawnPosition, mirrors[i].transform.rotation);
@@ -231,10 +226,14 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
                 Vector3 stepVector = Quaternion.AngleAxis(angleStep, Vector3.up) * mirrors[i].transform.right; // Calculates the angle to shoot
 
                 // Randomize the projectile lifetime within the range of the current value +- 1
-                float randomizedLifetime = mirrors[i].projectileLifetime + UnityEngine.Random.Range(-1.5f, 2.0f);
+                //float randomizedLifetime = mirrors[i].projectileLifetime + UnityEngine.Random.Range(-1.5f, 2.0f);
 
                 // Initialize and activate the clone
-                projectileClone.Initialize(mirrors[i].projectileSpeed, 5.0f, mirrors[i].projectileDamage, 1f, stepVector, mirrors[i].trashSpawnChance);
+                float shardPileSpawnChance = mirrors[i].trashSpawnChance;
+                if(phase > 1){
+                    shardPileSpawnChance = shardPileSpawnChance/2;
+                }
+                projectileClone.Initialize(mirrors[i].projectileSpeed, 5.0f, mirrors[i].projectileDamage, 1f, stepVector, shardPileSpawnChance);
                 if ((cycle + offset) % 3 == 0)
                 {
                     //projectileClone.transform.localScale = new Vector3(1, 5, 1); //Used to see which projectiles are shot directly at player
@@ -341,5 +340,11 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
                 mirror.glassShardPortal.Stop();
             }
         }
+    }
+
+    public void abortBT()
+    {
+        btRunner.tree.rootNode.Abort();
+        StopAllCoroutines();
     }
 }

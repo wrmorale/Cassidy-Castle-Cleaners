@@ -143,7 +143,7 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
             StopFalling();
         }
 
-        if (state == States.PlayerStates.Ability)
+        if (state != null && state == States.PlayerStates.Ability)
         {
             activeAbility.updateMe(Time.deltaTime);
         }
