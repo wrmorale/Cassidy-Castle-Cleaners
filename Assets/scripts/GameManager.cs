@@ -90,11 +90,10 @@ public class GameManager : MonoBehaviour
     //setup singleton
     private void Awake()
     {
-
+        //When a scene is loaded, any new game manager will destroy the old one
         if (instance != null && instance != this)
         {
-            Destroy(gameObject);
-            return;
+            Destroy(instance.gameObject);
         }
 
         instance = this;
@@ -106,10 +105,16 @@ public class GameManager : MonoBehaviour
         mana = persistentGM.GetLastPlayerMana();
         //
         SceneManager.sceneLoaded += OnSceneChanged;
+        Debug.LogWarning("Game manager awake!");
+        /*So the game manager destroys itself when transitioning to a new scene, so that the game manager
+         in the next scene can replace it? Why not just have the game manager not per persistent?
+         I guess this is so the script can still be used as a singleton.
+         Clearly then, the game manager needs to be destroyed when going to the main menu in any way*/
     }
 
     void Start()
     {
+        Debug.LogWarning("Game manager start!");
         dustPileReward = persistentGM.dustPileReward;
         bleachBombCost = persistentGM.bleachBombCost;
         dusterCost = persistentGM.dusterCost;
@@ -234,7 +239,6 @@ public class GameManager : MonoBehaviour
             {
                 mana = 0;
                 playercontroller.HandleDeath();
-                ResetPlayerStats();
                 levelLoader.LoadTargetLevel("Loss_Scene");
             }
         }
@@ -317,9 +321,9 @@ public class GameManager : MonoBehaviour
         {
             isNextToExit = false;
             doorPortal.SetActive(false);
+            //Destroy(gameObject);
             if (currentSceneIndex < lastRoomIndex)
             {
-                Destroy(gameObject);
                 //mana = 0;//reset mana for next room
                 persistentGM.PushLastPlayerHealth(playerStats.health, mana);
                 levelLoader.LoadNextLevel();
@@ -327,7 +331,6 @@ public class GameManager : MonoBehaviour
             else
             {
                 // show end credits, player went through all rooms.
-                ResetPlayerStats();
                 levelLoader.LoadTargetLevel("Win_scene");
             }
         }
@@ -388,16 +391,6 @@ public class GameManager : MonoBehaviour
                 playerStats = players[0];
                 playerStats.health = persistentGM.GetLastPlayerHealth();
             }
-        }
-    }
-
-    private void ResetPlayerStats()
-    {
-        if (playerStats != null)
-        {
-            playerStats.health = 25f; // Reset health to default value
-            mana = 0f; // Reset mana to default value
-            updateManaAmount(mana);
         }
     }
 }
