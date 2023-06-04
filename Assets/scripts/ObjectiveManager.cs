@@ -18,11 +18,10 @@ public class ObjectiveManager : MonoBehaviour
     {   {"cleanPile", "Clean the 3 dust piles"},
         {"teachMana", "Use your abilities 3 times"},
         {"lockedDummy", "Lock onto a dummy"},
-        {"lockedDummyMelee", "Use your basic attacks while locked on"},
+        {"lockedDummyMelee", "Use your default attacks while locked on"},
         {"lockedDummyAbility", "Use abilities while locked on"},
         {"dummyDone", "Jump over the books"},
-        {"enemiesAppear", "Defeat the Dust Bunnies"},
-        {"readytoFight", "Defeat the Dust Bunnies"},
+        {"fighting",  "Defeat the Dust Bunnies\n(Use roll to avoid damage)"},
         {"enemiesDefeated", "Proceed through the door"}
     };
 
@@ -59,10 +58,10 @@ public class ObjectiveManager : MonoBehaviour
         checkbox.enabled = false;
     }
 
-    public void transitionObjective() {
+    public void transitionObjective(string state) {
         checkbox.enabled = false;
         check.enabled = false;
-        objectiveText.text = objectiveList["dummyDone"];
+        objectiveText.text = objectiveList[state];
     }
 
     public void reappearBox() {

@@ -58,7 +58,7 @@ public class DialogueManager : MonoBehaviour
             Tuple.Create(3, "cleanPile"), Tuple.Create("Cassidy", "Cleaning up dust piles gives you mana. See that blue circle in the top-left?")
         },
         {
-            Tuple.Create(4, "teachMana"), Tuple.Create("Cassidy", "Mana is needed to use your special cleaning abilities. Each require a different amount of mana. Give them a test.")
+            Tuple.Create(4, "teachMana"), Tuple.Create("Cassidy", "Mana is needed to use your secondary cleaning abilities, which each require a different amount of mana. Make sure they are operational.")
         },
         {
             Tuple.Create(5, "teachMana"), Tuple.Create("Cassidy", "By the way, this is important: When you enter a room, the sooner you clean a dust pile, the more mana you will receive.")
@@ -67,43 +67,40 @@ public class DialogueManager : MonoBehaviour
             Tuple.Create(6, "teachMana"), Tuple.Create("Cassidy", "I’ll be sure to remind you again later.")
         },
         {
-            Tuple.Create(7, "lockOn"), Tuple.Create("Cassidy", "Sometimes you’ll need to focus on a specific spot that needs cleaning.")
+            Tuple.Create(7, "lockOn"), Tuple.Create("Cassidy", "Sometimes you’ll need to focus on a specific spot that needs cleaning.Try locking onto one of those dummies.")
         },
         {
-            Tuple.Create(8, "lockOn"), Tuple.Create("Cassidy", "Try locking onto one of those dummies.")
+            Tuple.Create(8, "lockOn"), Tuple.Create("The Maid", "A training dummy? This is getting awfully suspicious…")
         },
         {
-            Tuple.Create(9, "lockOn"), Tuple.Create("The Maid", "A training dummy? This is getting awfully suspicious…")
+            Tuple.Create(9, "lockedDummy"), Tuple.Create("Cassidy", "While locked on, your broom swings will be automatically directed towards your target.")
         },
         {
-            Tuple.Create(10, "lockedDummy"), Tuple.Create("Cassidy", "While locked on, your broom swings will be automatically directed towards your target.")
+            Tuple.Create(10, "lockedDummy"), Tuple.Create("Cassidy", "Try attack-er, cleaning the dummies with your broom while locked on. Remember to practive changing targets too.")
         },
         {
-            Tuple.Create(11, "lockedDummy"), Tuple.Create("Cassidy", "Try attacking the dummies with your broom while locked on. Remember to practive changing targets too.")
+            Tuple.Create(11, "lockedDummyMelee"), Tuple.Create("Cassidy","Abilities are also automatically aimed at lock-on targets. This is very useful as they can difficult to aim otherwise and you don't want to be wasting mana.")
         },
         {
-            Tuple.Create(12, "lockedDummyMelee"), Tuple.Create("Cassidy","Locking on is particularly useful for abilities, since they can be hard to aim otherwise. Use them while locked on.")
+            Tuple.Create(12, "lockedDummyAbility"), Tuple.Create("Cassidy", "Try using abilities while locked-on.")
         },                                                            
         {
-            Tuple.Create(13, "lockedDummyAbility"), Tuple.Create("Cassidy","Ok looks like we’re done over here. Proceed to the other half of the room by climbing over those books")
+            Tuple.Create(13, "lockedDummyAbility"), Tuple.Create("Cassidy","Ok looks like we’re done over here. Proceed to the other half of the room by jumping over those books")
         },
         {
-            Tuple.Create(14, "enemiesAppear"), Tuple.Create("Cassidy","Oh, I forgot to tell you, this magic in this place is causing some of the dust to turn into hostile monsters.")
+            Tuple.Create(14, "dummyDone"), Tuple.Create("Cassidy","Oh, I forgot to tell you, the magic in this place is causing some of the dust to turn into monsters. You'll need to clean them up too.")
         },
         {
-            Tuple.Create(15, "readytoFight"), Tuple.Create("Cassidy", "Rolling can help you avoid dying; you can’t be hit for a brief time while rolling.")
+            Tuple.Create(15, "enemiesAppear"), Tuple.Create("Cassidy", "You can't take damage briefly while rolling, so use that to avoid getting hit by the monsters.")
         },
         {
-            Tuple.Create(16, "readytoFight"), Tuple.Create("Cassidy", "Pretty much everything I told you about cleaning should apply to these guys too.")
+            Tuple.Create(16, "readytoFight"), Tuple.Create("The Maid","*Sigh* Talk about a hostile work enviroment...")
         },
         {
-            Tuple.Create(17, "readytoFight"), Tuple.Create("The Maid","*Sigh*. Looks like I’ll be cleaning house in more ways than one today.")
+            Tuple.Create(17, "fighting"), Tuple.Create("Cassidy","Excellent! This room is now clean. And you’re still alive, that’s good too.")
         },
         {
-            Tuple.Create(18, "enemiesDefeated"), Tuple.Create("Cassidy","Excellent! This room is now clean. And you’re still alive, that’s good too.")
-        },
-        {
-            Tuple.Create(19, "enemiesDefeated"), Tuple.Create("Cassidy", "Go towards the glowing door to proceed to the next room.")
+            Tuple.Create(18, "enemiesDefeated"), Tuple.Create("Cassidy", "Proceed through the door to the next room. Remember to clean ALL of the dust piles and ALL of the monsters!")
         },
 
     };
@@ -165,11 +162,11 @@ public class DialogueManager : MonoBehaviour
             teachMana();  
         }
 
-        if(dialogueIndex == 11)
+        if(dialogueIndex == 10)
         {
             lockedDummy();
         }
-        if(dialogueIndex == 13){
+        if(dialogueIndex == 12){
             lockedDummyMelee();
         }
         if(dialogueIndex == 14){
@@ -183,13 +180,13 @@ public class DialogueManager : MonoBehaviour
             startCombat();    
         }
 
-        if(dialogueIndex == 19)
+        if(dialogueIndex == 18)
         {
             roomCleared();
 
         }
 
-        if(dialogueIndex == 21)
+        if(dialogueIndex == 20)
         {
             FinishTutorial();
         }
@@ -214,7 +211,7 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence() 
     {
-        if(dialogueIndex == 20){
+        if(dialogueIndex == 19){
             EndDialogue();
         }
 
@@ -430,7 +427,7 @@ public class DialogueManager : MonoBehaviour
             tutorialManager.enableBookstack();
             controlgiven = true;
             inDialogue = false;
-            objectiveManager.transitionObjective();
+            objectiveManager.transitionObjective(curState);
             controlfour.SetActive(true);
         }
         dialoguebox.SetActive(false);
@@ -449,8 +446,8 @@ public class DialogueManager : MonoBehaviour
             controlgiven = false;
             wall.SetActive(true);
             inDialogue = true;
-            objectiveManager.reappearBox();
-            objectiveManager.displayNextObjective(curState);
+            //objectiveManager.reappearBox();
+            //objectiveManager.displayNextObjective(curState);
             controlfour.SetActive(false);
             tutorialManager.dummy1.SetActive(false);
             tutorialManager.dummy2.SetActive(false);
@@ -468,6 +465,8 @@ public class DialogueManager : MonoBehaviour
             controlgiven = true;
             inDialogue = false;
             controlfive.SetActive(true);
+            objectiveManager.reappearBox();
+            objectiveManager.displayNextObjective(curState);
             
         }
         dialoguebox.SetActive(false);
@@ -496,11 +495,12 @@ public class DialogueManager : MonoBehaviour
             dialoguebox.SetActive(false);
             continueButton.SetActive(false);
             dialogueIndex = 0;
+            objectiveManager.transitionObjective(curState);
     }
 
     void EndDialogue ()
     {   
-        dialogueIndex = 21;
+        dialogueIndex = 20;
         //continueButton.SetActive(false);
         //dialoguebox.SetActive(false);
         
@@ -508,7 +508,7 @@ public class DialogueManager : MonoBehaviour
         gameManager.updateManaAmount(gameManager.mana);
         tutorialManager.player.health = 25f;
         tutorialManager.player.updateHealthUI();
-        objectiveManager.endObjective();    
+        //objectiveManager.endObjective();    
     }
 
     void HandlePauseInTutorial()
