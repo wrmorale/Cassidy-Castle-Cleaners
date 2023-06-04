@@ -136,4 +136,10 @@ public class PersistentGameManager : MonoBehaviour
             return 0f; // Default mana value if the array is empty
         }
     }
+
+    public void resetPlayerStats()
+    {
+        lastPlayerHealthValues.Clear();
+        lastPlayerManaValues.Clear();
+    }
 }
