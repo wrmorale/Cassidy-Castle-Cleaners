@@ -16,8 +16,10 @@ public class ObjectiveManager : MonoBehaviour
     // dictionary for the objective list 
     private Dictionary<string, string> objectiveList = new Dictionary<string, string>()
     {   {"cleanPile", "Clean the dust piles"},
-        {"teachMana", "Use your mana!"},
-        {"lockedDummy", "Use abilities while locked on"},
+        {"teachMana", "Use your abilities!"},
+        {"lockedDummy", "lock on to the dummy"},
+        {"lockedDummyMelee", "Use your basic attacks while locked on"},
+        {"lockedDummyAbility", "Use abilities while locked on"},
         {"dummyDone", "Climb over the books"},
         {"enemiesAppear", "Defeat the enemies"},
         {"readytoFight", "Defeat the enemies"},
