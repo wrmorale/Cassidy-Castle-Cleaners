@@ -90,11 +90,10 @@ public class GameManager : MonoBehaviour
     //setup singleton
     private void Awake()
     {
-        
+        //When a scene is loaded, any new game manager will destroy the old one
         if (instance != null && instance != this)
         {
-            Destroy(gameObject);
-            return;
+            Destroy(instance.gameObject);
         }
 
         instance = this;
@@ -323,9 +322,9 @@ public class GameManager : MonoBehaviour
         {
             isNextToExit = false;
             doorPortal.SetActive(false);
+            //Destroy(gameObject);
             if (currentSceneIndex < lastRoomIndex)
             {
-                Destroy(gameObject);
                 //mana = 0;//reset mana for next room
                 persistentGM.PushLastPlayerHealth(playerStats.health, mana);
                 levelLoader.LoadNextLevel();
