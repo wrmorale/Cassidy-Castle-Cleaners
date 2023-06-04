@@ -409,7 +409,7 @@ public class DialogueManager : MonoBehaviour
                 }
             }
 
-        if(abilitydummiesHit >= 6)
+        if(abilitydummiesHit >= 3)
         {
             dialoguebox.SetActive(true);
             continueButton.SetActive(true);
