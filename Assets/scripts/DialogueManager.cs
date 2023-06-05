@@ -88,7 +88,7 @@ public class DialogueManager : MonoBehaviour
             Tuple.Create(13, "lockedDummyAbility"), Tuple.Create("Cassidy","Ok looks like we’re done over here. Proceed to the other half of the room by jumping over those books")
         },
         {
-            Tuple.Create(14, "dummyDone"), Tuple.Create("Cassidy","Oh, I forgot to tell you, the magic in this place is causing some of the dust to turn into monsters. You'll need to clean them up too.")
+            Tuple.Create(14, "dummyDone"), Tuple.Create("Cassidy","Oh, I forgot to tell you, the magic in this place is causing some of the dust to turn into monsters. Your broom is also an attack, so use it to take them out!")
         },
         {
             Tuple.Create(15, "enemiesAppear"), Tuple.Create("Cassidy", "You can't take damage briefly while rolling, so use that to avoid getting hit by the monsters.")
@@ -291,18 +291,12 @@ public class DialogueManager : MonoBehaviour
         abilityBox.SetActive(true);
         objectiveManager.displayNextObjective(curState);
 
-        if(abilitiesUsed <= 3){
-            for (int i = 0; i < tutorialManager.controller.playerAbilities.Length; i++)
-            {
-                if (tutorialManager.controller.abilityActions[i].triggered 
-                && tutorialManager.controller.playerAbilities[i] != null 
-                && tutorialManager.controller.channeledAbility != 1)
-                {
-                    abilitiesUsed++;
-                }
-            }
+        if(tutorialManager.controller.isCasting == true){
+            abilitiesUsed++;
+            tutorialManager.controller.isCasting = false;
         }
-        if(abilitiesUsed == 3 ){
+
+        if(abilitiesUsed >= 3 ){
             dialoguebox.SetActive(true);
             continueButton.SetActive(true);
             tutorialManager.stopActions();
@@ -413,6 +407,17 @@ public class DialogueManager : MonoBehaviour
         dummy2Health = tutorialManager.dummy2.GetComponent<Enemy>().currentHealth;
         targetLocked = targetLock.isTargeting;
         //if(targetLocked && ) Find a way to check when the player has hit an enemy 
+        if(tutorialManager.controller.isCasting == true){
+            if((dummy1Health < dummy1TopHealth || dummy2Health < dummy2TopHealth) && targetLocked)
+            {
+                abilitydummiesHit++;
+                dummy1TopHealth = dummy1Health;
+                dummy2TopHealth = dummy2Health;
+            }
+            tutorialManager.controller.isCasting = false;
+        }
+
+        /*
         for (int i = 0; i < tutorialManager.controller.playerAbilities.Length; i++)
             {
                 if (tutorialManager.controller.abilityActions[i].triggered 
@@ -427,7 +432,7 @@ public class DialogueManager : MonoBehaviour
                     }
                 }
             }
-
+        */
         if(abilitydummiesHit >= 3)
         {
             dialoguebox.SetActive(true);
