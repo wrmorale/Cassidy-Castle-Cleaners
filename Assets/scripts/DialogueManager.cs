@@ -13,7 +13,7 @@ public class DialogueManager : MonoBehaviour
     public GameObject dialoguebox;
     public GameObject continueButton;
     public GameManager gameManager;
-    //public GameObject controls;
+    public GameObject abilityBox;
     public GameObject controlone;
     public GameObject controltwo;
     public GameObject controlthree;
@@ -113,7 +113,21 @@ public class DialogueManager : MonoBehaviour
         dialoguebox = GameObject.Find("DialogueBox");
         continueButton = GameObject.Find("ContinueButton");
         portrait = GameObject.Find("Portrait");
+        abilityBox.SetActive(false);
         
+        
+        // controls
+        //controls = GameObject.Find("Controls");
+        //controls.SetActive(false);
+        //controlone = GameObject.Find("ControlOne");
+        //controlone.SetActive(false);    
+        //controltwo = GameObject.Find("ControlTwo");
+        //controltwo.SetActive(false);   
+        //controlthree = GameObject.Find("ControlThree");
+        //controlthree.SetActive(false);
+        //controlfour = GameObject.Find("ControlFour");
+        //controlfour.SetActive(false);
+
         // controls
         //controls = GameObject.Find("Controls");
         //controls.SetActive(false);
@@ -246,6 +260,7 @@ public class DialogueManager : MonoBehaviour
         dialoguebox.SetActive(false);
         continueButton.SetActive(false);
         objectiveManager.startObjective(curState);
+        abilityBox.SetActive(true);
 
         if(gameManager.numberOfDustPiles == 0 && curState == "cleanPile")
         {
@@ -256,6 +271,7 @@ public class DialogueManager : MonoBehaviour
             inDialogue = true;
             objectiveManager.checkObjective();
             controlone.SetActive(false);
+            abilityBox.SetActive(false);
         }
     }
 
@@ -272,9 +288,10 @@ public class DialogueManager : MonoBehaviour
 
         dialoguebox.SetActive(false);
         continueButton.SetActive(false);
+        abilityBox.SetActive(true);
         objectiveManager.displayNextObjective(curState);
 
-        if(abilitiesUsed < 3){
+        if(abilitiesUsed <= 3){
             for (int i = 0; i < tutorialManager.controller.playerAbilities.Length; i++)
             {
                 if (tutorialManager.controller.abilityActions[i].triggered 
@@ -293,6 +310,7 @@ public class DialogueManager : MonoBehaviour
             inDialogue = true;
             objectiveManager.checkObjective();
             controltwo.SetActive(false);
+            abilityBox.SetActive(false);
         }        
     }
 
@@ -311,6 +329,7 @@ public class DialogueManager : MonoBehaviour
         }
         dialoguebox.SetActive(false);
         continueButton.SetActive(false);
+        abilityBox.SetActive(true);
         targetLocked = targetLock.isTargeting;
         if(targetLocked == true)
         {
@@ -321,6 +340,7 @@ public class DialogueManager : MonoBehaviour
             targetLocked = false;
             inDialogue = true;
             objectiveManager.checkObjective();
+            abilityBox.SetActive(false);
         }
     }
 
@@ -338,6 +358,7 @@ public class DialogueManager : MonoBehaviour
         }
         dialoguebox.SetActive(false);
         continueButton.SetActive(false);
+        abilityBox.SetActive(true);
         //objectiveManager.displayNextObjective(curState);
         //gameManager.infiniteManaCheat = true;
         //gameManager.updateManaAmount(gameManager.mana);
@@ -361,7 +382,7 @@ public class DialogueManager : MonoBehaviour
             controlgiven = false;
             inDialogue = true;
             objectiveManager.checkObjective();
-            
+            abilityBox.SetActive(false);
             
         }
     }
@@ -384,6 +405,7 @@ public class DialogueManager : MonoBehaviour
         }
         dialoguebox.SetActive(false);
         continueButton.SetActive(false);
+        abilityBox.SetActive(true);
         //objectiveManager.displayNextObjective(curState);
         gameManager.infiniteManaCheat = true;
         gameManager.updateManaAmount(gameManager.mana);
@@ -416,6 +438,7 @@ public class DialogueManager : MonoBehaviour
             inDialogue = true;
             objectiveManager.checkObjective();
             controlthree.SetActive(false);
+            abilityBox.SetActive(false);
         }
     }
 
@@ -433,6 +456,7 @@ public class DialogueManager : MonoBehaviour
         dialoguebox.SetActive(false);
         continueButton.SetActive(false);
         wall.SetActive(false);
+        abilityBox.SetActive(true);
     }
 
     void startCombat()
@@ -442,6 +466,7 @@ public class DialogueManager : MonoBehaviour
             tutorialManager.showBunnies();
             dialoguebox.SetActive(true);
             continueButton.SetActive(true);
+            abilityBox.SetActive(false);
             tutorialManager.stopActions();
             controlgiven = false;
             wall.SetActive(true);
@@ -471,10 +496,12 @@ public class DialogueManager : MonoBehaviour
         }
         dialoguebox.SetActive(false);
         continueButton.SetActive(false);
+        abilityBox.SetActive(true);
 
         if(gameManager.numberOfEnemies == 0){
             dialoguebox.SetActive(true);
             continueButton.SetActive(true);
+            abilityBox.SetActive(false);
             tutorialManager.stopActions();
             controlgiven = false;
             inDialogue = true;
@@ -494,6 +521,7 @@ public class DialogueManager : MonoBehaviour
             }
             dialoguebox.SetActive(false);
             continueButton.SetActive(false);
+            abilityBox.SetActive(true);
             dialogueIndex = 0;
             objectiveManager.transitionObjective(curState);
     }
