@@ -19,7 +19,7 @@ public class ObjectiveManager : MonoBehaviour
         {"teachMana", "Use your abilities 3 times"},
         {"lockedDummy", "Lock onto a dummy"},
         {"lockedDummyMelee", "Use your primary attacks\nwhile locked on"},
-        {"lockedDummyAbility", "Use abilities 3 times\nwhile locked on"},
+        {"lockedDummyAbility", "Use abilities 4 times\nwhile locked on"},
         {"dummyDone", "Jump over the books"},
         {"fighting",  "Defeat the Dust Bunnies\n(Use roll to avoid damage)"},
         {"enemiesDefeated", "Proceed through the door"}

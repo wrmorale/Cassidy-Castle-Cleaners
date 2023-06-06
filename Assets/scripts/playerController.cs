@@ -302,7 +302,10 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
         SetState(States.PlayerStates.Ability);
         activeAbility = playerAbilities[idx];
         activeAbility.Activate();
-        StartCoroutine(castingTimer());
+        if(channeledAbility != 1){
+            StartCoroutine(castingTimer());
+        }
+        
     }
 
     IEnumerator castingTimer()

@@ -19,6 +19,8 @@ public class DialogueManager : MonoBehaviour
     public GameObject controlthree;
     public GameObject controlfour;
     public GameObject controlfive;
+    public GameObject controlsix;
+    public GameObject controlseven;
     public TargetLock targetLock;
     [HideInInspector]public TutorialManager tutorialManager;
     public ObjectiveManager objectiveManager;
@@ -309,6 +311,7 @@ public class DialogueManager : MonoBehaviour
             controlgiven = false;
             targetLocked = false;
             inDialogue = true;
+            controlthree.SetActive(false);
             objectiveManager.checkObjective();
             abilityBox.SetActive(false);
         }
@@ -325,6 +328,7 @@ public class DialogueManager : MonoBehaviour
             inDialogue = false;
             tutorialManager.controller.castingAllowed = false;
             objectiveManager.displayNextObjective(curState);
+            controlfour.SetActive(true);
         }
         dialoguebox.SetActive(false);
         continueButton.SetActive(false);
@@ -353,6 +357,7 @@ public class DialogueManager : MonoBehaviour
             inDialogue = true;
             objectiveManager.checkObjective();
             abilityBox.SetActive(false);
+            controlfour.SetActive(false);
             
         }
     }
@@ -372,6 +377,7 @@ public class DialogueManager : MonoBehaviour
             inDialogue = false;
             tutorialManager.controller.castingAllowed = true;
             objectiveManager.displayNextObjective(curState);
+            controlfive.SetActive(true);
         }
         dialoguebox.SetActive(false);
         continueButton.SetActive(false);
@@ -402,7 +408,7 @@ public class DialogueManager : MonoBehaviour
             controlgiven = false;
             inDialogue = true;
             objectiveManager.checkObjective();
-            controlthree.SetActive(false);
+            controlfive.SetActive(false);
             abilityBox.SetActive(false);
         }
     }
@@ -416,7 +422,7 @@ public class DialogueManager : MonoBehaviour
             controlgiven = true;
             inDialogue = false;
             objectiveManager.transitionObjective(curState);
-            controlfour.SetActive(true);
+            controlsix.SetActive(true);
         }
         dialoguebox.SetActive(false);
         continueButton.SetActive(false);
@@ -438,7 +444,7 @@ public class DialogueManager : MonoBehaviour
             inDialogue = true;
             //objectiveManager.reappearBox();
             //objectiveManager.displayNextObjective(curState);
-            controlfour.SetActive(false);
+            controlsix.SetActive(false);
             tutorialManager.dummy1.SetActive(false);
             tutorialManager.dummy2.SetActive(false);
             tutorialManager.tempDummy.SetActive(false);
@@ -454,7 +460,7 @@ public class DialogueManager : MonoBehaviour
             tutorialManager.activateBunnies();               
             controlgiven = true;
             inDialogue = false;
-            controlfive.SetActive(true);
+            controlseven.SetActive(true);
             objectiveManager.reappearBox();
             objectiveManager.displayNextObjective(curState);
             
@@ -471,7 +477,7 @@ public class DialogueManager : MonoBehaviour
             controlgiven = false;
             inDialogue = true;
             objectiveManager.checkObjective();
-            controlfive.SetActive(false);
+            controlseven.SetActive(false);
         }
 
     }
