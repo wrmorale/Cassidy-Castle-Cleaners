@@ -240,6 +240,7 @@ public class GameManager : MonoBehaviour
             {
                 mana = 0;
                 playercontroller.HandleDeath();
+                persistentGM.resetPlayerStats();
                 deathManager.die();
             }
         }

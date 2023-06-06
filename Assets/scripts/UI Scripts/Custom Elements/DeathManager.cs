@@ -54,7 +54,10 @@ public class DeathManager : MonoBehaviour
 
     public void toMainMenu()
     {
-        SceneManager.LoadScene("Title_Scene");
+        //SceneManager.LoadScene("Title_Scene");
+        string activeScene = SceneManager.GetActiveScene().name;
+        Debug.Log("Loading " + activeScene);
+        SceneManager.LoadScene(activeScene);
     }
 
 
