@@ -56,7 +56,9 @@ public class CutsceneManager : MonoBehaviour
         else {
             displayImage.sprite = Sprite.Create(cutsceneImages[cutsceneIndex], new Rect(0.0f, 0.0f, cutsceneImages[cutsceneIndex].width, cutsceneImages[cutsceneIndex].height), new Vector2(0.5f, 0.5f), 100.0f);
         }
-        cutsceneIndex++;
+        if (cutsceneIndex < 5){
+            cutsceneIndex++;
+        }
     }
 
     public void EndCutscene()
