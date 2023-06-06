@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028328, g: 0.22571322, b: 0.30692163, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -799,7 +799,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 491d2545799a642ca8eded6445f64a1b,
         type: 3}
       propertyPath: m_Layer
-      value: 2
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 491d2545799a642ca8eded6445f64a1b, type: 3}
@@ -3895,30 +3895,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 934100d95ea2bc940ab103c688380ab7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &795224112
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 795224103}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4af90ed6526906b4cac73d90cb1c581e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCamera: {fileID: 330585545}
-  cinemachineFreeLook: {fileID: 965643143}
-  targetGroup: {fileID: 1709409147}
-  aimIcon: {fileID: 1502865555}
-  enemyTag: Enemy
-  targetLockOffset: {x: 0.1, y: 0}
-  minDistance: 0
-  maxDistance: 3
-  isTargeting: 0
-  currentTarget: {fileID: 0}
-  healthBar: {fileID: 0}
-  targetColliderCenter: {x: 0, y: 0, z: 0}
 --- !u!114 &795224114 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7428022771512999010, guid: 780a7481df1a48d4792aed7fd543ee02,
@@ -3941,6 +3917,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ff65f0c896144040af4a687c79f2030, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &795224116 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3614798318404187607, guid: 780a7481df1a48d4792aed7fd543ee02,
+    type: 3}
+  m_PrefabInstance: {fileID: 7428022770999317583}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 795224103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4af90ed6526906b4cac73d90cb1c581e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &838377677 stripped
@@ -7185,7 +7173,7 @@ MonoBehaviour:
   controltwo: {fileID: 0}
   controlthree: {fileID: 0}
   controlfour: {fileID: 0}
-  targetLock: {fileID: 795224112}
+  targetLock: {fileID: 795224116}
   tutorialManager: {fileID: 0}
   objectiveManager: {fileID: 0}
   pauseMenu: {fileID: 583582926}
@@ -8747,12 +8735,12 @@ PrefabInstance:
     - target: {fileID: 6904719146504579999, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_FollowOffset.y
-      value: 0.8086181
+      value: 0.9052088
       objectReference: {fileID: 0}
     - target: {fileID: 6904719146504579999, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_FollowOffset.z
-      value: -1.564259
+      value: -1.632514
       objectReference: {fileID: 0}
     - target: {fileID: 6904719146585930093, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
@@ -8762,12 +8750,12 @@ PrefabInstance:
     - target: {fileID: 6904719146585930093, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_FollowOffset.y
-      value: 0.8086181
+      value: 0.9052088
       objectReference: {fileID: 0}
     - target: {fileID: 6904719146585930093, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_FollowOffset.z
-      value: -1.564259
+      value: -1.632514
       objectReference: {fileID: 0}
     - target: {fileID: 6904719146668348922, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
@@ -8817,12 +8805,12 @@ PrefabInstance:
     - target: {fileID: 6904719147228723758, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_FollowOffset.y
-      value: 0.8086181
+      value: 0.9052088
       objectReference: {fileID: 0}
     - target: {fileID: 6904719147228723758, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_FollowOffset.z
-      value: -1.564259
+      value: -1.632514
       objectReference: {fileID: 0}
     - target: {fileID: 6904719147742580993, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
@@ -8973,6 +8961,26 @@ PrefabInstance:
       propertyPath: m_FillOrigin
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3614798318404187607, guid: 780a7481df1a48d4792aed7fd543ee02,
+        type: 3}
+      propertyPath: aimIcon
+      value: 
+      objectReference: {fileID: 1502865555}
+    - target: {fileID: 3614798318404187607, guid: 780a7481df1a48d4792aed7fd543ee02,
+        type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 330585545}
+    - target: {fileID: 3614798318404187607, guid: 780a7481df1a48d4792aed7fd543ee02,
+        type: 3}
+      propertyPath: targetGroup
+      value: 
+      objectReference: {fileID: 1709409147}
+    - target: {fileID: 3614798318404187607, guid: 780a7481df1a48d4792aed7fd543ee02,
+        type: 3}
+      propertyPath: cinemachineFreeLook
+      value: 
+      objectReference: {fileID: 965643143}
     - target: {fileID: 5836026264434224040, guid: 780a7481df1a48d4792aed7fd543ee02,
         type: 3}
       propertyPath: m_RenderMode
