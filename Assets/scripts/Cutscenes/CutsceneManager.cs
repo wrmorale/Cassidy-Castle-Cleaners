@@ -16,7 +16,7 @@ public class CutsceneManager : MonoBehaviour
     public Image displayImage;
     public GameObject cutsceneCanvas;
     public GameObject dialogueBox;
-    public GameObject portrait;
+    //public GameObject portrait;
 
     public float fadeDuration = 1.0f;
     private CanvasGroup canvasGroup;
@@ -29,13 +29,13 @@ public class CutsceneManager : MonoBehaviour
         cutsceneIndex = 0;
         continueButton = GameObject.Find("ContinueButton");
         dialogueBox = GameObject.Find("DialogueBox");
-        portrait = GameObject.Find("Portrait"); 
         canvasGroup = GetComponent<CanvasGroup>();
         DisplayNextCutscene();
     }
 
     public void DisplayNextCutscene() 
     {
+        Debug.Log("Cutscene index: " + cutsceneIndex);
         if (cutsceneIndex == 5){
             EndCutscene();
         }
@@ -47,12 +47,14 @@ public class CutsceneManager : MonoBehaviour
 
     public void EndCutscene()
     {   
-        Debug.Log("End of cutscene.");
-        cutsceneIndex = 0;
-        continueButton.SetActive(false);
+        //Debug.Log("End of cutscene.");
         cutsceneCanvas.SetActive(false);
-        // dialogueBox.SetActive(false);
-        // portrait.setActive(false);
+        continueButton.SetActive(false);
+        dialogueBox.SetActive(false);
         //SceneManager.LoadScene("Credits_Scene");
+    }
+
+    public void backButton(){
+        SceneManager.LoadScene("MainMenu");
     }
 }
