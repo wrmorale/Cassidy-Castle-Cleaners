@@ -28,7 +28,15 @@ public class CutsceneManager : MonoBehaviour
     private CanvasGroup canvasGroup;
     public EventSystem eventSystem;
 
-    
+    public TextMeshProUGUI dialogueText;
+    public TextMeshProUGUI dialogueName;
+    private String[] dialogueTexts = new String[] {"Who would have thought being a maid would result in her battling an evil mirror?",
+    "The maid finally leaves after a long day of cleaning.",
+    "She hops into her truck, on her way to report back to Cassidy. She hopes Cassidy will give her a bonus...",
+    "Unfortunately the folder at hand is not a bonus but another assignment, the grind never stops.",
+    "The maid wonders what will she be put up against next?"};
+
+
 
     void Start()
     {
@@ -38,8 +46,9 @@ public class CutsceneManager : MonoBehaviour
         dialogueBox = GameObject.Find("DialogueBox");
         canvasGroup = GetComponent<CanvasGroup>();
         controlIcon = GameObject.Find("Control").GetComponent<Image>();
-        //enterIcon = GameObject.Find("Enter").GetComponent<Image>();
-        //displayIcon();
+        dialogueText = GameObject.Find("Dialogue").GetComponent<TextMeshProUGUI>();
+        dialogueName = GameObject.Find("Name").GetComponent<TextMeshProUGUI>();
+        dialogueName.enabled = false;
         DisplayNextCutscene();
         eventSystem = EventSystem.current;
     }
@@ -55,7 +64,9 @@ public class CutsceneManager : MonoBehaviour
         }
         else {
             displayImage.sprite = Sprite.Create(cutsceneImages[cutsceneIndex], new Rect(0.0f, 0.0f, cutsceneImages[cutsceneIndex].width, cutsceneImages[cutsceneIndex].height), new Vector2(0.5f, 0.5f), 100.0f);
+            dialogueText.text = dialogueTexts[cutsceneIndex];
         }
+
         if (cutsceneIndex < 5){
             cutsceneIndex++;
         }

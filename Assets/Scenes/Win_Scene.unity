@@ -276,6 +276,8 @@ MonoBehaviour:
   controlIcon: {fileID: 0}
   fadeDuration: 1
   eventSystem: {fileID: 0}
+  dialogueText: {fileID: 1098484574}
+  dialogueTexts: []
 --- !u!1 &198098465
 GameObject:
   m_ObjectHideFlags: 0
