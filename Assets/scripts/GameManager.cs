@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
     //public GameObject pauseUI;
     public Player playerStats;
     public playerController playercontroller;
+    public DeathManager deathManager;
 
     private bool objectsInstantiated = false;
 
@@ -232,14 +233,14 @@ public class GameManager : MonoBehaviour
             }
         }
         // Are we dead?
-        if (!playerStats.alive && playerStats.lives == 1 || cleaningPercent == 0)
+        if (!playerStats.alive && playerStats.lives == 1)
         {
             playerStats.lives--;
             if (!disableLosing)
             {
                 mana = 0;
                 playercontroller.HandleDeath();
-                levelLoader.LoadTargetLevel("Loss_Scene");
+                deathManager.die();
             }
         }
         // Is Room Cleared
