@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using System;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class CutsceneManager : MonoBehaviour
 {
@@ -16,7 +17,10 @@ public class CutsceneManager : MonoBehaviour
     public Image displayImage;
     public GameObject cutsceneCanvas;
     public GameObject dialogueBox;
+    public Image controlIcon;
+    public Image enterIcon;
     //public GameObject portrait;
+    public InputDevice device;
 
     public float fadeDuration = 1.0f;
     private CanvasGroup canvasGroup;
@@ -30,6 +34,9 @@ public class CutsceneManager : MonoBehaviour
         continueButton = GameObject.Find("ContinueButton");
         dialogueBox = GameObject.Find("DialogueBox");
         canvasGroup = GetComponent<CanvasGroup>();
+        controlIcon = GameObject.Find("Icon").GetComponent<Image>();
+        enterIcon = GameObject.Find("EnterIcon").GetComponent<Image>();
+        displayIcon();
         DisplayNextCutscene();
     }
 
@@ -52,5 +59,16 @@ public class CutsceneManager : MonoBehaviour
         continueButton.SetActive(false);
         dialogueBox.SetActive(false);
         //SceneManager.LoadScene("Credits_Scene");
+    }
+
+    public void displayIcon(){
+        if (device is Keyboard){
+            controlIcon.enabled = false;
+            enterIcon.enabled = true;
+        }
+        else {
+            controlIcon.enabled = true;
+            enterIcon.enabled = false;
+        }
     }
 }
