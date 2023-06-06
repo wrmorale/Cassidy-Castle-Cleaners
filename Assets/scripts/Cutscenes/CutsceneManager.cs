@@ -50,8 +50,9 @@ public class CutsceneManager : MonoBehaviour
         Debug.Log("End of cutscene.");
         cutsceneIndex = 0;
         continueButton.SetActive(false);
+        cutsceneCanvas.SetActive(false);
         // dialogueBox.SetActive(false);
         // portrait.setActive(false);
-        SceneManager.LoadScene("Credits_Scene");
+        //SceneManager.LoadScene("Credits_Scene");
     }
 }
