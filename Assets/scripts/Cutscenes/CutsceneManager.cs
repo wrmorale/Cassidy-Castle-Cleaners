@@ -7,6 +7,7 @@ using System;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class CutsceneManager : MonoBehaviour
 {
@@ -17,13 +18,15 @@ public class CutsceneManager : MonoBehaviour
     public Image displayImage;
     public GameObject cutsceneCanvas;
     public GameObject dialogueBox;
+    public GameObject CreditsButton;
     public Image controlIcon;
-    public Image enterIcon;
+    //public Image enterIcon;
     //public GameObject portrait;
     public InputDevice device;
 
     public float fadeDuration = 1.0f;
     private CanvasGroup canvasGroup;
+    public EventSystem eventSystem;
 
     
 
@@ -35,12 +38,13 @@ public class CutsceneManager : MonoBehaviour
         dialogueBox = GameObject.Find("DialogueBox");
         canvasGroup = GetComponent<CanvasGroup>();
         controlIcon = GameObject.Find("Control").GetComponent<Image>();
-        enterIcon = GameObject.Find("Enter").GetComponent<Image>();
-        displayIcon();
+        //enterIcon = GameObject.Find("Enter").GetComponent<Image>();
+        //displayIcon();
         DisplayNextCutscene();
+        eventSystem = EventSystem.current;
     }
     void Update(){
-        displayIcon();
+        //displayIcon();
     }
 
     public void DisplayNextCutscene() 
@@ -61,9 +65,10 @@ public class CutsceneManager : MonoBehaviour
         cutsceneCanvas.SetActive(false);
         continueButton.SetActive(false);
         dialogueBox.SetActive(false);
+        eventSystem.SetSelectedGameObject(CreditsButton);
         //SceneManager.LoadScene("Credits_Scene");
     }
-
+    /*
     public void displayIcon(){
         if (device is Gamepad){
             controlIcon.enabled = true;
@@ -73,5 +78,5 @@ public class CutsceneManager : MonoBehaviour
             controlIcon.enabled = false;
             enterIcon.enabled = true;
         }
-    }
+    }*/
 }

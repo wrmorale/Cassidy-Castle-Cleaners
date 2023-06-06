@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414736, b: 0.121078536, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -272,9 +272,11 @@ MonoBehaviour:
   displayImage: {fileID: 667790507}
   cutsceneCanvas: {fileID: 667790505}
   dialogueBox: {fileID: 0}
+  CreditsButton: {fileID: 198098465}
   controlIcon: {fileID: 0}
   enterIcon: {fileID: 0}
   fadeDuration: 1
+  eventSystem: {fileID: 0}
 --- !u!1 &198098465
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,7 +290,7 @@ GameObject:
   - component: {fileID: 198098468}
   - component: {fileID: 198098467}
   m_Layer: 5
-  m_Name: BackButton
+  m_Name: Credits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -363,7 +365,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 695358708}
         m_TargetAssemblyTypeName: GameOverManager, Assembly-CSharp
-        m_MethodName: ToMainMenu
+        m_MethodName: ToCredits
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1221,7 +1223,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Main Menu
+  m_Text: 'Credits '
 --- !u!222 &998940477
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2106,10 +2108,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -2179,7 +2181,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2075618369
 RectTransform:
   m_ObjectHideFlags: 0
