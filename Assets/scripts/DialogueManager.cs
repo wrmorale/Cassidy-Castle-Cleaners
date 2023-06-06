@@ -115,30 +115,6 @@ public class DialogueManager : MonoBehaviour
         portrait = GameObject.Find("Portrait");
         abilityBox.SetActive(false);
         
-        
-        // controls
-        //controls = GameObject.Find("Controls");
-        //controls.SetActive(false);
-        //controlone = GameObject.Find("ControlOne");
-        //controlone.SetActive(false);    
-        //controltwo = GameObject.Find("ControlTwo");
-        //controltwo.SetActive(false);   
-        //controlthree = GameObject.Find("ControlThree");
-        //controlthree.SetActive(false);
-        //controlfour = GameObject.Find("ControlFour");
-        //controlfour.SetActive(false);
-
-        // controls
-        //controls = GameObject.Find("Controls");
-        //controls.SetActive(false);
-        //controlone = GameObject.Find("ControlOne");
-        //controlone.SetActive(false);    
-        //controltwo = GameObject.Find("ControlTwo");
-        //controltwo.SetActive(false);   
-        //controlthree = GameObject.Find("ControlThree");
-        //controlthree.SetActive(false);
-        //controlfour = GameObject.Find("ControlFour");
-        //controlfour.SetActive(false);
 
         // tutorial Manager
         tutorialManager = gameObject.GetComponent<TutorialManager>();

@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0b5e3c1f8a6db44f2987e5a65b707d0c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f1786d63a74c4ba4c95a0d0aa991f49a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -901,8 +901,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Dust Piles
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a6b6909bf4905c243a7728052069879f, type: 2}
+  m_sharedMaterial: {fileID: -6053934615312367836, guid: a6b6909bf4905c243a7728052069879f,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1037,8 +1038,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Enemies
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a6b6909bf4905c243a7728052069879f, type: 2}
+  m_sharedMaterial: {fileID: -6053934615312367836, guid: a6b6909bf4905c243a7728052069879f,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1398,7 +1400,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cba6730d5cc73486c958d45706562889, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 355017bdfb96197408fd7af15e65208a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
