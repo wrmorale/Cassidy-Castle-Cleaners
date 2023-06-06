@@ -34,10 +34,13 @@ public class CutsceneManager : MonoBehaviour
         continueButton = GameObject.Find("ContinueButton");
         dialogueBox = GameObject.Find("DialogueBox");
         canvasGroup = GetComponent<CanvasGroup>();
-        controlIcon = GameObject.Find("Icon").GetComponent<Image>();
-        enterIcon = GameObject.Find("EnterIcon").GetComponent<Image>();
+        controlIcon = GameObject.Find("Control").GetComponent<Image>();
+        enterIcon = GameObject.Find("Enter").GetComponent<Image>();
         displayIcon();
         DisplayNextCutscene();
+    }
+    void Update(){
+        displayIcon();
     }
 
     public void DisplayNextCutscene() 
@@ -62,13 +65,13 @@ public class CutsceneManager : MonoBehaviour
     }
 
     public void displayIcon(){
-        if (device is Keyboard){
-            controlIcon.enabled = false;
-            enterIcon.enabled = true;
-        }
-        else {
+        if (device is Gamepad){
             controlIcon.enabled = true;
             enterIcon.enabled = false;
+        }
+        else {
+            controlIcon.enabled = false;
+            enterIcon.enabled = true;
         }
     }
 }
