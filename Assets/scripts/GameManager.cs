@@ -255,6 +255,8 @@ public class GameManager : MonoBehaviour
         updateEnemiesAmount(numberOfEnemies);
 
         // Increase mana by the dustPileReward after destroying a dust pile
+        /*Santi Note: Because the boss room has a max dust piles of 1 but starts with none, the player automatically
+         gains 20 mana at the start.*/
         if (dustPiles.Length < numberOfDustPiles)
         {
             float multiplier = numberOfDustPiles - dustPiles.Length;//in case you destroy multiple dust piles at once
