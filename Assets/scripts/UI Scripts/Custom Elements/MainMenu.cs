@@ -11,11 +11,17 @@ public class MainMenu : MonoBehaviour
     public GameObject StartButton;
     public GameObject StartTutorial;
     public GameObject BackButton;
+    PersistentGameManager persistentGameManager;
     
 
     void Start()
     {
         eventSystem = EventSystem.current;
+        persistentGameManager = FindObjectOfType<PersistentGameManager>();
+        if (persistentGameManager) //Make sure player starts with the correct stats
+        {
+            persistentGameManager.resetPlayerStats();
+        }
     }
 
     public void ToTutorial()

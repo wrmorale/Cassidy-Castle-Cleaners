@@ -41,6 +41,7 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
     private bool groundedPlayer;
     private bool inJumpsquat = false;
     public bool castingAllowed = true;
+    public bool isCasting = false;
 
     private Transform cam;
 
@@ -143,7 +144,7 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
             StopFalling();
         }
 
-        if (state == States.PlayerStates.Ability)
+        if (state != null && state == States.PlayerStates.Ability)
         {
             activeAbility.updateMe(Time.deltaTime);
         }
@@ -301,6 +302,13 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
         SetState(States.PlayerStates.Ability);
         activeAbility = playerAbilities[idx];
         activeAbility.Activate();
+        StartCoroutine(castingTimer());
+    }
+
+    IEnumerator castingTimer()
+    {
+        yield return new WaitForSeconds(0.5f);
+        isCasting = true;
     }
 
     //Returns a vector from player to the current lock-on target

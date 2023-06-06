@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
     //public GameObject pauseUI;
     public Player playerStats;
     public playerController playercontroller;
+    public DeathManager deathManager;
 
     private bool objectsInstantiated = false;
 
@@ -90,11 +91,10 @@ public class GameManager : MonoBehaviour
     //setup singleton
     private void Awake()
     {
-
+        //When a scene is loaded, any new game manager will destroy the old one
         if (instance != null && instance != this)
         {
-            Destroy(gameObject);
-            return;
+            Destroy(instance.gameObject);
         }
 
         instance = this;
@@ -106,10 +106,16 @@ public class GameManager : MonoBehaviour
         mana = persistentGM.GetLastPlayerMana();
         //
         SceneManager.sceneLoaded += OnSceneChanged;
+        Debug.LogWarning("Game manager awake!");
+        /*So the game manager destroys itself when transitioning to a new scene, so that the game manager
+         in the next scene can replace it? Why not just have the game manager not per persistent?
+         I guess this is so the script can still be used as a singleton.
+         Clearly then, the game manager needs to be destroyed when going to the main menu in any way*/
     }
 
     void Start()
     {
+        Debug.LogWarning("Game manager start!");
         dustPileReward = persistentGM.dustPileReward;
         bleachBombCost = persistentGM.bleachBombCost;
         dusterCost = persistentGM.dusterCost;
@@ -227,15 +233,14 @@ public class GameManager : MonoBehaviour
             }
         }
         // Are we dead?
-        if (!playerStats.alive && playerStats.lives == 1 || cleaningPercent == 0)
+        if (!playerStats.alive && playerStats.lives == 1)
         {
             playerStats.lives--;
             if (!disableLosing)
             {
                 mana = 0;
                 playercontroller.HandleDeath();
-
-                levelLoader.LoadTargetLevel("Loss_Scene");
+                deathManager.die();
             }
         }
         // Is Room Cleared
@@ -284,6 +289,8 @@ public class GameManager : MonoBehaviour
 
         // Adjust Fog based on dustpile health values.
         RenderSettings.fogDensity = pooledHealth / (maxDustPiles * dustMaxHealth) * 0.2f;
+        //print(RenderSettings.fogDensity);
+        RenderSettings.fogDensity = Mathf.Clamp(RenderSettings.fogDensity, 0f, 0.12f); // Limit the fog density
 
         // Checks if player paused the game, if so stops time
         //HandlePause();
@@ -315,9 +322,9 @@ public class GameManager : MonoBehaviour
         {
             isNextToExit = false;
             doorPortal.SetActive(false);
+            //Destroy(gameObject);
             if (currentSceneIndex < lastRoomIndex)
             {
-                Destroy(gameObject);
                 //mana = 0;//reset mana for next room
                 persistentGM.PushLastPlayerHealth(playerStats.health, mana);
                 levelLoader.LoadNextLevel();

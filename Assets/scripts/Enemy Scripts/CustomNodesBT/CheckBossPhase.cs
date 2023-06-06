@@ -6,7 +6,7 @@ using TheKiwiCoder;
 [System.Serializable]
 public class CheckBossPhase : DecoratorNode
 {
-    public int phase = 0;
+    public int[] phases = new int[1];
 
     protected override void OnStart() {
     }
@@ -15,9 +15,13 @@ public class CheckBossPhase : DecoratorNode
     }
 
     protected override State OnUpdate() {
-        if (context.mirrorBossScript.phase == phase)
-            return child.Update();
-        else
-            return State.Failure;
+        foreach(int phase in phases)
+        {
+            if(context.mirrorBossScript.phase == phase)
+            {
+                return child.Update();
+            }
+        }
+        return State.Failure;
     }
 }

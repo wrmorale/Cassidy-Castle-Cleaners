@@ -15,13 +15,14 @@ public class ObjectiveManager : MonoBehaviour
 
     // dictionary for the objective list 
     private Dictionary<string, string> objectiveList = new Dictionary<string, string>()
-    {   {"cleanPile", "Clean the dust piles"},
-        {"teachMana", "Use your mana!"},
-        {"lockedDummy", "Use abilities while locked on"},
-        {"dummyDone", "Climb over the books"},
-        {"enemiesAppear", "Defeat the enemies"},
-        {"readytoFight", "Defeat the enemies"},
-        {"enemiesDefeated", "Proceed to the next room"}
+    {   {"cleanPile", "Clean the 5 dust piles"},
+        {"teachMana", "Use your abilities 3 times"},
+        {"lockedDummy", "Lock onto a dummy"},
+        {"lockedDummyMelee", "Use your primary attacks\nwhile locked on"},
+        {"lockedDummyAbility", "Use abilities 3 times\nwhile locked on"},
+        {"dummyDone", "Jump over the books"},
+        {"fighting",  "Defeat the Dust Bunnies\n(Use roll to avoid damage)"},
+        {"enemiesDefeated", "Proceed through the door"}
     };
 
     void Start()
@@ -57,10 +58,10 @@ public class ObjectiveManager : MonoBehaviour
         checkbox.enabled = false;
     }
 
-    public void transitionObjective() {
+    public void transitionObjective(string state) {
         checkbox.enabled = false;
         check.enabled = false;
-        objectiveText.text = objectiveList["dummyDone"];
+        objectiveText.text = objectiveList[state];
     }
 
     public void reappearBox() {
