@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028328, g: 0.22571322, b: 0.30692163, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2321,7 +2321,7 @@ PrefabInstance:
     - target: {fileID: 6904719146668348922, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.000000009220215
+      value: -0.000000009220214
       objectReference: {fileID: 0}
     - target: {fileID: 6904719146668348922, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
@@ -2331,7 +2331,7 @@ PrefabInstance:
     - target: {fileID: 6904719146668348922, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.21332422
+      value: -0.2133242
       objectReference: {fileID: 0}
     - target: {fileID: 6904719147228723758, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
@@ -2855,7 +2855,7 @@ MonoBehaviour:
   dustPilePrefab: {fileID: 1007121373}
   playerStats: {fileID: 2029081638}
   playercontroller: {fileID: 1857691452}
-  deathManager: {fileID: 0}
+  deathManager: {fileID: 1378815535}
   cleaningPercent: 0
   mana: 0
   maxMana: 100
@@ -7228,6 +7228,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1378815533}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1378815535 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6160843056228983092, guid: 358df206ff99fd64380a11100a1fe4b1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1378815533}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2082b6b7f3eafcb4189d20b3d38cb47d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1393183225
 PrefabInstance:
   m_ObjectHideFlags: 0
