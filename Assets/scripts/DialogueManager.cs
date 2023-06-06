@@ -417,22 +417,6 @@ public class DialogueManager : MonoBehaviour
             tutorialManager.controller.isCasting = false;
         }
 
-        /*
-        for (int i = 0; i < tutorialManager.controller.playerAbilities.Length; i++)
-            {
-                if (tutorialManager.controller.abilityActions[i].triggered 
-                && tutorialManager.controller.playerAbilities[i] != null 
-                && tutorialManager.controller.channeledAbility != 1)
-                {
-                    if((dummy1Health < dummy1TopHealth || dummy2Health < dummy2TopHealth) && targetLocked)
-                    {
-                        abilitydummiesHit++;
-                        dummy1TopHealth = dummy1Health;
-                        dummy2TopHealth = dummy2Health;
-                    }
-                }
-            }
-        */
         if(abilitydummiesHit >= 3)
         {
             dialoguebox.SetActive(true);
