@@ -183,7 +183,6 @@ MonoBehaviour:
   displayImage: {fileID: 667790507}
   cutsceneCanvas: {fileID: 667790505}
   dialogueBox: {fileID: 0}
-  portrait: {fileID: 0}
   fadeDuration: 1
 --- !u!1 &198098465
 GameObject:
@@ -271,7 +270,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 695358708}
         m_TargetAssemblyTypeName: GameOverManager, Assembly-CSharp
         m_MethodName: ToMainMenu
         m_Mode: 1

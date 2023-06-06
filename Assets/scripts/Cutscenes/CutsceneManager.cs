@@ -53,8 +53,4 @@ public class CutsceneManager : MonoBehaviour
         dialogueBox.SetActive(false);
         //SceneManager.LoadScene("Credits_Scene");
     }
-
-    public void backButton(){
-        SceneManager.LoadScene("MainMenu");
-    }
 }
