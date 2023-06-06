@@ -3091,6 +3091,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1007963652}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1007963654 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6160843056228983092, guid: 358df206ff99fd64380a11100a1fe4b1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1007963652}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2082b6b7f3eafcb4189d20b3d38cb47d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &1045645217
 Mesh:
   m_ObjectHideFlags: 0
@@ -3304,7 +3316,7 @@ MonoBehaviour:
   dustPilePrefab: {fileID: 109516314}
   playerStats: {fileID: 485352725}
   playercontroller: {fileID: 485352727}
-  deathManager: {fileID: 0}
+  deathManager: {fileID: 1007963654}
   cleaningPercent: 0
   mana: 0
   maxMana: 100

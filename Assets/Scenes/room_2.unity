@@ -470,12 +470,12 @@ PrefabInstance:
     - target: {fileID: 6904719146668348922, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.00000005953973
+      value: -0.000000059537392
       objectReference: {fileID: 0}
     - target: {fileID: 6904719146668348922, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.000000013000523
+      value: -0.0000000130000135
       objectReference: {fileID: 0}
     - target: {fileID: 6904719146668348922, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
@@ -485,7 +485,7 @@ PrefabInstance:
     - target: {fileID: 6904719146668348922, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.21332428
+      value: -0.2133243
       objectReference: {fileID: 0}
     - target: {fileID: 6904719147228723758, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
@@ -705,7 +705,7 @@ MonoBehaviour:
   dustPilePrefab: {fileID: 921964182}
   playerStats: {fileID: 2029081638}
   playercontroller: {fileID: 1857691451}
-  deathManager: {fileID: 0}
+  deathManager: {fileID: 960246487}
   cleaningPercent: 0
   mana: 0
   maxMana: 100
@@ -3803,6 +3803,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 960246485}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &960246487 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6160843056228983092, guid: 358df206ff99fd64380a11100a1fe4b1,
+    type: 3}
+  m_PrefabInstance: {fileID: 960246485}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2082b6b7f3eafcb4189d20b3d38cb47d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &967666964
 GameObject:
   m_ObjectHideFlags: 0
