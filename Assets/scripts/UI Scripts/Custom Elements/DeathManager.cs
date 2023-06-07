@@ -9,7 +9,7 @@ public class DeathManager : MonoBehaviour
 {   
     private Color color;
     public GameObject buttons;
-    public GameObject menuButton;
+    public GameObject continueButton;
     public GameObject gmUI;
     public GameObject playerUI;
     public GameObject pauseMenu;
@@ -49,12 +49,11 @@ public class DeathManager : MonoBehaviour
     void showButtons()
     {
         buttons.SetActive(true);
-        eventSystem.SetSelectedGameObject(menuButton);
+        eventSystem.SetSelectedGameObject(continueButton);
     }
 
-    public void toMainMenu()
+    public void toCheckPoint()
     {
-        //SceneManager.LoadScene("Title_Scene");
         string activeScene = SceneManager.GetActiveScene().name;
         string checkPoint = activeScene;
         if(activeScene == "TutorialScene"){
@@ -66,9 +65,12 @@ public class DeathManager : MonoBehaviour
         }else if(activeScene == "NewBossScene"){
             checkPoint = "NewBossScene";
         }
-        Debug.Log("Loading " + activeScene);
+        
         SceneManager.LoadScene(checkPoint);
     }
 
-
+    public void toTitleScene()
+    {
+        SceneManager.LoadScene("Title_Scene");
+    }
 }
