@@ -81,8 +81,10 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
             phase2CompletionCheck();
 
             // Move the center object down in the global y direction
-            float descentSpeed = 0.8f; // Adjust the descent speed as needed
-            centerObject.transform.position -= new Vector3(0f, descentSpeed * Time.deltaTime, 0f);
+            if(centerObject != null){
+                float descentSpeed = 0.8f; // Adjust the descent speed as needed
+                centerObject.transform.position -= new Vector3(0f, descentSpeed * Time.deltaTime, 0f);
+            }
             // Destroy the center object when it reaches a certain height
             float destroyHeight = -2f; // Adjust the destroy height as needed
             if (centerObject.transform.position.y <= destroyHeight)
