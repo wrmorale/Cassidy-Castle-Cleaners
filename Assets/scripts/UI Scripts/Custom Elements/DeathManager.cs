@@ -57,7 +57,9 @@ public class DeathManager : MonoBehaviour
         //SceneManager.LoadScene("Title_Scene");
         string activeScene = SceneManager.GetActiveScene().name;
         string checkPoint = activeScene;
-        if(activeScene == "SampleScene" || activeScene == "room_2"){
+        if(activeScene == "TutorialScene"){
+            checkPoint = "TutorialScene";
+        }else if(activeScene == "SampleScene" || activeScene == "room_2"){
             checkPoint = "SampleScene";
         }else if(activeScene == "room_3" || activeScene == "room_4"){
             checkPoint = "room_3";
