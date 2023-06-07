@@ -14,6 +14,11 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
     public bool canBeHarmed = false; //Starts immune to damage during the starting cutscene, though I suppose we could just make it that none of the mirrors are posessed at first.
     BehaviourTreeRunner btRunner;
 
+    [Header("Textures")]
+    [SerializeField] private Texture texture75Percent;
+    [SerializeField] private Texture texture50Percent;
+    [SerializeField] private Texture texture25Percent;
+
     [Header("Stats")]
     [SerializeField] public string enemyName;
     [SerializeField] public float maxHealth = 1.0f; //Shouldn't these be integers?
@@ -50,6 +55,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
     public LevelLoader levelLoader;
     public GameObject centerObject;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -63,6 +69,9 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
 
         bossHealthBar = GetComponentInChildren<EnemyHealthBar>();
         bossHealthBar.setMaxHealth(healthPercent);
+
+        // Get the renderer component
+        //bossRenderer = GetComponent<Renderer>();
     }
 
     // Update is called once per frame
@@ -159,6 +168,27 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
         else
         {
             Debug.LogWarning("Boss cannot be hurt right now!");
+        }
+
+        //changes texture based on health
+        if (healthPercent <= 0.75f && healthPercent > 0.5f)
+        {
+            changeMirrorTextures(texture75Percent);
+        }
+        else if (healthPercent <= 0.5f && healthPercent > 0.25f)
+        {
+            changeMirrorTextures(texture50Percent);
+        }
+        else if (healthPercent <= 0.25f)
+        {
+            changeMirrorTextures(texture25Percent);
+        }
+    }
+
+    private void changeMirrorTextures(Texture texture)
+    {
+        foreach (MirrorBossMirror mirror in mirrors){
+            mirror.mirrorRenderer.material.mainTexture = texture;
         }
     }
 

@@ -248,6 +248,7 @@ MonoBehaviour:
   shockwaveEndScale: 5
   shockwaveDuration: 0.4
   shockwaveSpawnPoint: {fileID: 4943009027781030738}
+  mirrorRenderer: {fileID: 5531344168630464565}
   mirrorAudioManager: {fileID: 863786983169766583}
 --- !u!114 &5616337374384034975
 MonoBehaviour:
@@ -6142,6 +6143,12 @@ MonoBehaviour:
 --- !u!4 &5491556239691624160 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6679f7b7412234e7591940343c18ad64,
+    type: 3}
+  m_PrefabInstance: {fileID: 5458173840886286603}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &5531344168630464565 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 539336873948936510, guid: 6679f7b7412234e7591940343c18ad64,
     type: 3}
   m_PrefabInstance: {fileID: 5458173840886286603}
   m_PrefabAsset: {fileID: 0}
