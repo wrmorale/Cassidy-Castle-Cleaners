@@ -112,8 +112,8 @@ MonoBehaviour:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 0
     specialCooldownEnds: 0
-  viewPosition: {x: 412.5, y: -1073.5, z: 0}
-  viewScale: {x: 0.8695652, y: 0.8695652, z: 1}
+  viewPosition: {x: 219.5, y: -697.5, z: 0}
+  viewScale: {x: 0.65751624, y: 0.65751624, z: 1}
   references:
     version: 2
     RefIds:
@@ -181,7 +181,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 05a1d36a08d16514e8a7a0147b15f5fc
-        position: {x: -156, y: 1682}
+        position: {x: -154.50009, y: 1682.0002}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -613,11 +613,9 @@ MonoBehaviour:
         - rid: 2581181084654108672
         - rid: 4349734493023633409
         - rid: 1283210374019022850
-        - rid: 1283210374019022849
         - rid: 7060330928295116800
-        - rid: 1283210374019022851
-        - rid: 4349734493023633413
         - rid: 2088461108116455437
+        - rid: 4349734493023633413
     - rid: 2088461108116455435
       type: {class: Wait, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:

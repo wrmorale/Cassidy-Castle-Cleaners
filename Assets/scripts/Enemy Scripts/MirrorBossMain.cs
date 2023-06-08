@@ -158,7 +158,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
             bossHealthBar.setHealth(healthPercent);
 
             //Proceed to phase 1.5 at 1/3 health
-            if(healthPercent <= 0.33 && phase == 1)
+            if(healthPercent <= 0.75 && phase == 1)
             {
                 abortBT();
                 canBeHarmed = false;
@@ -227,22 +227,31 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
 
         float angleStep = (projectileMaxAngle * 2) / projectilesPerVolley;
 
+        int oppositeMirror = 0;
+        if (currMirrorIndex < 2)
+            oppositeMirror = currMirrorIndex + 2;
+        else
+            oppositeMirror = currMirrorIndex - 2;
+
         while (elapsedTime < projectileAttackDuration)
         {
             //Spawn angle of first projectile is randomized, thus affecting all of the other ones
             //Could alternatively use cos function
             float projectileSpawnAngle = UnityEngine.Random.Range(0, angleStep) - projectileMaxAngle;
+            
 
-            for(int i = 0; i < projectilesPerVolley; i++)
+            
+
+            for (int i = 0; i < projectilesPerVolley; i++)
             {   
                 // Instantiate a clone of the projectile prefab at the mirror's position and rotation
-                Vector3 spawnPosition = currPosessedMirror.bulletSpawn.position;
-                ShardProjectile projectileClone = Instantiate(projectile, spawnPosition, currPosessedMirror.transform.rotation);
+                Vector3 spawnPosition = mirrors[oppositeMirror].bulletSpawn.position;
+                ShardProjectile projectileClone = Instantiate(projectile, spawnPosition, mirrors[oppositeMirror].transform.rotation);
                 projectileClone.gm = gm;
 
                 //float angleStep = projectilePattern(patternChoice, elapsedTime);
                 
-                Vector3 stepVector = Quaternion.AngleAxis(projectileSpawnAngle, Vector3.up) * currPosessedMirror.transform.right; // Calculates the angle to shoot
+                Vector3 stepVector = Quaternion.AngleAxis(projectileSpawnAngle, Vector3.up) * mirrors[oppositeMirror].transform.right; // Calculates the angle to shoot
                 projectileSpawnAngle += angleStep;
 
                 
@@ -255,11 +264,12 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
                 // Rotate the projectile to face its direction
                 projectileClone.transform.rotation = Quaternion.LookRotation(stepVector);
             }
-            currPosessedMirror.mirrorAudioManager.playShootShardSfx();
+            mirrors[oppositeMirror].mirrorAudioManager.playShootShardSfx();
 
             yield return new WaitForSeconds(secondsPerProjectile); // Waits until shooting the next volley
             elapsedTime += secondsPerProjectile; // Increment the elapsed time
         }
+
         isCoroutineRunning = false;
     }
 
@@ -361,17 +371,21 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
     //Can be removed after shooting animation is added
     public void setShootingWarning(bool setTo)
     {
-        foreach (MirrorBossMirror mirror in mirrors)
+        int oppositeMirror = 0;
+        if (currMirrorIndex < 2)
+            oppositeMirror = currMirrorIndex + 2;
+        else
+            oppositeMirror = currMirrorIndex - 2;
+        
+        if(setTo == true)
         {
-            if(setTo == true)
-            {
-                mirror.glassShardPortal.Play();
-            }
-            else
-            {
-                mirror.glassShardPortal.Stop();
-            }
+            mirrors[oppositeMirror].glassShardPortal.Play();
         }
+        else
+        {
+            mirrors[oppositeMirror].glassShardPortal.Stop();
+        }
+        
     }
 
     public void abortBT()
