@@ -451,7 +451,7 @@ PrefabInstance:
     - target: {fileID: 7182483781595004351, guid: 021a06eb4e1fae64a96a30146dcb7925,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: toMainMenu
+      value: toTitleScene
       objectReference: {fileID: 0}
     - target: {fileID: 7182483781595004351, guid: 021a06eb4e1fae64a96a30146dcb7925,
         type: 3}
@@ -496,7 +496,7 @@ PrefabInstance:
     - target: {fileID: 7182483781531869620, guid: 021a06eb4e1fae64a96a30146dcb7925,
         type: 3}
       propertyPath: m_Text
-      value: Continue
+      value: Try Again
       objectReference: {fileID: 0}
     - target: {fileID: 7182483781595004345, guid: 021a06eb4e1fae64a96a30146dcb7925,
         type: 3}
@@ -636,7 +636,7 @@ PrefabInstance:
     - target: {fileID: 7182483781595004351, guid: 021a06eb4e1fae64a96a30146dcb7925,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: toMainMenu
+      value: toCheckPoint
       objectReference: {fileID: 0}
     - target: {fileID: 7182483781595004351, guid: 021a06eb4e1fae64a96a30146dcb7925,
         type: 3}
