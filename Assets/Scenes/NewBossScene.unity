@@ -8377,6 +8377,11 @@ PrefabInstance:
     - target: {fileID: 5972610662029407917, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
         type: 3}
       propertyPath: volleysPerSec
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972610662029407917, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
+        type: 3}
+      propertyPath: projectileDamage
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5972610662029407917, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
@@ -8394,6 +8399,11 @@ PrefabInstance:
       propertyPath: texture75Percent
       value: 
       objectReference: {fileID: 2800000, guid: 941cde573812749a0b466f7371effe31, type: 3}
+    - target: {fileID: 5972610662029407917, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
+        type: 3}
+      propertyPath: trashSpawnChance
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 5972610662029407917, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
         type: 3}
       propertyPath: projectilesPerSec

@@ -151,7 +151,8 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
         if (canBeHarmed)
         {
             currentHealth -= damage;
-            currPosessedMirror.mirrorAudioManager.playIsHitsfx();
+            if(damage > 0)
+                currPosessedMirror.mirrorAudioManager.playIsHitsfx();
             //damageFlash.FlashStart();
             currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
             healthPercent = currentHealth / maxHealth;
@@ -225,37 +226,39 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
         float secondsPerProjectile = 1.0f / volleysPerSec; // Calculate the time between each projectile
         float elapsedTime = 0.0f; // Tracks time since the attack started
 
-        float angleStep = (projectileMaxAngle * 2) / projectilesPerVolley;
-
         while (elapsedTime < projectileAttackDuration)
         {
-            //Spawn angle of first projectile is randomized, thus affecting all of the other ones
-            //Could alternatively use cos function
-            float projectileSpawnAngle = UnityEngine.Random.Range(0, angleStep) - projectileMaxAngle;
+            for (int i = 0; i < mirrors.Count; i++)
+            {
+                /*Could add a check here for the main mirror to shoot directly at the player
+                 Wouldn't even be necessary if all mirrors EXCEPT the main one were always shooting*/
 
-            for(int i = 0; i < projectilesPerVolley; i++)
-            {   
+                Vector3 spawnPosition = mirrors[i].bulletSpawn.position;
+
                 // Instantiate a clone of the projectile prefab at the mirror's position and rotation
-                Vector3 spawnPosition = currPosessedMirror.bulletSpawn.position;
-                ShardProjectile projectileClone = Instantiate(projectile, spawnPosition, currPosessedMirror.transform.rotation);
-                projectileClone.gm = gm;
+                Projectile projectileClone = Instantiate(projectile, spawnPosition, mirrors[i].transform.rotation);
 
-                //float angleStep = projectilePattern(patternChoice, elapsedTime);
-                
-                Vector3 stepVector = Quaternion.AngleAxis(projectileSpawnAngle, Vector3.up) * currPosessedMirror.transform.right; // Calculates the angle to shoot
-                projectileSpawnAngle += angleStep;
+                float angleStep = 0;
+                angleStep = getAngleToPlayer(i);
+                Vector3 stepVector = Quaternion.AngleAxis(angleStep, Vector3.up) * mirrors[i].transform.right; // Calculates the angle to shoot
 
-                
-                float shardPileSpawnChance = trashSpawnChance;
-                //Note: Shards will only spawn if current dust piles < max dust piles
                 // Initialize and activate the clone
+                float shardPileSpawnChance = trashSpawnChance;
+                if (phase > 1)
+                {
+                    shardPileSpawnChance = shardPileSpawnChance / 2;
+                }
                 projectileClone.Initialize(projectileSpeed, 5.0f, projectileDamage, 1f, stepVector, shardPileSpawnChance);
+                
                 projectileClone.gameObject.SetActive(true);
 
                 // Rotate the projectile to face its direction
                 projectileClone.transform.rotation = Quaternion.LookRotation(stepVector);
+
+                //Play sound
+                if (i < 4) //Avoid getting too loud...
+                    mirrors[i].mirrorAudioManager.playShootShardSfx();
             }
-            currPosessedMirror.mirrorAudioManager.playShootShardSfx();
 
             yield return new WaitForSeconds(secondsPerProjectile); // Waits until shooting the next volley
             elapsedTime += secondsPerProjectile; // Increment the elapsed time
