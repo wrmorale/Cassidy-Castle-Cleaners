@@ -27,6 +27,7 @@ public class PersistentGameManager : MonoBehaviour
     public Sprite mopIcon;
     Image iconSlot;
     Image iconSlotTwo;
+    int iconIndex = 0;
 
     // Other persistent data or game settings can be added here
 
@@ -151,8 +152,6 @@ public class PersistentGameManager : MonoBehaviour
 
     public void DisplayAbilityIcon(string abilityName)
     {
-        int iconIndex = 0;
-
         if (abilityName == "Bleach Bomb")
         {
             if (iconIndex == 0)
