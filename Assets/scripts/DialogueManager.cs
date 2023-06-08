@@ -51,7 +51,7 @@ public class DialogueManager : MonoBehaviour
             Tuple.Create(0, "cleanPile"), Tuple.Create("Cassidy", "Listen, new hire. I know you want to jump right into things, but we should go ahead and teach you the basics.")
         },
         {
-            Tuple.Create(1, "cleanPile"), Tuple.Create("Cassidy",  "First, clean these dust piles. Look around if you don't see them right in front of you.")
+            Tuple.Create(1, "cleanPile"), Tuple.Create("Cassidy",  "First, clean up these dust piles. Look around if you don't see them right in front of you.")
         },
         {
             Tuple.Create(2, "cleanPile"), Tuple.Create("The Maid", "I'm not that new to cleaning, you know ...")
@@ -63,10 +63,10 @@ public class DialogueManager : MonoBehaviour
             Tuple.Create(4, "teachMana"), Tuple.Create("Cassidy", "Mana is needed to use your secondary cleaning abilities, which each require a different amount of mana. Make sure they are operational.")
         },
         {
-            Tuple.Create(5, "teachMana"), Tuple.Create("Cassidy", "By the way, this is important: When you enter a room, the sooner you clean a dust pile, the more mana you will receive.")
+            Tuple.Create(5, "teachMana"), Tuple.Create("Cassidy", "Very good. By the way here is a small tip:")
         },
         {
-            Tuple.Create(6, "teachMana"), Tuple.Create("Cassidy", "I’ll be sure to remind you again later.")
+            Tuple.Create(6, "teachMana"), Tuple.Create("Cassidy", "Cleaning dust piles while you are already at maximum mana is wasteful so if you have full mana try to make use of your abilities before cleaning.")
         },
         {
             Tuple.Create(7, "lockOn"), Tuple.Create("Cassidy", "Sometimes you’ll need to focus on a specific spot that needs cleaning.Try locking onto one of those dummies.")
