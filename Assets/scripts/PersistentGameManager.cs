@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PersistentGameManager : MonoBehaviour
 {
@@ -21,6 +22,11 @@ public class PersistentGameManager : MonoBehaviour
     private List<float> lastPlayerManaValues = new List<float>();
     public float health;
     public float mana;
+
+    public Sprite bleachBombIcon;
+    public Sprite mopIcon;
+    Image iconSlot;
+    Image iconSlotTwo;
 
     // Other persistent data or game settings can be added here
 
@@ -141,5 +147,35 @@ public class PersistentGameManager : MonoBehaviour
     {
         lastPlayerHealthValues.Clear();
         lastPlayerManaValues.Clear();
+    }
+
+    public void DisplayAbilityIcon(string abilityName)
+    {
+        int iconIndex = 0;
+
+        if (abilityName == "Bleach Bomb")
+        {
+            if (iconIndex == 0)
+            {
+                iconSlot.sprite = bleachBombIcon;
+                iconIndex++;
+            }
+            else
+            {
+                iconSlotTwo.sprite = bleachBombIcon;
+            }
+        }
+        else if (abilityName == "Mop")
+        {
+            if (iconIndex == 0)
+            {
+                iconSlot.sprite = mopIcon;
+                iconIndex++;
+            }
+            else
+            {
+                iconSlotTwo.sprite = mopIcon;
+            }
+        }
     }
 }
