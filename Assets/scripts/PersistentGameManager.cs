@@ -25,8 +25,8 @@ public class PersistentGameManager : MonoBehaviour
 
     public Sprite bleachBombIcon;
     public Sprite mopIcon;
-    Image iconSlot;
-    Image iconSlotTwo;
+    public Image iconSlot;
+    public Image iconSlotTwo;
     int iconIndex = 0;
 
     // Other persistent data or game settings can be added here
@@ -156,11 +156,13 @@ public class PersistentGameManager : MonoBehaviour
         {
             if (iconIndex == 0)
             {
+                iconSlot.color = new Color(iconSlot.color.r, iconSlot.color.g, iconSlot.color.b, 255);
                 iconSlot.sprite = bleachBombIcon;
                 iconIndex++;
             }
             else
             {
+                iconSlotTwo.color = new Color(iconSlot.color.r, iconSlot.color.g, iconSlot.color.b, 255);
                 iconSlotTwo.sprite = bleachBombIcon;
             }
         }
@@ -168,11 +170,13 @@ public class PersistentGameManager : MonoBehaviour
         {
             if (iconIndex == 0)
             {
+                iconSlot.color = new Color(iconSlot.color.r, iconSlot.color.g, iconSlot.color.b, 255);
                 iconSlot.sprite = mopIcon;
                 iconIndex++;
             }
             else
             {
+                iconSlotTwo.color = new Color(iconSlot.color.r, iconSlot.color.g, iconSlot.color.b, 255);
                 iconSlotTwo.sprite = mopIcon;
             }
         }
