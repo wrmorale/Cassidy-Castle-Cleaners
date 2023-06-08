@@ -236,9 +236,9 @@ MonoBehaviour:
   tempProjectileWarning: {fileID: 8221481633115712227}
   glassShardPortal: {fileID: 264791422197378446}
   projectilePrefab: {fileID: 8995539546555610048}
-  projectileSpeed: 2.5
+  projectileSpeed: 4
   projectileLifetime: 2
-  projectileDamage: 2
+  projectileDamage: 3
   trashSpawnChance: 0.055
   bulletSpawn: {fileID: 2402459199188912920}
   shockwave: {fileID: 5918913100410013975, guid: 5a5b27b9d4fc44449a6561c17d626306,

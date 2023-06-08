@@ -28,9 +28,15 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
 
     [Header("Projectile Stats")]
     [SerializeField] float projectileAttackDuration = 5.0f;
-    [SerializeField] float projectilesPerSec = 3.0f;
+    [SerializeField] float volleysPerSec = 3.0f;
     [SerializeField] float projectileMaxAngle = 25.0f;
-    [SerializeField] int aimOnCycle = 3; //Which projectile cycle to shoot at the player on
+    public int projectilesPerVolley = 10;
+    [SerializeField] public float projectileSpeed = 4;
+    [SerializeField] public float projectileLifetime = 2;
+    [SerializeField] public float projectileDamage = 3;
+    [SerializeField] public float trashSpawnChance = 0.055f;
+    //Trash will only spawn if current dust piles < max dust piles
+    GameManager gm;
 
     [Header("Enemy Spawns")]
     [SerializeField] GameObject spawnArea;
@@ -72,6 +78,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
 
         // Get the renderer component
         //bossRenderer = GetComponent<Renderer>();
+        gm = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -214,104 +221,57 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
     
     public IEnumerator projectileAttack()
     {
-        Projectile projectile = currPosessedMirror.projectilePrefab;
-        float secondsPerProjectile = 1.0f / projectilesPerSec; // Calculate the time between each projectile
+        ShardProjectile projectile = currPosessedMirror.projectilePrefab;
+        float secondsPerProjectile = 1.0f / volleysPerSec; // Calculate the time between each projectile
         float elapsedTime = 0.0f; // Tracks time since the attack started
-        int patternChoice = 1; // UnityEngine.Random.Range(0, 2); // Chooses random pattern
-        int cycle = 1;
 
-        /*
-         Santi's notes
-         So it chooses a pattern once at the start of the attack cycle...
-         Every mirror shoots a projectile at the same time, then waits before all shooting the next one
-
-        My pattern might not work well because the two unaimed-shots will not be spaced equally.
-         */
+        float angleStep = (projectileMaxAngle * 2) / projectilesPerVolley;
 
         while (elapsedTime < projectileAttackDuration)
         {
-            setAllMirrorAnimations("Shooting", true);
-            for(int i = 0; i < mirrors.Count; i++)
-            {
-                /*Could add a check here for the main mirror to shoot directly at the player
-                 Wouldn't even be necessary if all mirrors EXCEPT the main one were always shooting*/
+            //Spawn angle of first projectile is randomized, thus affecting all of the other ones
+            //Could alternatively use cos function
+            float projectileSpawnAngle = UnityEngine.Random.Range(0, angleStep) - projectileMaxAngle;
 
-                Vector3 spawnPosition = mirrors[i].bulletSpawn.position;
-
+            for(int i = 0; i < projectilesPerVolley; i++)
+            {   
                 // Instantiate a clone of the projectile prefab at the mirror's position and rotation
-                Projectile projectileClone = Instantiate(projectile, spawnPosition, mirrors[i].transform.rotation);
+                Vector3 spawnPosition = currPosessedMirror.bulletSpawn.position;
+                ShardProjectile projectileClone = Instantiate(projectile, spawnPosition, currPosessedMirror.transform.rotation);
+                projectileClone.gm = gm;
 
-                float angleStep = 0;
-                int offset = 0;
-                if(phase == 1)
-                {
-                    if ((cycle + offset) % aimOnCycle == 0)
-                    {
-                        //Shoot projectile directly at the player's xz position
-                        angleStep = getAngleToPlayer(i);
-                    }
-                    else
-                    {   //Follow the usual projectile pattern
-                        angleStep = projectilePattern(patternChoice, elapsedTime); // Gets the angle to shoot depending on the pattern
+                //float angleStep = projectilePattern(patternChoice, elapsedTime);
+                
+                Vector3 stepVector = Quaternion.AngleAxis(projectileSpawnAngle, Vector3.up) * currPosessedMirror.transform.right; // Calculates the angle to shoot
+                projectileSpawnAngle += angleStep;
 
-                    }
-                }
-                else //In phase 2, alternate shooting the tracking ones from the new and old mirrors
-                {
-                    if (i > 3)
-                        offset = aimOnCycle / 2;
-                    if ((cycle + offset) % aimOnCycle == 0)
-                    {
-                        //Shoot projectile directly at the player's xz position
-                        angleStep = getAngleToPlayer(i);
-                    }
-                    else
-                    {   //Follow the usual projectile pattern
-                        angleStep = projectilePattern(patternChoice, elapsedTime); // Gets the angle to shoot depending on the pattern
-
-                    }
-                }
-                Vector3 stepVector = Quaternion.AngleAxis(angleStep, Vector3.up) * mirrors[i].transform.right; // Calculates the angle to shoot
-
-                // Randomize the projectile lifetime within the range of the current value +- 1
-                //float randomizedLifetime = mirrors[i].projectileLifetime + UnityEngine.Random.Range(-1.5f, 2.0f);
-
+                
+                float shardPileSpawnChance = trashSpawnChance;
+                //Note: Shards will only spawn if current dust piles < max dust piles
                 // Initialize and activate the clone
-                float shardPileSpawnChance = mirrors[i].trashSpawnChance;
-                if(phase > 1){
-                    shardPileSpawnChance = shardPileSpawnChance/2;
-                }
-                projectileClone.Initialize(mirrors[i].projectileSpeed, 5.0f, mirrors[i].projectileDamage, 1f, stepVector, shardPileSpawnChance);
-                if ((cycle + offset) % 3 == 0)
-                {
-                    //projectileClone.transform.localScale = new Vector3(1, 5, 1); //Used to see which projectiles are shot directly at player
-                }
+                projectileClone.Initialize(projectileSpeed, 5.0f, projectileDamage, 1f, stepVector, shardPileSpawnChance);
                 projectileClone.gameObject.SetActive(true);
 
                 // Rotate the projectile to face its direction
                 projectileClone.transform.rotation = Quaternion.LookRotation(stepVector);
-
-                //Play sound
-                if(i < 4) //Avoid getting too loud...
-                    mirrors[i].mirrorAudioManager.playShootShardSfx();
             }
-            yield return new WaitForSeconds(secondsPerProjectile); // Waits until shooting the next projectile
+            currPosessedMirror.mirrorAudioManager.playShootShardSfx();
+
+            yield return new WaitForSeconds(secondsPerProjectile); // Waits until shooting the next volley
             elapsedTime += secondsPerProjectile; // Increment the elapsed time
-            cycle += 1;
         }
         isCoroutineRunning = false;
-        setAllMirrorAnimations("Shooting", false);
-    }
-
-    public void setAllMirrorAnimations(string animName, bool setTo){
-        foreach (MirrorBossMirror mirror in mirrors) {
-            Animator anim = mirror.GetComponentInChildren<Animator>();
-            anim.SetBool(animName, setTo);
-        }
     }
 
     public float projectilePattern(int patternNum, float projectileCounter){
-        /*Returns a number ranging from projectileMaxAngle to -projectileMaxAngle*/
+        /*Returns a number ranging from projectileMaxAngle to -projectileMaxAngle
+         The amount each time is based on the flat elapsed time. Essentially put in
+        secondsPerProjectile and that's the amount it will change*/
+
+        /*New desired pattern: Fire a massive spread of projectiles 
+         Start at +/-proejctileMaxAngle and move by 
+         */
+
         if(patternNum == 0){ //shoots in a cos wave pattern
             return (float)Math.Cos(projectileCounter) * projectileMaxAngle;
         }
