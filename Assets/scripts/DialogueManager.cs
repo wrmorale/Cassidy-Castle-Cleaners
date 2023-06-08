@@ -239,6 +239,8 @@ public class DialogueManager : MonoBehaviour
         continueButton.SetActive(false);
         objectiveManager.startObjective(curState);
         abilityBox.SetActive(true);
+        objectiveManager.updateObjectiveTextCleaning((int)gameManager.numberOfDustPiles);
+
 
         if(gameManager.numberOfDustPiles == 0 && curState == "cleanPile")
         {
@@ -272,6 +274,11 @@ public class DialogueManager : MonoBehaviour
         if(tutorialManager.controller.isCasting == true){
             abilitiesUsed++;
             tutorialManager.controller.isCasting = false;
+        }
+
+        if(abilitiesUsed <= 3)
+        {
+            objectiveManager.updateObjectiveTextAbilityUse(abilitiesUsed);
         }
 
         if(abilitiesUsed >= 3 ){
@@ -333,6 +340,7 @@ public class DialogueManager : MonoBehaviour
         dialoguebox.SetActive(false);
         continueButton.SetActive(false);
         abilityBox.SetActive(true);
+        objectiveManager.updateObjectiveTextPrimaryAttack(meleedummiesHit);
         //objectiveManager.displayNextObjective(curState);
         //gameManager.infiniteManaCheat = true;
         //gameManager.updateManaAmount(gameManager.mana);
@@ -382,6 +390,7 @@ public class DialogueManager : MonoBehaviour
         dialoguebox.SetActive(false);
         continueButton.SetActive(false);
         abilityBox.SetActive(true);
+        
         //objectiveManager.displayNextObjective(curState);
         gameManager.infiniteManaCheat = true;
         gameManager.updateManaAmount(gameManager.mana);
@@ -393,6 +402,7 @@ public class DialogueManager : MonoBehaviour
             if((dummy1Health < dummy1TopHealth || dummy2Health < dummy2TopHealth) && targetLocked)
             {
                 abilitydummiesHit++;
+                objectiveManager.updateObjectiveTextAbilityAttack(abilitydummiesHit);
                 dummy1TopHealth = dummy1Health;
                 dummy2TopHealth = dummy2Health;
             }
