@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
     //
     public int numberOfEnemies;
     public float maxDustPiles;
+    public bool giveManaFrame1 = true; //Santi: Prevents giving free mana in boss room
     [HideInInspector]public float numberOfDustPiles;
     public GameObject enemyPrefab;
     public GameObject player;
@@ -258,7 +259,7 @@ public class GameManager : MonoBehaviour
         // Increase mana by the dustPileReward after destroying a dust pile
         /*Santi Note: Because the boss room has a max dust piles of 1 but starts with none, the player automatically
          gains 20 mana at the start.*/
-        if (dustPiles.Length < numberOfDustPiles)
+        if (dustPiles.Length < numberOfDustPiles && giveManaFrame1)
         {
             float multiplier = numberOfDustPiles - dustPiles.Length;//in case you destroy multiple dust piles at once
             if (multiplier * mana >= maxMana - (multiplier * dustPileReward))
@@ -274,6 +275,7 @@ public class GameManager : MonoBehaviour
         }
         numberOfDustPiles = dustPiles.Length;
         updateDustPileAmount(numberOfDustPiles);
+        giveManaFrame1 = true;
 
         // Checks if there are no dustpiles and updates UI bar
         if (numberOfDustPiles == 0)
