@@ -236,10 +236,6 @@ MonoBehaviour:
   tempProjectileWarning: {fileID: 8221481633115712227}
   glassShardPortal: {fileID: 264791422197378446}
   projectilePrefab: {fileID: 8995539546555610048}
-  projectileSpeed: 4
-  projectileLifetime: 2
-  projectileDamage: 3
-  trashSpawnChance: 0.055
   bulletSpawn: {fileID: 2402459199188912920}
   shockwave: {fileID: 5918913100410013975, guid: 5a5b27b9d4fc44449a6561c17d626306,
     type: 3}
@@ -264,7 +260,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attacks:
   - name: Slam
-    damage: 5
+    damage: 3
     range: 2
     hitbox: {fileID: 7503088313172013072}
     clip:
@@ -275,7 +271,7 @@ MonoBehaviour:
       layerNumber: 0
     checker:
       activeFrameStart: 52
-      activeFrameEnd: 60
+      activeFrameEnd: 58
       attackCancelFrameStart: 0
       attackCancelFrameEnd: 0
       allCancelFrameStart: 0
