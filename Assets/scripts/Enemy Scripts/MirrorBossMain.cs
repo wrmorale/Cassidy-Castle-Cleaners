@@ -30,11 +30,11 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
     [SerializeField] float projectileAttackDuration = 5.0f;
     [SerializeField] float volleysPerSec = 3.0f;
     [SerializeField] float projectileMaxAngle = 25.0f;
-    public int projectilesPerVolley = 10;
-    [SerializeField] public float projectileSpeed = 4;
-    [SerializeField] public float projectileLifetime = 2;
-    [SerializeField] public float projectileDamage = 3;
-    [SerializeField] public float trashSpawnChance = 0.055f;
+    //public int projectilesPerVolley = 10;
+    public float projectileSpeed = 4;
+    public float projectileLifetime = 2;
+    public float projectileDamage = 3;
+    public float trashSpawnChance = 0.055f;
     //Trash will only spawn if current dust piles < max dust piles
     GameManager gm;
 
@@ -236,7 +236,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
                 Vector3 spawnPosition = mirrors[i].bulletSpawn.position;
 
                 // Instantiate a clone of the projectile prefab at the mirror's position and rotation
-                Projectile projectileClone = Instantiate(projectile, spawnPosition, mirrors[i].transform.rotation);
+                ShardProjectile projectileClone = Instantiate(projectile, spawnPosition, mirrors[i].transform.rotation);
 
                 float angleStep = 0;
                 angleStep = getAngleToPlayer(i);
@@ -249,7 +249,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
                     shardPileSpawnChance = shardPileSpawnChance / 2;
                 }
                 projectileClone.Initialize(projectileSpeed, 5.0f, projectileDamage, 1f, stepVector, shardPileSpawnChance);
-                
+                projectileClone.gm = gm;
                 projectileClone.gameObject.SetActive(true);
 
                 // Rotate the projectile to face its direction
