@@ -15,6 +15,8 @@ public class NewAbilitiesManager : MonoBehaviour
     public Image abilityFourIcon;
     public GameObject abilitiesCanvas;
     public GameManager gameManager;
+    public Player player;
+    public playerController controller;
 
     // dialogue box
     public GameObject dialogueBox;
@@ -52,63 +54,79 @@ public class NewAbilitiesManager : MonoBehaviour
     }
 
     public void displayAbilityThree() {
-        if (gameManager.roomCleared == true) {
-            // make the canvas appear
-            abilitiesCanvas.SetActive(true);
+        freezePlayer();
 
-            // begin dialogue
-            if (dialogueIndex == 0){
-                // todo: load and play loading animation
-            }
-            else if (dialogueIndex == 1){
-                // todo: play soap bar animation
-                abilityThreeOverlay.enabled = false;
-                abilityThreeIcon.enabled = false;
-            }
-            else if (dialogueIndex == 3){
-                abilityThreeIcon.enabled = true;
-            }
-            
-            if (dialogueIndex < 3){
-                dialogueText.text = abilityThreeDialogue[dialogueIndex];
-                dialogueIndex++;
-            }
-            else {
-                resetAbilityCheckpoint();
-            }
-        }   
+        // make the canvas appear
+        abilitiesCanvas.SetActive(true);
+
+        // begin dialogue
+        if (dialogueIndex == 0){
+            // todo: load and play loading animation
+        }
+        else if (dialogueIndex == 1){
+            // todo: play soap bar animation
+            abilityThreeOverlay.enabled = false;
+            abilityThreeIcon.enabled = false;
+        }
+        else if (dialogueIndex == 3){
+            abilityThreeIcon.enabled = true;
+        }
+        
+        if (dialogueIndex < 3){
+            dialogueText.text = abilityThreeDialogue[dialogueIndex];
+            dialogueIndex++;
+        }
+        else {
+            resetAbilityCheckpoint();
+        }  
     }
 
     public void displayAbilityFour() {
-        if (gameManager.roomCleared == true) {
-            // make the canvas appear
-            abilitiesCanvas.SetActive(true);
+        freezePlayer();
 
-            // begin dialogue
-            if (dialogueIndex == 0){
-                // todo: load and play loading animation
-            }
-            else if (dialogueIndex == 1){
-                // todo: play mop animation
-                abilityFourOverlay.enabled = false;
-                abilityFourIcon.enabled = false;
-            }
-            else if (dialogueIndex == 3){
-                abilityFourIcon.enabled = true;
-            }
-            
-            if (dialogueIndex < 3){
-                dialogueText.text = abilityFourDialogue[dialogueIndex];
-                dialogueIndex++;
-            }
-            else {
-                resetAbilityCheckpoint();
-            }
+        // make the canvas appear
+        abilitiesCanvas.SetActive(true);
+
+        // begin dialogue
+        if (dialogueIndex == 0){
+            // todo: load and play loading animation
+        }
+        else if (dialogueIndex == 1){
+            // todo: play mop animation
+            abilityFourOverlay.enabled = false;
+            abilityFourIcon.enabled = false;
+        }
+        else if (dialogueIndex == 3){
+            abilityFourIcon.enabled = true;
+        }
+        
+        if (dialogueIndex < 3){
+            dialogueText.text = abilityFourDialogue[dialogueIndex];
+            dialogueIndex++;
+        }
+        else {
+            resetAbilityCheckpoint();
         }
     }
 
     public void resetAbilityCheckpoint(){
         abilitiesCanvas.SetActive(false);
         dialogueIndex = 0;
+    }
+
+    public void freezePlayer(){
+        controller.SetState(States.PlayerStates.Talking);
+        player.animator.SetBool("Falling", false); 
+        player.animator.SetBool("Jumping", false);
+        player.animator.SetBool("Walking", false);      
+        player.animator.SetBool("Running", false);
+        player.animator.SetBool("Attacking", false);
+        player.animator.SetBool("Rolling", false);
+        player.atkmanager.SetWeaponCollider(false);
+        player.atkmanager.combo = 0;
+        player.atkmanager.activeClip.animator.SetInteger("Combo", 0);
+        player.isInvulnerable = false;
+        player.atkmanager.broom.SetActive(false);
+        player.atkmanager.pan.SetActive(false);
     }
 }
