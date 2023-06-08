@@ -16,6 +16,8 @@ public class BossPhase3Start : ActionNode
                     // Set the child GameObject to active
                     child.gameObject.SetActive(true);
                     mirrorBossRoot.mirrors.Add(mirror);
+                    //this will trigger the action for setting the texture to whatever texture the other mirrors have
+                    mirrorBossRoot.isHit(0,0); 
                 }
             }
         }

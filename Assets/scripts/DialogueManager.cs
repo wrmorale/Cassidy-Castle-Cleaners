@@ -463,6 +463,7 @@ public class DialogueManager : MonoBehaviour
             controlseven.SetActive(true);
             objectiveManager.reappearBox();
             objectiveManager.displayNextObjective(curState);
+            tutorialManager.CombatTrigger.kill();
             
         }
         dialoguebox.SetActive(false);
