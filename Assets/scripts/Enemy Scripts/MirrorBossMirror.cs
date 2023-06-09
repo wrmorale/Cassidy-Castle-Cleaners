@@ -40,11 +40,13 @@ public class MirrorBossMirror : Enemy
         {
             entityPossessing = true;
             faceRender.SetActive(true);
+            tag = "Enemy";
         }
         else
         {
             entityPossessing = false;
             faceRender.SetActive(false);
+            tag = "Untagged"; //Prevents lock-on targeting
         }
     }
 
