@@ -26,10 +26,11 @@ public class DialogueManager : MonoBehaviour
     public ObjectiveManager objectiveManager;
     public PauseMenu pauseMenu;
     public GameObject wall;
-    public GameObject portrait;
+    public Image portrait;
     public int dialogueIndex;
     private bool alreadyPaused = false;
     private bool inDialogue = true;
+    private string speaker;
     //Bools and other things for states of the Tutorial
     [SerializeField]private string curState; 
     [SerializeField]private bool controlgiven = false;
@@ -114,7 +115,6 @@ public class DialogueManager : MonoBehaviour
         // dialogue 
         dialoguebox = GameObject.Find("DialogueBox");
         continueButton = GameObject.Find("ContinueButton");
-        portrait = GameObject.Find("Portrait");
         abilityBox.SetActive(false);
         
 
@@ -191,7 +191,7 @@ public class DialogueManager : MonoBehaviour
 
      public void StartDialogue ()
     {
-        string speaker = (dialogueDatabase.ElementAt(dialogueIndex).Value).Item1;
+        speaker = (dialogueDatabase.ElementAt(dialogueIndex).Value).Item1;
         curState = (dialogueDatabase.ElementAt(dialogueIndex).Key).Item2;
         
         nameText.text = speaker;
@@ -207,7 +207,7 @@ public class DialogueManager : MonoBehaviour
             EndDialogue();
         }
 
-        string speaker = (dialogueDatabase.ElementAt(dialogueIndex).Value).Item1;
+        speaker = (dialogueDatabase.ElementAt(dialogueIndex).Value).Item1;
         string speakerText = (dialogueDatabase.ElementAt(dialogueIndex).Value).Item2;
         curState = (dialogueDatabase.ElementAt(dialogueIndex).Key).Item2;
 
@@ -216,11 +216,13 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = speakerText;
 
         // setting portrait 
-         if (string.Compare(speaker,"Cassidy") == 0){
-            portrait.SetActive(true);
+         if ("Cassidy" == speaker){
+            Debug.Log("Cassidy");
+            portrait.enabled = true;
         }
-        else if (string.Compare(speaker, "The Maid") == 0){
-            portrait.SetActive(false);
+        else{
+            Debug.Log("Maid");
+            portrait.enabled = false;
         }
         // move on to next line in dialogueDatabase
         dialogueIndex++;
@@ -523,7 +525,7 @@ public class DialogueManager : MonoBehaviour
         {
             dialoguebox.SetActive(false);
             continueButton.SetActive(false);
-            portrait.SetActive(false);
+            portrait.enabled  = false;
             if(!alreadyPaused)
             {
                 pauseMenu.eventSystem.SetSelectedGameObject(pauseMenu.resumeButton);
@@ -536,7 +538,14 @@ public class DialogueManager : MonoBehaviour
             {
                 dialoguebox.SetActive(true);
                 continueButton.SetActive(true);
-                portrait.SetActive(true);
+                if(speaker == "Cassidy"){
+                    portrait.enabled = true;
+                }
+                else{
+                    //Debug.Log("Maid");
+                    portrait.enabled = false;
+                }
+                
             }
             
             pauseMenu.eventSystem.SetSelectedGameObject(continueButton);
