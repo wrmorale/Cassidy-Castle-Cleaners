@@ -324,7 +324,7 @@ public class GameManager : MonoBehaviour
     {
         if (isNextToExit)
         {
-            isNextToExit = false;
+            
             doorPortal.SetActive(false);
             //Destroy(gameObject);
             if(SceneManager.GetActiveScene().name == "SampleScene"){
@@ -335,12 +335,14 @@ public class GameManager : MonoBehaviour
             }
             else if(currentSceneIndex < lastRoomIndex)
             {
+                isNextToExit = false;
                 //mana = 0;//reset mana for next room
                 persistentGM.PushLastPlayerHealth(playerStats.health, mana);
                 levelLoader.LoadNextLevel();
             }
             else
             {
+                isNextToExit = false;
                 // show end credits, player went through all rooms.
                 levelLoader.LoadTargetLevel("Win_scene");
             }

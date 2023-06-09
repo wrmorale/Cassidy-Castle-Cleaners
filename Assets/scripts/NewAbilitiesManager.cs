@@ -11,19 +11,19 @@ public class NewAbilitiesManager : MonoBehaviour
     public GameObject abilityThree;
     public GameObject abilityFour;
     public GameObject continueButton;
-    public Image abilityThreeOverlay;
-    public Image abilityFourOverlay;
-    public Image abilityThreeIcon;
-    public Image abilityFourIcon;
+    public GameObject abilityThreeOverlay;
+    public GameObject abilityFourOverlay;
+    public GameObject abilityThreeIcon;
+    public GameObject abilityFourIcon;
     public GameObject abilitiesCanvas;
     public GameManager gameManager;
     public Player player;
     public playerController controller;
     public EventSystem eventSystem;
-    public Image mopAnimation;
-    public Image soapAnimation;
-    public Image loadingAnimationThree;
-    public Image loadingAnimationFour;
+    public GameObject mopAnimation;
+    public GameObject soapAnimation;
+    public GameObject loadingAnimationThree;
+    public GameObject loadingAnimationFour;
 
 
     // dialogue box
@@ -40,7 +40,7 @@ public class NewAbilitiesManager : MonoBehaviour
     
     private String[] abilityFourDialogue = new String[] {
         "I was looking at the app store for some free abilities and found this one.",
-        "Who needs a Dyson vaccum when you can use a good old mop.",
+        "Who needs a Dyson vacuum when you can use a good old mop.",
         "Though if you break it I'm not getting you another one."
     };
 
@@ -49,12 +49,12 @@ public class NewAbilitiesManager : MonoBehaviour
         eventSystem = EventSystem.current;
         displayName.text = "Cassidy";
         // disable all animations, and icons
-        mopAnimation.enabled = false;
-        soapAnimation.enabled = false;
-        loadingAnimationThree.enabled = false;
-        loadingAnimationFour.enabled = false;
-        abilityThreeIcon.enabled = false;
-        abilityFourIcon.enabled = false;
+        mopAnimation.SetActive(false);
+        soapAnimation.SetActive(false);
+        loadingAnimationThree.SetActive(false);
+        loadingAnimationFour.SetActive(false);
+        abilityThreeIcon.SetActive(false);
+        abilityFourIcon.SetActive(false);
     }
 
     public void displayAbilityThree() {
@@ -67,22 +67,21 @@ public class NewAbilitiesManager : MonoBehaviour
                 eventSystem.SetSelectedGameObject(continueButton);
                 dialogueText.text = abilityThreeDialogue[dialogueIndex];
             }
-            
             // begin dialogue
             if (dialogueIndex == 0){
                 // loading the idle animation for ability three
-                loadingAnimationThree.enabled = true;
+                loadingAnimationThree.SetActive(true);
             }
             else if (dialogueIndex == 1){
                 // play soap animation, disable the loading animation and  grey overlay
-                loadingAnimationThree.enabled = false;
-                abilityThreeOverlay.enabled = false;
-                soapAnimation.enabled = true;
+                loadingAnimationThree.SetActive(false);
+                abilityThreeOverlay.SetActive(false);
+                soapAnimation.SetActive(true);
             }
             else if (dialogueIndex == 2){
                 // disable soap animation and enable the icon
-                soapAnimation.enabled = false;
-                abilityThreeIcon.enabled = true;
+                soapAnimation.SetActive(false);
+                abilityThreeIcon.SetActive(true);
             }
              
         }
@@ -120,19 +119,20 @@ public class NewAbilitiesManager : MonoBehaviour
             if (dialogueIndex == 0){
                 // enable loading animation and have icon thee ability show up
                 // since the player obtained it already
-                abilityThreeIcon.enabled = true;
-                loadingAnimationFour.enabled = true;
+                abilityThreeOverlay.SetActive(false);
+                abilityThreeIcon.SetActive(true);
+                loadingAnimationFour.SetActive(true);
             }
             else if (dialogueIndex == 1){
                 // disable loading animation and enable the mop animation
-                loadingAnimationFour.enabled = false;
-                abilityFourOverlay.enabled = false;
-                mopAnimation.enabled = true;
+                loadingAnimationFour.SetActive(false);
+                abilityFourOverlay.SetActive(false);
+                mopAnimation.SetActive(true);
             }
             else if (dialogueIndex == 3){
                 // load the icon and disable mop animation
-                abilityFourIcon.enabled = true;
-                mopAnimation.enabled = false;
+                abilityFourIcon.SetActive(true);
+                mopAnimation.SetActive(false);
             }
             if(dialogueIndex == 3){
                 resetAbilityCheckpoint();
@@ -145,7 +145,7 @@ public class NewAbilitiesManager : MonoBehaviour
         dialogueIndex = 0;
         gameManager.persistentGM.PushLastPlayerHealth(gameManager.playerStats.health, gameManager.mana);
         gameManager.levelLoader.LoadNextLevel();
-        
+        gameManager.isNextToExit = false;
     }
 
     public void freezePlayer(){
