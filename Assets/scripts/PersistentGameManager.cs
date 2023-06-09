@@ -23,11 +23,6 @@ public class PersistentGameManager : MonoBehaviour
     public float health;
     public float mana;
 
-    public Sprite soapBarIcon;
-    public Sprite mopIcon;
-    public Image iconSlot;
-    public Image iconSlotTwo;
-    int iconIndex = 0;
 
     // Other persistent data or game settings can be added here
 
@@ -49,14 +44,7 @@ public class PersistentGameManager : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneChanged;
         Debug.LogWarning("Persistent Game Manager awake!");
 
-        if (SceneManager.GetActiveScene().buildIndex >= 3)
-        {
-            DisplayBarIcon();
-        }
-        if (SceneManager.GetActiveScene().buildIndex >= 5)
-        {
-            DisplayMopIcon();
-        }
+        
     }
 
     private void OnDestroy()
@@ -69,6 +57,8 @@ public class PersistentGameManager : MonoBehaviour
         Debug.LogWarning("Persistent Game Manager start!");
         player = FindObjectOfType<Player>();
         gameManager = FindObjectOfType<GameManager>();
+
+
     }
 
     private void Update()
@@ -82,6 +72,7 @@ public class PersistentGameManager : MonoBehaviour
         {
             mana = gameManager.mana;
         }
+
     }
 
     private void OnSceneChanged(Scene scene, LoadSceneMode mode)
@@ -159,15 +150,4 @@ public class PersistentGameManager : MonoBehaviour
         lastPlayerManaValues.Clear();
     }
 
-    void DisplayBarIcon()
-    {
-        iconSlot.color = new Color(iconSlot.color.r, iconSlot.color.g, iconSlot.color.b, 255);
-        iconSlot.sprite = soapBarIcon;
-    }
-
-    void DisplayMopIcon()
-    {
-        iconSlotTwo.color = new Color(iconSlot.color.r, iconSlot.color.g, iconSlot.color.b, 255);
-        iconSlotTwo.sprite = mopIcon;
-    }
 }
