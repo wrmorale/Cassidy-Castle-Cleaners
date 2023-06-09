@@ -36,7 +36,6 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
     public float projectileDamage = 3;
     public float trashSpawnChance = 0.055f;
     //Trash will only spawn if current dust piles < max dust piles
-    GameManager gm;
 
     [Header("Enemy Spawns")]
     [SerializeField] GameObject spawnArea;
@@ -78,7 +77,6 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
 
         // Get the renderer component
         //bossRenderer = GetComponent<Renderer>();
-        gm = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -225,6 +223,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
         ShardProjectile projectile = currPosessedMirror.projectilePrefab;
         float secondsPerProjectile = 1.0f / volleysPerSec; // Calculate the time between each projectile
         float elapsedTime = 0.0f; // Tracks time since the attack started
+        GameManager gm = FindObjectOfType<GameManager>();
 
         while (elapsedTime < projectileAttackDuration)
         {
