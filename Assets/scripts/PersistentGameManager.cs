@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PersistentGameManager : MonoBehaviour
 {
@@ -22,6 +23,12 @@ public class PersistentGameManager : MonoBehaviour
     public float health;
     public float mana;
 
+    public Sprite soapBarIcon;
+    public Sprite mopIcon;
+    public Image iconSlot;
+    public Image iconSlotTwo;
+    int iconIndex = 0;
+
     // Other persistent data or game settings can be added here
 
     private void Awake()
@@ -41,6 +48,15 @@ public class PersistentGameManager : MonoBehaviour
 
         SceneManager.sceneLoaded += OnSceneChanged;
         Debug.LogWarning("Persistent Game Manager awake!");
+
+        if (SceneManager.GetActiveScene().buildIndex >= 3)
+        {
+            DisplayBarIcon();
+        }
+        if (SceneManager.GetActiveScene().buildIndex >= 5)
+        {
+            DisplayMopIcon();
+        }
     }
 
     private void OnDestroy()
@@ -141,5 +157,17 @@ public class PersistentGameManager : MonoBehaviour
     {
         lastPlayerHealthValues.Clear();
         lastPlayerManaValues.Clear();
+    }
+
+    void DisplayBarIcon()
+    {
+        iconSlot.color = new Color(iconSlot.color.r, iconSlot.color.g, iconSlot.color.b, 255);
+        iconSlot.sprite = soapBarIcon;
+    }
+
+    void DisplayMopIcon()
+    {
+        iconSlotTwo.color = new Color(iconSlot.color.r, iconSlot.color.g, iconSlot.color.b, 255);
+        iconSlotTwo.sprite = mopIcon;
     }
 }
