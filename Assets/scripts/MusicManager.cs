@@ -34,4 +34,9 @@ public class MusicManager : MonoBehaviour
     {
         audioSource.Stop();
     }
+
+    public bool IsMusicPlaying()
+    {
+        return audioSource.isPlaying;
+    }
 }

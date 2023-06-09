@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class PersistentGameManager : MonoBehaviour
 {
@@ -10,6 +9,7 @@ public class PersistentGameManager : MonoBehaviour
 
     public Player player;
     public GameManager gameManager;
+    public MusicManager musicManager;
 
     // Game settings
     public bool infiniteManaCheat = false;
@@ -22,12 +22,6 @@ public class PersistentGameManager : MonoBehaviour
     private List<float> lastPlayerManaValues = new List<float>();
     public float health;
     public float mana;
-
-    public Sprite soapBarIcon;
-    public Sprite mopIcon;
-    public Image iconSlot;
-    public Image iconSlotTwo;
-    int iconIndex = 0;
 
     // Other persistent data or game settings can be added here
 
@@ -48,15 +42,6 @@ public class PersistentGameManager : MonoBehaviour
 
         SceneManager.sceneLoaded += OnSceneChanged;
         Debug.LogWarning("Persistent Game Manager awake!");
-
-        if (SceneManager.GetActiveScene().buildIndex >= 3)
-        {
-            DisplayBarIcon();
-        }
-        if (SceneManager.GetActiveScene().buildIndex >= 5)
-        {
-            DisplayMopIcon();
-        }
     }
 
     private void OnDestroy()
@@ -81,6 +66,18 @@ public class PersistentGameManager : MonoBehaviour
         if (gameManager != null)
         {
             mana = gameManager.mana;
+        }
+
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        if (currentSceneName == "Title_Scene") // Replace "MenuScene" with the actual name of your menu scene
+        {
+            musicManager.StopMusic();
+        }
+        else{
+            if (!musicManager.IsMusicPlaying()) // Check if music is not already playing
+            {
+                musicManager.playBattleMusic(); // Play the battle music
+            }
         }
     }
 
@@ -157,17 +154,5 @@ public class PersistentGameManager : MonoBehaviour
     {
         lastPlayerHealthValues.Clear();
         lastPlayerManaValues.Clear();
-    }
-
-    void DisplayBarIcon()
-    {
-        iconSlot.color = new Color(iconSlot.color.r, iconSlot.color.g, iconSlot.color.b, 255);
-        iconSlot.sprite = soapBarIcon;
-    }
-
-    void DisplayMopIcon()
-    {
-        iconSlotTwo.color = new Color(iconSlot.color.r, iconSlot.color.g, iconSlot.color.b, 255);
-        iconSlotTwo.sprite = mopIcon;
     }
 }
