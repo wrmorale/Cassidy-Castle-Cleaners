@@ -28,6 +28,8 @@ public class MirrorBossMirror : Enemy
     [SerializeField] float shockwaveDuration = 0.5f;
     [SerializeField] Transform shockwaveSpawnPoint;
 
+    [Header("Other")]
+    [SerializeField] public Renderer mirrorRenderer;
     public MirrorBossSoundManager mirrorAudioManager;
 
     // Start is called before the first frame update

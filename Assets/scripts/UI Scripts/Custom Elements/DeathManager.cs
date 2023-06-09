@@ -9,7 +9,7 @@ public class DeathManager : MonoBehaviour
 {   
     private Color color;
     public GameObject buttons;
-    public GameObject menuButton;
+    public GameObject continueButton;
     public GameObject gmUI;
     public GameObject playerUI;
     public GameObject pauseMenu;
@@ -49,16 +49,28 @@ public class DeathManager : MonoBehaviour
     void showButtons()
     {
         buttons.SetActive(true);
-        eventSystem.SetSelectedGameObject(menuButton);
+        eventSystem.SetSelectedGameObject(continueButton);
     }
 
-    public void toMainMenu()
+    public void toCheckPoint()
     {
-        //SceneManager.LoadScene("Title_Scene");
         string activeScene = SceneManager.GetActiveScene().name;
-        Debug.Log("Loading " + activeScene);
-        SceneManager.LoadScene(activeScene);
+        string checkPoint = activeScene;
+        if(activeScene == "TutorialScene"){
+            checkPoint = "TutorialScene";
+        }else if(activeScene == "SampleScene" || activeScene == "room_2"){
+            checkPoint = "SampleScene";
+        }else if(activeScene == "room_3" || activeScene == "room_4"){
+            checkPoint = "room_3";
+        }else if(activeScene == "NewBossScene"){
+            checkPoint = "NewBossScene";
+        }
+        
+        SceneManager.LoadScene(checkPoint);
     }
 
-
+    public void toTitleScene()
+    {
+        SceneManager.LoadScene("Title_Scene");
+    }
 }
