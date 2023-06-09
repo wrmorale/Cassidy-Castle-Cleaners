@@ -4215,6 +4215,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &918990275 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 130637442368307866, guid: 55f7990e1f79b1c428adb94d5db23617,
+    type: 3}
+  m_PrefabInstance: {fileID: 1814314677}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &965643143 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6904719146301635519, guid: fe987c0be70e4764e92e8aff74c2356e,
@@ -7325,7 +7331,7 @@ MonoBehaviour:
   dialoguebox: {fileID: 1092545694}
   continueButton: {fileID: 613288932}
   gameManager: {fileID: 1928179608}
-  abilityBox: {fileID: 0}
+  abilityBox: {fileID: 918990275}
   controlone: {fileID: 1534007396}
   controltwo: {fileID: 224766931}
   controlthree: {fileID: 443400943}
@@ -8135,10 +8141,12 @@ MonoBehaviour:
   roomCleared: 0
   isNextToExit: 0
   gamePaused: 0
+  levelLoader: {fileID: 0}
   currentGold: 0
   availableAbilities: []
   numberOfEnemies: 0
   maxDustPiles: 5
+  giveManaFrame1: 1
   numberOfDustPiles: 0
   enemyPrefab: {fileID: 8327740662560138380, guid: 3fec4a32b1661b648bdcb0b9faccc35d,
     type: 3}
@@ -8156,6 +8164,7 @@ MonoBehaviour:
   playerStats: {fileID: 795224107}
   playercontroller: {fileID: 795224115}
   deathManager: {fileID: 578658809}
+  abilitiesManager: {fileID: 0}
   cleaningPercent: 0
   mana: 0
   maxMana: 100
@@ -9107,17 +9116,17 @@ PrefabInstance:
     - target: {fileID: 6904719148039652034, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.69775385
+      value: 0.6977539
       objectReference: {fileID: 0}
     - target: {fileID: 6904719148039652034, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.114627995
+      value: 0.114628
       objectReference: {fileID: 0}
     - target: {fileID: 6904719148039652034, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.69775385
+      value: 0.6977538
       objectReference: {fileID: 0}
     - target: {fileID: 6904719148039652034, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
@@ -9624,22 +9633,22 @@ PrefabInstance:
     - target: {fileID: 7932447838902735546, guid: b16642e7513a80e4d83b1053c95e3d44,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.696045
+      value: 0.69604504
       objectReference: {fileID: 0}
     - target: {fileID: 7932447838902735546, guid: b16642e7513a80e4d83b1053c95e3d44,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.12458497
+      value: 0.12458498
       objectReference: {fileID: 0}
     - target: {fileID: 7932447838902735546, guid: b16642e7513a80e4d83b1053c95e3d44,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.696045
+      value: 0.6960449
       objectReference: {fileID: 0}
     - target: {fileID: 7932447838902735546, guid: b16642e7513a80e4d83b1053c95e3d44,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.124584965
+      value: -0.12458496
       objectReference: {fileID: 0}
     - target: {fileID: 7932447838902735546, guid: b16642e7513a80e4d83b1053c95e3d44,
         type: 3}
