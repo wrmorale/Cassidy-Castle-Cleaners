@@ -328,10 +328,10 @@ MonoBehaviour:
   isHitVolume: 0.3
   slamSfx: {fileID: 8300000, guid: d4225159076612541966dd22e83a207d, type: 3}
   slamVolume: 0.6
-  deathSfx: {fileID: 8300000, guid: 0251dd9af897c724286faaefdf31fdc5, type: 3}
-  deathVolume: 1
-  laughSfx: {fileID: 8300000, guid: 19903024ebdeec249b35a6687948dece, type: 3}
-  laughVolume: 1
+  deathSfx: {fileID: 8300000, guid: f26c2337f63c3c94db9009ca8053f647, type: 3}
+  deathVolume: 0.8
+  laughSfx: {fileID: 8300000, guid: 6c9ddaca290be7f4c97e6c51d3dda81e, type: 3}
+  laughVolume: 0.4
   shootShardSfx: {fileID: 8300000, guid: 8d9f783c07d727a4199eec8c38a31675, type: 3}
   shootShardVolume: 0.2
   spawnEnemySfx: {fileID: 8300000, guid: 8a809c20f625ed7469025ed345775782, type: 3}
@@ -6128,10 +6128,10 @@ MonoBehaviour:
   isHitVolume: 0.5
   slamSfx: {fileID: 8300000, guid: d4225159076612541966dd22e83a207d, type: 3}
   slamVolume: 0.5
-  deathSfx: {fileID: 8300000, guid: 0251dd9af897c724286faaefdf31fdc5, type: 3}
-  deathVolume: 2
-  laughSfx: {fileID: 8300000, guid: 19903024ebdeec249b35a6687948dece, type: 3}
-  laughVolume: 0.1
+  deathSfx: {fileID: 8300000, guid: f26c2337f63c3c94db9009ca8053f647, type: 3}
+  deathVolume: 0.5
+  laughSfx: {fileID: 8300000, guid: 6c9ddaca290be7f4c97e6c51d3dda81e, type: 3}
+  laughVolume: 0.2
   shootShardSfx: {fileID: 0}
   shootShardVolume: 0
   spawnEnemySfx: {fileID: 0}
