@@ -4,6 +4,7 @@ using UnityEngine;
 using Extensions;
 using pState = States.PlayerStates;
 using aState = States.ActionState;
+using UnityEngine.SceneManagement;
 
 public class SoapBarTriggerable : PlayerAbility, IFrameCheckHandler
 {
@@ -28,8 +29,9 @@ public class SoapBarTriggerable : PlayerAbility, IFrameCheckHandler
     public void onActiveFrameStart()
     {
         playerForward = player.transform.forward; // Set playerForward to player's forward direction
+        string sceneName = SceneManager.GetActiveScene().name;
 
-        if(GameManager.instance.mana >= cost){
+        if((GameManager.instance.mana >= cost) && (sceneName == "room_3" || sceneName == "room_4" || sceneName == "NewBossScene")){
             GameManager.instance.mana -= cost;
             GameManager.instance.updateManaAmount(GameManager.instance.mana);
             player.StartCoroutine(Fire());

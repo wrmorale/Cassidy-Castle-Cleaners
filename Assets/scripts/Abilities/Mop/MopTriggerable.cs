@@ -4,6 +4,7 @@ using UnityEngine;
 using Extensions;
 using pState = States.PlayerStates;
 using aState = States.ActionState;
+using UnityEngine.SceneManagement;
 
 public class MopTriggerable : PlayerAbility, IFrameCheckHandler
 {
@@ -27,7 +28,9 @@ public class MopTriggerable : PlayerAbility, IFrameCheckHandler
 
     public void onActiveFrameStart()
     {
-        if (!mopSpawned && GameManager.instance.mana >= cost)
+        string sceneName = SceneManager.GetActiveScene().name;
+
+        if ((!mopSpawned && GameManager.instance.mana >= cost) && (sceneName == "room_4" || sceneName == "NewBossScene"))
         {
             GameManager.instance.mana -= cost;
             GameManager.instance.updateManaAmount(GameManager.instance.mana);
