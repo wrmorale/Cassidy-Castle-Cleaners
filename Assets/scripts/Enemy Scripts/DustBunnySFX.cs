@@ -12,6 +12,8 @@ public class DustBunnySFX : MonoBehaviour
     public float chargeLevel;
     public AudioClip pouncesfx;
     public float pounceLevel;
+    public AudioClip deathsfx;
+    public float deathLevel;
 
     void Start()
     {
@@ -28,5 +30,9 @@ public class DustBunnySFX : MonoBehaviour
 
     private void playPouncesfx(){
         animationSoundPlayer.PlayOneShot(pouncesfx, pounceLevel);
+    }
+
+    private void playDeathsfx(){
+        animationSoundPlayer.PlayOneShot(deathsfx, deathLevel);
     }
 }

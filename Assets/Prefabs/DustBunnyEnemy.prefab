@@ -778,5 +778,7 @@ MonoBehaviour:
   hopLevel: 0.1
   chargesfx: {fileID: 8300000, guid: 6aae3f6b90c9a29438f87fbcfe6adf75, type: 3}
   chargeLevel: 0.4
-  pouncesfx: {fileID: 8300000, guid: b1d25552a878d7044abb785859ea7bde, type: 3}
-  pounceLevel: 0.4
+  pouncesfx: {fileID: 8300000, guid: e3c80704d053f9a4eb9a7ef9b6914827, type: 3}
+  pounceLevel: 0.2
+  deathsfx: {fileID: 8300000, guid: 98d27d9bc2a5beb40a99a8217c6ea8b6, type: 3}
+  deathLevel: 0.2
