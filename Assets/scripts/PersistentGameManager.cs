@@ -9,6 +9,7 @@ public class PersistentGameManager : MonoBehaviour
 
     public Player player;
     public GameManager gameManager;
+    public MusicManager musicManager;
 
     // Game settings
     public bool infiniteManaCheat = false;
@@ -16,11 +17,13 @@ public class PersistentGameManager : MonoBehaviour
     public float bleachBombCost = 20f;
     public float dusterCost = 10f;
     public float soapBarCost = 10f;
+    public float mopCost = 20f;
 
     private List<float> lastPlayerHealthValues = new List<float>();
     private List<float> lastPlayerManaValues = new List<float>();
     public float health;
     public float mana;
+
 
     // Other persistent data or game settings can be added here
 
@@ -41,6 +44,8 @@ public class PersistentGameManager : MonoBehaviour
 
         SceneManager.sceneLoaded += OnSceneChanged;
         Debug.LogWarning("Persistent Game Manager awake!");
+
+        
     }
 
     private void OnDestroy()
@@ -53,6 +58,8 @@ public class PersistentGameManager : MonoBehaviour
         Debug.LogWarning("Persistent Game Manager start!");
         player = FindObjectOfType<Player>();
         gameManager = FindObjectOfType<GameManager>();
+
+
     }
 
     private void Update()
@@ -65,6 +72,18 @@ public class PersistentGameManager : MonoBehaviour
         if (gameManager != null)
         {
             mana = gameManager.mana;
+        }
+
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        if (currentSceneName == "Title_Scene") // Replace "MenuScene" with the actual name of your menu scene
+        {
+            musicManager.StopMusic();
+        }
+        else{
+            if (!musicManager.IsMusicPlaying()) // Check if music is not already playing
+            {
+                musicManager.playBattleMusic(); // Play the battle music
+            }
         }
     }
 
@@ -142,4 +161,5 @@ public class PersistentGameManager : MonoBehaviour
         lastPlayerHealthValues.Clear();
         lastPlayerManaValues.Clear();
     }
+
 }

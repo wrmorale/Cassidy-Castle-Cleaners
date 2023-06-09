@@ -39,12 +39,13 @@ public class GameManager : MonoBehaviour
     public static int currentSceneIndex = 0;
     public static int currRoom = 0; // keeps track of the levels we beat
     private int lastRoomIndex = 6; // 0 indexed so 4 total atm
-    private LevelLoader levelLoader;
+    public LevelLoader levelLoader;
     public int currentGold;
     public List<String> availableAbilities = new List<String>(); //not sure how we will keep track of abilities yet but a list of strings to hold ablities that can be learned
     //
     public int numberOfEnemies;
     public float maxDustPiles;
+    public bool giveManaFrame1 = true; //Santi: Prevents giving free mana in boss room
     [HideInInspector]public float numberOfDustPiles;
     public GameObject enemyPrefab;
     public GameObject player;
@@ -56,6 +57,7 @@ public class GameManager : MonoBehaviour
     public Player playerStats;
     public playerController playercontroller;
     public DeathManager deathManager;
+    public NewAbilitiesManager abilitiesManager; 
 
     private bool objectsInstantiated = false;
 
@@ -240,6 +242,7 @@ public class GameManager : MonoBehaviour
             {
                 mana = 0;
                 playercontroller.HandleDeath();
+                persistentGM.resetPlayerStats();
                 deathManager.die();
             }
         }
@@ -255,7 +258,9 @@ public class GameManager : MonoBehaviour
         updateEnemiesAmount(numberOfEnemies);
 
         // Increase mana by the dustPileReward after destroying a dust pile
-        if (dustPiles.Length < numberOfDustPiles)
+        /*Santi Note: Because the boss room has a max dust piles of 1 but starts with none, the player automatically
+         gains 20 mana at the start.*/
+        if (dustPiles.Length < numberOfDustPiles && giveManaFrame1)
         {
             float multiplier = numberOfDustPiles - dustPiles.Length;//in case you destroy multiple dust piles at once
             if (multiplier * mana >= maxMana - (multiplier * dustPileReward))
@@ -271,6 +276,7 @@ public class GameManager : MonoBehaviour
         }
         numberOfDustPiles = dustPiles.Length;
         updateDustPileAmount(numberOfDustPiles);
+        giveManaFrame1 = true;
 
         // Checks if there are no dustpiles and updates UI bar
         if (numberOfDustPiles == 0)
@@ -320,17 +326,25 @@ public class GameManager : MonoBehaviour
     {
         if (isNextToExit)
         {
-            isNextToExit = false;
+            
             doorPortal.SetActive(false);
             //Destroy(gameObject);
-            if (currentSceneIndex < lastRoomIndex)
+            if(SceneManager.GetActiveScene().name == "SampleScene"){
+                abilitiesManager.displayAbilityThree();
+            }
+            else if(SceneManager.GetActiveScene().name == "room_3"){
+                abilitiesManager.displayAbilityFour();
+            }
+            else if(currentSceneIndex < lastRoomIndex)
             {
+                isNextToExit = false;
                 //mana = 0;//reset mana for next room
                 persistentGM.PushLastPlayerHealth(playerStats.health, mana);
                 levelLoader.LoadNextLevel();
             }
             else
             {
+                isNextToExit = false;
                 // show end credits, player went through all rooms.
                 levelLoader.LoadTargetLevel("Win_scene");
             }

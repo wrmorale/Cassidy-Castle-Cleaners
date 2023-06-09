@@ -9,6 +9,8 @@ public class MothSFX : MonoBehaviour
     public float attackWindupLevel;
     public AudioClip attacksfx;
     public float attackLevel;
+    public AudioClip deathsfx;
+    public float deathLevel;
 
     void Start()
     {
@@ -21,5 +23,9 @@ public class MothSFX : MonoBehaviour
 
     private void playAttacksfx(){
         animationSoundPlayer.PlayOneShot(attacksfx, attackLevel);
+    }
+
+    private void playDeathsfx(){
+        animationSoundPlayer.PlayOneShot(deathsfx, deathLevel);
     }
 }

@@ -19,6 +19,8 @@ public class DialogueManager : MonoBehaviour
     public GameObject controlthree;
     public GameObject controlfour;
     public GameObject controlfive;
+    public GameObject controlsix;
+    public GameObject controlseven;
     public TargetLock targetLock;
     [HideInInspector]public TutorialManager tutorialManager;
     public ObjectiveManager objectiveManager;
@@ -49,7 +51,7 @@ public class DialogueManager : MonoBehaviour
             Tuple.Create(0, "cleanPile"), Tuple.Create("Cassidy", "Listen, new hire. I know you want to jump right into things, but we should go ahead and teach you the basics.")
         },
         {
-            Tuple.Create(1, "cleanPile"), Tuple.Create("Cassidy",  "First, clean these dust piles. Look around if you don't see them right in front of you.")
+            Tuple.Create(1, "cleanPile"), Tuple.Create("Cassidy",  "First, clean up these dust piles. Look around if you don't see them right in front of you.")
         },
         {
             Tuple.Create(2, "cleanPile"), Tuple.Create("The Maid", "I'm not that new to cleaning, you know ...")
@@ -61,10 +63,10 @@ public class DialogueManager : MonoBehaviour
             Tuple.Create(4, "teachMana"), Tuple.Create("Cassidy", "Mana is needed to use your secondary cleaning abilities, which each require a different amount of mana. Make sure they are operational.")
         },
         {
-            Tuple.Create(5, "teachMana"), Tuple.Create("Cassidy", "By the way, this is important: When you enter a room, the sooner you clean a dust pile, the more mana you will receive.")
+            Tuple.Create(5, "teachMana"), Tuple.Create("Cassidy", "Very good. By the way here is a small tip:")
         },
         {
-            Tuple.Create(6, "teachMana"), Tuple.Create("Cassidy", "I’ll be sure to remind you again later.")
+            Tuple.Create(6, "teachMana"), Tuple.Create("Cassidy", "Cleaning dust piles while you are already at maximum mana is wasteful so if you have full mana try to make use of your abilities before cleaning.")
         },
         {
             Tuple.Create(7, "lockOn"), Tuple.Create("Cassidy", "Sometimes you’ll need to focus on a specific spot that needs cleaning.Try locking onto one of those dummies.")
@@ -237,6 +239,8 @@ public class DialogueManager : MonoBehaviour
         continueButton.SetActive(false);
         objectiveManager.startObjective(curState);
         abilityBox.SetActive(true);
+        objectiveManager.updateObjectiveTextCleaning((int)gameManager.numberOfDustPiles);
+
 
         if(gameManager.numberOfDustPiles == 0 && curState == "cleanPile")
         {
@@ -270,6 +274,11 @@ public class DialogueManager : MonoBehaviour
         if(tutorialManager.controller.isCasting == true){
             abilitiesUsed++;
             tutorialManager.controller.isCasting = false;
+        }
+
+        if(abilitiesUsed <= 3)
+        {
+            objectiveManager.updateObjectiveTextAbilityUse(abilitiesUsed);
         }
 
         if(abilitiesUsed >= 3 ){
@@ -309,6 +318,7 @@ public class DialogueManager : MonoBehaviour
             controlgiven = false;
             targetLocked = false;
             inDialogue = true;
+            controlthree.SetActive(false);
             objectiveManager.checkObjective();
             abilityBox.SetActive(false);
         }
@@ -325,13 +335,12 @@ public class DialogueManager : MonoBehaviour
             inDialogue = false;
             tutorialManager.controller.castingAllowed = false;
             objectiveManager.displayNextObjective(curState);
+            controlfour.SetActive(true);
         }
         dialoguebox.SetActive(false);
         continueButton.SetActive(false);
         abilityBox.SetActive(true);
-        //objectiveManager.displayNextObjective(curState);
-        //gameManager.infiniteManaCheat = true;
-        //gameManager.updateManaAmount(gameManager.mana);
+        objectiveManager.updateObjectiveTextPrimaryAttack(meleedummiesHit);
         dummy1Health = tutorialManager.dummy1.GetComponent<Enemy>().currentHealth;
         dummy2Health = tutorialManager.dummy2.GetComponent<Enemy>().currentHealth;
         targetLocked = targetLock.isTargeting;
@@ -353,6 +362,8 @@ public class DialogueManager : MonoBehaviour
             inDialogue = true;
             objectiveManager.checkObjective();
             abilityBox.SetActive(false);
+            controlfour.SetActive(false);
+            targetLocked = false;
             
         }
     }
@@ -372,28 +383,27 @@ public class DialogueManager : MonoBehaviour
             inDialogue = false;
             tutorialManager.controller.castingAllowed = true;
             objectiveManager.displayNextObjective(curState);
+            controlfive.SetActive(true);
         }
         dialoguebox.SetActive(false);
         continueButton.SetActive(false);
         abilityBox.SetActive(true);
-        //objectiveManager.displayNextObjective(curState);
+        objectiveManager.updateObjectiveTextAbilityAttack(abilitydummiesHit);
         gameManager.infiniteManaCheat = true;
         gameManager.updateManaAmount(gameManager.mana);
         dummy1Health = tutorialManager.dummy1.GetComponent<Enemy>().currentHealth;
         dummy2Health = tutorialManager.dummy2.GetComponent<Enemy>().currentHealth;
         targetLocked = targetLock.isTargeting;
         //if(targetLocked && ) Find a way to check when the player has hit an enemy 
-        if(tutorialManager.controller.isCasting == true){
-            if((dummy1Health < dummy1TopHealth || dummy2Health < dummy2TopHealth) && targetLocked)
-            {
-                abilitydummiesHit++;
-                dummy1TopHealth = dummy1Health;
-                dummy2TopHealth = dummy2Health;
-            }
+        if(tutorialManager.controller.isCasting == true && (dummy1Health < dummy1TopHealth || dummy2Health < dummy2TopHealth) && targetLocked){
+            abilitydummiesHit++;
+            objectiveManager.updateObjectiveTextAbilityAttack(abilitydummiesHit);
+            dummy1TopHealth = dummy1Health;
+            dummy2TopHealth = dummy2Health;
             tutorialManager.controller.isCasting = false;
         }
 
-        if(abilitydummiesHit >= 3)
+        if(abilitydummiesHit >= 4)
         {
             dialoguebox.SetActive(true);
             continueButton.SetActive(true);
@@ -402,7 +412,7 @@ public class DialogueManager : MonoBehaviour
             controlgiven = false;
             inDialogue = true;
             objectiveManager.checkObjective();
-            controlthree.SetActive(false);
+            controlfive.SetActive(false);
             abilityBox.SetActive(false);
         }
     }
@@ -416,7 +426,7 @@ public class DialogueManager : MonoBehaviour
             controlgiven = true;
             inDialogue = false;
             objectiveManager.transitionObjective(curState);
-            controlfour.SetActive(true);
+            controlsix.SetActive(true);
         }
         dialoguebox.SetActive(false);
         continueButton.SetActive(false);
@@ -438,7 +448,7 @@ public class DialogueManager : MonoBehaviour
             inDialogue = true;
             //objectiveManager.reappearBox();
             //objectiveManager.displayNextObjective(curState);
-            controlfour.SetActive(false);
+            controlsix.SetActive(false);
             tutorialManager.dummy1.SetActive(false);
             tutorialManager.dummy2.SetActive(false);
             tutorialManager.tempDummy.SetActive(false);
@@ -454,9 +464,10 @@ public class DialogueManager : MonoBehaviour
             tutorialManager.activateBunnies();               
             controlgiven = true;
             inDialogue = false;
-            controlfive.SetActive(true);
+            controlseven.SetActive(true);
             objectiveManager.reappearBox();
             objectiveManager.displayNextObjective(curState);
+            tutorialManager.CombatTrigger.kill();
             
         }
         dialoguebox.SetActive(false);
@@ -471,7 +482,11 @@ public class DialogueManager : MonoBehaviour
             controlgiven = false;
             inDialogue = true;
             objectiveManager.checkObjective();
-            controlfive.SetActive(false);
+            controlseven.SetActive(false);
+            gameManager.mana = 0;
+            gameManager.updateManaAmount(gameManager.mana);
+            tutorialManager.player.health = 25f;
+            tutorialManager.player.updateHealthUI();
         }
 
     }
@@ -497,10 +512,8 @@ public class DialogueManager : MonoBehaviour
         //continueButton.SetActive(false);
         //dialoguebox.SetActive(false);
         
-        gameManager.mana = 0;
-        gameManager.updateManaAmount(gameManager.mana);
-        tutorialManager.player.health = 25f;
-        tutorialManager.player.updateHealthUI();
+        
+        
         //objectiveManager.endObjective();    
     }
 

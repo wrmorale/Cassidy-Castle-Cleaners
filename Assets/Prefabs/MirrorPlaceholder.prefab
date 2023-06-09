@@ -236,18 +236,15 @@ MonoBehaviour:
   tempProjectileWarning: {fileID: 8221481633115712227}
   glassShardPortal: {fileID: 264791422197378446}
   projectilePrefab: {fileID: 8995539546555610048}
-  projectileSpeed: 2.5
-  projectileLifetime: 2
-  projectileDamage: 2
-  trashSpawnChance: 0.055
   bulletSpawn: {fileID: 2402459199188912920}
   shockwave: {fileID: 5918913100410013975, guid: 5a5b27b9d4fc44449a6561c17d626306,
     type: 3}
-  shockwaveDamage: 4
+  shockwaveDamage: 5
   shockwaveStartScale: 0.75
   shockwaveEndScale: 5
   shockwaveDuration: 0.4
   shockwaveSpawnPoint: {fileID: 4943009027781030738}
+  mirrorRenderer: {fileID: 5531344168630464565}
   mirrorAudioManager: {fileID: 863786983169766583}
 --- !u!114 &5616337374384034975
 MonoBehaviour:
@@ -263,8 +260,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attacks:
   - name: Slam
-    damage: 5
-    range: 2
+    damage: 0
+    range: 2.5
     hitbox: {fileID: 7503088313172013072}
     clip:
       animator: {fileID: 7739766939873168309}
@@ -274,7 +271,7 @@ MonoBehaviour:
       layerNumber: 0
     checker:
       activeFrameStart: 52
-      activeFrameEnd: 60
+      activeFrameEnd: 52
       attackCancelFrameStart: 0
       attackCancelFrameEnd: 0
       allCancelFrameStart: 0
@@ -331,10 +328,10 @@ MonoBehaviour:
   isHitVolume: 0.3
   slamSfx: {fileID: 8300000, guid: d4225159076612541966dd22e83a207d, type: 3}
   slamVolume: 0.6
-  deathSfx: {fileID: 8300000, guid: 0251dd9af897c724286faaefdf31fdc5, type: 3}
-  deathVolume: 1
-  laughSfx: {fileID: 8300000, guid: 19903024ebdeec249b35a6687948dece, type: 3}
-  laughVolume: 1
+  deathSfx: {fileID: 8300000, guid: f26c2337f63c3c94db9009ca8053f647, type: 3}
+  deathVolume: 0.8
+  laughSfx: {fileID: 8300000, guid: 6c9ddaca290be7f4c97e6c51d3dda81e, type: 3}
+  laughVolume: 0.4
   shootShardSfx: {fileID: 8300000, guid: 8d9f783c07d727a4199eec8c38a31675, type: 3}
   shootShardVolume: 0.2
   spawnEnemySfx: {fileID: 8300000, guid: 8a809c20f625ed7469025ed345775782, type: 3}
@@ -6131,10 +6128,10 @@ MonoBehaviour:
   isHitVolume: 0.5
   slamSfx: {fileID: 8300000, guid: d4225159076612541966dd22e83a207d, type: 3}
   slamVolume: 0.5
-  deathSfx: {fileID: 8300000, guid: 0251dd9af897c724286faaefdf31fdc5, type: 3}
-  deathVolume: 2
-  laughSfx: {fileID: 8300000, guid: 19903024ebdeec249b35a6687948dece, type: 3}
-  laughVolume: 0.1
+  deathSfx: {fileID: 8300000, guid: f26c2337f63c3c94db9009ca8053f647, type: 3}
+  deathVolume: 0.5
+  laughSfx: {fileID: 8300000, guid: 6c9ddaca290be7f4c97e6c51d3dda81e, type: 3}
+  laughVolume: 0.2
   shootShardSfx: {fileID: 0}
   shootShardVolume: 0
   spawnEnemySfx: {fileID: 0}
@@ -6142,6 +6139,12 @@ MonoBehaviour:
 --- !u!4 &5491556239691624160 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6679f7b7412234e7591940343c18ad64,
+    type: 3}
+  m_PrefabInstance: {fileID: 5458173840886286603}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &5531344168630464565 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 539336873948936510, guid: 6679f7b7412234e7591940343c18ad64,
     type: 3}
   m_PrefabInstance: {fileID: 5458173840886286603}
   m_PrefabAsset: {fileID: 0}

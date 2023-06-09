@@ -18,7 +18,7 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
     [SerializeField] private FrameParser jumpClip;
     [SerializeField] private FrameChecker jumpFrameChecker;
 
-    [SerializeField] public PlayerAbility[] playerAbilities = new PlayerAbility[4];
+    [SerializeField] public PlayerAbility[] playerAbilities = new PlayerAbility[5];
 
     private float turnSmoothVelocity;
 
@@ -108,7 +108,8 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
             playerInput.actions["Ability_1"],
             playerInput.actions["Ability_2"],
             playerInput.actions["Ability_3"],
-            playerInput.actions["Ability_4"]
+            playerInput.actions["Ability_4"],
+            playerInput.actions["Roll"]
         };
 
         for (int i = 0; i < playerAbilities.Length; i++)
@@ -289,7 +290,7 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
 
     public void ActivateAbility(int idx)
     {
-        if (targetLock.currentTarget && channeledAbility != 1) //To Do: Make roll not an ability so that this exception doesn't cause problem
+        if (targetLock.currentTarget && channeledAbility != 4) //To Do: Make roll not an ability so that this exception doesn't cause problem
         { //Face lock-on target if locked on
 
             Quaternion newRotation = Quaternion.LookRotation(toTargetPosition(), controller.transform.up);
@@ -302,7 +303,10 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
         SetState(States.PlayerStates.Ability);
         activeAbility = playerAbilities[idx];
         activeAbility.Activate();
-        StartCoroutine(castingTimer());
+        if(channeledAbility == 0 || channeledAbility == 1){
+            StartCoroutine(castingTimer());
+        }
+        
     }
 
     IEnumerator castingTimer()

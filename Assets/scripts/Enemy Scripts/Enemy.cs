@@ -90,7 +90,7 @@ public class Enemy : MonoBehaviour
             }
         }
 
-        // Check if we need to generate a new dust pile
+        /*// Check if we need to generate a new dust pile
         if (dustPiles.Count < maxDustPiles) {
             //This function spawns dust piles but they are all disabled.
             //This function should likely be removed
@@ -99,7 +99,7 @@ public class Enemy : MonoBehaviour
             DustPile newDustPileScript = newDustPile.GetComponent<DustPile>();
             newDustPileScript.SetHealth(0.1f); // set a low starting health
             dustPiles.Add(newDustPileScript);
-        }
+        }*/
     }
 
     private void FixedUpdate()
@@ -137,6 +137,7 @@ public class Enemy : MonoBehaviour
             if (currentHealth <= 0)
             {
                 isDead = true; //Heavy is dead!
+                Destroy(transform.GetComponentInChildren<Canvas>().gameObject);
                 BTrunner.tree.rootNode.Abort();
                 gameObject.tag = "Untagged"; //Makes them unable to be targeted
                 //However if changing the enemy tag causes problems, we can instead use GetComponent to check if the enemy is dead in TargetLock.cs

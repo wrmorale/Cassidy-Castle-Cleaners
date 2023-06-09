@@ -5609,6 +5609,8 @@ MonoBehaviour:
   attackWindupLevel: 0.2
   attacksfx: {fileID: 8300000, guid: bbfaffa91a1d3484c86fd0130d498a71, type: 3}
   attackLevel: 0.4
+  deathsfx: {fileID: 8300000, guid: c4f05b0782e36a74fb536f8ec8d8d854, type: 3}
+  deathLevel: 0.2
 --- !u!4 &6126996796478739473 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -7509448865721581453, guid: 3b9062af56bd41c4f90ccf843909cf4f,

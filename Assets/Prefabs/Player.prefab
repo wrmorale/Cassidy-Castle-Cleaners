@@ -189,7 +189,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 500, y: -100}
+  m_AnchoredPosition: {x: 511, y: -81}
   m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8309094441477642650
@@ -265,7 +265,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -575, y: 435}
+  m_AnchoredPosition: {x: -564, y: 458}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2226322711301107508
@@ -401,7 +401,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -465, y: 435}
+  m_AnchoredPosition: {x: -454, y: 458}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8097849805371252814
@@ -1192,14 +1192,16 @@ MonoBehaviour:
     allCancelFrameEnd: 0
   playerAbilities:
   - {fileID: 3529802045003625735, guid: 8e576e7dc7d3124448d5cef142a7f9ea, type: 3}
-  - {fileID: 7177310634722814464, guid: cf269490403efc042acb93d6ef4693f9, type: 3}
   - {fileID: 5318415682540987213, guid: 47091f31e5f188448b8932ce618daaf2, type: 3}
-  - {fileID: 0}
+  - {fileID: -2661743474676728147, guid: 669fde3b67070a54091de0ff63114ea2, type: 3}
+  - {fileID: -4346639447019972719, guid: 485d0bf496e9b6a428f5bd5db89e3fea, type: 3}
+  - {fileID: 7177310634722814464, guid: cf269490403efc042acb93d6ef4693f9, type: 3}
   controller: {fileID: 0}
   targetLock: {fileID: 0}
   playerStats: {fileID: 0}
   activeAbility: {fileID: 0}
   castingAllowed: 1
+  isCasting: 0
   moveAction:
     m_Name: Move
     m_Type: 0

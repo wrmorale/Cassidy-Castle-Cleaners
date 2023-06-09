@@ -18,8 +18,8 @@ public class ObjectiveManager : MonoBehaviour
     {   {"cleanPile", "Clean the 5 dust piles"},
         {"teachMana", "Use your abilities 3 times"},
         {"lockedDummy", "Lock onto a dummy"},
-        {"lockedDummyMelee", "Use your primary attacks\nwhile locked on"},
-        {"lockedDummyAbility", "Use abilities 3 times\nwhile locked on"},
+        {"lockedDummyMelee", "Use your primary attacks\n6 times while locked on"},
+        {"lockedDummyAbility", "Use abilities 4 times\nwhile locked on"},
         {"dummyDone", "Jump over the books"},
         {"fighting",  "Defeat the Dust Bunnies\n(Use roll to avoid damage)"},
         {"enemiesDefeated", "Proceed through the door"}
@@ -39,6 +39,23 @@ public class ObjectiveManager : MonoBehaviour
     public void checkObjective() {
         check.enabled = true;
     }
+
+    public void updateObjectiveTextCleaning(int dustPilesCleaned) {
+        objectiveText.text = "Clean the " + (5 - dustPilesCleaned) + "/5 dust piles";
+    }
+
+    public void updateObjectiveTextAbilityUse(int abilityUses) {
+        objectiveText.text = "Use your abilities " + abilityUses + "/3 times";
+    }
+
+    public void updateObjectiveTextPrimaryAttack(int primaryAttacks) {
+        objectiveText.text = "Use your primary attacks " + primaryAttacks + "/6\ntimes while locked on";
+    }
+
+    public void updateObjectiveTextAbilityAttack(int abilityAttacks) {
+        objectiveText.text = "Use your abilities " + abilityAttacks + "/4 times\ntimes while locked on";
+    }
+
 
     public void startObjective(string state) {
         objectivePanel.SetActive(true);

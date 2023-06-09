@@ -23,6 +23,10 @@ public class TutorialTrigger : MonoBehaviour
             triggered = false;
         }
         
-    }   
+    }
+
+    public void kill(){
+        Destroy(gameObject);
+    }
     
 }
