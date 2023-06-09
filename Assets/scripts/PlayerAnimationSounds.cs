@@ -19,7 +19,7 @@ public class PlayerAnimationSounds : MonoBehaviour
     }
 
     private void playRunsfx(){
-        animationSoundPlayer.PlayOneShot(runsfx, 1.0F);
+        animationSoundPlayer.PlayOneShot(runsfx, 0.3F);
     }
 
     private void playAttack1sfx(){

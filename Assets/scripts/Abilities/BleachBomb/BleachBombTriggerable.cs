@@ -17,6 +17,7 @@ public class BleachBombTriggerable : PlayerAbility, IFrameCheckHandler
     [SerializeField] private FrameParser clip;
     [SerializeField] private FrameChecker frameChecker;
     [SerializeField] private AudioClip audioClip;
+    [SerializeField] private AudioClip noManaClip;
     [SerializeField] private float audioLevel;
     
     private playerController player;
@@ -31,7 +32,7 @@ public class BleachBombTriggerable : PlayerAbility, IFrameCheckHandler
             GameManager.instance.updateManaAmount(GameManager.instance.mana);
             SpawnProjectile(playerForward);
         }else{
-            
+            audioSource.PlayOneShot(noManaClip, audioLevel);
         }
     }
     public void onActiveFrameEnd()

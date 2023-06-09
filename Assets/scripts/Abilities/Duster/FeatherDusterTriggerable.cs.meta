@@ -7,6 +7,7 @@ MonoImporter:
   - projectile: {instanceID: 0}
   - bulletSpawn: {instanceID: 0}
   - audioClip: {fileID: 8300000, guid: 2ccfae11b42b7c844bf0f5c2d5c810c4, type: 3}
+  - noManaClip: {fileID: 8300000, guid: d24ae6432b49e194aaaed69ba978d4b6, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

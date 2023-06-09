@@ -20,6 +20,7 @@ public class FeatherDusterTriggerable : PlayerAbility, IFrameCheckHandler
     [SerializeField] private FrameParser clip;
     [SerializeField] private FrameChecker frameChecker;
     [SerializeField] private AudioClip audioClip;
+    [SerializeField] private AudioClip noManaClip;
     [SerializeField] private float audioLevel;
     
     private playerController player;
@@ -45,7 +46,7 @@ public class FeatherDusterTriggerable : PlayerAbility, IFrameCheckHandler
             GameManager.instance.updateManaAmount(GameManager.instance.mana);
             player.StartCoroutine(Fire());
         }else{
-
+            audioSource.PlayOneShot(noManaClip, audioLevel);
         }
     }
     public void onActiveFrameEnd()

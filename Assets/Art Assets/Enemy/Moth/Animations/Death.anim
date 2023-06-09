@@ -16592,4 +16592,12 @@ AnimationClip:
     script: {fileID: 0}
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0
+    functionName: playDeathsfx
+    data: 
+    objectReferenceParameter: {fileID: 11500000, guid: b6dd5c2075d76aa4f99b41c92aa3af11,
+      type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
