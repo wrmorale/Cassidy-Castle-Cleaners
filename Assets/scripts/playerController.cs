@@ -108,7 +108,8 @@ public class playerController : MonoBehaviour, IFrameCheckHandler
             playerInput.actions["Ability_1"],
             playerInput.actions["Ability_2"],
             playerInput.actions["Ability_3"],
-            playerInput.actions["Ability_4"]
+            playerInput.actions["Ability_4"],
+            playerInput.actions["Roll"]
         };
 
         for (int i = 0; i < playerAbilities.Length; i++)

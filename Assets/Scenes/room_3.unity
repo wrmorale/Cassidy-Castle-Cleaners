@@ -4287,12 +4287,12 @@ PrefabInstance:
     - target: {fileID: 6904719148039652034, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000040699426
+      value: 0.000000040699422
       objectReference: {fileID: 0}
     - target: {fileID: 6904719148039652034, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000010950486
+      value: -0.000000010950485
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe987c0be70e4764e92e8aff74c2356e, type: 3}
@@ -9867,6 +9867,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7428022771512999011, guid: 780a7481df1a48d4792aed7fd543ee02,
         type: 3}
+      propertyPath: playerAbilities.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7428022771512999011, guid: 780a7481df1a48d4792aed7fd543ee02,
+        type: 3}
       propertyPath: playerAbilities.Array.data[1]
       value: 
       objectReference: {fileID: -4346639447019972719, guid: 485d0bf496e9b6a428f5bd5db89e3fea,
@@ -9882,6 +9887,12 @@ PrefabInstance:
       propertyPath: playerAbilities.Array.data[3]
       value: 
       objectReference: {fileID: 5318415682540987213, guid: 47091f31e5f188448b8932ce618daaf2,
+        type: 3}
+    - target: {fileID: 7428022771512999011, guid: 780a7481df1a48d4792aed7fd543ee02,
+        type: 3}
+      propertyPath: playerAbilities.Array.data[4]
+      value: 
+      objectReference: {fileID: 7177310634722814464, guid: cf269490403efc042acb93d6ef4693f9,
         type: 3}
     - target: {fileID: 7428022771512999012, guid: 780a7481df1a48d4792aed7fd543ee02,
         type: 3}
