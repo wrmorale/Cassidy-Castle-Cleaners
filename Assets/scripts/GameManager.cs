@@ -42,6 +42,9 @@ public class GameManager : MonoBehaviour
     private LevelLoader levelLoader;
     public int currentGold;
     public List<String> availableAbilities = new List<String>(); //not sure how we will keep track of abilities yet but a list of strings to hold ablities that can be learned
+    
+    public MusicManager musicManager;
+    
     //
     public int numberOfEnemies;
     public float maxDustPiles;
@@ -95,6 +98,18 @@ public class GameManager : MonoBehaviour
         if (instance != null && instance != this)
         {
             Destroy(instance.gameObject);
+        }
+
+        //music manager
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        if (currentSceneName == "Title_Scene") // Replace "MenuScene" with the actual name of your menu scene
+        {
+            musicManager.StopMusic();
+            // Call the playBattleMusic() function with the menu music clip
+            if (musicManager != null)
+            {
+                musicManager.playMenuMusic(); // Call the function to play the menu music
+            }
         }
 
         instance = this;

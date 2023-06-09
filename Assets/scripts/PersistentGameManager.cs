@@ -9,6 +9,7 @@ public class PersistentGameManager : MonoBehaviour
 
     public Player player;
     public GameManager gameManager;
+    public MusicManager musicManager;
 
     // Game settings
     public bool infiniteManaCheat = false;
@@ -65,6 +66,12 @@ public class PersistentGameManager : MonoBehaviour
         if (gameManager != null)
         {
             mana = gameManager.mana;
+        }
+
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        if (currentSceneName == "Title_Scene") // Replace "MenuScene" with the actual name of your menu scene
+        {
+            musicManager.StopMusic();
         }
     }
 
