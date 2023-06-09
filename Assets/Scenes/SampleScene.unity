@@ -5474,7 +5474,7 @@ MonoBehaviour:
   range: 0.4
   maxScale: 1
   healingSpeed: 0.2
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: f9c93f90c4931cf42a2dc2116c8d8f5d, type: 3}
   audioLevel: 0
 --- !u!199 &1475709388
 ParticleSystemRenderer:
@@ -11505,7 +11505,7 @@ PrefabInstance:
     - target: {fileID: 5067742631094624012, guid: 55f7990e1f79b1c428adb94d5db23617,
         type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 5067742631094624012, guid: 55f7990e1f79b1c428adb94d5db23617,
         type: 3}
@@ -12098,6 +12098,7 @@ MonoBehaviour:
   availableAbilities: []
   numberOfEnemies: 1
   maxDustPiles: 2
+  giveManaFrame1: 1
   numberOfDustPiles: 0
   enemyPrefab: {fileID: 8327740662560138380, guid: 3fec4a32b1661b648bdcb0b9faccc35d,
     type: 3}
