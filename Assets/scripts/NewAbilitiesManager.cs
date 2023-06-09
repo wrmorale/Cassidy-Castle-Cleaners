@@ -54,58 +54,62 @@ public class NewAbilitiesManager : MonoBehaviour
     }
 
     public void displayAbilityThree() {
-        freezePlayer();
+        if (gameManager.roomCleared){
+            freezePlayer();
 
-        // make the canvas appear
-        abilitiesCanvas.SetActive(true);
+            // make the canvas appear
+            abilitiesCanvas.SetActive(true);
 
-        // begin dialogue
-        if (dialogueIndex == 0){
-            // todo: load and play loading animation
+            // begin dialogue
+            if (dialogueIndex == 0){
+                // todo: load and play loading animation
+            }
+            else if (dialogueIndex == 1){
+                // todo: play soap bar animation
+                abilityThreeOverlay.enabled = false;
+                abilityThreeIcon.enabled = false;
+            }
+            else if (dialogueIndex == 3){
+                abilityThreeIcon.enabled = true;
+            }
+            
+            if (dialogueIndex < 3){
+                dialogueText.text = abilityThreeDialogue[dialogueIndex];
+                dialogueIndex++;
+            }
+            else {
+                resetAbilityCheckpoint();
+            }  
         }
-        else if (dialogueIndex == 1){
-            // todo: play soap bar animation
-            abilityThreeOverlay.enabled = false;
-            abilityThreeIcon.enabled = false;
-        }
-        else if (dialogueIndex == 3){
-            abilityThreeIcon.enabled = true;
-        }
-        
-        if (dialogueIndex < 3){
-            dialogueText.text = abilityThreeDialogue[dialogueIndex];
-            dialogueIndex++;
-        }
-        else {
-            resetAbilityCheckpoint();
-        }  
     }
 
     public void displayAbilityFour() {
-        freezePlayer();
+        if (gameManager.roomCleared){
+            freezePlayer();
 
-        // make the canvas appear
-        abilitiesCanvas.SetActive(true);
+            // make the canvas appear
+            abilitiesCanvas.SetActive(true);
 
-        // begin dialogue
-        if (dialogueIndex == 0){
-            // todo: load and play loading animation
-        }
-        else if (dialogueIndex == 1){
-            // todo: play mop animation
-            abilityFourOverlay.enabled = false;
-            abilityFourIcon.enabled = false;
-        }
-        else if (dialogueIndex == 3){
-            abilityFourIcon.enabled = true;
-        }
-        
-        if (dialogueIndex < 3){
-            dialogueText.text = abilityFourDialogue[dialogueIndex];
-            dialogueIndex++;
-        }
-        else {
-            resetAbilityCheckpoint();
+            // begin dialogue
+            if (dialogueIndex == 0){
+                // todo: load and play loading animation
+            }
+            else if (dialogueIndex == 1){
+                // todo: play mop animation
+                abilityFourOverlay.enabled = false;
+                abilityFourIcon.enabled = false;
+            }
+            else if (dialogueIndex == 3){
+                abilityFourIcon.enabled = true;
+            }
+            
+            if (dialogueIndex < 3){
+                dialogueText.text = abilityFourDialogue[dialogueIndex];
+                dialogueIndex++;
+            }
+            else {
+                resetAbilityCheckpoint();
+            }
         }
     }
 

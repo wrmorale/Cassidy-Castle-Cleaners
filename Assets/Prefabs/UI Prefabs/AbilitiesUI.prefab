@@ -1387,12 +1387,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6817488075085646269}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb981ab8059d04699b84463b32068bb3, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c4b482b921814fd79f4e3c854dcb14c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spriteSheet: {fileID: 2800000, guid: 8bf0da94374cd471280b0cb13cdcb7bc, type: 3}
-  columns: 1
-  rows: 15
+  columns: 15
+  rows: 1
   framesPerSecond: 10
 --- !u!1 &7347520193716951169
 GameObject:
