@@ -341,9 +341,6 @@ public class DialogueManager : MonoBehaviour
         continueButton.SetActive(false);
         abilityBox.SetActive(true);
         objectiveManager.updateObjectiveTextPrimaryAttack(meleedummiesHit);
-        //objectiveManager.displayNextObjective(curState);
-        //gameManager.infiniteManaCheat = true;
-        //gameManager.updateManaAmount(gameManager.mana);
         dummy1Health = tutorialManager.dummy1.GetComponent<Enemy>().currentHealth;
         dummy2Health = tutorialManager.dummy2.GetComponent<Enemy>().currentHealth;
         targetLocked = targetLock.isTargeting;
@@ -366,6 +363,7 @@ public class DialogueManager : MonoBehaviour
             objectiveManager.checkObjective();
             abilityBox.SetActive(false);
             controlfour.SetActive(false);
+            targetLocked = false;
             
         }
     }
@@ -390,26 +388,22 @@ public class DialogueManager : MonoBehaviour
         dialoguebox.SetActive(false);
         continueButton.SetActive(false);
         abilityBox.SetActive(true);
-        
-        //objectiveManager.displayNextObjective(curState);
+        objectiveManager.updateObjectiveTextAbilityAttack(abilitydummiesHit);
         gameManager.infiniteManaCheat = true;
         gameManager.updateManaAmount(gameManager.mana);
         dummy1Health = tutorialManager.dummy1.GetComponent<Enemy>().currentHealth;
         dummy2Health = tutorialManager.dummy2.GetComponent<Enemy>().currentHealth;
         targetLocked = targetLock.isTargeting;
         //if(targetLocked && ) Find a way to check when the player has hit an enemy 
-        if(tutorialManager.controller.isCasting == true){
-            if((dummy1Health < dummy1TopHealth || dummy2Health < dummy2TopHealth) && targetLocked)
-            {
-                abilitydummiesHit++;
-                objectiveManager.updateObjectiveTextAbilityAttack(abilitydummiesHit);
-                dummy1TopHealth = dummy1Health;
-                dummy2TopHealth = dummy2Health;
-            }
+        if(tutorialManager.controller.isCasting == true && (dummy1Health < dummy1TopHealth || dummy2Health < dummy2TopHealth) && targetLocked){
+            abilitydummiesHit++;
+            objectiveManager.updateObjectiveTextAbilityAttack(abilitydummiesHit);
+            dummy1TopHealth = dummy1Health;
+            dummy2TopHealth = dummy2Health;
             tutorialManager.controller.isCasting = false;
         }
 
-        if(abilitydummiesHit >= 3)
+        if(abilitydummiesHit >= 4)
         {
             dialoguebox.SetActive(true);
             continueButton.SetActive(true);
