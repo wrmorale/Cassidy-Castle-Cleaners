@@ -8171,11 +8171,6 @@ PrefabInstance:
       propertyPath: dustPilePrefab
       value: 
       objectReference: {fileID: 109516314}
-    - target: {fileID: 3825817347597141074, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
-        type: 3}
-      propertyPath: shockwaveDuration
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 4193631153949881513, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
         type: 3}
       propertyPath: m_IsActive
