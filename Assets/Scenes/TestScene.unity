@@ -2848,7 +2848,10 @@ MonoBehaviour:
   targetGroup: {fileID: 1709409147}
   aimIcon: {fileID: 1613575657}
   enemyTag: Enemy
-  targetLockOffset: {x: 0.1, y: 0}
+  transparentObjects:
+    serializedVersion: 2
+    m_Bits: 0
+  cameraHeight: 0.5
   minDistance: 0
   maxDistance: 3
   isTargeting: 0
@@ -11265,6 +11268,7 @@ MonoBehaviour:
   dustPilePrefab: {fileID: 919132148348794008}
   playerStats: {fileID: 795224107}
   playercontroller: {fileID: 7428022770999317584}
+  deathManager: {fileID: 0}
   cleaningPercent: 0
   mana: 0
   maxMana: 100
@@ -11480,6 +11484,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1555e86c6de88894599a3366e26b7045, type: 3}
+--- !u!114 &1945768201 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4751181959037792350, guid: 1555e86c6de88894599a3366e26b7045,
+    type: 3}
+  m_PrefabInstance: {fileID: 1945768200}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1945768202 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4391737735916324446, guid: 1555e86c6de88894599a3366e26b7045,
+    type: 3}
+  m_PrefabInstance: {fileID: 1945768200}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1958195159
 GameObject:
   m_ObjectHideFlags: 0
@@ -11616,6 +11644,10 @@ MonoBehaviour:
   mopCost: 20
   health: 0
   mana: 0
+  soapBarIcon: {fileID: 21300000, guid: 4c470e83403cb7840b91b952309947e2, type: 3}
+  mopIcon: {fileID: 21300000, guid: 58e7469adb682f541829b89b1bcb6ccd, type: 3}
+  iconSlot: {fileID: 1945768202}
+  iconSlotTwo: {fileID: 1945768201}
 --- !u!4 &1958195162
 Transform:
   m_ObjectHideFlags: 0
