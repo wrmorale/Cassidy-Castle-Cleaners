@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class PersistentGameManager : MonoBehaviour
 {
@@ -10,6 +9,7 @@ public class PersistentGameManager : MonoBehaviour
 
     public Player player;
     public GameManager gameManager;
+    public MusicManager musicManager;
 
     // Game settings
     public bool infiniteManaCheat = false;
@@ -74,6 +74,17 @@ public class PersistentGameManager : MonoBehaviour
             mana = gameManager.mana;
         }
 
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        if (currentSceneName == "Title_Scene") // Replace "MenuScene" with the actual name of your menu scene
+        {
+            musicManager.StopMusic();
+        }
+        else{
+            if (!musicManager.IsMusicPlaying()) // Check if music is not already playing
+            {
+                musicManager.playBattleMusic(); // Play the battle music
+            }
+        }
     }
 
     private void OnSceneChanged(Scene scene, LoadSceneMode mode)
