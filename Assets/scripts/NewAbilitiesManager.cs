@@ -20,6 +20,11 @@ public class NewAbilitiesManager : MonoBehaviour
     public Player player;
     public playerController controller;
     public EventSystem eventSystem;
+    public Image mopAnimation;
+    public Image soapAnimation;
+    public Image loadingAnimationThree;
+    public Image loadingAnimationFour;
+
 
     // dialogue box
     public GameObject dialogueBox;
@@ -43,6 +48,13 @@ public class NewAbilitiesManager : MonoBehaviour
     {
         eventSystem = EventSystem.current;
         displayName.text = "Cassidy";
+        // disable all animations, and icons
+        mopAnimation.enabled = false;
+        soapAnimation.enabled = false;
+        loadingAnimationThree.enabled = false;
+        loadingAnimationFour.enabled = false;
+        abilityThreeIcon.enabled = false;
+        abilityFourIcon.enabled = false;
     }
 
     public void displayAbilityThree() {
@@ -55,18 +67,21 @@ public class NewAbilitiesManager : MonoBehaviour
                 eventSystem.SetSelectedGameObject(continueButton);
                 dialogueText.text = abilityThreeDialogue[dialogueIndex];
             }
-                
-
+            
             // begin dialogue
             if (dialogueIndex == 0){
-                // todo: load and play loading animation
+                // loading the idle animation for ability three
+                loadingAnimationThree.enabled = true;
             }
             else if (dialogueIndex == 1){
-                // todo: play soap bar animation
+                // play soap animation, disable the loading animation and  grey overlay
+                loadingAnimationThree.enabled = false;
                 abilityThreeOverlay.enabled = false;
-                abilityThreeIcon.enabled = false;
+                soapAnimation.enabled = true;
             }
             else if (dialogueIndex == 2){
+                // disable soap animation and enable the icon
+                soapAnimation.enabled = false;
                 abilityThreeIcon.enabled = true;
             }
              
@@ -76,9 +91,11 @@ public class NewAbilitiesManager : MonoBehaviour
     public void advanceDialogue(){
         if(dialogueIndex == 3){
             resetAbilityCheckpoint();
+        }
+        else if (dialogueIndex < 3){
+            dialogueIndex++;
+            dialogueText.text = abilityThreeDialogue[dialogueIndex];
         }  
-        dialogueIndex++;
-        dialogueText.text = abilityThreeDialogue[dialogueIndex];
     }
 
     public void advanceDialogueFour(){
@@ -101,17 +118,22 @@ public class NewAbilitiesManager : MonoBehaviour
 
             // begin dialogue
             if (dialogueIndex == 0){
-                // todo: load and play loading animation
+                // enable loading animation and have icon thee ability show up
+                // since the player obtained it already
+                abilityThreeIcon.enabled = true;
+                loadingAnimationFour.enabled = true;
             }
             else if (dialogueIndex == 1){
-                // todo: play mop animation
+                // disable loading animation and enable the mop animation
+                loadingAnimationFour.enabled = false;
                 abilityFourOverlay.enabled = false;
-                abilityFourIcon.enabled = false;
+                mopAnimation.enabled = true;
             }
             else if (dialogueIndex == 3){
+                // load the icon and disable mop animation
                 abilityFourIcon.enabled = true;
+                mopAnimation.enabled = false;
             }
-            
             if(dialogueIndex == 3){
                 resetAbilityCheckpoint();
             }

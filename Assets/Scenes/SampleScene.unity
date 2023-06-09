@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -13187,17 +13187,17 @@ PrefabInstance:
     - target: {fileID: 6904719148039652034, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.18371877
+      value: 0.1837188
       objectReference: {fileID: 0}
     - target: {fileID: 6904719148039652034, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.6828231
+      value: 0.68282306
       objectReference: {fileID: 0}
     - target: {fileID: 6904719148039652034, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.18371876
+      value: -0.18371877
       objectReference: {fileID: 0}
     - target: {fileID: 8372956807368440743, guid: fe987c0be70e4764e92e8aff74c2356e,
         type: 3}
@@ -13435,6 +13435,11 @@ PrefabInstance:
       propertyPath: platform
       value: 
       objectReference: {fileID: 501613310}
+    - target: {fileID: 7428022771512999012, guid: 780a7481df1a48d4792aed7fd543ee02,
+        type: 3}
+      propertyPath: invincibleCheat
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7428022771512999013, guid: 780a7481df1a48d4792aed7fd543ee02,
         type: 3}
       propertyPath: light1Clip.animator
