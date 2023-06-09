@@ -23,7 +23,7 @@ public class PersistentGameManager : MonoBehaviour
     public float health;
     public float mana;
 
-    public Sprite bleachBombIcon;
+    public Sprite soapBarIcon;
     public Sprite mopIcon;
     public Image iconSlot;
     public Image iconSlotTwo;
@@ -48,6 +48,15 @@ public class PersistentGameManager : MonoBehaviour
 
         SceneManager.sceneLoaded += OnSceneChanged;
         Debug.LogWarning("Persistent Game Manager awake!");
+
+        if (SceneManager.GetActiveScene().buildIndex >= 3)
+        {
+            DisplayBarIcon();
+        }
+        if (SceneManager.GetActiveScene().buildIndex >= 5)
+        {
+            DisplayMopIcon();
+        }
     }
 
     private void OnDestroy()
@@ -150,35 +159,15 @@ public class PersistentGameManager : MonoBehaviour
         lastPlayerManaValues.Clear();
     }
 
-    public void DisplayAbilityIcon(string abilityName)
+    void DisplayBarIcon()
     {
-        if (abilityName == "Bleach Bomb")
-        {
-            if (iconIndex == 0)
-            {
-                iconSlot.color = new Color(iconSlot.color.r, iconSlot.color.g, iconSlot.color.b, 255);
-                iconSlot.sprite = bleachBombIcon;
-                iconIndex++;
-            }
-            else
-            {
-                iconSlotTwo.color = new Color(iconSlot.color.r, iconSlot.color.g, iconSlot.color.b, 255);
-                iconSlotTwo.sprite = bleachBombIcon;
-            }
-        }
-        else if (abilityName == "Mop")
-        {
-            if (iconIndex == 0)
-            {
-                iconSlot.color = new Color(iconSlot.color.r, iconSlot.color.g, iconSlot.color.b, 255);
-                iconSlot.sprite = mopIcon;
-                iconIndex++;
-            }
-            else
-            {
-                iconSlotTwo.color = new Color(iconSlot.color.r, iconSlot.color.g, iconSlot.color.b, 255);
-                iconSlotTwo.sprite = mopIcon;
-            }
-        }
+        iconSlot.color = new Color(iconSlot.color.r, iconSlot.color.g, iconSlot.color.b, 255);
+        iconSlot.sprite = soapBarIcon;
+    }
+
+    void DisplayMopIcon()
+    {
+        iconSlotTwo.color = new Color(iconSlot.color.r, iconSlot.color.g, iconSlot.color.b, 255);
+        iconSlotTwo.sprite = mopIcon;
     }
 }
