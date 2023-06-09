@@ -67,4 +67,5 @@ MonoBehaviour:
     allCancelFrameStart: 0
     allCancelFrameEnd: 0
   audioClip: {fileID: 0}
-  audioLevel: 0
+  noManaClip: {fileID: 8300000, guid: d24ae6432b49e194aaaed69ba978d4b6, type: 3}
+  audioLevel: 0.3

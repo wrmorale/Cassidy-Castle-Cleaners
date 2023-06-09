@@ -17,6 +17,7 @@ public class MopTriggerable : PlayerAbility, IFrameCheckHandler
     [SerializeField] private FrameParser clip;
     [SerializeField] private FrameChecker frameChecker;
     [SerializeField] private AudioClip audioClip;
+    [SerializeField] private AudioClip noManaClip;
     [SerializeField] private float audioLevel;
 
     private playerController player;
@@ -25,6 +26,8 @@ public class MopTriggerable : PlayerAbility, IFrameCheckHandler
     private float mopRotationTimer;
     private bool mopSpawned;
     private GameObject mopObject;
+    private GameObject playerObj;
+    private AudioSource audioSource;
 
     public void onActiveFrameStart()
     {
@@ -36,6 +39,9 @@ public class MopTriggerable : PlayerAbility, IFrameCheckHandler
             GameManager.instance.updateManaAmount(GameManager.instance.mana);
             ActivateMop();
             mopSpawned = true;
+        }
+        else{
+            audioSource.PlayOneShot(noManaClip, audioLevel);
         }
     }
 
@@ -92,6 +98,9 @@ public class MopTriggerable : PlayerAbility, IFrameCheckHandler
         mopActive = true;
         mopRotationTimer = 0f;
         mopSpawned = false;
+
+        playerObj = GameObject.Find("Player");
+        audioSource = playerObj.GetComponentInChildren<AudioSource>();
 
         // Call the other functions manually
         onActiveFrameStart();
