@@ -4,11 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using UnityEngine.EventSystems;
 
 public class NewAbilitiesManager : MonoBehaviour
 {
     public GameObject abilityThree;
     public GameObject abilityFour;
+    public GameObject continueButton;
     public Image abilityThreeOverlay;
     public Image abilityFourOverlay;
     public Image abilityThreeIcon;
@@ -17,12 +19,13 @@ public class NewAbilitiesManager : MonoBehaviour
     public GameManager gameManager;
     public Player player;
     public playerController controller;
+    public EventSystem eventSystem;
 
     // dialogue box
     public GameObject dialogueBox;
     public TextMeshProUGUI dialogueText;
     public TextMeshProUGUI displayName;
-    public static int dialogueIndex = 0;
+    public int dialogueIndex = 0;
 
     private String[] abilityThreeDialogue = new String[] {
         "Nice work so far. I thought you could use a little boost.",
@@ -38,18 +41,7 @@ public class NewAbilitiesManager : MonoBehaviour
 
     void Start()
     {
-        abilityThree = GameObject.Find("AbilityThree");
-        abilityThreeOverlay = GameObject.Find("AbilityThreeOverlay").GetComponent<Image>();
-        
-        abilityFour = GameObject.Find("AbilityFour");
-        abilityFourOverlay = GameObject.Find("AbilityFourOverlay").GetComponent<Image>();
-
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        abilitiesCanvas = GameObject.Find("AbilitiesCanvas");
-        abilitiesCanvas.SetActive(false);
-
-        displayName = GameObject.Find("Name").GetComponent<TextMeshProUGUI>();
-        dialogueText = GameObject.Find("Dialogue").GetComponent<TextMeshProUGUI>();
+        eventSystem = EventSystem.current;
         displayName.text = "Cassidy";
     }
 
@@ -58,7 +50,12 @@ public class NewAbilitiesManager : MonoBehaviour
             freezePlayer();
 
             // make the canvas appear
-            abilitiesCanvas.SetActive(true);
+            if(abilitiesCanvas.activeSelf == false){
+                abilitiesCanvas.SetActive(true);
+                eventSystem.SetSelectedGameObject(continueButton);
+                dialogueText.text = abilityThreeDialogue[dialogueIndex];
+            }
+                
 
             // begin dialogue
             if (dialogueIndex == 0){
@@ -69,26 +66,38 @@ public class NewAbilitiesManager : MonoBehaviour
                 abilityThreeOverlay.enabled = false;
                 abilityThreeIcon.enabled = false;
             }
-            else if (dialogueIndex == 3){
+            else if (dialogueIndex == 2){
                 abilityThreeIcon.enabled = true;
             }
-            
-            if (dialogueIndex < 3){
-                dialogueText.text = abilityThreeDialogue[dialogueIndex];
-                dialogueIndex++;
-            }
-            else {
-                resetAbilityCheckpoint();
-            }  
+             
         }
     }
+
+    public void advanceDialogue(){
+        if(dialogueIndex == 3){
+            resetAbilityCheckpoint();
+        }  
+        dialogueIndex++;
+        dialogueText.text = abilityThreeDialogue[dialogueIndex];
+    }
+
+    public void advanceDialogueFour(){
+        if(dialogueIndex == 3){
+            resetAbilityCheckpoint();
+        }  
+        dialogueIndex++;
+        dialogueText.text = abilityFourDialogue[dialogueIndex];
+    }   
 
     public void displayAbilityFour() {
         if (gameManager.roomCleared){
             freezePlayer();
-
             // make the canvas appear
-            abilitiesCanvas.SetActive(true);
+            if(abilitiesCanvas.activeSelf == false){
+                abilitiesCanvas.SetActive(true);
+                eventSystem.SetSelectedGameObject(continueButton);
+                dialogueText.text = abilityFourDialogue[dialogueIndex];
+            }
 
             // begin dialogue
             if (dialogueIndex == 0){
@@ -103,11 +112,7 @@ public class NewAbilitiesManager : MonoBehaviour
                 abilityFourIcon.enabled = true;
             }
             
-            if (dialogueIndex < 3){
-                dialogueText.text = abilityFourDialogue[dialogueIndex];
-                dialogueIndex++;
-            }
-            else {
+            if(dialogueIndex == 3){
                 resetAbilityCheckpoint();
             }
         }
@@ -116,6 +121,9 @@ public class NewAbilitiesManager : MonoBehaviour
     public void resetAbilityCheckpoint(){
         abilitiesCanvas.SetActive(false);
         dialogueIndex = 0;
+        gameManager.persistentGM.PushLastPlayerHealth(gameManager.playerStats.health, gameManager.mana);
+        gameManager.levelLoader.LoadNextLevel();
+        
     }
 
     public void freezePlayer(){
