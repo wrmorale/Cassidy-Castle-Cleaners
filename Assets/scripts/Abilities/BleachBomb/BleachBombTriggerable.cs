@@ -31,7 +31,7 @@ public class BleachBombTriggerable : PlayerAbility, IFrameCheckHandler
             GameManager.instance.updateManaAmount(GameManager.instance.mana);
             SpawnProjectile(playerForward);
         }else{
-            
+            audioSource.PlayOneShot
         }
     }
     public void onActiveFrameEnd()
