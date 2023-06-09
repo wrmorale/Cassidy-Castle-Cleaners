@@ -239,7 +239,7 @@ MonoBehaviour:
   bulletSpawn: {fileID: 2402459199188912920}
   shockwave: {fileID: 5918913100410013975, guid: 5a5b27b9d4fc44449a6561c17d626306,
     type: 3}
-  shockwaveDamage: 4
+  shockwaveDamage: 5
   shockwaveStartScale: 0.75
   shockwaveEndScale: 5
   shockwaveDuration: 0.4
@@ -260,8 +260,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attacks:
   - name: Slam
-    damage: 3
-    range: 2
+    damage: 0
+    range: 2.5
     hitbox: {fileID: 7503088313172013072}
     clip:
       animator: {fileID: 7739766939873168309}
@@ -271,7 +271,7 @@ MonoBehaviour:
       layerNumber: 0
     checker:
       activeFrameStart: 52
-      activeFrameEnd: 58
+      activeFrameEnd: 52
       attackCancelFrameStart: 0
       attackCancelFrameEnd: 0
       allCancelFrameStart: 0
