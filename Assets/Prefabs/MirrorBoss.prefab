@@ -405,22 +405,34 @@ MonoBehaviour:
   - {fileID: 1108866297013288925}
   currPosessedMirror: {fileID: 0}
   canBeHarmed: 1
+  texture75Percent: {fileID: 0}
+  texture50Percent: {fileID: 0}
+  texture25Percent: {fileID: 0}
   enemyName: The Entity
   maxHealth: 300
   currentHealth: 0
   projectileAttackDuration: 5
-  projectilesPerSec: 1.5
+  volleysPerSec: 3
   projectileMaxAngle: 30
-  aimOnCycle: 3
-  numberOfEnemies: 8
+  projectilesPerVolley: 10
+  projectileSpeed: 4
+  projectileLifetime: 2
+  projectileDamage: 3
+  trashSpawnChance: 0.015
   spawnArea: {fileID: 0}
-  enemyPrefab: {fileID: 0}
+  bunnyPrefab: {fileID: 0}
+  bunnyAmount: 0
+  mothPrefab: {fileID: 0}
+  mothAmount: 0
+  golemPrefab: {fileID: 0}
+  golemAmount: 2
   aggro: 0
   player: {fileID: 0}
   phase: 0
   setupPhase3: 0
   isCoroutineRunning: 0
   levelLoader: {fileID: 0}
+  centerObject: {fileID: 0}
 --- !u!1001 &474687666735158221
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -112,8 +112,8 @@ MonoBehaviour:
     moveToPosition: {x: 0, y: 0, z: 0}
     aggro: 0
     specialCooldownEnds: 0
-  viewPosition: {x: 452.8, y: -490.4, z: 0}
-  viewScale: {x: 0.49717674, y: 0.49717674, z: 1}
+  viewPosition: {x: -108, y: -47.5, z: 0}
+  viewScale: {x: 0.25, y: 0.25, z: 1}
   references:
     version: 2
     RefIds:
@@ -435,11 +435,11 @@ MonoBehaviour:
         description: 
         drawGizmos: 0
         children:
+        - rid: 909933899730386945
         - rid: 1283210377912123399
         - rid: 1283210377912123400
         - rid: 1283210377912123401
         - rid: 1283210377912123402
-        - rid: 909933899730386945
     - rid: 1283210377912123399
       type: {class: SetAnimatorTrigger, ns: , asm: Assembly-CSharp}
       data:
@@ -488,7 +488,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 676a9dda0562d8b41b6017007fc5ec20
-        position: {x: -1178.7229, y: 976}
+        position: {x: -1189.0002, y: 976.0001}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           aggro: 0
@@ -631,7 +631,7 @@ MonoBehaviour:
           specialCooldownEnds: 0
         description: 
         drawGizmos: 0
-        duration: 0
+        duration: 0.75
     - rid: 2088461108116455437
       type: {class: Wait, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:
@@ -645,7 +645,7 @@ MonoBehaviour:
           specialCooldownEnds: 0
         description: 
         drawGizmos: 0
-        duration: 4
+        duration: 3
     - rid: 2088461108116455438
       type: {class: RepeatXTimes, ns: , asm: Assembly-CSharp}
       data:

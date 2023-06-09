@@ -12,12 +12,8 @@ public class MirrorBossMirror : Enemy
     public GameObject tempProjectileWarning;
     public ParticleSystem glassShardPortal;
 
-    [Header("Projectile Stats")]
-    [SerializeField] public Projectile projectilePrefab;
-    [SerializeField] public float projectileSpeed;
-    [SerializeField] public float projectileLifetime;
-    [SerializeField] public float projectileDamage;
-    [SerializeField] public float trashSpawnChance;
+    [Header("Projectile")]
+    [SerializeField] public ShardProjectile projectilePrefab;
     public Transform bulletSpawn;
 
     [Header("Shockwave")]
@@ -44,11 +40,13 @@ public class MirrorBossMirror : Enemy
         {
             entityPossessing = true;
             faceRender.SetActive(true);
+            tag = "Enemy";
         }
         else
         {
             entityPossessing = false;
             faceRender.SetActive(false);
+            tag = "Untagged"; //Prevents lock-on targeting
         }
     }
 

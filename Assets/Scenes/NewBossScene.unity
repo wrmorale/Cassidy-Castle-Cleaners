@@ -955,7 +955,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh58848
+  m_Name: pb_Mesh29706
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3423,7 +3423,8 @@ MonoBehaviour:
   currentGold: 0
   availableAbilities: []
   numberOfEnemies: 0
-  maxDustPiles: 1
+  maxDustPiles: 6
+  giveManaFrame1: 0
   numberOfDustPiles: 0
   enemyPrefab: {fileID: 245130090}
   player: {fileID: 485352720}
@@ -8372,19 +8373,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5972610662029407917, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
         type: 3}
-      propertyPath: mothAmount
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5972610662029407917, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
-        type: 3}
       propertyPath: mothPrefab
       value: 
       objectReference: {fileID: 969221598}
-    - target: {fileID: 5972610662029407917, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
-        type: 3}
-      propertyPath: bunnyAmount
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 5972610662029407917, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
         type: 3}
       propertyPath: bunnyPrefab
@@ -8395,11 +8386,6 @@ PrefabInstance:
       propertyPath: enemyPrefab
       value: 
       objectReference: {fileID: 245130090}
-    - target: {fileID: 5972610662029407917, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
-        type: 3}
-      propertyPath: golemAmount
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 5972610662029407917, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
         type: 3}
       propertyPath: golemPrefab
@@ -8422,6 +8408,21 @@ PrefabInstance:
       objectReference: {fileID: 590239199}
     - target: {fileID: 5972610662029407917, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
         type: 3}
+      propertyPath: volleysPerSec
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972610662029407917, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
+        type: 3}
+      propertyPath: projectileSpeed
+      value: 3.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972610662029407917, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
+        type: 3}
+      propertyPath: projectileDamage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972610662029407917, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
+        type: 3}
       propertyPath: texture25Percent
       value: 
       objectReference: {fileID: 2800000, guid: 68a5988c005bd4ab8ad2cac366d8dec0, type: 3}
@@ -8437,13 +8438,23 @@ PrefabInstance:
       objectReference: {fileID: 2800000, guid: 941cde573812749a0b466f7371effe31, type: 3}
     - target: {fileID: 5972610662029407917, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
         type: 3}
+      propertyPath: trashSpawnChance
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972610662029407917, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
+        type: 3}
       propertyPath: projectilesPerSec
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5972610662029407917, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
         type: 3}
       propertyPath: projectileMaxAngle
-      value: 70
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972610662029407917, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
+        type: 3}
+      propertyPath: projectilesPerVolley
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6112376593408787560, guid: 56ba2f805f72bc044b4ef5c11713b9a7,
         type: 3}
