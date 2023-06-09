@@ -11,21 +11,24 @@ public class AbiltyBarUIManager : MonoBehaviour
     public Sprite mopIcon;
     public Image iconSlot;
     public Image iconSlotTwo;
+    public GameObject button3;
+    public GameObject button4;
     
     void Start()
     {
-        iconSlot = GameObject.Find("IconSpace").GetComponent<Image>();
-        iconSlotTwo = GameObject.Find("IconSpaceTwo").GetComponent<Image>();
+        
     }
 
     void Update()
     {
         if (SceneManager.GetActiveScene().buildIndex >= 3)
         {
+            button3.SetActive(true);
             DisplayBarIcon();
         }
         if (SceneManager.GetActiveScene().buildIndex >= 5)
         {
+            button4.SetActive(true);
             DisplayMopIcon();
         }
     }

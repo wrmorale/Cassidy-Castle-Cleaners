@@ -49,11 +49,11 @@ public class ObjectiveManager : MonoBehaviour
     }
 
     public void updateObjectiveTextPrimaryAttack(int primaryAttacks) {
-        objectiveText.text = "Use your primary attacks " + primaryAttacks + "/6 times";
+        objectiveText.text = "Use your primary attacks " + primaryAttacks + "/6\ntimes while locked on";
     }
 
     public void updateObjectiveTextAbilityAttack(int abilityAttacks) {
-        objectiveText.text = "Use your abilities " + abilityAttacks + "/4 times";
+        objectiveText.text = "Use your abilities " + abilityAttacks + "/4 times\ntimes while locked on";
     }
 
 

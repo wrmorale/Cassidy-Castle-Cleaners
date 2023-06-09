@@ -352,19 +352,19 @@ MonoBehaviour:
   abilityThree: {fileID: 4935618363108468895}
   abilityFour: {fileID: 7347520193716951169}
   continueButton: {fileID: 4870432270121160613}
-  abilityThreeOverlay: {fileID: 2726430790472587823}
-  abilityFourOverlay: {fileID: 3013128016419685599}
-  abilityThreeIcon: {fileID: 1565933819411540998}
-  abilityFourIcon: {fileID: 2556087856779697885}
+  abilityThreeOverlay: {fileID: 0}
+  abilityFourOverlay: {fileID: 0}
+  abilityThreeIcon: {fileID: 0}
+  abilityFourIcon: {fileID: 0}
   abilitiesCanvas: {fileID: 704549792066899060}
   gameManager: {fileID: 0}
   player: {fileID: 0}
   controller: {fileID: 0}
   eventSystem: {fileID: 0}
-  mopAnimation: {fileID: 693270721961096914}
-  soapAnimation: {fileID: 2977234413389398370}
-  loadingAnimationThree: {fileID: 7726480752158032036}
-  loadingAnimationFour: {fileID: 9058242165077102878}
+  mopAnimation: {fileID: 0}
+  soapAnimation: {fileID: 0}
+  loadingAnimationThree: {fileID: 0}
+  loadingAnimationFour: {fileID: 0}
   dialogueBox: {fileID: 1048146458855777706}
   dialogueText: {fileID: 3185518043301745148}
   displayName: {fileID: 8103433276131561298}
@@ -1511,7 +1511,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7622248803937825209
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1786,7 +1786,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d84508c1cee124f82948709e72537195, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2d5f77e38d780634ebf94ece80a2a8ea, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1961,8 +1961,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Continue
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a6b6909bf4905c243a7728052069879f, type: 2}
+  m_sharedMaterial: {fileID: -6053934615312367836, guid: a6b6909bf4905c243a7728052069879f,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

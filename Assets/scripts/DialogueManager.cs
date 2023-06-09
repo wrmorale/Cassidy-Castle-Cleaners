@@ -483,6 +483,10 @@ public class DialogueManager : MonoBehaviour
             inDialogue = true;
             objectiveManager.checkObjective();
             controlseven.SetActive(false);
+            gameManager.mana = 0;
+            gameManager.updateManaAmount(gameManager.mana);
+            tutorialManager.player.health = 25f;
+            tutorialManager.player.updateHealthUI();
         }
 
     }
@@ -508,10 +512,8 @@ public class DialogueManager : MonoBehaviour
         //continueButton.SetActive(false);
         //dialoguebox.SetActive(false);
         
-        gameManager.mana = 0;
-        gameManager.updateManaAmount(gameManager.mana);
-        tutorialManager.player.health = 25f;
-        tutorialManager.player.updateHealthUI();
+        
+        
         //objectiveManager.endObjective();    
     }
 

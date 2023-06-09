@@ -1192,9 +1192,10 @@ MonoBehaviour:
     allCancelFrameEnd: 0
   playerAbilities:
   - {fileID: 3529802045003625735, guid: 8e576e7dc7d3124448d5cef142a7f9ea, type: 3}
-  - {fileID: 7177310634722814464, guid: cf269490403efc042acb93d6ef4693f9, type: 3}
   - {fileID: 5318415682540987213, guid: 47091f31e5f188448b8932ce618daaf2, type: 3}
-  - {fileID: 0}
+  - {fileID: -2661743474676728147, guid: 669fde3b67070a54091de0ff63114ea2, type: 3}
+  - {fileID: -4346639447019972719, guid: 485d0bf496e9b6a428f5bd5db89e3fea, type: 3}
+  - {fileID: 7177310634722814464, guid: cf269490403efc042acb93d6ef4693f9, type: 3}
   controller: {fileID: 0}
   targetLock: {fileID: 0}
   playerStats: {fileID: 0}

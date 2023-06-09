@@ -11605,6 +11605,8 @@ MonoBehaviour:
   mopIcon: {fileID: 21300000, guid: 58e7469adb682f541829b89b1bcb6ccd, type: 3}
   iconSlot: {fileID: 1832871080}
   iconSlotTwo: {fileID: 1832871079}
+  button3: {fileID: 0}
+  button4: {fileID: 0}
 --- !u!1001 &1850672357
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13655,7 +13657,7 @@ PrefabInstance:
         type: 3}
       propertyPath: playerAbilities.Array.data[1]
       value: 
-      objectReference: {fileID: -4346639447019972719, guid: 485d0bf496e9b6a428f5bd5db89e3fea,
+      objectReference: {fileID: 5318415682540987213, guid: 47091f31e5f188448b8932ce618daaf2,
         type: 3}
     - target: {fileID: 7428022771512999011, guid: 780a7481df1a48d4792aed7fd543ee02,
         type: 3}
@@ -13667,7 +13669,7 @@ PrefabInstance:
         type: 3}
       propertyPath: playerAbilities.Array.data[3]
       value: 
-      objectReference: {fileID: 5318415682540987213, guid: 47091f31e5f188448b8932ce618daaf2,
+      objectReference: {fileID: -4346639447019972719, guid: 485d0bf496e9b6a428f5bd5db89e3fea,
         type: 3}
     - target: {fileID: 7428022771512999011, guid: 780a7481df1a48d4792aed7fd543ee02,
         type: 3}

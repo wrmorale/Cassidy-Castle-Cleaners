@@ -2823,10 +2823,12 @@ MonoBehaviour:
   roomCleared: 0
   isNextToExit: 0
   gamePaused: 0
+  levelLoader: {fileID: 0}
   currentGold: 0
   availableAbilities: []
   numberOfEnemies: 5
   maxDustPiles: 5
+  giveManaFrame1: 1
   numberOfDustPiles: 0
   enemyPrefab: {fileID: 8327740662560138380, guid: 3fec4a32b1661b648bdcb0b9faccc35d,
     type: 3}
@@ -2856,6 +2858,7 @@ MonoBehaviour:
   playerStats: {fileID: 2029081638}
   playercontroller: {fileID: 1857691452}
   deathManager: {fileID: 1378815535}
+  abilitiesManager: {fileID: 0}
   cleaningPercent: 0
   mana: 0
   maxMana: 100
@@ -3685,6 +3688,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2029081638}
   gameManager: {fileID: 506195701}
+  musicManager: {fileID: 0}
   infiniteManaCheat: 0
   dustPileReward: 20
   bleachBombCost: 20
@@ -3693,10 +3697,6 @@ MonoBehaviour:
   mopCost: 20
   health: 0
   mana: 0
-  soapBarIcon: {fileID: 21300000, guid: 4c470e83403cb7840b91b952309947e2, type: 3}
-  mopIcon: {fileID: 21300000, guid: 58e7469adb682f541829b89b1bcb6ccd, type: 3}
-  iconSlot: {fileID: 1369806019}
-  iconSlotTwo: {fileID: 1369806018}
 --- !u!4 &726093407
 Transform:
   m_ObjectHideFlags: 0
@@ -7207,30 +7207,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55f7990e1f79b1c428adb94d5db23617, type: 3}
---- !u!114 &1369806018 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1416177652929269247, guid: 55f7990e1f79b1c428adb94d5db23617,
+--- !u!1 &1369806018 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 130637442368307866, guid: 55f7990e1f79b1c428adb94d5db23617,
     type: 3}
   m_PrefabInstance: {fileID: 1369806017}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1369806019 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8359594503051654544, guid: 55f7990e1f79b1c428adb94d5db23617,
-    type: 3}
-  m_PrefabInstance: {fileID: 1369806017}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1378815533
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7313,6 +7295,11 @@ PrefabInstance:
       propertyPath: playerUI
       value: 
       objectReference: {fileID: 1857691453}
+    - target: {fileID: 6160843056228983092, guid: 358df206ff99fd64380a11100a1fe4b1,
+        type: 3}
+      propertyPath: abilityUI
+      value: 
+      objectReference: {fileID: 1369806018}
     - target: {fileID: 6160843056228983092, guid: 358df206ff99fd64380a11100a1fe4b1,
         type: 3}
       propertyPath: pauseMenu
@@ -10272,7 +10259,7 @@ PrefabInstance:
         type: 3}
       propertyPath: playerAbilities.Array.data[1]
       value: 
-      objectReference: {fileID: -4346639447019972719, guid: 485d0bf496e9b6a428f5bd5db89e3fea,
+      objectReference: {fileID: 5318415682540987213, guid: 47091f31e5f188448b8932ce618daaf2,
         type: 3}
     - target: {fileID: 7428022771512999011, guid: 780a7481df1a48d4792aed7fd543ee02,
         type: 3}
@@ -10284,7 +10271,7 @@ PrefabInstance:
         type: 3}
       propertyPath: playerAbilities.Array.data[3]
       value: 
-      objectReference: {fileID: 5318415682540987213, guid: 47091f31e5f188448b8932ce618daaf2,
+      objectReference: {fileID: -4346639447019972719, guid: 485d0bf496e9b6a428f5bd5db89e3fea,
         type: 3}
     - target: {fileID: 7428022771512999011, guid: 780a7481df1a48d4792aed7fd543ee02,
         type: 3}

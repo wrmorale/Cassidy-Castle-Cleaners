@@ -13,6 +13,7 @@ public class DeathManager : MonoBehaviour
     public GameObject gmUI;
     public GameObject playerUI;
     public GameObject pauseMenu;
+    public GameObject abilityUI;
     public EventSystem eventSystem;
     public Image deathScreen;
     public bool fadeIN = false;
@@ -41,6 +42,7 @@ public class DeathManager : MonoBehaviour
         gmUI.SetActive(false);
         playerUI.SetActive(false);
         pauseMenu.SetActive(false);
+        abilityUI.SetActive(false);
         fadeIN = true;
     }
 
