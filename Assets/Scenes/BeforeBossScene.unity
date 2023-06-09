@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -483,11 +483,11 @@ MonoBehaviour:
   continueButton: {fileID: 1620761406}
   roomCleared: 0
   cutsceneImages:
-  - {fileID: 2800000, guid: 7fc6a504f624c44b394e1fbbd9ef8da7, type: 3}
-  - {fileID: 2800000, guid: 2a8d6cc8254fb473fae0bb9a11147030, type: 3}
-  - {fileID: 2800000, guid: f91d2705f660742f0992baedbb3cb39b, type: 3}
-  - {fileID: 2800000, guid: 338231f8a6fcd4c4aae763c9ff05a01b, type: 3}
-  - {fileID: 2800000, guid: bdcd3b36072de4d91ae0123d871333a8, type: 3}
+  - {fileID: 2800000, guid: f44f67074fbb5a94ab5df54010ef6f72, type: 3}
+  - {fileID: 2800000, guid: 7fda116916cb01346bd002972012858d, type: 3}
+  - {fileID: 2800000, guid: 42fba75e11d6a974e92a7e04f1711f56, type: 3}
+  - {fileID: 2800000, guid: ef43e845307bd9743af66bf27adf9119, type: 3}
+  - {fileID: 2800000, guid: df17137cde7b4194f914838c17576be8, type: 3}
   displayImage: {fileID: 1999197895}
   cutsceneCanvas: {fileID: 701830819}
   dialogueBox: {fileID: 1979800868}
@@ -1039,7 +1039,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bdcd3b36072de4d91ae0123d871333a8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f44f67074fbb5a94ab5df54010ef6f72, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1086,7 +1086,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2042573945
 RectTransform:
   m_ObjectHideFlags: 0

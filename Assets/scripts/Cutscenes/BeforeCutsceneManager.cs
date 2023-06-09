@@ -18,7 +18,7 @@ public class BeforeCutsceneManager : MonoBehaviour
     public Image displayImage;
     public GameObject cutsceneCanvas;
     public GameObject dialogueBox;
-    public Image controlIcon;
+    //public Image controlIcon;
     public InputDevice device;
 
     public float fadeDuration = 1.0f;
@@ -27,12 +27,25 @@ public class BeforeCutsceneManager : MonoBehaviour
 
     public TextMeshProUGUI dialogueText;
     public TextMeshProUGUI dialogueName;
-    private String[] dialogueTexts = new String[] {"Who would have thought being a maid would result in her battling an evil mirror?",
-    "The maid finally leaves after a long day of cleaning.",
-    "She hops into her truck, on her way to report back to Cassidy. She hopes Cassidy will give her a bonus...",
-    "Unfortunately the folder at hand is not a bonus but another assignment, the grind never stops.",
-    "The maid wonders what will she be put up against next?"};
-
+    //private String[] dialogueTexts = new String[] { "What is this place? This feels different from the rest of the rooms... more... evil..", };
+    private Dictionary <int , Tuple<string, string>> dialogueTexts = new Dictionary <int , Tuple<string, string>>() 
+    {
+        {
+            0,Tuple.Create("The Maid","What is this place? This feels different from the rest of the rooms... more... evil..")
+        }, 
+        {
+            1,Tuple.Create("The Mirror", "Well hello Ms. Castle Cleaner. Have you been enjoying my creations? I hope they haven't been too... messy.")
+        }, 
+        {
+            2,Tuple.Create("", "THUNK")
+        }, 
+        {
+            3,Tuple.Create("The Mirror", "Attacking an empty mirror? That doesn't seem maid like. You'll need to be quicker than that if you want to \"clean\" me.")
+        }, 
+        {
+            4,Tuple.Create("The Maid", "I really need a vacation...")
+        },
+    };
 
 
     void Start()
@@ -42,12 +55,13 @@ public class BeforeCutsceneManager : MonoBehaviour
         continueButton = GameObject.Find("ContinueButton");
         dialogueBox = GameObject.Find("DialogueBox");
         canvasGroup = GetComponent<CanvasGroup>();
-        controlIcon = GameObject.Find("Control").GetComponent<Image>();
+        //controlIcon = GameObject.Find("Control").GetComponent<Image>();
         dialogueText = GameObject.Find("Dialogue").GetComponent<TextMeshProUGUI>();
         dialogueName = GameObject.Find("Name").GetComponent<TextMeshProUGUI>();
-        dialogueName.enabled = false;
         DisplayNextCutscene();
         eventSystem = EventSystem.current;
+       
+
     }
 
     public void DisplayNextCutscene() 
@@ -58,7 +72,11 @@ public class BeforeCutsceneManager : MonoBehaviour
         }
         else {
             displayImage.sprite = Sprite.Create(cutsceneImages[cutsceneIndex], new Rect(0.0f, 0.0f, cutsceneImages[cutsceneIndex].width, cutsceneImages[cutsceneIndex].height), new Vector2(0.5f, 0.5f), 100.0f);
-            dialogueText.text = dialogueTexts[cutsceneIndex];
+            string speaker = (dialogueTexts.ElementAt(cutsceneIndex).Value).Item1;
+            string speakerText = (dialogueTexts.ElementAt(cutsceneIndex).Value).Item2;
+
+            dialogueName.text = speaker;
+            dialogueText.text = speakerText;
         }
 
         if (cutsceneIndex < 5){
