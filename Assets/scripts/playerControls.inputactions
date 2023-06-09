@@ -232,8 +232,8 @@
                 },
                 {
                     "name": "",
-                    "id": "a5a97ac6-2b26-480a-b6f6-ec9c198241f0",
-                    "path": "<Gamepad>/buttonWest",
+                    "id": "a1c16811-4a3c-4112-839d-08f7865f7f17",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -243,8 +243,8 @@
                 },
                 {
                     "name": "",
-                    "id": "a1c16811-4a3c-4112-839d-08f7865f7f17",
-                    "path": "<Mouse>/leftButton",
+                    "id": "4946dff3-6600-493a-9ad9-06108ba6ff10",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -321,7 +321,7 @@
                 {
                     "name": "",
                     "id": "e2fdef51-0069-4e0d-81f7-8ba50ef8c5a4",
-                    "path": "<Gamepad>/buttonEast",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -354,7 +354,7 @@
                 {
                     "name": "",
                     "id": "ad5c7dac-c4ee-40a2-8ae5-0836dee9edea",
-                    "path": "<Gamepad>/rightShoulder",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -376,7 +376,7 @@
                 {
                     "name": "",
                     "id": "dd9199f4-59ea-4c8f-ae01-94fb77b2abf2",
-                    "path": "<Gamepad>/rightTrigger",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -387,7 +387,7 @@
                 {
                     "name": "",
                     "id": "4ddf13a9-49a2-4bc6-a252-98380cea050d",
-                    "path": "<Gamepad>/buttonEast",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -859,10 +859,43 @@
                 {
                     "name": "",
                     "id": "5edb75f9-acad-458c-9041-5300ce7d1ccf",
-                    "path": "*/{Submit}",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse;Gamepad;Touch;Joystick;XR",
+                    "action": "Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "611e7f46-eae4-4e8b-b0a5-b55ead87dda6",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e7352b35-b38d-4092-acd7-af87c1466a36",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e3eec9ad-eb93-4e1b-b47e-120e27c7c644",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "Submit",
                     "isComposite": false,
                     "isPartOfComposite": false

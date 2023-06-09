@@ -27,6 +27,7 @@ public class PersistentGameManager : MonoBehaviour
 
     private void Awake()
     {
+        
         if (instance != null && instance != this)
         {
             Destroy(gameObject);
@@ -40,6 +41,7 @@ public class PersistentGameManager : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
 
         SceneManager.sceneLoaded += OnSceneChanged;
+        Debug.LogWarning("Persistent Game Manager awake!");
     }
 
     private void OnDestroy()
@@ -49,6 +51,7 @@ public class PersistentGameManager : MonoBehaviour
 
     private void Start()
     {
+        Debug.LogWarning("Persistent Game Manager start!");
         player = FindObjectOfType<Player>();
         gameManager = FindObjectOfType<GameManager>();
     }
@@ -133,5 +136,11 @@ public class PersistentGameManager : MonoBehaviour
         {
             return 0f; // Default mana value if the array is empty
         }
+    }
+
+    public void resetPlayerStats()
+    {
+        lastPlayerHealthValues.Clear();
+        lastPlayerManaValues.Clear();
     }
 }

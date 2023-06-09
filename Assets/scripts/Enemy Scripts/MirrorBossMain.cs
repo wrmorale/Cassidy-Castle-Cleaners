@@ -14,6 +14,11 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
     public bool canBeHarmed = false; //Starts immune to damage during the starting cutscene, though I suppose we could just make it that none of the mirrors are posessed at first.
     BehaviourTreeRunner btRunner;
 
+    [Header("Textures")]
+    [SerializeField] private Texture texture75Percent;
+    [SerializeField] private Texture texture50Percent;
+    [SerializeField] private Texture texture25Percent;
+
     [Header("Stats")]
     [SerializeField] public string enemyName;
     [SerializeField] public float maxHealth = 1.0f; //Shouldn't these be integers?
@@ -28,21 +33,28 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
     [SerializeField] int aimOnCycle = 3; //Which projectile cycle to shoot at the player on
 
     [Header("Enemy Spawns")]
-    [SerializeField] public int numberOfEnemies;
     [SerializeField] GameObject spawnArea;
-    public GameObject enemyPrefab;
+    public GameObject bunnyPrefab;
+    public int bunnyAmount;
+    public GameObject mothPrefab;
+    public int mothAmount;
+    public GameObject golemPrefab;
+    public int golemAmount;
     private bool finishedSpawning = false;
 
     /*I should probably experiment a bit with the golem before I give the others their tasks...*/
     [Header("Aggro Status")]
     public bool aggro = false;
     public Transform player;
-    public int phase; //1 = phase 1, 2 = spawn enemies, 3 = final phase, 4+ = defeated
+    public int phase; //1 = phase 1, 2 = spawn enemies, 3 = final phase, 4 = dead
+    public bool setupPhase3 = false;
 
     [HideInInspector] public bool isCoroutineRunning = false;
 
     [Header("Other")]
     public LevelLoader levelLoader;
+    public GameObject centerObject;
+
 
     // Start is called before the first frame update
     void Start()
@@ -57,6 +69,9 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
 
         bossHealthBar = GetComponentInChildren<EnemyHealthBar>();
         bossHealthBar.setMaxHealth(healthPercent);
+
+        // Get the renderer component
+        //bossRenderer = GetComponent<Renderer>();
     }
 
     // Update is called once per frame
@@ -64,6 +79,19 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
     {
         if(phase == 2){
             phase2CompletionCheck();
+
+            // Move the center object down in the global y direction
+            if(centerObject != null){
+                float descentSpeed = 0.8f; // Adjust the descent speed as needed
+                centerObject.transform.position -= new Vector3(0f, descentSpeed * Time.deltaTime, 0f);
+            }
+            // Destroy the center object when it reaches a certain height
+            float destroyHeight = -2f; // Adjust the destroy height as needed
+            if (centerObject.transform.position.y <= destroyHeight)
+            {
+                Destroy(centerObject);
+            }
+            
         }
     }
 
@@ -76,7 +104,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
         }
         mirrors[mirrorIndex].SetPossessed(true);
         currPosessedMirror = mirrors[mirrorIndex];
-        currPosessedMirror.mirrorAudioManager.playTeleportsfx();
+        //currPosessedMirror.mirrorAudioManager.playTeleportsfx();
         currMirrorIndex = mirrorIndex;
 
         //Change the context?
@@ -125,39 +153,54 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
             //Proceed to phase 1.5 at 1/3 health
             if(healthPercent <= 0.33 && phase == 1)
             {
-                btRunner.tree.rootNode.Abort();
+                abortBT();
                 canBeHarmed = false;
                 phase += 1;
                 setShootingWarning(false); //Remove later
             }
 
-            if (currentHealth <= 0)
+            if (currentHealth <= 0) //Dead now
             {
-                // Destroy the cube when it has no health left
-                //this should work for death animation but not all enemies have one so it gets errors
-                //animator.SetBool("Death", true);
+                canBeHarmed = false; //Prevent from taking further damage now that it's dead
+                phase = 4;
                 currPosessedMirror.mirrorAudioManager.playDeathsfx();
-                //StartCoroutine(waitForAnimation("Death"));
-
-                if (levelLoader) //Load the ending scene
-                    levelLoader.LoadTargetLevel("Win_scene");
-                else
-                    Debug.LogError("[MirrorBossMain] Where's the level loader??");
-
-                //Destroy(gameObject);
-                StartCoroutine(DelayedDestroy());
+                abortBT();
             }
         }
         else
         {
             Debug.LogWarning("Boss cannot be hurt right now!");
         }
+
+        //changes texture based on health
+        if (healthPercent <= 0.75f && healthPercent > 0.5f)
+        {
+            changeMirrorTextures(texture75Percent);
+        }
+        else if (healthPercent <= 0.5f && healthPercent > 0.25f)
+        {
+            changeMirrorTextures(texture50Percent);
+        }
+        else if (healthPercent <= 0.25f)
+        {
+            changeMirrorTextures(texture25Percent);
+        }
     }
 
-    // Coroutine for delayed destruction
-    IEnumerator DelayedDestroy(){
-        yield return new WaitForSeconds(1f); // Wait for 1 second
-        Destroy(gameObject); // Destroy the object after the delay
+    private void changeMirrorTextures(Texture texture)
+    {
+        foreach (MirrorBossMirror mirror in mirrors){
+            mirror.mirrorRenderer.material.mainTexture = texture;
+        }
+    }
+
+    public void loadEndingScene()
+    {
+        if (levelLoader) //Load the ending scene
+            levelLoader.LoadTargetLevel("Win_scene");
+        else
+            Debug.LogError("[MirrorBossMain] Where's the level loader??");
+        Destroy(gameObject, 1f); // Destroy the object after the delay
     }
 
     public void phase2CompletionCheck(){
@@ -193,7 +236,7 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
                 /*Could add a check here for the main mirror to shoot directly at the player
                  Wouldn't even be necessary if all mirrors EXCEPT the main one were always shooting*/
 
-                Vector3 spawnPosition = mirrors[i].transform.position;
+                Vector3 spawnPosition = mirrors[i].bulletSpawn.position;
 
                 // Instantiate a clone of the projectile prefab at the mirror's position and rotation
                 Projectile projectileClone = Instantiate(projectile, spawnPosition, mirrors[i].transform.rotation);
@@ -231,10 +274,14 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
                 Vector3 stepVector = Quaternion.AngleAxis(angleStep, Vector3.up) * mirrors[i].transform.right; // Calculates the angle to shoot
 
                 // Randomize the projectile lifetime within the range of the current value +- 1
-                float randomizedLifetime = mirrors[i].projectileLifetime + UnityEngine.Random.Range(-1.5f, 2.0f);
+                //float randomizedLifetime = mirrors[i].projectileLifetime + UnityEngine.Random.Range(-1.5f, 2.0f);
 
                 // Initialize and activate the clone
-                projectileClone.Initialize(mirrors[i].projectileSpeed, 5.0f, mirrors[i].projectileDamage, 1f, stepVector, mirrors[i].trashSpawnChance);
+                float shardPileSpawnChance = mirrors[i].trashSpawnChance;
+                if(phase > 1){
+                    shardPileSpawnChance = shardPileSpawnChance/2;
+                }
+                projectileClone.Initialize(mirrors[i].projectileSpeed, 5.0f, mirrors[i].projectileDamage, 1f, stepVector, shardPileSpawnChance);
                 if ((cycle + offset) % 3 == 0)
                 {
                     //projectileClone.transform.localScale = new Vector3(1, 5, 1); //Used to see which projectiles are shot directly at player
@@ -297,35 +344,59 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
         return Mathf.Clamp(toPlayerAngle, -projectileMaxAngle, projectileMaxAngle); ;
     }
 
-    public void spawnEnemies(){
-        //similar to how the game manager spawns enemies
+    public void spawnEnemies()
+    {
         Vector3 playerPos = player.transform.position;
-        GameObject[] enemies = new GameObject[numberOfEnemies];
-        for (int i = 0; i < numberOfEnemies; i++)
+
+        // Spawn bunny enemies
+        for (int i = 0; i < bunnyAmount; i++)
         {
-            Bounds spawnBounds = spawnArea.GetComponent<MeshCollider>().bounds;
-            Vector3 position;
-            do
-            {
-                position = new Vector3(
-                    UnityEngine.Random.Range(spawnBounds.min.x, spawnBounds.max.x),
-                    spawnArea.transform.position.y,
-                    UnityEngine.Random.Range(spawnBounds.min.z, spawnBounds.max.z)
-                );
-            } while (Vector3.Distance(playerPos, position) < 3);
-            GameObject enemy = Instantiate(enemyPrefab, position, Quaternion.identity);
-            enemy.SetActive(true);
-            enemy.GetComponent<Enemy>().startAggro = true;
-            Debug.Log("Spawned enemy");
+            SpawnEnemy(bunnyPrefab, playerPos);
         }
-        enemyPrefab.SetActive(false);
+
+        // Spawn moth enemies
+        for (int i = 0; i < mothAmount; i++)
+        {
+            SpawnEnemy(mothPrefab, playerPos);
+        }
+
+        // Spawn golem enemies
+        for (int i = 0; i < golemAmount; i++)
+        {
+            SpawnEnemy(golemPrefab, playerPos);
+        }
+
+        // Deactivate enemyPrefab
+        //enemyPrefab.SetActive(false);
+
         finishedSpawning = true;
 
-        foreach(MirrorBossMirror mirror in mirrors)
+        foreach (MirrorBossMirror mirror in mirrors)
         {
             mirror.mirrorAudioManager.playSpawnEnemySfx();
         }
     }
+
+    private void SpawnEnemy(GameObject enemyPrefab, Vector3 playerPos)
+    {
+        Bounds spawnBounds = spawnArea.GetComponent<MeshCollider>().bounds;
+        Vector3 position;
+
+        do
+        {
+            position = new Vector3(
+                UnityEngine.Random.Range(spawnBounds.min.x, spawnBounds.max.x),
+                spawnArea.transform.position.y,
+                UnityEngine.Random.Range(spawnBounds.min.z, spawnBounds.max.z)
+            );
+        } while (Vector3.Distance(playerPos, position) < 3);
+
+        GameObject enemy = Instantiate(enemyPrefab, position, Quaternion.identity);
+        enemy.SetActive(true);
+        enemy.GetComponent<Enemy>().startAggro = true;
+        //Debug.Log("Spawned enemy");
+    }
+
 
     //Can be removed after shooting animation is added
     public void setShootingWarning(bool setTo)
@@ -342,4 +413,11 @@ public class MirrorBossMain : MonoBehaviour //Will derive from Enemy class later
             }
         }
     }
+
+    public void abortBT()
+    {
+        btRunner.tree.rootNode.Abort();
+        StopAllCoroutines();
+    }
+
 }

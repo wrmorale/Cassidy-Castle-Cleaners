@@ -17,7 +17,7 @@ public enum TargetDirection
 }
 
 public class TargetLock : MonoBehaviour
-{ 
+{
     [Header("Objects")]
     [Space]
     [SerializeField] private Camera mainCamera;            // your main camera object.
@@ -30,10 +30,11 @@ public class TargetLock : MonoBehaviour
     [Header("Settings")]
     [Space]
     [SerializeField] private string enemyTag; // the enemies tag.
-    [SerializeField] private Vector2 targetLockOffset;
+    [SerializeField] private LayerMask transparentObjects; // objects that should not block raycast.
+    [SerializeField] private float cameraHeight = 0.5f; // height the camera moves to when locking on
     [SerializeField] private float minDistance; // minimum distance to stop rotation if you get close to target
     [SerializeField] private float maxDistance;
-    
+
     public bool isTargeting;
     private playerController player;
     private CharacterController controller;
@@ -42,9 +43,9 @@ public class TargetLock : MonoBehaviour
     private InputAction cameraAction;
     private InputAction DpadLeftAction;
     private InputAction DpadRightAction;
-    
+
     private int channeledAbility;
-    
+
     private float maxAngle;
     [HideInInspector]
     private TargetDirection targetDirection = TargetDirection.None;
@@ -59,7 +60,7 @@ public class TargetLock : MonoBehaviour
         maxAngle = 90f; // always 90 to target enemies in front of camera.
 
         player = gameObject.GetComponent<playerController>();
-        controller  = gameObject.GetComponent<CharacterController>();
+        controller = gameObject.GetComponent<CharacterController>();
         playerInput = gameObject.GetComponent<PlayerInput>();
 
         lockonAction = playerInput.actions["LockOn"];
@@ -73,6 +74,7 @@ public class TargetLock : MonoBehaviour
 
     void Update()
     {
+
         if (!isTargeting)
         {
             Vector2 input = cameraAction.ReadValue<Vector2>();
@@ -82,10 +84,10 @@ public class TargetLock : MonoBehaviour
         else
         {
             // handles being locked on a target
-            LookAtTarget(currentTarget); 
+            LookAtTarget(currentTarget);
         }
 
-        if (aimIcon) 
+        if (aimIcon)
             aimIcon.gameObject.SetActive(isTargeting);
 
         if (lockonAction.triggered)
@@ -95,7 +97,7 @@ public class TargetLock : MonoBehaviour
                 RemoveTarget();
             }
             else
-            { 
+            {
                 AssignTarget();
             }
         }
@@ -139,21 +141,13 @@ public class TargetLock : MonoBehaviour
 
             isTargeting = true;
             currentTarget = closest.transform;
-            //Get's enemy model, which always has an animator attached
-            CharacterController enemyCollision = currentTarget.GetComponent<CharacterController>();
-            if (enemyCollision)
-            {
-                targetColliderCenter = enemyCollision.center * currentTarget.localScale.y;
-            }
-            else
-            {
-                /*If enemy does not have a BoxCollider, use this as aim adjustment instead.*/
-                targetColliderCenter = new Vector3(0, 0.2f, 0);
-            }
+
             // Vec = AddOffset(currentTarget.position);
             healthBar = currentTarget.transform.Find("UI Canvas").gameObject.transform;
             targetGroup.AddMember(currentTarget, 0.3f, 1f);
             targetGroup.AddMember(healthBar, 0.7f, 1f);
+
+            cinemachineFreeLook.m_YAxis.Value = cameraHeight;
         }
     }
 
@@ -166,24 +160,14 @@ public class TargetLock : MonoBehaviour
             return;
         }
 
-        BoxCollider enemyCollision = currentTarget.GetComponent<BoxCollider>();
-        if (enemyCollision)
-        {
-            targetColliderCenter = enemyCollision.center * currentTarget.localScale.y;
-        }
-        else
-        {
-            /*If enemy does not have a BoxCollider, use this as aim adjustment instead.*/
-            targetColliderCenter = new Vector3(0, 0.2f, 0);
-        }
-
-        if(aimIcon)
+        if (aimIcon)
             aimIcon.transform.position = mainCamera.WorldToScreenPoint(target.position + targetColliderCenter);
 
         // if too far or too close to enemy, deselect them
         if ((target.position - transform.position).magnitude < minDistance ||
-            (target.position - transform.position).magnitude > maxDistance) { 
-            RemoveTarget(); 
+            (target.position - transform.position).magnitude > maxDistance)
+        {
+            RemoveTarget();
             return;
         }
 
@@ -209,55 +193,90 @@ public class TargetLock : MonoBehaviour
         gos = GameObject.FindGameObjectsWithTag(enemyTag);
         GameObject closest = null;
         float distance = maxDistance;
-        float currAngle = maxAngle;
         Vector3 position = transform.position;
         foreach (GameObject go in gos)
         {
-            // Used if there are no existing targets and for cheking if the target is in view
-            Vector3 playerDiff = go.transform.position - transform.position;
-            // curDistance is the distance to the nearest enemy 
-            float curDistance = 0f;
-            
-            if (currentTarget)
-            {
-                Vector3 targetDiff = go.transform.position - currentTarget.position;
-                curDistance = targetDiff.magnitude;
-            }
-            else
-                curDistance = playerDiff.magnitude;
+            // curDistance is the distance to the nearest enemy
+            float curDistance = DistanceToTarget(go);
 
             if (curDistance < distance)
             {
-                Vector3 viewPos = mainCamera.WorldToViewportPoint(go.transform.position);
-                Vector2 newPos = new Vector3(viewPos.x - 0.5f, viewPos.y - 0.5f);
-                if (Vector3.Angle(playerDiff.normalized, mainCamera.transform.forward) < maxAngle)
+                //Get's enemy model, used to aim at the emeny's center
+                Vector3 goColliderCenter = GetTargetCenter(go);
+                //check if we can see the enemy
+                bool inLOS = RayCastToEnemy(go, goColliderCenter);
+
+                Renderer goRenderer = go.GetComponentInChildren<Renderer>();
+                if (goRenderer.isVisible && inLOS) //if in target is in view, set it as the closest target to be returned
                 {
-                    if (currentTarget)
+                    if (currentTarget) //get closest target to the right or left of the current one
                     {
-                        // get closest target to the right or left of the current one
                         Vector3 cross = Vector3.Cross(mainCamera.transform.forward, go.transform.position - currentTarget.position);
-                        if (targetDirection == TargetDirection.Right && cross.y > 0f) // TODO: or instead of else if 
+                        bool isCloser = (
+                            targetDirection == TargetDirection.Right && cross.y > 0f ||
+                            targetDirection == TargetDirection.Left && cross.y < 0f
+                            );
+
+                        if (isCloser)
                         {
                             closest = go;
-                            distance = curDistance;
-                        }
-                        else if (targetDirection == TargetDirection.Left && cross.y < 0f)
-                        {
-                            closest = go;
+                            targetColliderCenter = goColliderCenter;
                             distance = curDistance;
                         }
                     }
-                    else
+                    else //get closest target
                     {
-                        // Get closest target 
                         closest = go;
-                        currAngle = Vector3.Angle(playerDiff.normalized, mainCamera.transform.forward.normalized);
+                        targetColliderCenter = goColliderCenter;
                         distance = curDistance;
                     }
                 }
             }
         }
         return closest;
+    }
+
+    /// Returns the distance from an enemy to the previous target if switching,
+    /// or from the player if locking on for the first time.
+    float DistanceToTarget(GameObject go)
+    {
+        if (currentTarget)
+        {
+            Vector3 targetDiff = go.transform.position - currentTarget.position;
+            return targetDiff.magnitude;
+        }
+        else
+        {
+            Vector3 playerDiff = go.transform.position - transform.position;
+            return playerDiff.magnitude;
+        }
+    }
+
+    Vector3 GetTargetCenter(GameObject go)
+    {
+        CharacterController enemyCollision = go.GetComponent<CharacterController>();
+        if (enemyCollision)
+        {
+            return enemyCollision.center * go.transform.localScale.y;
+        }
+        else
+        {
+            /*If enemy does not have a BoxCollider, use this as aim adjustment instead.*/
+            return new Vector3(0, 0.2f, 0);
+        }
+    }
+
+    /// Sends a Raycast to anemy transform to check if it is visible to the camera
+    bool RayCastToEnemy(GameObject go, Vector3 goColliderCenter)
+    {
+        //Adjust the position so it aims at the center of the enemy model
+        Vector3 dir = ((go.transform.position + goColliderCenter) - mainCamera.transform.position).normalized;
+        Ray ray = new Ray(mainCamera.transform.position, dir);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 1000f, ~transparentObjects))
+            return hit.collider.gameObject == go;
+
+        return false;
     }
 
     private void OnDrawGizmos()

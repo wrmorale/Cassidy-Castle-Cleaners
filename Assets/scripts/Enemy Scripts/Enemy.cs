@@ -90,13 +90,16 @@ public class Enemy : MonoBehaviour
             }
         }
 
-        // Check if we need to generate a new dust pile
+        /*// Check if we need to generate a new dust pile
         if (dustPiles.Count < maxDustPiles) {
+            //This function spawns dust piles but they are all disabled.
+            //This function should likely be removed
+            Debug.LogWarning("Generating a new dust pile");
             GameObject newDustPile = Instantiate(dustPilePrefab, transform.position + new Vector3(Random.Range(-1.0f, 1.0f), 0, Random.Range(-1.0f, 1.0f)), Quaternion.identity);
             DustPile newDustPileScript = newDustPile.GetComponent<DustPile>();
             newDustPileScript.SetHealth(0.1f); // set a low starting health
             dustPiles.Add(newDustPileScript);
-        }
+        }*/
     }
 
     private void FixedUpdate()
